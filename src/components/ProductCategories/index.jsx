@@ -20,7 +20,11 @@ export default function ProductCategories() {
         <div className="grid grid-cols-3 gap-3 mt-5">
           {items.map((items, i) => {
             return (
-              <div className="bg-[#f4f5f7] rounded-xl  flex flex-col justify-between  items-center p-2  ">
+              <div
+                key={i}
+                className="bg-[#f4f5f7] rounded-xl   flex flex-col-reverse justify-between  items-center p-2  "
+              >
+              
                 <h1 className=" text-center text-sm">{items.text}</h1>
                 <img
                   src={items.img}

@@ -5,6 +5,7 @@ import StoreCategories from "../../components/StoreCategories";
 import Header from "../../components/Header";
 import Service from "../../components/Service";
 import NewProduct from "../../components/NewProduct";
+import OTPVerification from "../../components/Login";
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
       <Service/>
       <StoreCategories />
       <NewProduct/>
+    
     </div>
   );
 }
