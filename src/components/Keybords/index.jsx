@@ -142,7 +142,7 @@ export default function Keyboards() {
 
   const handleRemoveFromCart = (item) => {
     console.log("enter")
-    dispatch(productRemove(item).id);
+    dispatch(productRemove(item.id));
    
   };
 

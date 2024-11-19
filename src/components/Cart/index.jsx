@@ -27,7 +27,6 @@ export default function Cart({ bottom }) {
   };
   const handleRemoveFromCart = (item) => {
     dispatch(productRemove(item));
-    console.log("deleted");
   };
   const handleAddToCart = (item) => {
     dispatch(productAdd(item));
@@ -124,7 +123,7 @@ export default function Cart({ bottom }) {
 
                       <div className="flex  border border-green-600 rounded-md p-1 bg-green-600 text-white gap-2">
                         <button
-                          onClick={() => handleRemoveFromCart(items)}
+                          onClick={() => handleRemoveFromCart(items.id)}
                           className="text-lg font-medium "
                         >
                           <Minus size={15} />
