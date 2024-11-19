@@ -135,15 +135,12 @@ export default function Keyboards() {
   };
 
   const handleAddToCart = (item) => {
-    
     dispatch(productAdd(item));
-   
   };
 
   const handleRemoveFromCart = (item) => {
-    console.log("enter")
+    console.log("enter");
     dispatch(productRemove(item.id));
-   
   };
 
   const getCartItemQuantity = (productId) => {
@@ -176,7 +173,7 @@ export default function Keyboards() {
                     onClick={() => handleAddToCart(item)}
                     className="absolute -bottom-2 right-0 border-green-600 border px-1 py-1 bg-white rounded-lg"
                   >
-                    <Plus size={20}/>
+                    <Plus size={20} />
                   </div>
                 ) : (
                   <div className="absolute -bottom-2 right-0 border-green-600 border px-2 py-1 bg-white rounded-lg flex gap-2 items-center">
