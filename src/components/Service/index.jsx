@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import { Pagination } from "swiper/modules";
+import { Pagination, Autoplay } from "swiper/modules";
 import "swiper/css/pagination";
 import { motion } from "framer-motion";
 import { ChevronsRight } from "lucide-react";
@@ -61,24 +61,28 @@ export default function Service() {
   }, []);
 
   return (
-    <div className="p-5 font-Lexend flex flex-col gap-5">
+    <div className="p-3 font-Lexend flex flex-col gap-5">
       <div className="flex flex-col gap-3">
         <h1 className="text-xl font-semibold ">Service</h1>
         <div
           ref={scrollContainerRef}
-          className="flex overflow-hidden overflow-x-scroll gap-5 no-scrollbar relative"
+          className="flex overflow-hidden overflow-x-scroll gap-3 no-scrollbar relative p-2"
         >
           {servicelist.map((items, i) => (
             <div
               key={i}
-              className="bg-[#f4f5f7] rounded-xl p-1 flex flex-col justify-between min-w-[80px]"
+              className=" rounded-2xl  flex flex-col  justify-center gap-2 items-center min-w-[85px] relative p-1"
             >
-              <h1 className="text-center text-sm">{items.text}</h1>
-              <img
-                src={items.img}
-                alt=""
-                className="rounded-lg h-[60px] object-contain"
-              />
+              <div className="bg-[#f4f5f7]  p-2 flex justify-center items-center rounded-2xl">
+                {" "}
+                <img
+                  src={items.img}
+                  alt=""
+                  className="rounded-lg h-[70px] object-contain"
+                />
+              </div>
+
+              <h1 className="text-center text-xs z-10 ">{items.text}</h1>
             </div>
           ))}
 
@@ -95,7 +99,7 @@ export default function Service() {
               }}
               className="absolute right-0 top-0 bottom-0 m-auto w-10 h-10 flex items-center justify-center"
             >
-              <ChevronsRight />
+              <ChevronsRight className="text-gray-300 z-10" />
             </motion.div>
           )}
         </div>
@@ -106,7 +110,11 @@ export default function Service() {
           dynamicBullets: true,
           clickable: true,
         }}
-        modules={[Pagination]}
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
+        modules={[Pagination, Autoplay]}
         className="mySwiper w-full h-[20vh] rounded-xl"
       >
         {service.map((items, i) => {

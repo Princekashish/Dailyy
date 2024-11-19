@@ -31,21 +31,23 @@ export default function StoreCategories() {
     },
   ];
   return (
-    <div className="p-5 font-Lexend flex flex-col gap-5">
+    <div className="p-3  font-Lexend flex flex-col gap-3">
       <div>
         <h1 className="text-xl font-semibold ">Shop by Store</h1>
-        <div className="grid grid-cols-3 gap-3 mt-5">
+        <div className="grid grid-cols-3 gap-2 mt-2 ">
           {Store.map((items, i) => {
             return (
               <Link key={i} to={items.link}>
-              <div className="bg-[#f4f5f7] rounded-xl flex flex-col justify-between  items-center p-2 h-[100px]">
-                <h1 className=" text-center text-sm">{items.text}</h1>
-                <img
-                  src={items.img}
-                  alt=""
-                  className="h-[70px] object-contain"
-                />
-              </div>
+                <div className=" rounded-2xl flex flex-col  justify-between gap-2  items-center p-2 ">
+                  <div className="bg-[#f4f5f7] p-2 rounded-2xl ">
+                    <img
+                      src={items.img}
+                      alt=""
+                      className="h-[70px] object-contain"
+                    />
+                  </div>
+                  <h1 className=" text-center text-sm">{items.text}</h1>
+                </div>
               </Link>
             );
           })}

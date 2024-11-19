@@ -137,15 +137,20 @@ export default function Speakers() {
         {speakers.map((item) => (
           <div
             key={item.id}
-            className="flex justify-center gap-1 items-center flex-col rounded-xl cursor-pointer"
+            className="flex justify-start  items-center flex-col rounded-xl cursor-pointer gap-2"
             onClick={() => openModal(item)} // Open modal on product click
           >
-            <img
-              src={item.img}
-              alt={item.product}
-              className="rounded-xl object-contain bg-[#f2f2f2]"
-            />
-            <h1 className="text-xs text-center">{item.product}</h1>
+            <div className="relative">
+              <img
+                src={item.img}
+                alt={item.product}
+                className="rounded-xl object-contain bg-[#f2f2f2]"
+              />
+              <div className="absolute -bottom-2 right-0  border-green-600 border px-2 py-1 bg-white rounded-lg">
+                <h1 className="text-sm">Add</h1>
+              </div>
+            </div>
+            <h1 className="text-xs ">{item.product}</h1>
           </div>
         ))}
       </div>

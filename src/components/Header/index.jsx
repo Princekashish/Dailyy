@@ -59,8 +59,8 @@ export default function Header() {
   ];
 
   return (
-    <div className="pt-5">
-      <div className="flex flex-col gap-5  sticky top-0">
+    <div className="pt-2 ">
+      <div className="flex flex-col gap-1  sticky top-0">
         <div className="p-3">
           <input
             type="text"
@@ -68,7 +68,6 @@ export default function Header() {
             className="py-3 px-2 outline-none rounded-xl w-full"
           />
         </div>
-
         <div className="flex gap-8 justify-start items-center font-Lexend overflow-hidden overflow-x-scroll text-white no-scrollbar pl-5  pr-2 py-1 ">
           {navitems.map((item, i) => {
             return (

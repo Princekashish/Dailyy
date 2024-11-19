@@ -3,6 +3,7 @@ import { IoArrowBack } from "react-icons/io5";
 import { Link, NavLink, Outlet } from "react-router-dom";
 import ScrollTop from "../../utils/ScreenTop";
 import { Search, Share } from "lucide-react";
+import Cart from "../Cart";
 
 export default function Computer() {
   const computer = [
@@ -41,7 +42,7 @@ export default function Computer() {
   return (
     <div className="font-Lexend relative ">
       <ScrollTop />
-      <div className="sticky top-0 pt-2 w-full ">
+      <div className="sticky top-0 pt-2 w-full bg-white  z-10">
         <div className="relative">
           <div className="flex absolute  left-2 justify-start items-center p-2 gap-2 z-10 bg-black/10 rounded-full">
             <Link
@@ -52,39 +53,39 @@ export default function Computer() {
             </Link>
           </div>
           <div className=" flex justify-center items-center gap-4 absolute right-3    ">
-           <div className="flex justify-center items-center rounded-full bg-black/10 h-[35px] w-[35px]  ">
-           <Search  size={20} />
-           </div>
-           <div className="flex justify-center items-center rounded-full bg-black/10 h-[35px] w-[35px] ">
-           <Share size={20} />
-           </div>
+            <div className="flex justify-center items-center rounded-full bg-black/10 h-[35px] w-[35px]  ">
+              <Search size={20} />
+            </div>
+            <div className="flex justify-center items-center rounded-full bg-black/10 h-[35px] w-[35px] ">
+              <Share size={20} />
+            </div>
           </div>
         </div>
 
         {/* Computer product list */}
-        <div className=" border-b flex flex-col justify-center items-center gap-5 bg-white  p-2 h-[30vh] ">
+        <div className=" flex flex-col justify-center items-center gap-5 bg-white  p-2   mt-10">
           <h1 className="text-center text-lg border-b border-b-black">
             Shop by Categories
           </h1>
-          <div className="flex   overflow-hidden w-full overflow-x-scroll   justify-start items-center gap-3 ">
+          <div className="flex p-2  overflow-hidden w-full overflow-x-scroll   justify-start items-center gap-3 no-scrollbar">
             {computer.map((item, i) => (
               <NavLink
                 key={i}
                 to={item.link}
                 className={({ isActive }) =>
-                  isActive
-                    ? " bg-sky-400   border-b-2 border-b-black rounded-xl  text-center  p-1 min-w-[80px]"
-                    : " text-black rounded-3xl text-center p-1 min-w-[80px]"
+                  isActive ? "  border-b-2  p-1 duration-1000 transition-all ease-out border-b-black   min-w-[80px]" : "   min-w-[80px]"
                 }
                 end={item.link === "/computer"} // Ensures that only the root path is active for "/computer"
               >
-                <div className="flex flex-col ">
-                  <img
-                    src={item.img}
-                    alt={item.items}
-                    className="rounded-3xl p-2 h-[80px] object-contain"
-                  />
-                  <h1 className="text-xs">{item.items}</h1>
+                <div className="flex flex-col gap-2">
+                  <div className="bg-[#f4f5f7]   flex justify-center items-center rounded-full">
+                    <img
+                      src={item.img}
+                      alt={item.items}
+                      className="rounded-3xl p-2 h-[80px] object-contain"
+                    />
+                  </div>
+                  <h1 className="text-xs text-center">{item.items}</h1>
                 </div>
               </NavLink>
             ))}
@@ -92,8 +93,11 @@ export default function Computer() {
         </div>
       </div>
       {/* Outlet for nested routes */}
-      <div>
+      <div className="mb-[8vh]">
         <Outlet />
+      </div>
+      <div>
+        <Cart bottom={"bottom-2"}/>
       </div>
     </div>
   );
