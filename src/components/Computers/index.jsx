@@ -73,8 +73,10 @@ export default function Computer() {
                 key={i}
                 to={item.link}
                 className={({ isActive }) =>
-                  isActive ? "  border-b-2  p-1 duration-1000 transition-all ease-out border-b-black   min-w-[80px]" : "   min-w-[80px]"
-                }
+                  isActive
+                    ? "border-b-2  py-2 border-b-black min-w-[80px] transition-all duration-500 ease-out "
+                    : "min-w-[80px] transition-all duration-300 ease-in-out py-2"
+                 }
                 end={item.link === "/computer"} // Ensures that only the root path is active for "/computer"
               >
                 <div className="flex flex-col gap-2">
@@ -97,7 +99,7 @@ export default function Computer() {
         <Outlet />
       </div>
       <div>
-        <Cart bottom={"bottom-2"}/>
+        <Cart bottom={"bottom-2"} />
       </div>
     </div>
   );

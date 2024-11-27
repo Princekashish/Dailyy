@@ -19,7 +19,7 @@ export default function Cart({ bottom }) {
   // Check if cart has any items
   const hasItemsInCart = cart.length > 0;
   const price = useSelector(selectCartTotal);
-  console.log(price);
+
   // Only show the first two items
   const firstTwoItems = cart.slice(0, 2);
   const closeModal = () => {
@@ -102,7 +102,7 @@ export default function Cart({ bottom }) {
                   </div>
                   <button
                     onClick={closeModal}
-                    className="p-1 bg-[#484848]  text-white rounded-full "
+                    className="p-1 bg-black/10   rounded-full "
                   >
                     <X />
                   </button>

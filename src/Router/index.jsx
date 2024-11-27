@@ -9,6 +9,7 @@ import Computer from "../components/Computers";
 import Keybords from "../components/Keybords";
 import Speakers from "../components/Speakers";
 import Printers from "../components/Printers";
+import Vegetables_fruits from "../components/Vegetables-fruits";
 
 const rout = createBrowserRouter([
   {
@@ -21,6 +22,7 @@ const rout = createBrowserRouter([
     ],
   },
   { path: "/login", Component: Login },
+  { path: "/vegetables-fruits", Component: Vegetables_fruits },
   {
     path: "/computer",
     Component: Computer,
