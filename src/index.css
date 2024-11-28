@@ -10,3 +10,7 @@
     -ms-overflow-style:none;
     scrollbar-width: none;
 }
+.--PhoneInputCountryFlag-height{
+height: 23px;
+width: 29px;
+}

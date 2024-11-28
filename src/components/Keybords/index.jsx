@@ -8,7 +8,7 @@ export default function Keyboards() {
   const keyboards = [
     {
       id: 1,
-      product: "Mechanical Keyboard",
+      name: "Mechanical Keyboard",
       brand: "Logitech",
       img: "https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1699607324/Croma%20Assets/Computers%20Peripherals/Computer%20Accessories%20and%20Tablets%20Accessories/Images/302593_aem4mg.png?tr=w-400",
       price: "1500", // price in INR
@@ -19,7 +19,7 @@ export default function Keyboards() {
     },
     {
       id: 2,
-      product: "Wireless Keyboard",
+      name: "Wireless Keyboard",
       brand: "Microsoft",
       img: "https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1695715114/Croma%20Assets/Computers%20Peripherals/Computer%20Accessories%20and%20Tablets%20Accessories/Images/301496_jpokyk.png?tr=w-400",
       price: "800",
@@ -30,7 +30,7 @@ export default function Keyboards() {
     },
     {
       id: 3,
-      product: "Ergonomic Keyboard",
+      name: "Ergonomic Keyboard",
       brand: "Microsoft",
       img: "https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1697625614/Croma%20Assets/Computers%20Peripherals/Computer%20Accessories%20and%20Tablets%20Accessories/Images/169717_jffthy.png?tr=w-640",
       price: "900",
@@ -41,7 +41,7 @@ export default function Keyboards() {
     },
     {
       id: 4,
-      product: "RGB Gaming Keyboard",
+      name: "RGB Gaming Keyboard",
       brand: "Corsair",
       img: "https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1697017829/Croma%20Assets/Computers%20Peripherals/Computer%20Accessories%20and%20Tablets%20Accessories/Images/273929_0_gryjv7.png?tr=w-640",
       price: "1800",
@@ -52,7 +52,7 @@ export default function Keyboards() {
     },
     {
       id: 5,
-      product: "Compact Keyboard",
+      name: "Compact Keyboard",
       brand: "Razer",
       img: "https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1714042445/Croma%20Assets/Computers%20Peripherals/Computer%20Accessories%20and%20Tablets%20Accessories/Images/302590_0_db4e6g.png?tr=w-640",
       price: "1300",
@@ -63,7 +63,7 @@ export default function Keyboards() {
     },
     {
       id: 6,
-      product: "Quiet Keyboard",
+      name: "Quiet Keyboard",
       brand: "Logitech",
       img: "https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1694400784/Croma%20Assets/Computers%20Peripherals/Computer%20Accessories%20and%20Tablets%20Accessories/Images/300625_yqnjhw.png?tr=w-640",
       price: "500",
@@ -74,7 +74,7 @@ export default function Keyboards() {
     },
     {
       id: 7,
-      product: "Mechanical Keypad",
+      name: "Mechanical Keypad",
       brand: "Keychron",
       img: "https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1694400583/Croma%20Assets/Computers%20Peripherals/Computer%20Accessories%20and%20Tablets%20Accessories/Images/300623_bdtkw3.png?tr=w-400",
       price: "800",
@@ -85,7 +85,7 @@ export default function Keyboards() {
     },
     {
       id: 8,
-      product: "Gaming Keypad",
+      name: "Gaming Keypad",
       brand: "Redragon",
       img: "https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1681404541/Croma%20Assets/Computers%20Peripherals/Computer%20Accessories%20and%20Tablets%20Accessories/Images/203511_0_fvannx.png?tr=w-400",
       price: "700",
@@ -96,7 +96,7 @@ export default function Keyboards() {
     },
     {
       id: 9,
-      product: "Multimedia Keyboard",
+      name: "Multimedia Keyboard",
       brand: "HP",
       img: "https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1724858009/Croma%20Assets/Computers%20Peripherals/Computer%20Accessories%20and%20Tablets%20Accessories/Images/302591_0_boeouv.png?tr=w-400",
       price: "700",
@@ -107,7 +107,7 @@ export default function Keyboards() {
     },
     {
       id: 10,
-      product: "Bluetooth Keyboard",
+      name: "Bluetooth Keyboard",
       brand: "Apple",
       img: "https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1712052669/Croma%20Assets/Computers%20Peripherals/Computer%20Accessories%20and%20Tablets%20Accessories/Images/241393_0_ar9req.png?tr=w-400",
       price: "1200",
@@ -200,7 +200,7 @@ export default function Keyboards() {
                       </div>
                     )}
                   </div>
-                  <h1 className="text-xs text-start">{item.product}</h1>
+                  <h1 className="text-xs text-start">{item.name}</h1>
                 </div>
               );
             })}

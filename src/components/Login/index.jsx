@@ -3,6 +3,7 @@ import { IoArrowBack } from "react-icons/io5";
 import { Link } from "react-router-dom";
 
 export default function Login() {
+
   return (
     <div className="  ">
       <div className=" relative  flex justify-center items-center">
@@ -27,7 +28,7 @@ export default function Login() {
             <input
               type="text"
               className=" w-full px-3 py-3 outline-none border border-black rounded-lg"
-              placeholder="+91 XXXXXXXXXXXX"
+              placeholder="+91 XXXXXXXXXXXX" 
             />
           </div>
           <button className="w-full px-3 py-3 outline-none border bg-black text-white border-black rounded-lg">

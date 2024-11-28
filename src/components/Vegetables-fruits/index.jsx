@@ -9,7 +9,7 @@ import Cart from "../Cart";
 export default function Vegetables_fruits() {
   const vegetable = [
     {
-      id: 1,
+      id: 1907,
       name: "Tomato",
       category: "Vegetables",
       price: "30",
@@ -19,7 +19,7 @@ export default function Vegetables_fruits() {
       discount: "10%", // Example discount
     },
     {
-      id: 2,
+      id: 24324,
       name: "Potato",
       category: "Vegetables",
       price: "40",
@@ -29,7 +29,7 @@ export default function Vegetables_fruits() {
       discount: "5%", // Example discount
     },
     {
-      id: 3,
+      id: 3423423,
       name: "Onion",
       category: "Vegetables",
       price: "20",
@@ -39,7 +39,7 @@ export default function Vegetables_fruits() {
       discount: "15%", // Example discount
     },
     {
-      id: 4,
+      id: 452345,
       name: "Carrot",
       category: "Vegetables",
       price: "50",
@@ -49,7 +49,7 @@ export default function Vegetables_fruits() {
       discount: "8%", // Example discount
     },
     {
-      id: 5,
+      id: 51234,
       name: "Cucumber",
       category: "Vegetables",
       price: "25",
@@ -58,7 +58,7 @@ export default function Vegetables_fruits() {
       discount: "12%", // Example discount
     },
     {
-      id: 6,
+      id: 61234,
       name: "Cauliflower",
       category: "Vegetables",
       price: "60",
@@ -68,7 +68,7 @@ export default function Vegetables_fruits() {
       discount: "10%", // Example discount
     },
     {
-      id: 7,
+      id: 71234,
       name: "Spinach",
       category: "Vegetables",
       price: "40",
@@ -78,7 +78,7 @@ export default function Vegetables_fruits() {
       discount: "7%", // Example discount
     },
     {
-      id: 8,
+      id: 84321,
       name: "Brinjal (Eggplant)",
       category: "Vegetables",
       price: "45",
@@ -88,7 +88,7 @@ export default function Vegetables_fruits() {
       discount: "5%", // Example discount
     },
     {
-      id: 9,
+      id: 91234,
       name: "Green Bell Pepper",
       category: "Vegetables",
       price: "55",
@@ -98,7 +98,7 @@ export default function Vegetables_fruits() {
       discount: "6%", // Example discount
     },
     {
-      id: 10,
+      id: 101234,
       name: "Beans (Green)",
       category: "Vegetables",
       price: "60",

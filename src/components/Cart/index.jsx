@@ -117,7 +117,7 @@ export default function Cart({ bottom }) {
                         <img src={items.img} alt="" className="h-[60px]" />
                       </div>
                       <div className="flex flex-col justify-start items-start gap-1">
-                        <h1 className="text-sm">{items.product}</h1>
+                        <h1 className="text-sm">{items.name}</h1>
                         <p className="text-sm font-bold">{items.price}</p>
                       </div>
 
