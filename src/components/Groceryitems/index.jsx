@@ -2,7 +2,7 @@ import { div } from "framer-motion/client";
 import React from "react";
 
 export default function Grocery() {
-  const Grocery = [
+   const Grocery = [
     {
       id: 1,
       name: "Carrots",

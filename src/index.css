@@ -1,16 +1,21 @@
-@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-.no-scrollbar::-webkit-scrollbar{
-    display: none;
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
 }
-.no-scrollbar{
-    -ms-overflow-style:none;
-    scrollbar-width: none;
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
-.--PhoneInputCountryFlag-height{
-height: 23px;
-width: 29px;
+/* In your global CSS or Tailwind custom styles */
+.scroll-smooth {
+  scroll-behavior: smooth;
+}
+
+.--PhoneInputCountryFlag-height {
+  height: 23px;
+  width: 29px;
 }

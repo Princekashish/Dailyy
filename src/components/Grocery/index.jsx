@@ -20,7 +20,7 @@ export default function Grocery() {
     {
       category: "Atta, Rice & Dal",
       link: "/atta-rice-dal",
-      image: "https://example.com/images/atta-rice-dal.jpg",
+      image: "/pngegg (19).png",
       items: [
         "Wheat Flour (Atta)",
         "Rice (Basmati, Sona Masoori)",
@@ -32,7 +32,7 @@ export default function Grocery() {
     {
       category: "Oil, Ghee & Masala",
       link: "/oil-ghee-masala",
-      image: "https://example.com/images/oil-ghee-masala.jpg",
+      image: "/pngegg (13).png",
       items: [
         "Vegetable Oil",
         "Mustard Oil",
@@ -48,7 +48,7 @@ export default function Grocery() {
     {
       category: "Dairy, Bread & Eggs",
       link: "/dairy-bread-eggs",
-      image: "https://example.com/images/dairy.jpg",
+      image: "/pngegg (14).png",
       items: [
         "Milk",
         "Curd (Yogurt)",
@@ -66,13 +66,13 @@ export default function Grocery() {
     {
       category: "Bakery & Biscuits",
       link: "/bakery-biscuits",
-      image: "https://example.com/images/bakery-biscuits.jpg",
+      image: "/pngegg (15).png",
       items: ["Cakes", "Cookies", "Biscuits", "Bread Rolls", "Patties"],
     },
     {
       category: "Dry Fruits & Cereals",
       link: "/dry-fruits-cereals",
-      image: "https://example.com/images/dry-fruits-cereals.jpg",
+      image: "/pngegg (18).png",
       items: [
         "Almonds",
         "Cashews",
@@ -87,7 +87,7 @@ export default function Grocery() {
     {
       category: "Chicken, Meat & Fish",
       link: "/chicken-meat-fish",
-      image: "https://www.dailyy.in/Image/mainchicken.png",
+      image: "/pngegg (17).png",
       items: [
         "Chicken Breast",
         "Chicken Legs",
@@ -100,7 +100,7 @@ export default function Grocery() {
     {
       category: "Kitchenware, Appliances",
       link: "/kitchenware-appliances",
-      image: "https://example.com/images/kitchenware-appliances.jpg",
+      image: "/pngegg (16).png",
       items: [
         "Cooking Pots",
         "Frying Pan",

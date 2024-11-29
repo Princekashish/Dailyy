@@ -9,11 +9,13 @@ import {
   productRemove,
   selectCartTotal,
 } from "../../Redux/Feature/Cart/CartSlice";
+import Checkout from "../Checkout";
 
 export default function Cart({ bottom }) {
   const cart = useSelector((state) => state.cart.items); // Get cart items from Redux state
 
   const [viewCart, setViewCart] = useState(false);
+  const [checkout, setCheckout] = useState(false);
   const dispatch = useDispatch();
 
   // Check if cart has any items
@@ -107,56 +109,83 @@ export default function Cart({ bottom }) {
                     <X />
                   </button>
                 </div>
-                <div className=" h-[40vh] overflow-hidden overflow-y-scroll flex flex-col gap-5">
-                  {cart.map((items) => (
-                    <div
-                      key={items.id}
-                      className=" flex justify-between items-center "
-                    >
-                      <div className=" p-2 border rounded-xl border-gray-300">
-                        <img src={items.img} alt="" className="h-[60px]" />
-                      </div>
-                      <div className="flex flex-col justify-start items-start gap-1">
-                        <h1 className="text-sm">{items.name}</h1>
-                        <p className="text-sm font-bold">{items.price}</p>
-                      </div>
+                <div className="flex flex-col justify-between gap-5">
+                  <div className=" h-[40vh] overflow-hidden overflow-y-scroll flex flex-col gap-3 no-scrollbar">
+                    {cart.map((items) => (
+                      <div
+                        key={items.id}
+                        className=" flex justify-between items-center "
+                      >
+                        <div className="flex justify-start items-center gap-2">
+                          <div className=" p-2 border rounded-xl  border-gray-300 w-[80px] h-[60px] flex justify-center items-center">
+                            <img
+                              src={items.img}
+                              alt=""
+                              className="h-[60px] object-contain"
+                            />
+                          </div>
+                          <div className="flex flex-col justify-start items-start gap-1">
+                            <h1 className="text-sm">{items.name}</h1>
+                            <p className="text-sm font-bold">₹{items.price}</p>
+                          </div>
+                        </div>
 
-                      <div className="flex  border border-green-600 rounded-md p-1 bg-green-600 text-white gap-2">
-                        <button
-                          onClick={() => handleRemoveFromCart(items.id)}
-                          className="text-lg font-medium "
-                        >
-                          <Minus size={15} />
-                        </button>
-                        <h1 className="text-sm font-medium">
-                          {items.quantity}
-                        </h1>
-                        <button
-                          onClick={() => handleAddToCart(items)}
-                          className="text-lg font-medium"
-                        >
-                          <Plus size={15} />
-                        </button>
+                        <div className="flex  border border-green-600 rounded-md p-1 bg-green-600 text-white gap-2">
+                          <button
+                            onClick={() => handleRemoveFromCart(items.id)}
+                            className="text-lg font-medium "
+                          >
+                            <Minus size={15} />
+                          </button>
+                          <h1 className="text-sm font-medium">
+                            {items.quantity}
+                          </h1>
+                          <button
+                            onClick={() => handleAddToCart(items)}
+                            className="text-lg font-medium"
+                          >
+                            <Plus size={15} />
+                          </button>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                  <div className=" flex flex-col justify-start items-start mt-1 ">
+                    <h1 className=" font-semibold text-lg">Order Details</h1>
+                    <div className="bg-[#f8f8f8] rounded-xl h-[15vh] w-full  mt-2">
+                      <div className="flex flex-col gap-1  rounded-lg p-3">
+                        <div className="flex justify-between items-center font-semibold">
+                          <h1 className="text-start ">Items Total</h1>
+                          <p>₹{price}</p>
+                        </div>
+                        <div className="flex justify-between items-center ">
+                          <h1 className="text-start ">Delivery Charge</h1>
+                          <p className="text-green-600">Free</p>
+                        </div>
+                        <div className="flex justify-between items-center ">
+                          <h1 className="text-start ">Packing Charge</h1>
+                          <p className="text-green-600">Free</p>
+                        </div>
                       </div>
                     </div>
-                  ))}
-                </div>
-                <div className=" flex flex-col justify-start items-start mt-1 ">
-                  <h1 className=" font-semibold text-lg">Order Details</h1>
-                  <div className="bg-[#f8f8f8] rounded-xl h-[15vh] w-full  mt-2">
-                    <div className="flex flex-col gap-1  rounded-lg p-3">
-                      <div className="flex justify-between items-center font-semibold">
-                        <h1 className="text-start ">Items Total</h1>
-                        <p>{price}</p>
-                      </div>
-                      <div className="flex justify-between items-center ">
-                        <h1 className="text-start ">Delivery Charge</h1>
-                        <p className="text-green-600">Free</p>
-                      </div>
-                      <div className="flex justify-between items-center ">
-                        <h1 className="text-start ">Packing Charge</h1>
-                        <p className="text-green-600">Free</p>
-                      </div>
+                  </div>
+
+                  <div className=" flex justify-between items-center">
+                    <div className="flex flex-col-reverse">
+                      <h1 className="text-green-600 text-sm font-semibold">
+                        view bill
+                      </h1>
+                      <p className="font-semibold ">₹{price + 20}</p>
+                    </div>
+                    <div
+                      onClick={() => {
+                        setCheckout((prev) => !prev);
+                      }}
+                      className="bg-green-600  px-2 py-3  rounded-xl"
+                    >
+                      <h1 className="text-white uppercase text-sm tracking-tight font-bold ">
+                        Confirm order
+                      </h1>
                     </div>
                   </div>
                 </div>
@@ -165,6 +194,8 @@ export default function Cart({ bottom }) {
           </div>
         </div>
       )}
+
+      {checkout && <Checkout />}
     </div>
   );
 }

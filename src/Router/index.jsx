@@ -10,6 +10,7 @@ import Keybords from "../components/Keybords";
 import Speakers from "../components/Speakers";
 import Printers from "../components/Printers";
 import Vegetables_fruits from "../components/Vegetables-fruits";
+import UserAccount from "../components/UserAccount";
 
 const rout = createBrowserRouter([
   {
@@ -32,6 +33,8 @@ const rout = createBrowserRouter([
       { path: "printers", Component: Printers }, // Correct relative path
     ],
   },
+  {path:"/create_account" , Component:UserAccount}
+  
 ]);
 
 export default function Router() {

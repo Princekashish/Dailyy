@@ -12,7 +12,7 @@ const firebaseConfig = {
   projectId: "daily-a00e9",
   storageBucket: "daily-a00e9.firebasestorage.app",
   messagingSenderId: "470861410644",
-  appId: "1:470861410644:web:02929ced5dc43e9cfc98c1"
+  appId: "1:470861410644:web:9aaa4022a0834034fc98c1",
 };
 
 const app = initializeApp(firebaseConfig);
