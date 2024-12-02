@@ -23,7 +23,7 @@ const rout = createBrowserRouter([
     ],
   },
   { path: "/login", Component: Login },
-  { path: "/vegetables-fruits", Component: Vegetables_fruits },
+  { path: "/vegetables-fruits", Component: Vegetables_fruits},
   {
     path: "/computer",
     Component: Computer,

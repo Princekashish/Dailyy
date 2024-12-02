@@ -4,17 +4,17 @@ export default function ProductCategories() {
   const items = [
     {
       text: "Grocery items",
-      img: "https://www.dailyy.in/Image/groceryy.png",
+      img: "/pngeggveg.png",
       link: "/grocery",
     },
     {
       text: "Personal Care",
-      img: "https://www.dailyy.in/Image/whispers.png",
+      img: "/pngegg (27).png",
       link: "/personal-care",
     },
     {
       text: "Cloths",
-      img: "https://www.dailyy.in/Image/otshirt.webp",
+      img: "/pngegg (26).png",
       link: "/cloths",
     },
     {
@@ -26,7 +26,7 @@ export default function ProductCategories() {
     { text: "Essential", img: "/rb_26894.png", link: "/essential" },
     {
       text: "Skin care",
-      img: "https://example.com/images/atta-rice-dal.jpg",
+      img: "/skincare.png",
       link: "/",
     },
     {
@@ -47,7 +47,7 @@ export default function ProductCategories() {
               <Link to={item.link} key={i}>
                 <div
                   className={`rounded-xl flex flex-col gap-2 items-center ${
-                    isLastItem ? " bg-yellow-300 rounded-t-xl" : "" // Apply col-span-2 to the 7th item (index 6)
+                    isLastItem ? " bg-yellow-300 rounded-t-2xl " : "" // Apply col-span-2 to the 7th item (index 6)
                   }`}
                 >
                   <div className="bg-[#f4f5f7] h-[90px] w-full flex justify-center items-center rounded-2xl">
@@ -57,7 +57,7 @@ export default function ProductCategories() {
                       className="h-[90px] object-contain text-[10px]"
                     />
                   </div>
-                  <h1 className="text-center text-sm">{item.text}</h1>
+                  <h1 className={`text-center text-sm ${isLastItem?"text-start text-xs p-1 ":""}`}>{item.text}</h1>
                 </div>
               </Link>
             );

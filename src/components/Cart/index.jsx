@@ -33,6 +33,11 @@ export default function Cart({ bottom }) {
   const handleAddToCart = (item) => {
     dispatch(productAdd(item));
   };
+  const handleConfirmOrder = () => {
+    console.log("true")
+    setCheckout(!checkout)
+    setViewCart(false)
+  };
   return (
     <div
       className={`fixed ${bottom} left-0 right-0 text-center z-20   p-4  flex items-center justify-center`}
@@ -78,6 +83,8 @@ export default function Cart({ bottom }) {
         )}
       </div>
 
+      {/* viewCart */}
+
       {viewCart && (
         <div className="fixed top-0 left-0 right-0 bottom-0 bg-black bg-opacity-50  z-50  ">
           <div className="flex justify-center items-center ">
@@ -117,7 +124,7 @@ export default function Cart({ bottom }) {
                         className=" flex justify-between items-center "
                       >
                         <div className="flex justify-start items-center gap-2">
-                          <div className=" p-2 border rounded-xl  border-gray-300 w-[80px] h-[60px] flex justify-center items-center">
+                          <div className=" p-2 border   border-gray-300 w-[80px] h-[60px] flex justify-center items-center">
                             <img
                               src={items.img}
                               alt=""
@@ -178,14 +185,12 @@ export default function Cart({ bottom }) {
                       <p className="font-semibold ">₹{price + 20}</p>
                     </div>
                     <div
-                      onClick={() => {
-                        setCheckout((prev) => !prev);
-                      }}
-                      className="bg-green-600  px-2 py-3  rounded-xl"
+                      onClick={handleConfirmOrder}
+                      className="bg-green-600  px-2 py-3  rounded-xl  "
                     >
-                      <h1 className="text-white uppercase text-sm tracking-tight font-bold ">
-                        Confirm order
-                      </h1>
+                      <button className="text-white uppercase text-sm tracking-tight font-bold ">
+                        Conform order
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -195,7 +200,7 @@ export default function Cart({ bottom }) {
         </div>
       )}
 
-      {checkout && <Checkout />}
+      <div>{checkout && <Checkout price={price}/>}</div>
     </div>
   );
 }

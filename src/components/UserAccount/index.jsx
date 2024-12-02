@@ -10,13 +10,15 @@ export default function UserAccount() {
     name: "",
     gender: "",
     address: "",
+    email:"",
+    dob: "", // Added dob to the userProfile state
   });
   const [image, setImage] = useState(null); // Store selected image
   const navigate = useNavigate();
 
   const clearImage = () => {
     setUserProfile({
-      ...productData,
+      ...userProfile,
       image: "", // Reset the image
     });
   };
@@ -29,7 +31,11 @@ export default function UserAccount() {
       navigate("/login");
     } else {
       setUser(storedUser);
-      setUserProfile({ ...storedUser, email: storedUser.email }); // Pre-fill profile fields from user data
+      setUserProfile({
+        ...storedUser,
+        email: storedUser.email,
+        dob: storedUser.dob,
+      }); // Pre-fill profile fields from user data, including dob
     }
   }, [navigate]);
 
@@ -71,9 +77,9 @@ export default function UserAccount() {
 
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col gap-4 mt-6 justify-center items-center w-full"
+        className="flex flex-col gap-4 mt-6 justify-start items-center w-full relative  h-[85vh]"
       >
-        <div className="rounded-full border-2 border-blue-400 border-dotted  h-[120px] w-[120px] flex justify-center ite">
+        <div className="rounded-full border-2 border-black border-dotted  h-[120px] w-[120px] flex justify-center items-center">
           {userProfile.image ? (
             // If an image is selected, show the preview
             <div className="relative ">
@@ -103,8 +109,8 @@ export default function UserAccount() {
                 onChange={handleInputChange}
                 className="file:bg-gray-100 file:border-none file:rounded-xl hidden " // Hide input itself
               />
-              <span className="text-blue-600 text-center text-xs">
-                uploade Image
+              <span className="text-black text-center text-xs">
+                Upload Image
               </span>
             </label>
           )}
@@ -127,19 +133,22 @@ export default function UserAccount() {
           disabled
           className="px-3 py-2 border border-gray-300 rounded-md w-full"
         />
-
-        {/* Gender */}
-        <select
-          name="gender"
-          value={userProfile.gender}
+        <input
+          type="date"
+          name="dob"
+          value={userProfile.dob}
+          placeholder="Date of birth"
           onChange={handleInputChange}
           className="px-3 py-2 border border-gray-300 rounded-md w-full"
-        >
-          <option value="">Select Gender</option>
-          <option value="male">Male</option>
-          <option value="female">Female</option>
-          <option value="other">Other</option>
-        </select>
+        />
+        <input
+          type="email"
+          name="email"
+          value={userProfile.email}
+          placeholder="Email"
+          onChange={handleInputChange}
+          className="px-3 py-2 border border-gray-300 rounded-md w-full"
+        />
 
         {/* Address */}
         <textarea
@@ -153,7 +162,7 @@ export default function UserAccount() {
         {/* Submit Button */}
         <button
           type="submit"
-          className="bg-blue-500 text-white px-4 py-2 rounded-md"
+          className="bg-black text-white px-4 py-3  absolute w-full bottom-0 rounded-xl"
         >
           Submit
         </button>

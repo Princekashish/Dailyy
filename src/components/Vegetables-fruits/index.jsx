@@ -2,10 +2,11 @@ import { Minus, Plus, Search, Share } from "lucide-react";
 import React from "react";
 import { IoArrowBack } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { productAdd, productRemove } from "../../Redux/Feature/Cart/CartSlice";
 import Cart from "../Cart";
 import { motion } from "framer-motion";
+import ScrollTop from "../../utils/ScreenTop";
 
 export default function Vegetables_fruits() {
   const vegetable = [
@@ -309,113 +310,55 @@ export default function Vegetables_fruits() {
   ];
   const productlist = [
     {
-      category: "Vegetables & Fruits",
+      category: "All",
       link: "/vegetables-fruits",
-      image: "/pngeggveg.png",
-      items: [
-        "Tomatoes",
-        "Potatoes",
-        "Onions",
-        "Carrots",
-        "Apples",
-        "Bananas",
-        "Oranges",
-      ],
+      image: "/pngegg (22).png",
     },
     {
-      category: "Atta, Rice & Dal",
+      category: "Fresh vegetables",
       link: "/atta-rice-dal",
-      image: "/pngegg (19).png",
-      items: [
-        "Wheat Flour (Atta)",
-        "Rice (Basmati, Sona Masoori)",
-        "Lentils (Toor Dal, Masoor Dal)",
-        "Chana Dal",
-        "Moong Dal",
-      ],
+      image: "/pngegg (21).png",
     },
     {
-      category: "Oil, Ghee & Masala",
+      category: "Fresh Fruits",
       link: "/oil-ghee-masala",
       image: "/pngegg (13).png",
-      items: [
-        "Vegetable Oil",
-        "Mustard Oil",
-        "Olive Oil",
-        "Ghee",
-        "Turmeric",
-        "Chili Powder",
-        "Garam Masala",
-        "Cumin Seeds",
-        "Coriander Powder",
-      ],
     },
     {
-      category: "Dairy, Bread & Eggs",
+      category: "Exotics",
       link: "/dairy-bread-eggs",
-      image: "/pngegg (14).png",
-      items: [
-        "Milk",
-        "Curd (Yogurt)",
-        "Butter",
-        "Cheese",
-        "Paneer",
-        "Cream",
-        "White Bread",
-        "Whole Wheat Bread",
-        "Brown Bread",
-        "Eggs",
-      ],
+      image: "/pngegg (23).png",
     },
 
     {
-      category: "Bakery & Biscuits",
+      category: "Coriander & Other",
       link: "/bakery-biscuits",
-      image: "/pngegg (15).png",
-      items: ["Cakes", "Cookies", "Biscuits", "Bread Rolls", "Patties"],
+      image: "/pngegg (24).png",
     },
     {
-      category: "Dry Fruits & Cereals",
+      category: "Flowers & Leaves",
       link: "/dry-fruits-cereals",
       image: "/pngegg (18).png",
-      items: [
-        "Almonds",
-        "Cashews",
-        "Pistachios",
-        "Raisins",
-        "Walnuts",
-        "Oats",
-        "Cornflakes",
-        "Muesli",
-      ],
     },
     {
-      category: "Chicken, Meat & Fish",
+      category: "Seasonal",
       link: "/chicken-meat-fish",
-      image: "/pngegg (17).png",
-      items: [
-        "Chicken Breast",
-        "Chicken Legs",
-        "Mutton",
-        "Pork",
-        "Fish (Salmon, Rohu)",
-        "Shrimp",
-      ],
+      image: "/pngegg (25).png",
     },
     {
-      category: "Kitchenware, Appliances",
+      category: "Freshly cut & sprouts",
       link: "/kitchenware-appliances",
       image: "/pngegg (16).png",
-      items: [
-        "Cooking Pots",
-        "Frying Pan",
-        "Pressure Cooker",
-        "Blender",
-        "Microwave",
-        "Refrigerator",
-        "Toaster",
-        "Mixie",
-      ],
+    },
+    {
+      category: "Frozen veg",
+      link: "/kitchenware-appliances",
+      image: "/pngegg (16).png",
+    },
+    {
+      category: "Certifies Organic",
+      link: "/kitchenware-appliances",
+      image: "/pngegg (16).png",
     },
   ];
 
@@ -435,6 +378,7 @@ export default function Vegetables_fruits() {
 
   return (
     <div className="flex flex-col justify-between items-center relative ">
+      <ScrollTop />
       <div className="  flex justify-between items-center p-3 z-10 fixed top-0 w-full bg-white">
         <div className="flex justify-start items-center p-2 gap-2 z-10 bg-black/10 rounded-full">
           <Link
@@ -517,30 +461,38 @@ export default function Vegetables_fruits() {
 
       {/* cartitems */}
       <div>
-        <Cart bottom={"bottom-20"} />
+        <Cart bottom={"bottom-24"} />
       </div>
 
-      <div className="bg-green-700 h-[12vh]  bottom-0 fixed w-full overflow-x-scroll overflow-hidden rounded-t-3xl scroll-smooth no-scrollbar">
+      <div className="bg-green-700 h-[11vh]  bottom-0 fixed w-full overflow-x-scroll overflow-hidden rounded-t-3xl scroll-smooth no-scrollbar">
         <motion.div
           whileTap={{ cursor: "grabbing" }}
           transition={{ type: "spring", stiffness: 100, damping: 20 }}
-          className="flex h-[80px] p-3  whitespace-nowrap w-[200%] gap-4 "
+          className="flex h-[80px] p-3  whitespace-nowrap w-[200%] gap-4  overflow-hidden"
         >
           {productlist.map((items) => {
             return (
-              <div
+              <NavLink
                 key={items.id}
-                className=" w-[120px] bg-[#fff] rounded-xl flex justify-center items-center"
+                to={items.link}
+                className={
+                  ({ isActive }) =>
+                    isActive
+                      ? "bg-gradient-to-b from-yellow-300 to-yellow-100 rounded-xl flex justify-center items-center w-[90px] "
+                      : "w-[90px]  bg-white rounded-xl flex justify-center items-center" // Apply yellow and white gradient when active
+                }
               >
-                <motion.img
-                  src={items.image}
-                  alt={items.name}
-                  className="object-contain h-[70px] "
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.5 }}
-                />
-              </div>
+                <div className="  ">
+                  <motion.img
+                    src={items.image}
+                    alt={items.name}
+                    className={`object-contain h-[70px] `}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.5 }}
+                  />
+                </div>
+              </NavLink>
             );
           })}
         </motion.div>
