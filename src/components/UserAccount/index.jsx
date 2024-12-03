@@ -8,12 +8,10 @@ export default function UserAccount() {
   const [userProfile, setUserProfile] = useState({
     image: "",
     name: "",
-    gender: "",
     address: "",
     email:"",
     dob: "", // Added dob to the userProfile state
   });
-  const [image, setImage] = useState(null); // Store selected image
   const navigate = useNavigate();
 
   const clearImage = () => {

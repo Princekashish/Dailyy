@@ -124,11 +124,11 @@ export default function Cart({ bottom }) {
                         className=" flex justify-between items-center "
                       >
                         <div className="flex justify-start items-center gap-2">
-                          <div className=" p-2 border   border-gray-300 w-[80px] h-[60px] flex justify-center items-center">
+                          <div className=" p-2 border rounded-3xl  border-gray-300 w-[80px] h-[80px] flex justify-center items-center">
                             <img
                               src={items.img}
                               alt=""
-                              className="h-[60px] object-contain"
+                              className="h-[80px] object-contain"
                             />
                           </div>
                           <div className="flex flex-col justify-start items-start gap-1">
@@ -178,18 +178,18 @@ export default function Cart({ bottom }) {
                   </div>
 
                   <div className=" flex justify-between items-center">
-                    <div className="flex flex-col-reverse">
+                    <div className="flex gap-2 justify-center items-center">
                       <h1 className="text-green-600 text-sm font-semibold">
-                        view bill
+                       Total
                       </h1>
-                      <p className="font-semibold ">₹{price + 20}</p>
+                      <p className="font-semibold text-lg ">₹{price + 20}</p>
                     </div>
                     <div
                       onClick={handleConfirmOrder}
                       className="bg-green-600  px-2 py-3  rounded-xl  "
                     >
                       <button className="text-white uppercase text-sm tracking-tight font-bold ">
-                        Conform order
+                        Confirm order
                       </button>
                     </div>
                   </div>

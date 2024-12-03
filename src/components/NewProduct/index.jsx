@@ -5,7 +5,7 @@ export default function NewProduct() {
     <div className="p-2 font-Lexend flex flex-col gap-5 h-[15vh]  justify-center items-center">
       <div className="">
         <h1 className="text-3xl  font-semibold opacity-35  ">
-          more service comming soon <span className="text-green-800">! !</span>
+          more service coming soon <span className="text-green-800">! !</span>
         </h1>
       </div>
     </div>

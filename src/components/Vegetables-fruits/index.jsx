@@ -464,34 +464,40 @@ export default function Vegetables_fruits() {
         <Cart bottom={"bottom-24"} />
       </div>
 
-      <div className="bg-green-700 h-[11vh]  bottom-0 fixed w-full overflow-x-scroll overflow-hidden rounded-t-3xl scroll-smooth no-scrollbar">
+      <div className="bg-green-800 h-[11vh]  bottom-0 fixed w-full overflow-x-scroll overflow-hidden rounded-t-3xl scroll-smooth no-scrollbar">
         <motion.div
           whileTap={{ cursor: "grabbing" }}
           transition={{ type: "spring", stiffness: 100, damping: 20 }}
-          className="flex h-[80px] p-3  whitespace-nowrap w-[200%] gap-4  overflow-hidden"
+          className="flex h-[80px] p-3  whitespace-nowrap w-[200%] gap-4  overflow-hidden "
         >
           {productlist.map((items) => {
             return (
               <NavLink
                 key={items.id}
                 to={items.link}
-                className={
-                  ({ isActive }) =>
-                    isActive
-                      ? "bg-gradient-to-b from-yellow-300 to-yellow-100 rounded-xl flex justify-center items-center w-[90px] "
-                      : "w-[90px]  bg-white rounded-xl flex justify-center items-center" // Apply yellow and white gradient when active
+                className={({ isActive }) =>
+                  isActive
+                    ? "bg-white w-[90px] h-[60px] rounded-full flex justify-center items-center transition-all duration-300 scale-110"
+                    : "w-[90px] h-[60px] bg-white/90 rounded-full flex justify-center items-center transition-all duration-300"
                 }
               >
-                <div className="  ">
-                  <motion.img
-                    src={items.image}
-                    alt={items.name}
-                    className={`object-contain h-[70px] `}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 0.5 }}
-                  />
-                </div>
+                {({ isActive }) => (
+                  <div>
+                    <motion.img
+                      src={items.image}
+                      alt={items.name}
+                      className="object-contain h-[70px] transition-all duration-300"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      transition={{ duration: 0.5 }}
+                      style={{
+                        transform: isActive
+                          ? "translateY(-10px) "
+                          : "translateY(0) scale(1)", // Apply zoom and move up when active
+                      }}
+                    />
+                  </div>
+                )}
               </NavLink>
             );
           })}

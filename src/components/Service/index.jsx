@@ -1,10 +1,7 @@
-import React, { useState, useEffect, useRef } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import { Pagination, Autoplay } from "swiper/modules";
-import "swiper/css/pagination";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { motion } from "framer-motion";
 import { ChevronsRight } from "lucide-react";
+import Pagination from "../../utils/Animated/Pagination";
 
 export default function Service() {
   const service = [
@@ -30,7 +27,17 @@ export default function Service() {
 
   // State to track whether the scroll position is past a certain point
   const [isScrolled, setIsScrolled] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
   const scrollContainerRef = useRef(null);
+
+  const nextSlide = useCallback(() => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % service.length);
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(nextSlide, 5000); // Change slide every 5 seconds
+    return () => clearInterval(interval);
+  }, [nextSlide]);
 
   // Handle scroll event
   const handleScroll = () => {
@@ -105,32 +112,28 @@ export default function Service() {
         </div>
       </div>
 
-      <Swiper
-        pagination={{
-          dynamicBullets: true,
-          clickable: true,
-        }}
-        autoplay={{
-          delay: 2500,
-          disableOnInteraction: false,
-        }}
-        modules={[Pagination, Autoplay]}
-        className="mySwiper w-full h-[20vh] rounded-xl"
-      >
-        {service.map((items, i) => {
-          return (
-            <div key={i} className="rounded-xl">
-              <SwiperSlide>
-                <img
-                  src={items.img}
-                  alt=""
-                  className="rounded-xl object-cover"
-                />
-              </SwiperSlide>
+      <div className="relative aspect-video h-[20vh] ">
+        <Pagination
+          totalSlides={service.length}
+          currentSlide={currentIndex}
+          duration={5000}
+        />
+        <div className="flex ">
+          {service.map((src, index) => (
+            <div className=" ">
+              <div className="absolute top-0 w-full   h-[20vh] bg-black/20 rounded-2xl" />
+              <img
+                src={src.img}
+                alt={`slide ${index + 1}`}
+                fill
+                className={`object-cover transition-opacity absolute top-0 w-full rounded-2xl h-[20vh] duration-1000 ${
+                  index === currentIndex ? "opacity-100" : "opacity-0"
+                }`}
+              />
             </div>
-          );
-        })}
-      </Swiper>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }

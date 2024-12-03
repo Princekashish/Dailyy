@@ -42,7 +42,7 @@ export default function Computer() {
   return (
     <div className="font-Lexend relative ">
       <ScrollTop />
-      <div className="sticky top-0 pt-2 w-full bg-white  z-10">
+      <div className="sticky top-0 pt-2 w-full bg-[#F3F3E0]  z-10 bg-[url('https://images.unsplash.com/photo-1455894127589-22f75500213a?q=80&w=2887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')] bg-cover bg-center bg-no-repeat">
         <div className="relative">
           <div className="flex absolute  left-2 justify-start items-center p-2 gap-2 z-10 bg-black/10 rounded-full">
             <Link
@@ -63,10 +63,7 @@ export default function Computer() {
         </div>
 
         {/* Computer product list */}
-        <div className=" flex flex-col justify-center items-center gap-5 bg-white  p-2   mt-10">
-          <h1 className="text-center text-lg border-b border-b-black">
-            Shop by Categories
-          </h1>
+        <div className=" flex flex-col justify-center items-center gap-5   p-2   mt-28 ">
           <div className="flex p-2  overflow-hidden w-full overflow-x-scroll   justify-start items-center gap-3 no-scrollbar">
             {computer.map((item, i) => (
               <NavLink
@@ -76,7 +73,7 @@ export default function Computer() {
                   isActive
                     ? "border-b-2  py-2 border-b-black min-w-[80px] transition-all duration-500 ease-out "
                     : "min-w-[80px] transition-all duration-300 ease-in-out py-2"
-                 }
+                }
                 end={item.link === "/computer"} // Ensures that only the root path is active for "/computer"
               >
                 <div className="flex flex-col gap-2">
@@ -95,7 +92,7 @@ export default function Computer() {
         </div>
       </div>
       {/* Outlet for nested routes */}
-      <div className="mb-[8vh]">
+      <div className="pb-[8vh] ">
         <Outlet />
       </div>
       <div>

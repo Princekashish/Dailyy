@@ -209,48 +209,42 @@ export default function Keyboards() {
           {/* Modal */}
           {isModalOpen && selectedProduct && (
             <div className="fixed top-0 left-0 right-0 bottom-0 bg-black bg-opacity-50 z-50">
-              <div className="flex justify-center items-center">
-                <button
-                  onClick={closeModal}
-                  className="mt-5 p-2 bg-[#484848] text-white rounded-full relative top-[120px]"
-                >
-                  <X />
-                </button>
+              <div className="flex justify-center items-center ">
                 <motion.div
                   initial={{ y: 100, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ duration: 0.25, stiffness: 1 }}
-                  className="bg-white rounded-t-3xl p-5 w-full absolute bottom-0 h-[65vh]"
+                  className="bg-white rounded-t-3xl p-5 w-full absolute bottom-0 h-[55vh]"
                 >
+                <button
+                  onClick={closeModal}
+                  className="mt-5 p-2 bg-[#f2f2f2]  rounded-full absolute right-5 top-0 "
+                >
+                  <X size={20}/>
+                </button>
                   <h2 className="text-xl font-semibold">
                     {selectedProduct.product}
                   </h2>
                   <img
                     src={selectedProduct.img}
                     alt={selectedProduct.product}
-                    className="mt-3 w-full h-44 object-contain rounded-xl"
+                    className=" w-full h-40 object-contain rounded-xl"
                   />
                   <p className="mt-3 text-sm">Brand: {selectedProduct.brand}</p>
-                  <div className="flex justify-between items-center">
+                  <div className="flex justify-between items-center ">
                     <div className="flex justify-start items-center gap-2">
                       <p className="text-lg mt-2 font-semibold">
-                        {selectedProduct.originalPrice}
+                        ₹{selectedProduct.originalPrice}
                       </p>
                       <div className="flex justify-end items-end gap-1">
                         <p className="text-xs line-through text-[#605e5e] pt-2">
-                          {selectedProduct.price}
+                          ₹{selectedProduct.price}
                         </p>
                         <p className="text-xs text-blue-400">
                           {selectedProduct.discount} OFF
                         </p>
                       </div>
                     </div>
-                    <button
-                      onClick={() => handleAddToCart(selectedProduct)} // Add to cart in the modal
-                      className="flex justify-center items-center bg-zinc-100 border px-3 gap-2 py-2 rounded-lg"
-                    >
-                      <h1 className="text-sm font-medium">Add to cart</h1>
-                    </button>
                   </div>
                   <div className="mt-2">
                     <h1 className="text-sm text-[#6a6969]">
@@ -258,58 +252,21 @@ export default function Keyboards() {
                     </h1>
                   </div>
 
-                  {/* Related Products */}
-                  <div className="w-full grid grid-cols-2 place-items-center">
-                    {Keybord.sort(() => Math.random() - 0.5)
-                      .slice(0, 2)
-                      .map((relatedItem) => {
-                        const itemQuantity = getCartItemQuantity(
-                          relatedItem.id
-                        );
-                        return (
-                          <div
-                            key={relatedItem.id}
-                            className="flex flex-col justify-center items-center relative"
-                          >
-                            <div className="bg-[#f2f2f2] rounded-2xl flex justify-center items-center">
-                              <img
-                                src={relatedItem.img}
-                                alt={relatedItem.product}
-                                className="h-[80px] object-contain"
-                              />
-                            </div>
-                            {itemQuantity === 0 ? (
-                              <div
-                                onClick={() => handleAddToCart(relatedItem)}
-                                className="absolute bottom-0 right-0 border-green-600 border px-2 py-1 bg-white rounded-lg"
-                              >
-                                <h1 className="text-sm">Add</h1>
-                              </div>
-                            ) : (
-                              <div className="absolute -bottom-2 right-0 border-green-600 border px-2 py-1 bg-white rounded-lg flex gap-2 items-center">
-                                <button
-                                  onClick={() =>
-                                    handleRemoveFromCart(relatedItem)
-                                  }
-                                  className="text-lg font-medium"
-                                >
-                                  <Minus size={15} />
-                                </button>
-                                <h1 className="text-sm font-medium">
-                                  {itemQuantity}
-                                </h1>
-                                <button
-                                  onClick={() => handleAddToCart(relatedItem)}
-                                  className="text-lg font-medium"
-                                >
-                                  <Plus size={15} />
-                                </button>
-                              </div>
-                            )}
-                          </div>
-                        );
-                      })}
-                  </div>
+                  <button
+                    onClick={() => handleAddToCart(selectedProduct)} // Add to cart in the modal
+                    className={`flex justify-center items-center text-white border px-3 gap-2 py-3 rounded-xl mt-5 w-full ${
+                      getCartItemQuantity(selectedProduct.id) > 0
+                        ? "bg-black opacity-50 cursor-not-allowed" // Change background to black if added
+                        : "bg-green-700"
+                    }`}
+                    disabled={getCartItemQuantity(selectedProduct.id) > 0} // Disable the button if the product is in the cart
+                  >
+                    <h1 className="text-sm font-medium">
+                      {getCartItemQuantity(selectedProduct.id) > 0
+                        ? "Already Added"
+                        : "Add to Cart"}
+                    </h1>
+                  </button>
                 </motion.div>
               </div>
             </div>

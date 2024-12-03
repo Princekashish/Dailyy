@@ -1,14 +1,19 @@
 import { motion } from "framer-motion";
 import { div } from "framer-motion/client";
 import { ChevronUp, Minus, X } from "lucide-react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { RiTimerFlashLine } from "react-icons/ri";
+import { useNavigate } from "react-router-dom";
 
 export default function Checkout({ price }) {
   const [viewcart, setViewCart] = useState(true);
   const [payment, setPayment] = useState(false);
   const [selectedPayment, setSelectedPayment] = useState(null);
   const [paymentOptions, setPaymentOptions] = useState(false); // Added state for payment options
+  const [user, setUser] = useState("");
+  const [upiId, setUpiId] = useState("");
+  const [error, setError] = useState("");
+  const [qrCodeVisible, setQrCodeVisible] = useState(false);
   const closeModal = () => {
     setViewCart(false); // Close the modal
   };
@@ -16,14 +21,44 @@ export default function Checkout({ price }) {
     setPayment(!payment);
     setViewCart(false);
   };
+
   const handlePaymentOption = (option) => {
     setSelectedPayment(option);
-    setPaymentOptions(false); // Close the payment options after selection
+    setQrCodeVisible(false); // Hide QR code by default
+    if (option === "COD") {
+      setPaymentOptions(false); // Hide the payment options when COD is selected
+    } else if (option === "QR Code") {
+      setQrCodeVisible(true); // Show the QR code if "Scan QR Code" is selected
+    } else {
+      setPaymentOptions(true); // Show payment options if not COD or QR Code
+    }
   };
 
   const togglePaymentOptions = () => {
     // Defined togglePaymentOptions function
     setPaymentOptions(!paymentOptions);
+  };
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const storedUser = JSON.parse(localStorage.getItem("user"));
+    if (!storedUser) {
+      // If user is not logged in, redirect to login page
+      navigate("/login");
+    } else {
+      setUser(storedUser);
+    }
+  }, [navigate]);
+
+  // Validate UPI ID
+  const validateUPI = () => {
+    const upiRegex = /^[a-zA-Z0-9._%-]+@(?:[a-zA-Z0-9.-]+\.)+[a-zA-Z]{2,}$/; // Simple UPI regex pattern
+    if (upiRegex.test(upiId)) {
+      setError(""); // Clear error if valid
+      alert("UPI ID is valid!");
+    } else {
+      setError("Invalid UPI ID");
+    }
   };
 
   return (
@@ -32,8 +67,8 @@ export default function Checkout({ price }) {
         <div className="fixed top-0 left-0 right-0 bottom-0 bg-black bg-opacity-50  z-50  ">
           <div className="flex justify-center items-center ">
             <motion.div
-              initial={{ x: 100, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
+              initial={{ y: 100, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
               exit={{ x: 100, opacity: 0 }}
               transition={{ duration: 0.25, stiffness: 1 }}
               className="bg-white   rounded-t-3xl p-5 w-full absolute bottom-0 h-[85vh]  "
@@ -63,7 +98,7 @@ export default function Checkout({ price }) {
                       type="text"
                       id="name"
                       placeholder="Your Name"
-                      className="py-2 px-3 border rounded-lg"
+                      className="py-2 px-3 border rounded-lg font-light text-gray-600"
                       required
                     />
                   </div>
@@ -75,23 +110,14 @@ export default function Checkout({ price }) {
                       type="tel"
                       id="number"
                       placeholder="Your Phone Number"
-                      className="py-2 px-3 border rounded-lg"
+                      value={user?.phoneNumber || ""}
+                      className="py-2 px-3 border rounded-lg font-light"
                       required
                     />
                   </div>
                   <div className="flex flex-col gap-2">
                     <label htmlFor="address" className="text-start">
                       Flat,House no.., Building, Apartment
-                    </label>
-                    <input
-                      id="address"
-                      className="py-2 px-3 border rounded-lg"
-                      required
-                    ></input>
-                  </div>
-                  <div className="flex flex-col gap-2">
-                    <label htmlFor="address" className="text-start">
-                      Area, Street, Sector
                     </label>
                     <input
                       id="address"
@@ -141,8 +167,8 @@ export default function Checkout({ price }) {
             <div className="fixed top-0 left-0 right-0 bottom-0 bg-black bg-opacity-50  z-50  ">
               <div className="flex justify-center items-center ">
                 <motion.div
-                  initial={{ x: 100, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
+                  initial={{ y: 100, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
                   exit={{ x: 100, opacity: 0 }}
                   transition={{ duration: 0.25, stiffness: 1 }}
                   className="bg-white   rounded-t-3xl p-5 w-full absolute bottom-0 h-[25vh]   "
@@ -177,37 +203,12 @@ export default function Checkout({ price }) {
                     </button>
                   </div>
                 </motion.div>
-
-                {paymentOptions && (
-                  <div className="flex flex-col gap-2  absolute  bg-white top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 p-5 justify-between items-start rounded-2xl">
-                    <label className="flex gap-3 justify-between items-center  ">
-                      Google Pay
-                      <input
-                        type="radio"
-                        name="payment"
-                        value="Google Pay"
-                        onChange={(e) => handlePaymentOption(e.target.value)}
-                      />
-                    </label>
-                    <label className="flex gap-3 justify-between items-center ">
-                      PhonePe
-                      <input
-                        type="radio"
-                        name="payment"
-                        value="PhonePe"
-                        onChange={(e) => handlePaymentOption(e.target.value)}
-                      />
-                    </label>
-                    <label className="flex gap-3 justify-between items-center ">
-                      Amazon Pay
-                      <input
-                        type="radio"
-                        name="payment"
-                        value="Amazon Pay"
-                        onChange={(e) => handlePaymentOption(e.target.value)}
-                      />
-                    </label>
-                    <label className="flex gap-3 justify-between items-center ">
+              </div>
+              {paymentOptions && (
+                <div className="">
+                  {/** Payment Options */}
+                  <div className="flex flex-col gap-2 absolute min-h-[13vh] bg-white top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 p-5 justify-between items-start rounded-2xl">
+                    <label className="flex gap-3 justify-between items-center">
                       UPI
                       <input
                         type="radio"
@@ -216,8 +217,37 @@ export default function Checkout({ price }) {
                         onChange={(e) => handlePaymentOption(e.target.value)}
                       />
                     </label>
-                    <label className="flex gap-3 justify-between items-center ">
-                      COD (Cash on delivey)
+                    {selectedPayment === "UPI" && (
+                      <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.45 }}
+                        className="h-[10vh]"
+                      >
+                        <input
+                          type="text"
+                          value={upiId}
+                          onChange={(e) => setUpiId(e.target.value)}
+                          className="py-2 px-3 w-full border border-gray-300 rounded-xl outline-none font-light"
+                          placeholder="UPI ID"
+                        />
+                        <button
+                          onClick={validateUPI}
+                          className=" text-sm text-start w-full text-blue-700 p-2 "
+                        >
+                          Validate UPI
+                        </button>
+
+                        {/** Error message if validation fails */}
+                        {error && (
+                          <p className="text-red-500 text-sm text-start mt-[-10px]">
+                            {error}
+                          </p>
+                        )}
+                      </motion.div>
+                    )}
+                    <label className="flex gap-3 justify-between items-center">
+                      COD (Cash on delivery)
                       <input
                         type="radio"
                         name="payment"
@@ -225,9 +255,33 @@ export default function Checkout({ price }) {
                         onChange={(e) => handlePaymentOption(e.target.value)}
                       />
                     </label>
+                    <label className="flex gap-3 justify-between items-center">
+                      Scan QR code
+                      <input
+                        type="radio"
+                        name="payment"
+                        value="QR Code"
+                        onChange={(e) => handlePaymentOption(e.target.value)}
+                      />
+                    </label>
+
+                    {qrCodeVisible && (
+                      <div className="mt-5 flex justify-center items-center flex-col">
+                        <img
+                          src="/qrcode.jpg" // Replace with the actual path to the QR code image
+                          alt="QR Code"
+                          className="w-32 h-32"
+                        />
+                        <p className="text-center mt-2">
+                          Scan this QR code to make payment
+                        </p>
+                      </div>
+                    )}
                   </div>
-                )}
-              </div>
+
+                  {/** UPI Input Box */}
+                </div>
+              )}
             </div>
           </div>
         )}

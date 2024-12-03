@@ -1,9 +1,10 @@
+import { ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
 export default function ProductCategories() {
   const items = [
     {
-      text: "Grocery items",
+      text: "Grocery",
       img: "/pngeggveg.png",
       link: "/grocery",
     },
@@ -39,7 +40,10 @@ export default function ProductCategories() {
   return (
     <div className="p-3 mt-3 font-Lexend flex flex-col gap-3">
       <div>
-        <h1 className="text-xl font-semibold">Categories</h1>
+        <div className="flex justify-between items-center">
+          <h1 className="text-xl font-semibold ">Categories</h1>
+         
+        </div>
         <div className="grid grid-cols-4 gap-3 mt-2">
           {items.map((item, i) => {
             const isLastItem = i === items.length - 1; // Check if the item is the last one
@@ -57,7 +61,13 @@ export default function ProductCategories() {
                       className="h-[90px] object-contain text-[10px]"
                     />
                   </div>
-                  <h1 className={`text-center text-sm ${isLastItem?"text-start text-xs p-1 ":""}`}>{item.text}</h1>
+                  <h1
+                    className={`text-center text-sm ${
+                      isLastItem ? "text-start text-xs p-1 " : ""
+                    }`}
+                  >
+                    {item.text}
+                  </h1>
                 </div>
               </Link>
             );
