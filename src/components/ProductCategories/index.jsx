@@ -5,7 +5,7 @@ export default function ProductCategories() {
   const items = [
     {
       text: "Grocery",
-      img: "/pngeggveg.png",
+      img: "/pngeggvegble.png",
       link: "/grocery",
     },
     {
@@ -32,7 +32,7 @@ export default function ProductCategories() {
     },
     {
       text: "Quick store",
-      img: "https://example.com/images/atta-rice-dal.jpg",
+      img: "/grocetyitems.png",
       link: "/",
     },
   ];
@@ -50,19 +50,19 @@ export default function ProductCategories() {
             return (
               <Link to={item.link} key={i}>
                 <div
-                  className={`rounded-xl flex flex-col gap-2 items-center ${
-                    isLastItem ? " bg-yellow-300 rounded-t-2xl " : "" // Apply col-span-2 to the 7th item (index 6)
+                  className={`rounded-xl flex flex-col gap-[.5px] items-center ${
+                    isLastItem ? "  rounded-t-2xl " : "" // Apply col-span-2 to the 7th item (index 6)
                   }`}
                 >
-                  <div className="bg-[#f4f5f7] h-[90px] w-full flex justify-center items-center rounded-2xl">
+                  <div className="bg-[#f4f5f7]  h-[80px] w-[80px]  flex justify-center items-center rounded-full">
                     <img
                       src={item.img}
                       alt={item.text}
-                      className="h-[90px] object-contain text-[10px]"
+                      className="h-[70px] object-contain text-[10px]"
                     />
                   </div>
                   <h1
-                    className={`text-center text-sm ${
+                    className={`text-center text-xs ${
                       isLastItem ? "text-start text-xs p-1 " : ""
                     }`}
                   >

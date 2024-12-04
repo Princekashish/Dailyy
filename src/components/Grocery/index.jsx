@@ -227,7 +227,7 @@ export default function Grocery() {
                     <img
                       src={category.image}
                       alt=""
-                      className="bg-[#f2f2f2] rounded-3xl h-[80px] object-contain"
+                      className="bg-[#f2f2f2] rounded-full h-[80px] w-[80px] object-contain"
                     />
                     <h1 className=" text-center text-xs flex  tracking-tight">
                       {category.category}
@@ -251,7 +251,7 @@ export default function Grocery() {
                   <img
                     src={category.img}
                     alt=""
-                    className="bg-[#f2f2f2] rounded-3xl h-[80px] object-contain"
+                    className="bg-[#f2f2f2] rounded-full h-[80px] w-[80px] object-contain"
                   />
                   <h1 className=" text-center text-xs flex  tracking-tight">
                     {category.category}

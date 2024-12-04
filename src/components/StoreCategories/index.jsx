@@ -37,20 +37,18 @@ export default function StoreCategories() {
         <div className="flex justify-between items-center">
           <h1 className="text-xl font-semibold ">Shop by Store</h1>
         </div>
-        <div className="grid grid-cols-3 gap-2 mt-5 ">
+        <div className="grid grid-cols-3 gap-3 mt-5 ">
           {Store.map((items, i) => {
             return (
-              <Link key={i} to={items.link} className="flex flex-col gap-2">
-                <div className=" rounded-2xl bg-[#f4f5f7]  flex flex-col  justify-between gap-2  items-center p-2 ">
+              <Link key={i} to={items.link} className="flex flex-col ">
+                <div className=" rounded-2xl   bg-gradient-to-b from-[#F3F3E0] to-white  flex flex-col  justify-between  items-center p-2 h-[120px] ">
                   <div className="p-2 rounded-2xl ">
-                    <img
-                      src={items.img}
-                      alt=""
-                      className="h-[70px] object-contain"
-                    />
+                    <img src={items.img} alt="" className=" object-cover h-[80px]" />
                   </div>
+                  <h1 className=" text-center text-sm">
+                    {items.text}
+                  </h1>
                 </div>
-                <h1 className=" text-center text-sm">{items.text}</h1>
               </Link>
             );
           })}

@@ -11,8 +11,8 @@ export default function Keyboards() {
       name: "Mechanical Keyboard",
       brand: "Logitech",
       img: "https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1699607324/Croma%20Assets/Computers%20Peripherals/Computer%20Accessories%20and%20Tablets%20Accessories/Images/302593_aem4mg.png?tr=w-400",
-      price: "1500", // price in INR
-      originalPrice: "1200", // Discounted Price in INR
+      originalPrice: "1500", // price in INR
+      price: "1200", // Discounted Price in INR
       discount: "20%", // Discount Percentage
       description:
         "A high-performance mechanical keyboard with customizable RGB lighting, perfect for gamers and professionals alike.",
@@ -22,8 +22,8 @@ export default function Keyboards() {
       name: "Wireless Keyboard",
       brand: "Microsoft",
       img: "https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1695715114/Croma%20Assets/Computers%20Peripherals/Computer%20Accessories%20and%20Tablets%20Accessories/Images/301496_jpokyk.png?tr=w-400",
-      price: "800",
-      originalPrice: "640",
+      originalPrice: "800",
+      price: "640",
       discount: "20%",
       description:
         "A wireless keyboard with a sleek design and responsive keys, perfect for home or office use.",
@@ -33,8 +33,8 @@ export default function Keyboards() {
       name: "Ergonomic Keyboard",
       brand: "Microsoft",
       img: "https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1697625614/Croma%20Assets/Computers%20Peripherals/Computer%20Accessories%20and%20Tablets%20Accessories/Images/169717_jffthy.png?tr=w-640",
-      price: "900",
-      originalPrice: "675",
+      originalPrice: "900",
+      price: "675",
       discount: "25%",
       description:
         "Ergonomically designed to reduce strain on wrists, this keyboard is perfect for long hours of typing and office work.",
@@ -44,8 +44,8 @@ export default function Keyboards() {
       name: "RGB Gaming Keyboard",
       brand: "Corsair",
       img: "https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1697017829/Croma%20Assets/Computers%20Peripherals/Computer%20Accessories%20and%20Tablets%20Accessories/Images/273929_0_gryjv7.png?tr=w-640",
-      price: "1800",
-      originalPrice: "1500",
+      originalPrice: "1800",
+      price: "1500",
       discount: "25%",
       description:
         "A gaming keyboard with vibrant RGB lighting and programmable keys for an immersive gaming experience.",
@@ -55,8 +55,8 @@ export default function Keyboards() {
       name: "Compact Keyboard",
       brand: "Razer",
       img: "https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1714042445/Croma%20Assets/Computers%20Peripherals/Computer%20Accessories%20and%20Tablets%20Accessories/Images/302590_0_db4e6g.png?tr=w-640",
-      price: "1300",
-      originalPrice: "1100",
+      originalPrice: "1300",
+      price: "1100",
       discount: "15%",
       description:
         "A compact, portable keyboard with mechanical switches, ideal for minimal desk setups and on-the-go use.",
@@ -66,8 +66,8 @@ export default function Keyboards() {
       name: "Quiet Keyboard",
       brand: "Logitech",
       img: "https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1694400784/Croma%20Assets/Computers%20Peripherals/Computer%20Accessories%20and%20Tablets%20Accessories/Images/300625_yqnjhw.png?tr=w-640",
-      price: "500",
-      originalPrice: "380",
+      originalPrice: "500",
+      price: "380",
       discount: "24%",
       description:
         "A whisper-quiet keyboard with low-profile keys, perfect for office use or late-night typing sessions.",
@@ -77,8 +77,8 @@ export default function Keyboards() {
       name: "Mechanical Keypad",
       brand: "Keychron",
       img: "https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1694400583/Croma%20Assets/Computers%20Peripherals/Computer%20Accessories%20and%20Tablets%20Accessories/Images/300623_bdtkw3.png?tr=w-400",
-      price: "800",
-      originalPrice: "600",
+      originalPrice: "800",
+      price: "600",
       discount: "25%",
       description:
         "A compact mechanical keypad with responsive switches, perfect for gamers or those who need a more ergonomic typing experience.",
@@ -88,8 +88,8 @@ export default function Keyboards() {
       name: "Gaming Keypad",
       brand: "Redragon",
       img: "https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1681404541/Croma%20Assets/Computers%20Peripherals/Computer%20Accessories%20and%20Tablets%20Accessories/Images/203511_0_fvannx.png?tr=w-400",
-      price: "700",
-      originalPrice: "525",
+      originalPrice: "700",
+      price: "525",
       discount: "25%",
       description:
         "A mechanical gaming keypad with customizable keys and RGB lighting for a personalized gaming setup.",
@@ -99,8 +99,8 @@ export default function Keyboards() {
       name: "Multimedia Keyboard",
       brand: "HP",
       img: "https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1724858009/Croma%20Assets/Computers%20Peripherals/Computer%20Accessories%20and%20Tablets%20Accessories/Images/302591_0_boeouv.png?tr=w-400",
-      price: "700",
-      originalPrice: "500",
+      originalPrice: "700",
+      price: "500",
       discount: "29%",
       description:
         "A multimedia keyboard with dedicated media keys and a quiet typing experience, great for home entertainment systems.",
@@ -110,8 +110,8 @@ export default function Keyboards() {
       name: "Bluetooth Keyboard",
       brand: "Apple",
       img: "https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1712052669/Croma%20Assets/Computers%20Peripherals/Computer%20Accessories%20and%20Tablets%20Accessories/Images/241393_0_ar9req.png?tr=w-400",
-      price: "1200",
-      originalPrice: "1000",
+      originalPrice: "1200",
+      price: "1000",
       discount: "17%",
       description:
         "A sleek and portable Bluetooth keyboard from Apple, designed for wireless use with MacBooks and iPads.",
@@ -165,14 +165,14 @@ export default function Keyboards() {
               return (
                 <div
                   key={item.id}
-                  className="flex justify-start gap-3 items-center flex-col rounded-xl cursor-pointer relative h-[150px]"
+                  className="flex justify-between gap-3 items-center flex-col rounded-xl cursor-pointer relative "
                 >
-                  <div className="relative">
+                  <div className="relative bg-[#f7f7f7] rounded-xl flex justify-center items-center">
                     <img
                       src={item.img}
                       onClick={() => openModal(item)} // Open modal with selected product
                       alt={item.product}
-                      className="rounded-xl object-contain bg-[#f2f2f2]"
+                      className="rounded-xl object-contain "
                     />
                     {/* Conditionally show "Add to Cart" or quantity controls */}
                     {itemQuantity === 0 ? (
@@ -200,7 +200,10 @@ export default function Keyboards() {
                       </div>
                     )}
                   </div>
-                  <h1 className="text-xs text-start">{item.name}</h1>
+                  <div className="flex flex-col gap-1">
+                    <h1 className="text-sm text-start ">{item.name}</h1>
+                    <p className="text-sm font-semibold tracking-wide">₹{item.price}</p>
+                  </div>
                 </div>
               );
             })}
@@ -216,12 +219,12 @@ export default function Keyboards() {
                   transition={{ duration: 0.25, stiffness: 1 }}
                   className="bg-white rounded-t-3xl p-5 w-full absolute bottom-0 h-[55vh]"
                 >
-                <button
-                  onClick={closeModal}
-                  className="mt-5 p-2 bg-[#f2f2f2]  rounded-full absolute right-5 top-0 "
-                >
-                  <X size={20}/>
-                </button>
+                  <button
+                    onClick={closeModal}
+                    className="mt-5 p-2 bg-[#f2f2f2]  rounded-full absolute right-5 top-0 "
+                  >
+                    <X size={20} />
+                  </button>
                   <h2 className="text-xl font-semibold">
                     {selectedProduct.product}
                   </h2>
@@ -234,11 +237,11 @@ export default function Keyboards() {
                   <div className="flex justify-between items-center ">
                     <div className="flex justify-start items-center gap-2">
                       <p className="text-lg mt-2 font-semibold">
-                        ₹{selectedProduct.originalPrice}
+                        ₹{selectedProduct.price}
                       </p>
                       <div className="flex justify-end items-end gap-1">
                         <p className="text-xs line-through text-[#605e5e] pt-2">
-                          ₹{selectedProduct.price}
+                          ₹{selectedProduct.originalPrice}
                         </p>
                         <p className="text-xs text-blue-400">
                           {selectedProduct.discount} OFF

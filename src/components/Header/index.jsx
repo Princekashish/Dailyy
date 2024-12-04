@@ -1,5 +1,5 @@
 import { div } from "framer-motion/client";
-import { icons } from "lucide-react";
+import { icons, NotepadText } from "lucide-react";
 import React from "react";
 import { FaBoxOpen, FaHeadphones } from "react-icons/fa";
 import { GiWashingMachine } from "react-icons/gi";
@@ -86,6 +86,10 @@ export default function Header() {
             );
           })}
         </div>
+      </div>
+      <div className="bg-black/60 rounded-full fixed bottom-7 gap-1 right-5 z-20 px-3 py-3 flex justify-center items-center flex-col">
+        <NotepadText  className="text-white "/>
+        {/* <h1 className="text-[9px] uppercase text-white tracking-tighter">categories</h1> */}
       </div>
     </div>
   );

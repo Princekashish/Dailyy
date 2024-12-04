@@ -19,3 +19,9 @@
   height: 23px;
   width: 29px;
 }
+
+* {
+  -webkit-overflow-scrolling: touch;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-touch-callout: none;
+}

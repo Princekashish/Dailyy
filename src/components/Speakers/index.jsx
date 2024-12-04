@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { Minus, Plus, X } from "lucide-react";
 import React, { useState } from "react";
-import ScrollTop from "../../utils/ScreenTop";
 
 export default function Speakers() {
   const speakers = [
@@ -140,11 +139,11 @@ export default function Speakers() {
             className="flex justify-start  items-center flex-col rounded-xl cursor-pointer gap-2"
             onClick={() => openModal(item)} // Open modal on product click
           >
-            <div className="relative">
+            <div className="relative bg-[#f7f7f7]">
               <img
                 src={item.img}
                 alt={item.product}
-                className="rounded-xl object-contain bg-[#f2f2f2]"
+                className="rounded-xl object-contain  "
               />
               <div className="absolute -bottom-2 right-0  border-green-600 border px-2 py-1 bg-white rounded-lg">
                 <h1 className="text-sm">Add</h1>

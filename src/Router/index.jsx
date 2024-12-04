@@ -11,6 +11,8 @@ import Speakers from "../components/Speakers";
 import Printers from "../components/Printers";
 import Vegetables_fruits from "../components/Vegetables-fruits";
 import UserAccount from "../components/UserAccount";
+import Coffee from "../components/Coffee";
+import Stationery from "../components/Stationery";
 
 const rout = createBrowserRouter([
   {
@@ -20,21 +22,30 @@ const rout = createBrowserRouter([
       { path: "/", Component: Home },
       { path: "/electronic", Component: Electronic },
       { path: "/grocery", Component: Grocery },
+      { path: "/coffee", Component: Coffee },
     ],
   },
   { path: "/login", Component: Login },
-  { path: "/vegetables-fruits", Component: Vegetables_fruits},
+  { path: "/vegetables-fruits", Component: Vegetables_fruits },
   {
     path: "/computer",
     Component: Computer,
     children: [
       { path: "", Component: Keybords }, // Empty path for the default component
       { path: "speakers", Component: Speakers }, // Correct relative path
-      { path: "printers", Component: Printers }, // Correct relative path
+      { path: "printers", Component: Printers },
     ],
   },
-  {path:"/create_account" , Component:UserAccount}
-  
+  {
+    path: "/stationery",
+    Component: Stationery,
+    children: [
+      { path: "", Component: Keybords }, // Empty path for the default component
+      { path: "speakers", Component: Speakers }, // Correct relative path
+      { path: "printers", Component: Printers },
+    ],
+  },
+  { path: "/create_account", Component: UserAccount },
 ]);
 
 export default function Router() {
