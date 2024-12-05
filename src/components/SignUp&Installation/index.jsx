@@ -8,7 +8,7 @@ export default function Signup_Installation({ setShowPopup }) {
 
   useEffect(() => {
     // Check if the app is already installed
-    if (window.matchMedia('(display-mode: standalone)').matches) {
+    if (window.matchMedia("(display-mode: standalone)").matches) {
       setIsInstalled(true);
     }
 
@@ -38,7 +38,10 @@ export default function Signup_Installation({ setShowPopup }) {
     // Cleanup on component unmount
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
-      window.removeEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
+      window.removeEventListener(
+        "beforeinstallprompt",
+        handleBeforeInstallPrompt
+      );
       window.removeEventListener("appinstalled", handleAppInstalled);
     };
   }, [setShowPopup]);
@@ -77,15 +80,13 @@ export default function Signup_Installation({ setShowPopup }) {
         <div className="bg-[url('/rb_14931.png')] bg-cover bg-no-repeat bg-center h-[35vh] relative">
           <div className="flex absolute -bottom-10 justify-center gap-5 w-full rounded-lg">
             <div className="w-full flex justify-center items-center rounded-lg bg-green-700">
-              {!isInstalled ? (
+              {!isInstalled && (
                 <button
                   onClick={handleDownloadClick}
                   className="text-white px-3 py-3 rounded-lg"
                 >
                   Install Web App
                 </button>
-              ) : (
-                <span className="text-white">App Installed</span>
               )}
             </div>
           </div>
