@@ -6,8 +6,8 @@ export default defineConfig({
   plugins: [
     react(),
     VitePWA({
-      registerType: "autoUpdate", // Automatically update the service worker
-      includeAssets: ["favicon.ico", "masked-icon.png", "apple-touch-icon.png"], // Files to include in PWA
+      registerType: "autoUpdate",
+      includeAssets: ["favicon.ico", "masked-icon.png", "apple-touch-icon.png"],
       manifest: {
         name: "Dailyy in Minutes",
         short_name: "Dailyy",
@@ -15,13 +15,12 @@ export default defineConfig({
         theme_color: "#17803D",
         start_url: "/",
         display: "standalone",
-        background_color: "#ffffff",
         icons: [
           {
-            src: "/android-chrome-192x192.png", 
+            src: "/android-chrome-192x192.png",
             sizes: "192x192",
             type: "image/png",
-            purpose: "any maskable", 
+            purpose: "any maskable",
           },
           {
             src: "/android-chrome-512x512.png",
