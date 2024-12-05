@@ -13,6 +13,8 @@ import Vegetables_fruits from "../components/Vegetables-fruits";
 import UserAccount from "../components/UserAccount";
 import Coffee from "../components/Coffee";
 import Stationery from "../components/Stationery";
+import GroceryItems from "../components/Groceryitems_Veg&Fruits";
+import Exotics_Fruits from "../components/Exotics_Fruits";
 
 const rout = createBrowserRouter([
   {
@@ -26,7 +28,14 @@ const rout = createBrowserRouter([
     ],
   },
   { path: "/login", Component: Login },
-  { path: "/vegetables-fruits", Component: Vegetables_fruits },
+  {
+    path: "/vegetables-fruits",
+    Component: Vegetables_fruits,
+    children: [
+      { path: "", Component: GroceryItems },
+      { path: "bakery-biscuits", Component: Exotics_Fruits },
+    ],
+  },
   {
     path: "/computer",
     Component: Computer,

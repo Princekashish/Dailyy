@@ -70,7 +70,7 @@ export default function Service() {
   return (
     <div className="p-3 font-Lexend flex flex-col gap-5">
       <div className="flex flex-col gap-3">
-        <h1 className="text-xl font-semibold ">Service</h1>
+        <h1 className="text-lg font-semibold ">Service</h1>
         <div
           ref={scrollContainerRef}
           className="flex overflow-hidden overflow-x-scroll gap-3 no-scrollbar relative p-2"

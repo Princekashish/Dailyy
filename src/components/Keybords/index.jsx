@@ -211,7 +211,7 @@ export default function Keyboards() {
 
           {/* Modal */}
           {isModalOpen && selectedProduct && (
-            <div className="fixed top-0 left-0 right-0 bottom-0 bg-black bg-opacity-50 z-50">
+            <div className="fixed top-0 left-0 right-0 bottom-0 bg-black bg-opacity-50 z-50 ">
               <div className="flex justify-center items-center ">
                 <motion.div
                   initial={{ y: 100, opacity: 0 }}

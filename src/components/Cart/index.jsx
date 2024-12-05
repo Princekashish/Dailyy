@@ -40,7 +40,7 @@ export default function Cart({ bottom }) {
   };
   return (
     <div
-      className={`fixed ${bottom} left-0 right-0 text-center z-20   p-4  flex items-center justify-center`}
+      className={`fixed ${bottom} left-0 right-0 text-center z-[60]   p-4  flex items-center justify-center`}
     >
       <div
         onClick={() => setViewCart((pre) => !pre)}

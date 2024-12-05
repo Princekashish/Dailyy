@@ -56,15 +56,7 @@ export default function Hero() {
               <p>{userAddress.address}....</p>
             </div>
           </div>
-          <div>
-            <h1 className="flex flex-col justify-end items-end gap-1">
-              Delivery in <br />
-              <span className="flex gap-2 text-yellow-500">
-                <FaShippingFast size={25} />
-                Mins
-              </span>
-            </h1>
-          </div>
+          
         </div>
       </div>
 

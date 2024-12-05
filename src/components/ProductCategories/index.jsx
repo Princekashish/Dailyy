@@ -41,7 +41,7 @@ export default function ProductCategories() {
     <div className="p-3 mt-3 font-Lexend flex flex-col gap-3">
       <div>
         <div className="flex justify-between items-center">
-          <h1 className="text-xl font-semibold ">Categories</h1>
+          <h1 className="text-lg font-semibold ">Categories</h1>
          
         </div>
         <div className="grid grid-cols-4 gap-3 mt-2">

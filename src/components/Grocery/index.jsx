@@ -116,7 +116,7 @@ export default function Grocery() {
   const snaksDrinksCategories = [
     {
       category: "Chips & Namkeen",
-      img: "path/to/cookies-biscuits-image.jpg",
+      img: "/pngegg (12).png",
       items: [
         { name: "Lays Classic", img: "path/to/lays-classic.jpg" },
         {
@@ -131,7 +131,7 @@ export default function Grocery() {
     },
     {
       category: "Sweets & Chocolates",
-      img: "path/to/cookies-biscuits-image.jpg",
+      img: "/pngegg (1).png",
       items: [
         { name: "Dairy Milk Chocolate", img: "path/to/dairy-milk.jpg" },
         { name: "Gulab Jamun", img: "path/to/gulab-jamun.jpg" },
@@ -140,7 +140,7 @@ export default function Grocery() {
     },
     {
       category: "Drinks & Juices",
-      img: "path/to/cookies-biscuits-image.jpg",
+      img: "/pngegg (41).png",
       items: [
         {
           name: "Tropicana Orange Juice",
@@ -152,7 +152,7 @@ export default function Grocery() {
     },
     {
       category: "Tea, Coffee & Milk Drink",
-      img: "path/to/cookies-biscuits-image.jpg",
+      img: "/pngegglatte.png",
       items: [
         { name: "Nescafé Classic Coffee", img: "path/to/nescafe-coffee.jpg" },
         { name: "Tata Tea Premium", img: "path/to/tata-tea-premium.jpg" },
@@ -161,7 +161,7 @@ export default function Grocery() {
     },
     {
       category: "Instant Food",
-      img: "path/to/cookies-biscuits-image.jpg",
+      img: "/pngegg (42).png",
       items: [
         {
           name: "Maggi Instant Noodles",
@@ -173,7 +173,7 @@ export default function Grocery() {
     },
     {
       category: "Sauces & Spreads",
-      img: "path/to/cookies-biscuits-image.jpg",
+      img: "/pngegg (39).png",
       items: [
         {
           name: "Kissan Tomato Ketchup",
@@ -185,7 +185,7 @@ export default function Grocery() {
     },
     {
       category: "Pam Corner",
-      img: "path/to/cookies-biscuits-image.jpg",
+      img: "/pngegg (43).png",
       items: [
         { name: "Pringles Sour Cream", img: "path/to/pringles-sour-cream.jpg" },
         { name: "Jackfruit Chips", img: "path/to/jackfruit-chips.jpg" },
@@ -194,7 +194,7 @@ export default function Grocery() {
     },
     {
       category: "Ice Creams & More",
-      img: "path/to/cookies-biscuits-image.jpg",
+      img: "/pngegg (40).png",
       items: [
         {
           name: "Baskin Robbins Vanilla",
@@ -247,12 +247,14 @@ export default function Grocery() {
           ) : (
             <div className="grid grid-cols-4 gap-3  mt-2 ">
               {snaksDrinksCategories.map((category, index) => (
-                <div key={index}>
+                <div key={index} >
+                  <div className="flex justify-center items-center flex-col">
                   <img
                     src={category.img}
                     alt=""
                     className="bg-[#f2f2f2] rounded-full h-[80px] w-[80px] object-contain"
                   />
+                  </div>
                   <h1 className=" text-center text-xs flex  tracking-tight">
                     {category.category}
                   </h1>
