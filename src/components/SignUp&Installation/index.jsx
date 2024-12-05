@@ -7,6 +7,11 @@ export default function Signup_Installation({ setShowPopup }) {
   const [isInstalled, setIsInstalled] = useState(false); // Track installation status
 
   useEffect(() => {
+    // Check if the app is already installed
+    if (window.matchMedia('(display-mode: standalone)').matches) {
+      setIsInstalled(true);
+    }
+
     // Define event listeners for A2HS
     const handleClickOutside = (event) => {
       if (popupRef.current && !popupRef.current.contains(event.target)) {
@@ -16,6 +21,7 @@ export default function Signup_Installation({ setShowPopup }) {
 
     const handleBeforeInstallPrompt = (e) => {
       e.preventDefault(); // Prevent default browser prompt
+      console.log("beforeinstallprompt event fired"); // Debugging
       setDeferredPrompt(e); // Store the prompt event
     };
 
@@ -38,15 +44,20 @@ export default function Signup_Installation({ setShowPopup }) {
   }, [setShowPopup]);
 
   // Handle install button click
-  const handleInstallClick = () => {
+  const handleDownloadClick = () => {
+    console.log("Install button clicked"); // Debugging
     if (deferredPrompt) {
-      deferredPrompt.prompt(); // Trigger the install prompt
+      deferredPrompt.prompt(); // Show the install prompt
       deferredPrompt.userChoice.then((choiceResult) => {
-        console.log(choiceResult.outcome); // Log user choice (accepted/rejected)
-        setDeferredPrompt(null); // Clear the stored prompt event
+        if (choiceResult.outcome === "accepted") {
+          console.log("User accepted the PWA installation");
+        } else {
+          console.log("User dismissed the PWA installation");
+        }
+        setDeferredPrompt(null); // Reset the deferred prompt after use
       });
     } else {
-      alert("Web app installation is not supported.");
+      console.log("No deferred prompt available");
     }
   };
 
@@ -54,7 +65,7 @@ export default function Signup_Installation({ setShowPopup }) {
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className="fixed top-0 left-0 right-0 bottom-0 bg-black bg-opacity-50 z-[60] flex justify-center items-center "
+      className="fixed top-0 left-0 right-0 bottom-0 bg-black bg-opacity-50 z-[60] flex justify-center items-center"
     >
       <motion.div
         ref={popupRef}
@@ -68,7 +79,7 @@ export default function Signup_Installation({ setShowPopup }) {
             <div className="w-full flex justify-center items-center rounded-lg bg-green-700">
               {!isInstalled ? (
                 <button
-                  onClick={handleInstallClick}
+                  onClick={handleDownloadClick}
                   className="text-white px-3 py-3 rounded-lg"
                 >
                   Install Web App

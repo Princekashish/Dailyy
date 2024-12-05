@@ -2,40 +2,42 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import { VitePWA } from "vite-plugin-pwa";
 
-// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     react(),
     VitePWA({
-      registerType: "autoUpdate",
-      includeAssets: ["favicon.ico", "masked-icon.png", "apple-touch-icon.png"],
+      registerType: "autoUpdate", // Automatically update the service worker
+      includeAssets: ["favicon.ico", "masked-icon.png", "apple-touch-icon.png"], // Files to include in PWA
       manifest: {
         name: "Dailyy in Minutes",
         short_name: "Dailyy",
         description: "Dailyy Grocery store",
-        theme_color: "#008000",
+        theme_color: "#17803D",
+        start_url: "/",
+        display: "standalone",
+        background_color: "#ffffff",
         icons: [
           {
-            src: "android-chrome-192x192.png",
+            src: "/android-chrome-192x192.png", 
             sizes: "192x192",
             type: "image/png",
-            purpose: "any maskable",
+            purpose: "any maskable", 
           },
           {
-            src: "android-chrome-512x512.png",
+            src: "/android-chrome-512x512.png",
             sizes: "512x512",
             type: "image/png",
           },
           {
-            src: "maskable_icon 180x180(1) (1).png",
+            src: "/maskable_icon_180x180.png",
             sizes: "180x180",
             type: "image/png",
           },
         ],
       },
       devOptions: {
-        enabled: true,
-        type: "module",
+        enabled: true, // Enable PWA in development for testing
+        type: "module", // Use ES modules for service worker
       },
     }),
   ],
