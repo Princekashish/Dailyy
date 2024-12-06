@@ -7,41 +7,40 @@ export default function Signup_Installation({ setShowPopup }) {
   const [isInstalled, setIsInstalled] = useState(false); // Track installation status
 
   useEffect(() => {
-    // Check if the app is already installed
+    // Check if the app is already installed (standalone mode)
     if (window.matchMedia("(display-mode: standalone)").matches) {
       setIsInstalled(true);
     }
 
-    // Define event listeners for A2HS
+    // Event listener to detect clicks outside of the popup
     const handleClickOutside = (event) => {
       if (popupRef.current && !popupRef.current.contains(event.target)) {
         setShowPopup(false); // Close the popup if clicked outside
       }
     };
 
+    // Event listener for the beforeinstallprompt event
     const handleBeforeInstallPrompt = (e) => {
-      e.preventDefault(); // Prevent default browser prompt
-      console.log("beforeinstallprompt event fired"); // Debugging
-      setDeferredPrompt(e); // Store the prompt event
+      e.preventDefault(); // Prevent the default browser prompt
+      console.log("beforeinstallprompt event fired"); // Debugging step
+      setDeferredPrompt(e); // Store the prompt event for later use
     };
 
+    // Event listener to detect when the app is installed
     const handleAppInstalled = () => {
       setIsInstalled(true); // Mark app as installed
       setShowPopup(false); // Optionally close the popup after installation
     };
 
-    // Add event listeners
+    // Add event listeners for beforeinstallprompt and appinstalled
     document.addEventListener("mousedown", handleClickOutside);
     window.addEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
     window.addEventListener("appinstalled", handleAppInstalled);
 
-    // Cleanup on component unmount
+    // Cleanup event listeners on component unmount
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
-      window.removeEventListener(
-        "beforeinstallprompt",
-        handleBeforeInstallPrompt
-      );
+      window.removeEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
       window.removeEventListener("appinstalled", handleAppInstalled);
     };
   }, [setShowPopup]);
@@ -50,6 +49,7 @@ export default function Signup_Installation({ setShowPopup }) {
   const handleDownloadClick = () => {
     console.log("Install button clicked"); // Debugging
     if (deferredPrompt) {
+      console.log("Prompt available, showing the prompt..."); // Debugging
       deferredPrompt.prompt(); // Show the install prompt
       deferredPrompt.userChoice.then((choiceResult) => {
         if (choiceResult.outcome === "accepted") {
@@ -60,7 +60,7 @@ export default function Signup_Installation({ setShowPopup }) {
         setDeferredPrompt(null); // Reset the deferred prompt after use
       });
     } else {
-      console.log("No deferred prompt available");
+      console.log("No deferred prompt available"); // Debugging message
     }
   };
 

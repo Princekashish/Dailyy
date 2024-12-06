@@ -72,12 +72,11 @@ export default function Vegetables_fruits() {
       <div>
         <Cart bottom={"bottom-24"} />
       </div>
-
-      <div className="bg-green-800 h-[11vh]  bottom-0 fixed w-full overflow-x-scroll overflow-hidden rounded-t-3xl scroll-smooth no-scrollbar">
+      <div className="bg-white h-[11vh] shadow-[0_-4px_6px_rgba(0,0,0,0.1)] rounded-t-3xl whitespace-nowrap bottom-0 fixed w-full overflow-x-scroll overflow-hidden scroll-smooth no-scrollbar">
         <motion.div
           whileTap={{ cursor: "grabbing" }}
           transition={{ type: "spring", stiffness: 100, damping: 20 }}
-          className="flex h-[80px] p-3  whitespace-nowrap w-[200%] gap-4  overflow-hidden "
+          className="flex h-[80px] p-3 gap-4 whitespace-nowrap w-fit overflow-hidden shadow-t"
         >
           {productlist.map((items) => {
             return (
@@ -87,12 +86,15 @@ export default function Vegetables_fruits() {
                 end={items.link === "/vegetables-fruits"}
                 className={({ isActive }) =>
                   isActive
-                    ? "bg-white w-[65px] h-[65px]  rounded-full flex justify-center items-center transition-all duration-300 scale-110"
-                    : "w-[65px] h-[65px]  bg-white/90 rounded-full flex justify-center items-center transition-all duration-300 scale-90"
+                    ? "bg-gradient-to-b from-green-300 text-white to-black/80 w-[65px] h-[65px]   rounded-full flex justify-center items-center transition-all duration-300 scale-110"
+                    : "w-[65px] h-[65px] text-transparent  bg-gradient-to-b from-green-200 to-black/90 bg-white/90 rounded-full flex justify-center items-center transition-all duration-300 scale-90"
                 }
               >
                 {({ isActive }) => (
-                  <div>
+                  <div className={`flex justify-center items-center relative`}>
+                    <h1 className="text-xs  absolute z-10 text-center w-full  font-semibold">
+                      {items.category}
+                    </h1>
                     <motion.img
                       src={items.image}
                       alt={items.name}

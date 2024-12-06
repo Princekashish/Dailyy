@@ -402,47 +402,49 @@ export default function GroceryItems() {
               initial={{ y: 100, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.25, stiffness: 1 }}
-              className="bg-white rounded-t-3xl p-5 w-full absolute bottom-0 h-[55vh]"
+              className="bg-white rounded-t-3xl p-5 w-full absolute bottom-0 h-[50vh] flex flex-col justify-between " 
             >
-              <button
-                onClick={closeModal}
-                className="mt-5 p-2 bg-[#f2f2f2]  rounded-full absolute right-5 top-0 "
-              >
-                <X size={20} />
-              </button>
-              <h2 className="text-xl font-semibold">
-                {selectedProduct.product}
-              </h2>
-              <img
-                src={selectedProduct.img}
-                alt={selectedProduct.product}
-                className=" w-full h-40 object-contain rounded-xl"
-              />
-              <p className="mt-3 text-sm">Brand: {selectedProduct.brand}</p>
-              <div className="flex justify-between items-center ">
-                <div className="flex justify-start items-center gap-2">
-                  <p className="text-lg mt-2 font-semibold">
-                    ₹{selectedProduct.price}
-                  </p>
-                  <div className="flex justify-end items-end gap-1">
-                    <p className="text-xs line-through text-[#605e5e] pt-2">
-                      ₹{selectedProduct.originalPrice}
+              <div>
+                <button
+                  onClick={closeModal}
+                  className="mt-5 p-2 bg-[#f2f2f2]  rounded-full absolute right-5 top-0 "
+                >
+                  <X size={20} />
+                </button>
+                <h2 className="text-xl font-semibold">
+                  {selectedProduct.product}
+                </h2>
+                <img
+                  src={selectedProduct.img}
+                  alt={selectedProduct.product}
+                  className=" w-full h-40 object-contain rounded-xl"
+                />
+                <p className="mt-3 text-sm">Brand: {selectedProduct.brand}</p>
+                <div className="flex justify-between items-center ">
+                  <div className="flex justify-start items-center gap-2">
+                    <p className="text-lg mt-2 font-semibold">
+                      ₹{selectedProduct.price}
                     </p>
-                    <p className="text-xs text-blue-400">
-                      {selectedProduct.discount} OFF
-                    </p>
+                    <div className="flex justify-end items-end gap-1">
+                      <p className="text-xs line-through text-[#605e5e] pt-2">
+                        ₹{selectedProduct.originalPrice}
+                      </p>
+                      <p className="text-xs text-blue-400">
+                        {selectedProduct.discount} OFF
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div className="mt-2">
-                <h1 className="text-sm text-[#6a6969]">
-                  {selectedProduct.description}
-                </h1>
+                <div className="mt-2">
+                  <h1 className="text-sm text-[#6a6969]">
+                    {selectedProduct.description}
+                  </h1>
+                </div>
               </div>
 
               <button
                 onClick={() => handleAddToCart(selectedProduct)} // Add to cart in the modal
-                className={`flex justify-center items-center text-white border px-3 gap-2 py-3 rounded-xl mt-5 w-full ${
+                className={`flex justify-center items-center text-white border px-3 gap-2 py-3 rounded-xl mt-5 w-full  ${
                   getCartItemQuantity(selectedProduct.id) > 0
                     ? "bg-black opacity-50 cursor-not-allowed" // Change background to black if added
                     : "bg-green-700"

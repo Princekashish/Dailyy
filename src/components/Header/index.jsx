@@ -80,13 +80,13 @@ export default function Header() {
     { text: "Clothes", link: "/" },
     { text: "Beauty", link: "/" },
     { text: "Skin care", link: "/" },
-    { text: "Party Essential", link: "/" },
+    { text: "Party ", link: "/" },
     { text: "Essential", link: "/" },
     { text: "Computer", link: "/" },
     { text: "Medical", link: "/" },
     { text: "Electrical", link: "/" },
     { text: "Appliances", link: "/" },
-    { text: "Dry service", link: "/" },
+    { text: "service", link: "/" },
     { text: "Stationery", link: "/" },
     { text: "Electrician", link: "/" },
     { text: "Plumber", link: "/" },
@@ -165,15 +165,14 @@ export default function Header() {
                 duration: 0.4, // Longer duration for smooth effect
                 ease: "easeOut", // Smooth easing for a nice transition
               }}
-              className="bg-white p-5 w-3/4 h-1/2 overflow-hidden overflow-y-scroll rounded-3xl no-scrollbar"
+              className="bg-white p-5 w-[90%] h-3/4 overflow-hidden overflow-y-scroll rounded-3xl no-scrollbar grid grid-cols-3  gap-3"
             >
               {categorymenu.map((item, i) => {
                 return (
-                  <div key={i}>
-                    <NavLink to={item.link}>
-                      <h1>{item.text}</h1>
-                    </NavLink>
-                  </div>
+                  <NavLink to={item.link} key={i}>
+                    <div className="bg-[#f6f6f6]  h-[90px] w-[90px] rounded-2xl border-green-300 border"></div>
+                    <h1 className="text-center">{item.text}</h1>
+                  </NavLink>
                 );
               })}
             </motion.div>
