@@ -3,10 +3,12 @@ import Header from "../../components/Header";
 import { Outlet } from "react-router-dom";
 import Hero from "../../components/Hero";
 import Cart from "../../components/Cart";
+import BackNavigationRedirect from "../../utils/BackNavigationRedirect/BackNavigationRedirect";
 
 export default function Layout() {
   return (
     <div>
+<BackNavigationRedirect />
       <div className="bg-green-700">
         <Hero />
         <Header />

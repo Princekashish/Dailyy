@@ -3,7 +3,6 @@ import { ChevronRight, Minus, Plus, X } from "lucide-react";
 import React, { useState } from "react";
 import { RiTimerFlashLine } from "react-icons/ri";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom"; // For linking to the cart page
 import {
   productAdd,
   productRemove,
@@ -40,12 +39,12 @@ export default function Cart({ bottom }) {
   };
   return (
     <div
-      className={`fixed ${bottom} left-0 right-0 text-center z-[60]   p-4  flex items-center justify-center`}
+      className={`fixed ${bottom} left-0 right-0 text-center z-20   p-4  flex items-center justify-center `}
     >
       <div
         onClick={() => setViewCart((pre) => !pre)}
         className={`flex justify-center items-center ${
-          hasItemsInCart ? "bg-[#276c13]" : " "
+          hasItemsInCart ? "bg-[#276c13] " : "hidden"
         } px-2 py-2 gap-2 rounded-full text-white`}
       >
         {/* Show the first two items' images */}
@@ -86,7 +85,7 @@ export default function Cart({ bottom }) {
       {/* viewCart */}
 
       {viewCart && (
-        <div className="fixed top-0 left-0 right-0 bottom-0 bg-black bg-opacity-50  z-50  ">
+        <div className="fixed top-0 left-0 right-0 bottom-0 bg-black bg-opacity-50   z-20 ">
           <div className="flex justify-center items-center ">
             <motion.div
               initial={{ y: 100, opacity: 0 }}
@@ -95,7 +94,7 @@ export default function Cart({ bottom }) {
                 duration: 0.25,
                 stiffness: 1,
               }}
-              className="bg-white   rounded-t-3xl p-5 w-full absolute bottom-0 h-[85vh] "
+              className="bg-white   rounded-t-3xl p-5 w-full absolute bottom-0 h-[85vh]  "
             >
               <div className="flex flex-col gap-5 ">
                 <div className="flex justify-between items-center">

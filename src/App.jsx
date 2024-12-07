@@ -4,6 +4,7 @@ import GrocerySplashScreen from "./components/GrocerySplace"; // Splash Screen C
 import { motion } from "framer-motion";
 import Signup_Installation from "./components/SignUp&Installation";
 
+
 function App() {
   const [isLoading, setIsLoading] = useState(true); // For splash screen loading state
   const [showPopup, setShowPopup] = useState(false); // State to control showing the Signup_Installation component
@@ -30,6 +31,7 @@ function App() {
       className="font-Lexend"
     >
       {/* Render the Router after the splash screen */}
+
       <Router />
 
       {/* Conditionally render the Signup_Installation popup */}

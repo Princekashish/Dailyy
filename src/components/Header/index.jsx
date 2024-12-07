@@ -5,6 +5,7 @@ import { FaBoxOpen, FaHeadphones } from "react-icons/fa";
 import { GiWashingMachine } from "react-icons/gi";
 import { RiGiftFill } from "react-icons/ri";
 import { SiBuymeacoffee } from "react-icons/si";
+import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 
 export default function Header() {
@@ -13,6 +14,9 @@ export default function Header() {
     ` Search for "milk" delivery in Minutes`
   );
   const categorieRef = useRef();
+
+  const cart = useSelector((state) => state.cart.items); // Get cart items from Redux state
+  const hasItemsInCart = cart.length > 0;
 
   const handleCategory = () => {
     setCategoryList(!categoryList);
@@ -128,13 +132,14 @@ export default function Header() {
           })}
         </div>
       </div>
-      <button
-        onClick={handleCategory}
-        className="bg-black/60 rounded-full fixed bottom-7 gap-1 right-5 z-[60] px-3 py-3 flex justify-center items-center flex-col"
-      >
-        <NotepadText className="text-white" />
-      </button>
-
+      {!hasItemsInCart && (
+        <button
+          onClick={handleCategory}
+          className="bg-black/60 rounded-full fixed bottom-7 gap-1 right-5 z-20 px-3 py-3 flex justify-center items-center flex-col"
+        >
+          <NotepadText className="text-white" />
+        </button>
+      )}
       {categoryList && (
         <div className="fixed top-0 left-0 right-0 bottom-0 bg-black bg-opacity-50 z-50 h-screen">
           <div
@@ -169,9 +174,13 @@ export default function Header() {
             >
               {categorymenu.map((item, i) => {
                 return (
-                  <NavLink to={item.link} key={i}>
-                    <div className="bg-[#f6f6f6]  h-[90px] w-[90px] rounded-2xl border-green-300 border"></div>
-                    <h1 className="text-center">{item.text}</h1>
+                  <NavLink
+                    to={item.link}
+                    key={i}
+                    className={`flex justify-center items-center flex-col`}
+                  >
+                    <div className="bg-[#f6f6f6]  h-[80px] w-[80px] rounded-full border-green-300 border"></div>
+                    <h1 className=" text-sm">{item.text}</h1>
                   </NavLink>
                 );
               })}

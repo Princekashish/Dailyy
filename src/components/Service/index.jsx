@@ -73,19 +73,19 @@ export default function Service() {
         <h1 className="text-lg font-semibold ">Service</h1>
         <div
           ref={scrollContainerRef}
-          className="flex overflow-hidden overflow-x-scroll gap-3 no-scrollbar relative p-2"
+          className="flex overflow-hidden overflow-x-scroll gap-1 no-scrollbar relative whitespace-nowrap w-full"
         >
           {servicelist.map((items, i) => (
             <div
               key={i}
-              className=" rounded-2xl  flex flex-col  justify-center gap-2 items-center min-w-[85px] relative p-1"
+              className=" rounded-full  flex flex-col  justify-center gap-2 items-center   relative p-1"
             >
-              <div className="bg-[#f4f5f7]  p-2 flex justify-center items-center rounded-2xl">
+              <div className="bg-[#f4f5f7] w-[80px] h-[80px] p-2 flex justify-center items-center rounded-full">
                 {" "}
                 <img
                   src={items.img}
                   alt=""
-                  className="rounded-lg h-[70px] object-contain"
+                  className="rounded-full h-[70px] object-contain "
                 />
               </div>
 
@@ -106,7 +106,7 @@ export default function Service() {
               }}
               className="absolute right-0 top-0 bottom-0 m-auto w-10 h-10 flex items-center justify-center"
             >
-              <ChevronsRight className="text-gray-300 z-10" />
+              <ChevronsRight className="text-gray-500 " />
             </motion.div>
           )}
         </div>

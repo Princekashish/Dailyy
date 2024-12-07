@@ -4,6 +4,7 @@ import { FaUser, FaShippingFast } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import DefaultAddress from "../DefaultAddress";
 
+
 export default function Hero() {
   const [defaultAddress, setDefaultAddress] = useState(false); // To show/hide the modal
   const [userAddress, setUserAddress] = useState({
@@ -27,6 +28,7 @@ export default function Hero() {
 
   return (
     <div className="pt-3">
+      
       <div className="flex flex-col gap-3">
         <div className="text-white pl-3 pr-3 flex justify-between items-center">
           <div className="flex flex-col gap-1">
@@ -56,7 +58,6 @@ export default function Hero() {
               <p>{userAddress.address}....</p>
             </div>
           </div>
-          
         </div>
       </div>
 

@@ -101,7 +101,7 @@ export default function Computer() {
               end={item.link === "/computer"} // Ensures that only the root path is active for "/computer"
             >
               <div
-                className={`border-2 border-blue-300  flex flex-col relative gap-2 rounded-xl overflow-hidden h-[90px] `}
+                className={`border-2 border-blue-300  flex flex-col relative gap-2 rounded-xl overflow-hidden h-[85px]  w-[85px]`}
                 style={{
                   backgroundImage: `url(${item.img})`,
                   backgroundPosition: "center",
@@ -109,7 +109,7 @@ export default function Computer() {
                   backgroundRepeat: "no-repeat",
                 }}
               >
-               <div className="absolute top-0 w-full h-[90px] bg-gradient-to-b from-black/10 to-black/90 " />
+                <div className="absolute top-0 bottom-0 w-full   bg-gradient-to-b from-black/10 to-black/90 border-2 border-white rounded-xl " />
                 {/* <div className="border-2 border-black flex justify-center items-center rounded-full">
                   <img
                     src={item.img}
@@ -117,7 +117,10 @@ export default function Computer() {
                     className="rounded-3xl p-2 object-contain "
                   />
                 </div> */}
-                <h1 className="text-sm text-center text-white  z-20 pt-2 font-medium  ">{item.items}</h1>
+
+                <h1 className="text-sm text-center text-[#f2f2f2]  z-20 font-medium  absolute w-full bottom-2">
+                  {item.items}
+                </h1>
               </div>
             </NavLink>
           ))}
