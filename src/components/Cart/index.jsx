@@ -15,6 +15,7 @@ export default function Cart({ bottom }) {
 
   const [viewCart, setViewCart] = useState(false);
   const [checkout, setCheckout] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState(null);
   const dispatch = useDispatch();
 
   // Check if cart has any items
@@ -33,9 +34,16 @@ export default function Cart({ bottom }) {
     dispatch(productAdd(item));
   };
   const handleConfirmOrder = () => {
-    console.log("true")
-    setCheckout(!checkout)
-    setViewCart(false)
+    console.log("true");
+    setCheckout(!checkout);
+    setViewCart(false);
+  };
+  const handleproduct = (item) => {
+    setViewCart(false);
+    setSelectedProduct(item); // Set the selected product
+  };
+  const productModal = () => {
+    setSelectedProduct(false);
   };
   return (
     <div
@@ -83,9 +91,8 @@ export default function Cart({ bottom }) {
       </div>
 
       {/* viewCart */}
-
       {viewCart && (
-        <div className="fixed top-0 left-0 right-0 bottom-0 bg-black bg-opacity-50   z-20 ">
+        <div className="fixed top-0 left-0 right-0 bottom-0 bg-black bg-opacity-50 h-screen  z-20 ">
           <div className="flex justify-center items-center ">
             <motion.div
               initial={{ y: 100, opacity: 0 }}
@@ -123,7 +130,10 @@ export default function Cart({ bottom }) {
                         className=" flex justify-between items-center "
                       >
                         <div className="flex justify-start items-center gap-2">
-                          <div className=" p-2 border rounded-3xl  border-gray-300 w-[80px] h-[80px] flex justify-center items-center">
+                          <div
+                            onClick={() => handleproduct(items)}
+                            className=" p-2 border rounded-3xl  border-gray-300 w-[80px] h-[80px] flex justify-center items-center"
+                          >
                             <img
                               src={items.img}
                               alt=""
@@ -179,7 +189,7 @@ export default function Cart({ bottom }) {
                   <div className=" flex justify-between items-center">
                     <div className="flex gap-2 justify-center items-center">
                       <h1 className="text-green-600 text-sm font-semibold">
-                       Total
+                        Total
                       </h1>
                       <p className="font-semibold text-lg ">₹{price + 20}</p>
                     </div>
@@ -199,7 +209,63 @@ export default function Cart({ bottom }) {
         </div>
       )}
 
-      <div>{checkout && <Checkout price={price}/>}</div>
+      {selectedProduct && (
+        <div className="fixed top-0 left-0 right-0 bottom-0 bg-black bg-opacity-50 h-screen  z-20 ">
+          <div className="flex justify-center items-center ">
+            <motion.div
+              initial={{ y: 100, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{
+                duration: 0.25,
+                stiffness: 1,
+              }}
+              className="bg-white   rounded-t-3xl p-5 w-full absolute bottom-0 h-[50vh]  "
+            >
+              <div className="flex flex-col gap-5 ">
+                <div className="flex justify-between items-center relative">
+                  <button
+                    onClick={productModal}
+                    className="p-1 bg-black/10   rounded-full absolute right-0 top-1 "
+                  >
+                    <X />
+                  </button>
+                </div>
+                <div className="flex flex-col justify-center items-center">
+                  <img
+                    src={selectedProduct.img}
+                    alt=""
+                    className=" w-full h-40 object-contain rounded-xl"
+                  />
+                  <div className="flex justify-between flex-col ">
+                    <div className="flex justify-between items-center ">
+                      <div className="flex justify-start items-center gap-2">
+                        <p className="text-lg mt-2 font-semibold">
+                          ₹{selectedProduct.price}
+                        </p>
+                        <div className="flex justify-end items-end gap-1">
+                          <p className="text-xs line-through text-[#605e5e] pt-2">
+                            ₹{selectedProduct.originalPrice}
+                          </p>
+                          <p className="text-xs text-blue-400 ">
+                            {selectedProduct.discount} OFF
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="mt-2 text-start">
+                      <h1 className="text-sm text-[#6a6969]">
+                        {selectedProduct.description}
+                      </h1>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      )}
+
+      <div>{checkout && <Checkout price={price} />}</div>
     </div>
   );
 }

@@ -71,19 +71,21 @@ export default function Signup_Installation({ setShowPopup }) {
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className="fixed top-0 left-0 right-0 bottom-0 bg-black bg-opacity-50 z-[60] flex justify-center items-center "
+      className="fixed top-0 left-0 right-0 bottom-0 bg-black/20 z-[60] flex justify-center items-center  h-screen"
     >
       <motion.div
         ref={popupRef}
         initial={{ y: 100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.25, stiffness: 1 }}
-        className="bg-green-700 rounded-t-3xl p-5 w-full absolute bottom-0 h-[40vh] overflow-hidden bg-[url('https://plus.unsplash.com/premium_photo-1672883552341-eaebc9240719?q=80&w=2874&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')] bg-cover bg-no-repeat bg-center"
+        className="bg-white rounded-t-3xl p-5 w-full absolute bottom-0 h-[40vh] overflow-hidden bg-[url('https://plus.unsplash.com/premium_photo-1672883552341-eaebc9240719?q=80&w=2874&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')] bg-cover bg-no-repeat bg-center"
       >
         <div className=" h-full relative ">
-        <h1 className="text-white text-center">Welcome to Dailyy - Minutes Delivey app</h1>
+          <h1 className="text-white text-center">
+            Welcome to Dailyy - Minutes Delivey app
+          </h1>
           <div className="flex absolute  bottom-0 justify-center gap-5 w-full rounded-lg">
-            <div className="w-full flex justify-center items-center rounded-lg bg-white absolute bottom-0 ">
+            <div className="w-full flex justify-center items-center rounded-lg bg-white/80 absolute bottom-0 ">
               {!isInstalled && (
                 <button
                   onClick={handleDownloadClick}

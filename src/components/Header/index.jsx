@@ -79,14 +79,18 @@ export default function Header() {
   ];
 
   const categorymenu = [
-    { text: "Grocery", link: "/" },
-    { text: "Personal care", link: "/" },
-    { text: "Clothes", link: "/" },
-    { text: "Beauty", link: "/" },
-    { text: "Skin care", link: "/" },
-    { text: "Party ", link: "/" },
+    { text: "Grocery", img: "/pngeggvegble.png", link: "/grocery" },
+    { text: "Personal care", img: "/pngegg (27).png", link: "/personal-care" },
+    { text: "Clothes", img: "/pngegg (26).png", link: "/cloths" },
+    { text: "Beauty", img: "/pngegg (2).png", link: "/beauty" },
+    { text: "Skin care", img: "/skincare.png", link: "/" },
+    { text: "Party ", img: "/rb_4295.png", link: "/party-essential" },
     { text: "Essential", link: "/" },
-    { text: "Computer", link: "/" },
+    {
+      text: "Computer",
+      img: "https://madisonliquidators.com/images/blog/gmdskl5.jpg",
+      link: "/computer",
+    },
     { text: "Medical", link: "/" },
     { text: "Electrical", link: "/" },
     { text: "Appliances", link: "/" },
@@ -175,11 +179,18 @@ export default function Header() {
               {categorymenu.map((item, i) => {
                 return (
                   <NavLink
+                    onClick={() => setCategoryList(false)}
                     to={item.link}
                     key={i}
                     className={`flex justify-center items-center flex-col`}
                   >
-                    <div className="bg-[#f6f6f6]  h-[80px] w-[80px] rounded-full border-green-300 border"></div>
+                    <div className="bg-[#f4f4f4]  h-[70px] w-[70px] rounded-full overflow-hidden flex justify-center items-center">
+                      <img
+                        src={item.img}
+                        alt=""
+                        className="object-contain h-[70px]"
+                      />
+                    </div>
                     <h1 className=" text-sm">{item.text}</h1>
                   </NavLink>
                 );

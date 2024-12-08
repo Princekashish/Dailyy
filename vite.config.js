@@ -13,6 +13,7 @@ export default defineConfig({
         short_name: "Dailyy",
         description: "Dailyy Grocery store",
         theme_color: "#17803D",
+        background_color: "#17803D",
         start_url: "/",
         display: "standalone",
         icons: [

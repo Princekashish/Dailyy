@@ -419,7 +419,6 @@ export default function GroceryItems() {
                   alt={selectedProduct.product}
                   className=" w-full h-40 object-contain rounded-xl"
                 />
-                <p className="mt-3 text-sm">Brand: {selectedProduct.brand}</p>
                 <div className="flex justify-between items-center ">
                   <div className="flex justify-start items-center gap-2">
                     <p className="text-lg mt-2 font-semibold">
