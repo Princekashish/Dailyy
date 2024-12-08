@@ -40,12 +40,12 @@ export default function StoreCategories() {
         <div className="flex justify-between items-center">
           <h1 className="text-lg font-semibold ">Shop by Store</h1>
         </div>
-        <div className="grid grid-cols-3 gap-2 mt-2">
+        <div className="grid grid-cols-3 gap-2 mt-2 ">
           {Store.map((items, i) => {
             return (
               <Link key={i} to={items.link} className="flex flex-col  ">
                 <div
-                  className={` flex flex-col relative rounded-xl  overflow-hidden h-[70px] w-[120px]`}
+                  className={` flex flex-col relative rounded-xl  overflow-hidden h-[70px] `}
                   style={{
                     backgroundImage: `url(${items.img})`,
                     backgroundPosition: "right",
