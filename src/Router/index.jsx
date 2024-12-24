@@ -15,6 +15,9 @@ import Coffee from "../components/Coffee";
 import Stationery from "../components/Stationery";
 import GroceryItems from "../components/Groceryitems_Veg&Fruits";
 import Exotics_Fruits from "../components/Exotics_Fruits";
+import Appliances from "../components/Appliances";
+import Beauty from "../components/Beauty";
+import Gifts from "../components/Gifts";
 
 const rout = createBrowserRouter([
   {
@@ -25,6 +28,9 @@ const rout = createBrowserRouter([
       { path: "/electronic", Component: Electronic },
       { path: "/grocery", Component: Grocery },
       { path: "/coffee", Component: Coffee },
+      { path: "/beauty", Component: Beauty },
+      { path: "/appliances", Component: Appliances },
+      { path: "/gift", Component: Gifts },
     ],
   },
   { path: "/login", Component: Login },

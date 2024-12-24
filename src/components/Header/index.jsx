@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { NotepadText, Search } from "lucide-react";
 import React, { useEffect, useRef, useState } from "react";
-import { FaBoxOpen, FaHeadphones } from "react-icons/fa";
+import { FaBoxOpen, FaHeadphones, FaTools } from "react-icons/fa";
 import { GiWashingMachine } from "react-icons/gi";
 import { RiGiftFill } from "react-icons/ri";
 import { SiBuymeacoffee } from "react-icons/si";
@@ -142,6 +142,14 @@ export default function Header() {
           className="bg-black/60 rounded-full fixed bottom-7 gap-1 right-5 z-20 px-3 py-3 flex justify-center items-center flex-col"
         >
           <NotepadText className="text-white" />
+        </button>
+      )}
+      {!hasItemsInCart && (
+        <button
+          onClick={handleCategory}
+          className="bg-black/60 rounded-full fixed bottom-7 gap-1 left-5 z-20 px-3 py-3 flex justify-center items-center flex-col"
+        >
+          <FaTools className="text-white" size={20} />
         </button>
       )}
       {categoryList && (
