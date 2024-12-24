@@ -123,87 +123,52 @@ function Gifts() {
 
   const homekitchen = [
     {
-      name: "Artisanal gift sets",
-      price: 49.99,
-      discount: 15,
-      rating: 4.5,
-      categories: ["Iron", "Home & Kitchen", "Appliances"],
+      name: "Iron",
       image:
-        "https://hrd-live.cdn.scayle.cloud/images/7a8afc818137fbde121fd48bf1af087d.jpg?brightness=1&width=922&height=1230&quality=75&bg=ffffff",
+        "https://i.pinimg.com/736x/41/de/0d/41de0d623fcbeadf7eab9fef643e2e66.jpg",
     },
     {
-      name: "Bouquets & Plants",
-      price: 129.99,
-      discount: 20,
-      rating: 4.3,
-      categories: ["Heating Rods & Geysers", "Home & Kitchen", "Appliances"],
+      name: "Heating Rods & Geysers",
       image:
-        "https://hrd-live.cdn.scayle.cloud/images/5f38e619e987c9f78ba21e4ff1648ae8.jpg?brightness=1&width=922&height=1230&quality=75&bg=ffffff",
+        "https://i.pinimg.com/736x/e2/ce/70/e2ce7034ccbcdb2396e3625d783ffaba.jpg",
     },
     {
-      name: "Premium gifting",
-      price: 18.99,
-      discount: 10,
-      rating: 4.7,
-      categories: ["Batteries", "Home & Kitchen", "Electronics"],
+      name: "Batteries",
       image:
-        "https://images-na.ssl-images-amazon.com/images/I/61MBTC0YE0L._SL1500_.jpg",
+        "https://i.pinimg.com/736x/61/c1/83/61c183b62ca8d12742828969e95c34db.jpg",
     },
     {
-      name: "Beauty & Fashion",
-      price: 15.99,
-      discount: 25,
-      rating: 4.8,
-      categories: ["LED & Lamps", "Home & Kitchen", "Lighting"],
+      name: "LED & Lamps",
       image:
-        "https://images-static.nykaa.com/media/catalog/product/6/d/6d3af2d8904245701086_3.jpg",
+        "https://i.pinimg.com/736x/68/bc/9d/68bc9d8c9734d9e1bbec6e5bd64ebf21.jpg",
     },
     {
-      name: "Gadgets & application",
-      price: 39.99,
-      discount: 15,
-      rating: 4.6,
-      categories: ["Electric Cookers", "Home & Kitchen", "Appliances"],
+      name: "Electric Cookers",
       image:
-        "https://images-static.nykaa.com/media/catalog/product/6/d/6d3af2d8904245701086_3.jpg",
+        "https://i.pinimg.com/736x/f3/21/b8/f321b80a621fb59e0fca215735dff030.jpg",
     },
     {
-      name: "Home & living",
-      price: 99.99,
-      discount: 20,
-      rating: 4.4,
-      categories: ["Juicers & Mixers", "Home & Kitchen", "Appliances"],
+      name: "Juicers & Mixers",
       image:
-        "https://images-static.nykaa.com/media/catalog/product/6/d/6d3af2d8904245701086_3.jpg",
+        "https://i.pinimg.com/736x/cf/55/2a/cf552a3b9dd1f21c56d437bdb7c2f5ad.jpg",
     },
     {
-      name: "Indian sweets & dry Fruits",
-      price: 149.99,
-      discount: 10,
-      rating: 4.6,
-      categories: ["Coffee Maker", "Home & Kitchen", "Appliances"],
+      name: "Coffee Maker",
       image:
-        "https://images-static.nykaa.com/media/catalog/product/6/d/6d3af2d8904245701086_3.jpg",
+        "https://i.pinimg.com/736x/cc/43/1a/cc431a026cb0a6e0119942fa5a85bc50.jpg",
     },
     {
-      name: "Chocolate Packs",
-      price: 59.99,
-      discount: 18,
-      rating: 4.7,
-      categories: ["Tools & Accessories", "Home & Kitchen", "DIY"],
+      name: "Tools & Accessories",
       image:
-        "https://images-static.nykaa.com/media/catalog/product/6/d/6d3af2d8904245701086_3.jpg",
+        "https://i.pinimg.com/736x/46/9b/00/469b00698c81a756d317e82229e679b4.jpg",
     },
     {
-      name: "Kids & pet Gifting",
-      price: 59.99,
-      discount: 18,
-      rating: 4.7,
-      categories: ["Tools & Accessories", "Home & Kitchen", "DIY"],
+      name: "Tools & Accessories",
       image:
-        "https://images-static.nykaa.com/media/catalog/product/6/d/6d3af2d8904245701086_3.jpg",
+        "https://i.pinimg.com/736x/46/9b/00/469b00698c81a756d317e82229e679b4.jpg",
     },
   ];
+
   return (
     <div className="font-Lexend mb-20">
       <div className="flex flex-col justify-center items-center ">
@@ -220,14 +185,14 @@ function Gifts() {
           <h1 className="text-start font-semibold text-lg">
             Featured this week
           </h1>
-          <div className="flex whitespace-nowrap gap-4 w-full overflow-hidden overflow-x-scroll mt-4">
-            {trending.map((items, i) => (
+          <div className="flex whitespace-nowrap gap-4 w-full overflow-hidden overflow-x-scroll mt-2">
+          {trending.map((items, i) => (
               <div
                 key={i}
                 className="flex justify-center items-center flex-col gap-1 "
               >
                 <div
-                  className={`border-[2.8px] border-blue-400  flex flex-col relative gap-2 rounded-2xl overflow-hidden h-[110px]  w-[100px]`}
+                  className={`border-[2.8px] border-blue-400  flex flex-col relative gap-2 rounded-full overflow-hidden h-[80px]  w-[80px]`}
                   style={{
                     backgroundImage: `url(${items.img})`,
                     backgroundPosition: "center",
@@ -235,7 +200,7 @@ function Gifts() {
                     backgroundRepeat: "no-repeat",
                   }}
                 >
-                  <div className="absolute top-0 bottom-0 w-full   bg-gradient-to-b from-black/10 to-black/50 border-2 border-white rounded-xl " />
+                  <div className="absolute top-0 bottom-0 w-full   bg-gradient-to-b from-black/10 to-black/50 border-2 border-white rounded-full " />
                 </div>
               </div>
             ))}
@@ -318,11 +283,7 @@ function Gifts() {
           <div className="grid grid-cols-3  gap-2">
             {homekitchen.map((items, i) => (
               <div
-                key={i}
-                className="flex justify-center items-center flex-col gap-1 "
-              >
-               <div
-                className={`  flex flex-col relative rounded-xl overflow-hidden h-[110px]  w-[110px]`}
+                className={`  flex flex-col relative rounded-xl overflow-hidden h-[100px]  w-full object-contain justify-center items-center`}
                 style={{
                   backgroundImage: `url(${items.image})`,
                   backgroundPosition: "center",
@@ -330,7 +291,7 @@ function Gifts() {
                   backgroundRepeat: "no-repeat",
                 }}
               >
-                <div className="absolute top-0 bottom-0 w-full   bg-gradient-to-b from-black/10 to-black/40 border-2 border-white rounded-xl " />
+                <div className="absolute top-0 bottom-0 w-full   bg-gradient-to-b from-black/10 to-black/80 border-2 border-white rounded-xl " />
                 {/* <div className="border-2 border-black flex justify-center items-center rounded-full">
                   <img
                     src={item.img}
@@ -340,9 +301,8 @@ function Gifts() {
                 </div> */}
 
                 <h1 className="text-sm text-center text-[#f2f2f2]  z-20 font-medium  absolute w-full bottom-2">
-                  {items.text}
+                  {items.name}
                 </h1>
-              </div>
               </div>
             ))}
           </div>

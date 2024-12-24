@@ -54,7 +54,8 @@ export default function Electronic() {
       discount: 15,
       rating: 4.5,
       categories: ["Iron", "Home & Kitchen", "Appliances"],
-      image: "https://images.philips.com/is/image/philipsconsumer/ad22e0b4bf03495594caad28016cfdd1?wid=1400&hei=1400&$pnglarge$",
+      image:
+        "https://images.philips.com/is/image/philipsconsumer/ad22e0b4bf03495594caad28016cfdd1?wid=1400&hei=1400&$pnglarge$",
     },
     {
       name: "Heating Rods & Geyser",
@@ -62,7 +63,8 @@ export default function Electronic() {
       discount: 20,
       rating: 4.3,
       categories: ["Heating Rods & Geysers", "Home & Kitchen", "Appliances"],
-      image: "https://kitchenmela.in/wp-content/uploads/2021/10/Havells-Instanio-3-Litr-3KW-Water-Heater-Geyser.jpg",
+      image:
+        "https://kitchenmela.in/wp-content/uploads/2021/10/Havells-Instanio-3-Litr-3KW-Water-Heater-Geyser.jpg",
     },
     {
       name: "Duracell AA Batteries",
@@ -70,7 +72,8 @@ export default function Electronic() {
       discount: 10,
       rating: 4.7,
       categories: ["Batteries", "Home & Kitchen", "Electronics"],
-      image: "https://www.duracellsingapore.com/cdn/shop/files/202408_DRC_Ultra-AA5_Thumbnail_Duracell_V1_D_300x.jpg?v=1729091918",
+      image:
+        "https://www.duracellsingapore.com/cdn/shop/files/202408_DRC_Ultra-AA5_Thumbnail_Duracell_V1_D_300x.jpg?v=1729091918",
     },
     {
       name: "LED Bulb",
@@ -78,7 +81,8 @@ export default function Electronic() {
       discount: 25,
       rating: 4.8,
       categories: ["LED & Lamps", "Home & Kitchen", "Lighting"],
-      image: "https://ae-pic-a1.aliexpress-media.com/kf/HTB19A_rMVXXXXX.XXXXq6xXFXXXf.jpg_220x220q75.jpg_.avif",
+      image:
+        "https://ae-pic-a1.aliexpress-media.com/kf/HTB19A_rMVXXXXX.XXXXq6xXFXXXf.jpg_220x220q75.jpg_.avif",
     },
     {
       name: "Electric Cooker",
@@ -126,7 +130,7 @@ export default function Electronic() {
               className="flex justify-center items-center flex-col gap-1 "
             >
               <div
-                className={`border-2 border-blue-300  flex flex-col relative gap-2 rounded-xl overflow-hidden h-[110px]  w-[100px]`}
+                className={`border-[2.8px] border-blue-400  flex flex-col relative gap-2 rounded-full overflow-hidden h-[80px]  w-[80px]`}
                 style={{
                   backgroundImage: `url(${items.img})`,
                   backgroundPosition: "center",
@@ -134,7 +138,7 @@ export default function Electronic() {
                   backgroundRepeat: "no-repeat",
                 }}
               >
-                <div className="absolute top-0 bottom-0 w-full   bg-gradient-to-b from-black/10 to-black/50 border-2 border-white rounded-xl " />
+                <div className="absolute top-0 bottom-0 w-full   bg-gradient-to-b from-black/10 to-black/50 border-2 border-white rounded-full " />
               </div>
             </div>
           ))}
@@ -145,7 +149,10 @@ export default function Electronic() {
           <div className="grid grid-cols-3  gap-5">
             {topdeals.map((items, i) => {
               return (
-                <div key={i} className="flex flex-col justify-center items-center gap-5 flex-wrap  ">
+                <div
+                  key={i}
+                  className="flex flex-col justify-center items-center gap-5 flex-wrap  "
+                >
                   <div className="">
                     <img
                       src={items.image}
@@ -176,7 +183,10 @@ export default function Electronic() {
           <div className="grid grid-cols-4  gap-3">
             {homekitchen.map((items, i) => {
               return (
-                <div key={i} className="flex flex-col justify-center items-center gap-5 flex-wrap  ">
+                <div
+                  key={i}
+                  className="flex flex-col justify-center items-center gap-5 flex-wrap  "
+                >
                   <div className="">
                     <img
                       src={items.image}

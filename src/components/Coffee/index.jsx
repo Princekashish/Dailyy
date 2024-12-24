@@ -41,11 +41,11 @@ export default function Coffee() {
                 key={i}
                 className="flex flex-col justify-center items-center gap-5 flex-wrap  "
               >
-                <div className="h-[90px] w-[90px] rounded-full bg-[#f4f4f4] flex justify-center items-center">
+                <div className="h-[80px] w-[80px] rounded-full bg-[#f4f4f4] flex justify-center items-center">
                   <img
                     src={items.img}
                     alt=""
-                    className="h-[70px] object-contain "
+                    className="h-[60px] object-contain "
                   />
                 </div>
                 <div className="flex flex-col ">

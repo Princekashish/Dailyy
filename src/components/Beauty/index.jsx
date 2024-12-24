@@ -91,7 +91,8 @@ export default function Beauty() {
       discount: 15,
       rating: 4.6,
       categories: ["Electric Cookers", "Home & Kitchen", "Appliances"],
-      image: "https://images-static.nykaa.com/media/catalog/product/6/d/6d3af2d8904245701086_3.jpg",
+      image:
+        "https://i.pinimg.com/736x/b8/1c/78/b81c78c138fff71157c30c55bac0c504.jpg",
     },
     {
       name: "Nails & lashes",
@@ -99,7 +100,8 @@ export default function Beauty() {
       discount: 20,
       rating: 4.4,
       categories: ["Juicers & Mixers", "Home & Kitchen", "Appliances"],
-      image: "https://images-static.nykaa.com/media/catalog/product/6/d/6d3af2d8904245701086_3.jpg",
+      image:
+        "https://i.pinimg.com/736x/07/15/73/071573d2954c3ac0d55d25592f71cb80.jpg",
     },
     {
       name: "Personal care tools",
@@ -107,7 +109,8 @@ export default function Beauty() {
       discount: 10,
       rating: 4.6,
       categories: ["Coffee Maker", "Home & Kitchen", "Appliances"],
-      image: "https://images-static.nykaa.com/media/catalog/product/6/d/6d3af2d8904245701086_3.jpg",
+      image:
+        "https://i.pinimg.com/736x/8e/79/dc/8e79dc31f0806e5e77c58ac9aab90506.jpg",
     },
     {
       name: "Fashion accessoris",
@@ -115,7 +118,8 @@ export default function Beauty() {
       discount: 18,
       rating: 4.7,
       categories: ["Tools & Accessories", "Home & Kitchen", "DIY"],
-      image: "https://images-static.nykaa.com/media/catalog/product/6/d/6d3af2d8904245701086_3.jpg",
+      image:
+        "https://i.pinimg.com/736x/4e/44/d7/4e44d7ad4049f0061cab179f566a0f37.jpg",
     },
   ];
   return (
@@ -166,24 +170,26 @@ export default function Beauty() {
             Featured this week
           </h1>
           <div className="flex whitespace-nowrap gap-4 w-full overflow-hidden overflow-x-scroll mt-4">
-            {trending.map((items, i) => (
-              <div
-                key={i}
-                className="flex justify-center items-center flex-col gap-1 "
-              >
+            <div className="flex whitespace-nowrap gap-3 w-full overflow-hidden overflow-x-scroll mt-2">
+              {trending.map((items, i) => (
                 <div
-                  className={`border-2 border-blue-300  flex flex-col relative gap-2 rounded-xl overflow-hidden h-[110px]  w-[100px]`}
-                  style={{
-                    backgroundImage: `url(${items.img})`,
-                    backgroundPosition: "center",
-                    backgroundSize: "cover",
-                    backgroundRepeat: "no-repeat",
-                  }}
+                  key={i}
+                  className="flex justify-center items-center flex-col gap-1 "
                 >
-                  <div className="absolute top-0 bottom-0 w-full   bg-gradient-to-b from-black/10 to-black/50 border-2 border-white rounded-xl " />
+                  <div
+                    className={`border-[2.8px] border-blue-400  flex flex-col relative gap-2 rounded-full overflow-hidden h-[90px]  w-[90px]`}
+                    style={{
+                      backgroundImage: `url(${items.img})`,
+                      backgroundPosition: "center",
+                      backgroundSize: "cover",
+                      backgroundRepeat: "no-repeat",
+                    }}
+                  >
+                    <div className="absolute top-0 bottom-0 w-full   bg-gradient-to-b from-black/10 to-black/50 border-2 border-white rounded-full " />
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
 
