@@ -123,7 +123,7 @@ export default function Electronic() {
       <div className="flex flex-col justify-center items-center ">
         <h1 className="text-xs">shop by</h1>
         <p className="text-lg font-medium capitalize">Trending Catogeries</p>
-        <div className="flex whitespace-nowrap gap-4 w-full overflow-hidden overflow-x-scroll mt-4">
+        <div className="flex whitespace-nowrap gap-4 w-full overflow-hidden overflow-x-scroll no-scrollbar mt-4">
           {trending.map((items, i) => (
             <div
               key={i}

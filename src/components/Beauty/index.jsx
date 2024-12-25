@@ -169,8 +169,8 @@ export default function Beauty() {
           <h1 className="text-start font-semibold text-lg">
             Featured this week
           </h1>
-          <div className="flex whitespace-nowrap gap-4 w-full overflow-hidden overflow-x-scroll mt-4">
-            <div className="flex whitespace-nowrap gap-3 w-full overflow-hidden overflow-x-scroll mt-2">
+          <div className="flex whitespace-nowrap gap-4 w-full overflow-hidden overflow-x-scroll no-scrollbar mt-4">
+            <div className="flex whitespace-nowrap gap-3 w-full overflow-hidden overflow-x-scroll no-scrollbar mt-2">
               {trending.map((items, i) => (
                 <div
                   key={i}

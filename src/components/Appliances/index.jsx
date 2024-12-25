@@ -186,7 +186,7 @@ export default function Appliances() {
           <h1 className="text-start font-semibold text-lg">
             Featured this week
           </h1>
-          <div className="flex whitespace-nowrap gap-3 w-full overflow-hidden overflow-x-scroll mt-4">
+          <div className="flex whitespace-nowrap gap-3 w-full overflow-hidden overflow-x-scroll no-scrollbar mt-4">
             {trending.map((items, i) => (
               <div
                 key={i}
