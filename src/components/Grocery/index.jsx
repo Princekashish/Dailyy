@@ -223,11 +223,11 @@ export default function Grocery() {
             <div className="grid grid-cols-4 gap-3  mt-2 ">
               {groceryCategories.map((category, index) => (
                 <Link key={index} to={category.link}>
-                  <div>
+                  <div className="flex justify-center items-center flex-col ">
                     <img
                       src={category.image}
                       alt=""
-                      className="bg-[#f2f2f2] rounded-full h-[80px] w-[80px] object-contain"
+                      className="bg-[#f2f2f2] rounded-full h-[70px] w-[70px] object-contain "
                     />
                     <h1 className=" text-center text-xs flex  tracking-tight">
                       {category.category}
@@ -252,7 +252,7 @@ export default function Grocery() {
                   <img
                     src={category.img}
                     alt=""
-                    className="bg-[#f2f2f2] rounded-full h-[80px] w-[80px] object-contain"
+                    className="bg-[#f2f2f2] rounded-full h-[70px] w-[70px] object-contain"
                   />
                   </div>
                   <h1 className=" text-center text-xs flex  tracking-tight">

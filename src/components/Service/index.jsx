@@ -80,7 +80,7 @@ export default function Service() {
               key={i}
               className=" rounded-full  flex flex-col  justify-center gap-2 items-center   relative p-1"
             >
-              <div className="bg-[#f4f5f7] w-[80px] h-[80px] p-2 flex justify-center items-center rounded-full">
+              <div className="bg-[#f4f5f7] w-[70px] h-[70px] p-2 flex justify-center items-center rounded-full">
                 {" "}
                 <img
                   src={items.img}

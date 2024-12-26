@@ -58,7 +58,7 @@ export default function ProductCategories() {
                     <img
                       src={item.img}
                       alt={item.text}
-                      className="h-[70px] object-contain text-[10px]"
+                      className="h-[60px] object-contain text-[10px]"
                     />
                   </div>
                   <h1

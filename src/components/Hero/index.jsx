@@ -27,7 +27,7 @@ export default function Hero() {
   };
 
   return (
-    <div className="pt-8">
+    <div className="pt-6">
       
       <div className="flex flex-col gap-3">
         <div className="pl-3 pr-3 flex justify-between items-center text-white">
