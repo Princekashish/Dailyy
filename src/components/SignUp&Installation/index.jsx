@@ -71,7 +71,7 @@ export default function Signup_Installation({ setShowPopup }) {
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      className="fixed top-0 left-0 right-0 bottom-0 bg-black/20 z-[60] flex justify-center items-center  h-screen"
+      className="fixed top-0 left-0 right-0 bottom-0 bg-black/20 z-[60] flex justify-center items-center  h-[100%]"
     >
       <motion.div
         ref={popupRef}

@@ -9,7 +9,7 @@ export default function Layout() {
   return (
     <div>
 <BackNavigationRedirect />
-      <div className="bg-green-700">
+      <div className="bg-green-700 h-[30vh] flex  flex-col justify-between ">
         <Hero />
         <Header />
       </div>

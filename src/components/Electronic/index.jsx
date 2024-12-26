@@ -4,19 +4,19 @@ export default function Electronic() {
   const trending = [
     {
       text: "Earbuds",
-      img: "/pngegg (20).png",
+      img: "https://i.pinimg.com/736x/92/a6/3b/92a63bbd55ac374b9e1406b2dd762593.jpg",
     },
     {
       text: "Speakers",
-      img: "/pngegg (29).png",
+      img: "https://i.pinimg.com/736x/7f/dc/2f/7fdc2f00b1790eccca942115870a28e3.jpg",
     },
     {
       text: "Smartwatches",
-      img: "/pngegg (30).png",
+      img: "https://i.pinimg.com/736x/dc/12/50/dc12509dd64a0f0bd67b8f755737828c.jpg",
     },
     {
       text: "Heating Rods",
-      img: "https://via.placeholder.com/150?text=Thermostats",
+      img: "https://i.pinimg.com/736x/f9/26/cd/f926cd3f553d2a3048ad1a6fada56159.jpg",
     },
   ];
   const topdeals = [
@@ -55,7 +55,7 @@ export default function Electronic() {
       rating: 4.5,
       categories: ["Iron", "Home & Kitchen", "Appliances"],
       image:
-        "https://images.philips.com/is/image/philipsconsumer/ad22e0b4bf03495594caad28016cfdd1?wid=1400&hei=1400&$pnglarge$",
+        "https://i.pinimg.com/736x/31/8f/0a/318f0a143e8aa0b3f6994d196691d0f0.jpg",
     },
     {
       name: "Heating Rods & Geyser",
@@ -64,7 +64,7 @@ export default function Electronic() {
       rating: 4.3,
       categories: ["Heating Rods & Geysers", "Home & Kitchen", "Appliances"],
       image:
-        "https://kitchenmela.in/wp-content/uploads/2021/10/Havells-Instanio-3-Litr-3KW-Water-Heater-Geyser.jpg",
+        "https://i.pinimg.com/736x/01/50/e4/0150e4010a3011df03d577025766b936.jpg",
     },
     {
       name: "Duracell AA Batteries",
@@ -73,7 +73,7 @@ export default function Electronic() {
       rating: 4.7,
       categories: ["Batteries", "Home & Kitchen", "Electronics"],
       image:
-        "https://www.duracellsingapore.com/cdn/shop/files/202408_DRC_Ultra-AA5_Thumbnail_Duracell_V1_D_300x.jpg?v=1729091918",
+        "https://i.pinimg.com/736x/97/b6/2f/97b62f6c6e7e06af6e8151949b1fde9c.jpg",
     },
     {
       name: "LED Bulb",
@@ -82,7 +82,7 @@ export default function Electronic() {
       rating: 4.8,
       categories: ["LED & Lamps", "Home & Kitchen", "Lighting"],
       image:
-        "https://ae-pic-a1.aliexpress-media.com/kf/HTB19A_rMVXXXXX.XXXXq6xXFXXXf.jpg_220x220q75.jpg_.avif",
+        "https://i.pinimg.com/736x/49/d3/37/49d33759acfccaa7ac9ef5efc3cc3546.jpg",
     },
     {
       name: "Electric Cooker",
@@ -90,7 +90,7 @@ export default function Electronic() {
       discount: 15,
       rating: 4.6,
       categories: ["Electric Cookers", "Home & Kitchen", "Appliances"],
-      image: "https://example.com/black-decker-electric-cooker.jpg",
+      image: "https://i.pinimg.com/736x/d4/43/a4/d443a44264a13c74774097c8ec72fbdb.jpg",
     },
     {
       name: "Juicer & Mixer",
@@ -98,7 +98,7 @@ export default function Electronic() {
       discount: 20,
       rating: 4.4,
       categories: ["Juicers & Mixers", "Home & Kitchen", "Appliances"],
-      image: "https://example.com/hamilton-beach-juicer-mixer.jpg",
+      image: "https://i.pinimg.com/736x/cf/55/2a/cf552a3b9dd1f21c56d437bdb7c2f5ad.jpg",
     },
     {
       name: "Maker",
@@ -106,7 +106,7 @@ export default function Electronic() {
       discount: 10,
       rating: 4.6,
       categories: ["Coffee Maker", "Home & Kitchen", "Appliances"],
-      image: "https://example.com/nespresso-essenza-mini.jpg",
+      image: "https://i.pinimg.com/736x/bf/47/b0/bf47b08d4bddf92560ea07b5af6951e0.jpg",
     },
     {
       name: "Tool Kit & Accessories",
@@ -114,7 +114,7 @@ export default function Electronic() {
       discount: 18,
       rating: 4.7,
       categories: ["Tools & Accessories", "Home & Kitchen", "DIY"],
-      image: "https://example.com/bosch-tool-kit.jpg",
+      image: "https://i.pinimg.com/736x/11/01/4b/11014b433d5dbceaafaaf4518e2ad13a.jpg",
     },
   ];
 
@@ -130,7 +130,7 @@ export default function Electronic() {
               className="flex justify-center items-center flex-col gap-1 "
             >
               <div
-                className={`border-[2.8px] border-blue-400  flex flex-col relative gap-2 rounded-full overflow-hidden h-[80px]  w-[80px]`}
+                className={`border-[2px] border-blue-400  flex flex-col relative gap-2 rounded-full overflow-hidden h-[80px]  w-[80px]`}
                 style={{
                   backgroundImage: `url(${items.img})`,
                   backgroundPosition: "center",

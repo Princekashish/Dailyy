@@ -27,19 +27,9 @@ export default function Hero() {
   };
 
   return (
-    <div className="pt-3">
+    <div className="pt-8">
       
       <div className="flex flex-col gap-3">
-        <div className="text-white pl-3 pr-3 flex justify-between items-center">
-          <div className="flex flex-col gap-1">
-            <h1 className="text-xl font-bold leading-none">Dailyy</h1>
-          </div>
-          <div className="bg-gray-300 p-2 rounded-full flex justify-center items-center">
-            <Link to={"/login"}>
-              <FaUser size={20} color="black" />
-            </Link>
-          </div>
-        </div>
         <div className="pl-3 pr-3 flex justify-between items-center text-white">
           <div className="flex flex-col justify-start items-start gap-1">
             <div
@@ -57,6 +47,9 @@ export default function Hero() {
             <div className="text-sm font-light">
               <p>{userAddress.address}....</p>
             </div>
+          </div>
+          <div className="flex flex-col gap-1 pr-3">
+            <h1 className="text-3xl font-bold leading-none">Dailyy</h1>
           </div>
         </div>
       </div>

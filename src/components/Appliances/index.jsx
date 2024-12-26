@@ -1,26 +1,36 @@
-import React from "react";
+import React, { useCallback, useEffect, useState } from "react";
+import Pagination from "../../utils/Animated/Pagination";
 
 export default function Appliances() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const service = [
+    {
+      img: "https://airmulti.com.np/wp-content/uploads/2023/07/appliances.jpg",
+    },
+    {
+      img: "https://i.pinimg.com/736x/fe/43/4f/fe434f2a18de2b9db2e3cf6ebae761dc.jpg",
+    },
+  ];
   const trending = [
     {
       text: "Earbuds",
-      img: "/pngegg (20).png",
+      img: "https://i.pinimg.com/736x/e9/1b/ab/e91baba09950b5006509aac3e1b9e769.jpg",
     },
     {
       text: "Speakers",
-      img: "/pngegg (29).png",
+      img: "https://i.pinimg.com/736x/ee/79/88/ee7988ef4e21dbe301edfe95532ec9d7.jpg",
     },
     {
       text: "Smartwatches",
-      img: "/pngegg (30).png",
+      img: "https://i.pinimg.com/736x/80/cd/22/80cd221b339b149224387cf8e3bab8d9.jpg",
     },
     {
       text: "Heating Rods",
-      img: "https://via.placeholder.com/150?text=Thermostats",
+      img: "https://i.pinimg.com/736x/0d/f6/19/0df6193f858723fae27bae203c208725.jpg",
     },
     {
       text: "Earbuds",
-      img: "/pngegg (20).png",
+      img: "https://i.pinimg.com/736x/79/a1/2e/79a12e4fa2cdbd82db04eb362e339041.jpg",
     },
     {
       text: "Speakers",
@@ -37,31 +47,31 @@ export default function Appliances() {
   ];
   const topdeals = [
     {
-      name: "IGP - Red single Rose Bouquet",
+      name: "Samsung Refrigerator",
       price: 799.99,
       discount: 10,
       rating: 4.7,
       categories: ["Smartphone", "Electronics", "Mobile"],
       image:
-        "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=720/app/assets/products/sliding_images/jpeg/e5327ef3-a8e3-47ce-ae97-6da3f24dd0b8.jpg",
+        "https://i.pinimg.com/736x/3d/65/b9/3d65b9232d5f171c4ef25b2634693559.jpg",
     },
     {
-      name: "Amul chocominis chocolate",
+      name: "LG Washing Machine",
       price: 348.99,
       discount: 15,
       rating: 4.8,
       categories: ["Headphones", "Audio", "Electronics"],
       image:
-        "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=720/app/images/products/sliding_image/23752a.jpg?ts=1722840893",
+        "https://i.pinimg.com/736x/e1/eb/1c/e1eb1cec9932b1d7ee1ee73c79680601.jpg",
     },
     {
-      name: "FnP1 Enchanted blue orchid bouquet",
+      name: "Dyson Vacuum Cleaner",
       price: 1099.0,
       discount: 5,
       rating: 4.9,
       categories: ["Laptop", "Computers", "Electronics"],
       image:
-        "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=720/app/assets/products/sliding_images/jpeg/73ab846a-b875-4b1a-a228-a3e94dc494f7.jpg?ts=1713528968",
+        "https://i.pinimg.com/736x/c7/c1/e3/c7c1e32bb65db1010802231b9dcb5766.jpg",
     },
   ];
   const homesGift = [
@@ -178,11 +188,44 @@ export default function Appliances() {
     },
   ];
 
+
+  const nextSlide = useCallback(() => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % service.length);
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(nextSlide, 5000); // Change slide every 5 seconds
+    return () => clearInterval(interval);
+  }, [nextSlide]);
+
+ 
+
   return (
-    <div className="font-Lexend mb-20">
-      <div className="flex flex-col justify-center items-center p-2">
-        <div className="bg-[url('https://airmulti.com.np/wp-content/uploads/2023/07/appliances.jpg')] rounded-xl bg-cover bg-center bg-no-repeat h-[23vh] w-full flex justify-start" />
-        <div className="w-full mt-5 p-2">
+    <div className="font-Lexend mb-20 mt-3 p-2">
+      <div  className="flex flex-col justify-center items-center">
+        <div className="relative aspect-video h-[25vh] w-full">
+          <Pagination
+            totalSlides={service.length}
+            currentSlide={currentIndex}
+            duration={5000}
+          />
+          <div className="flex ">
+            {service.map((src, index) => (
+              <div key={index} className=" ">
+                <div className="absolute top-0 w-full   h-[25vh] bg-black/20 rounded-2xl" />
+                <img
+                  src={src.img}
+                  alt={`slide ${index + 1}`}
+                  fill
+                  className={`object-cover transition-opacity absolute top-0 w-full rounded-2xl h-[25vh] duration-1000 ${
+                    index === currentIndex ? "opacity-100" : "opacity-0"
+                  }`}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="w-full mt-5 ">
           <h1 className="text-start font-semibold text-lg">
             Featured this week
           </h1>
@@ -193,7 +236,7 @@ export default function Appliances() {
                 className="flex justify-center items-center flex-col gap-1 "
               >
                 <div
-                  className={`border-[2.8px] border-blue-400  flex flex-col relative gap-2 rounded-full overflow-hidden h-[80px]  w-[80px]`}
+                  className={`border-[2px] border-blue-400  flex flex-col relative gap-2 rounded-full overflow-hidden h-[80px] w-[80px]`}
                   style={{
                     backgroundImage: `url(${items.img})`,
                     backgroundPosition: "center",
@@ -271,7 +314,7 @@ export default function Appliances() {
               );
             })}
           </div>
-          <div  className="bg-gray-100 flex flex-row gap-4 mt-4 py-1 shadow-sm rounded-lg">
+          <div className="bg-gray-100 flex flex-row gap-4 mt-4 py-1 shadow-sm rounded-lg">
             <h1 className="text-center w-full">see more</h1>
           </div>
         </div>

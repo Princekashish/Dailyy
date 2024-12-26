@@ -84,11 +84,11 @@ export default function Header() {
     { text: "Clothes", img: "/pngegg (26).png", link: "/cloths" },
     { text: "Beauty", img: "/pngegg (2).png", link: "/beauty" },
     { text: "Skin care", img: "/skincare.png", link: "/" },
-    { text: "Party ", img: "/rb_4295.png", link: "/party-essential" },
+    { text: "Party ", img: "https://i.pinimg.com/736x/15/8e/15/158e1589baea6660d22ecdfa0d90d11e.jpg", link: "/party-essential" },
     { text: "Essential", link: "/" },
     {
       text: "Computer",
-      img: "https://madisonliquidators.com/images/blog/gmdskl5.jpg",
+      img: "https://i.pinimg.com/736x/c0/8f/6d/c08f6d5e88f6ad47499f8161bc56fcdb.jpg",
       link: "/computer",
     },
     { text: "Medical", link: "/" },
@@ -182,7 +182,7 @@ export default function Header() {
                 duration: 0.4, // Longer duration for smooth effect
                 ease: "easeOut", // Smooth easing for a nice transition
               }}
-              className="bg-white p-5 w-[90%] h-3/4 overflow-hidden overflow-y-scroll rounded-3xl no-scrollbar grid grid-cols-3  gap-3"
+              className="bg-white p-5 w-[80%] h-[60vh] overflow-hidden overflow-y-scroll rounded-3xl no-scrollbar grid grid-cols-3  gap-3"
             >
               {categorymenu.map((item, i) => {
                 return (
@@ -192,14 +192,14 @@ export default function Header() {
                     key={i}
                     className={`flex justify-center items-center flex-col`}
                   >
-                    <div className="bg-[#f4f4f4]  h-[70px] w-[70px] rounded-full overflow-hidden flex justify-center items-center">
+                    <div className="bg-[#f9f9f9]  h-[70px] w-[70px] rounded-full overflow-hidden flex justify-center items-center">
                       <img
                         src={item.img}
                         alt=""
-                        className="object-contain h-[70px]"
+                        className="object-contain h-[50px]"
                       />
                     </div>
-                    <h1 className=" text-sm">{item.text}</h1>
+                    <h1 className=" text-xs text-center">{item.text}</h1>
                   </NavLink>
                 );
               })}

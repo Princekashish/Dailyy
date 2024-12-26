@@ -1,6 +1,16 @@
-import React from "react";
+import React, { useCallback, useEffect, useState } from "react";
+import Pagination from "../../utils/Animated/Pagination";
 
 export default function Beauty() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const service = [
+    {
+      img: "./rb_2264.png",
+    },
+    {
+      img: "https://i.pinimg.com/736x/8d/78/ad/8d78adbb6d959d6a0e7bc4368cb4ab51.jpg",
+    },
+  ];
   const trending = [
     {
       text: "Earbuds",
@@ -122,14 +132,44 @@ export default function Beauty() {
         "https://i.pinimg.com/736x/4e/44/d7/4e44d7ad4049f0061cab179f566a0f37.jpg",
     },
   ];
+  const nextSlide = useCallback(() => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % service.length);
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(nextSlide, 5000); // Change slide every 5 seconds
+    return () => clearInterval(interval);
+  }, [nextSlide]);
   return (
-    <div className="font-Lexend mb-20">
+    <div className="font-Lexend mb-20 mt-3 p-2">
       <div className="flex flex-col justify-center items-center ">
-        <div className="bg-[url('./rb_2264.png')] bg-cover bg-center bg-no-repeat h-[23vh] w-full bg-[#f2f2f2] flex justify-start">
+        {/* <div className="bg-[url('./rb_2264.png')] bg-cover bg-center bg-no-repeat h-[23vh] w-full bg-[#f2f2f2] flex justify-start">
           <div className=" w-full flex justify-center items-center relative">
             <h1 className="text-lg absolute right-10">REPLEXX</h1>
           </div>
+        </div> */}
+        <div className="relative aspect-video h-[25vh] w-full">
+        <Pagination
+          totalSlides={service.length}
+          currentSlide={currentIndex}
+          duration={5000}
+        />
+        <div className="flex ">
+          {service.map((src, index) => (
+            <div key={index} className=" ">
+              <div className="absolute top-0 w-full   h-[25vh] bg-black/20 rounded-2xl" />
+              <img
+                src={src.img}
+                alt={`slide ${index + 1}`}
+                fill
+                className={`object-cover transition-opacity absolute top-0 w-full rounded-2xl h-[25vh] duration-1000 ${
+                  index === currentIndex ? "opacity-100" : "opacity-0"
+                }`}
+              />
+            </div>
+          ))}
         </div>
+      </div>
 
         {/* top deals */}
         <div className="w-full mt-5 p-2">
@@ -177,7 +217,7 @@ export default function Beauty() {
                   className="flex justify-center items-center flex-col gap-1 "
                 >
                   <div
-                    className={`border-[2.8px] border-blue-400  flex flex-col relative gap-2 rounded-full overflow-hidden h-[90px]  w-[90px]`}
+                    className={`border-[2px] border-blue-400  flex flex-col relative gap-2 rounded-full overflow-hidden h-[90px]  w-[90px]`}
                     style={{
                       backgroundImage: `url(${items.img})`,
                       backgroundPosition: "center",
