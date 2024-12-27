@@ -4,8 +4,13 @@ import { ChevronUp, Minus, X } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import { RiTimerFlashLine } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { loadStripe } from "@stripe/stripe-js";
+import { productAdd } from "../../Redux/Feature/Cart/CartSlice";
 
 export default function Checkout({ price }) {
+  const cartss = useSelector((state) => state.cart.items);
+
   const [viewcart, setViewCart] = useState(true);
   const [payment, setPayment] = useState(false);
   const [selectedPayment, setSelectedPayment] = useState(null);
@@ -40,15 +45,15 @@ export default function Checkout({ price }) {
   };
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const storedUser = JSON.parse(localStorage.getItem("user"));
-    if (!storedUser) {
-      // If user is not logged in, redirect to login page
-      navigate("/login");
-    } else {
-      setUser(storedUser);
-    }
-  }, [navigate]);
+  // useEffect(() => {
+  //   const storedUser = JSON.parse(localStorage.getItem("user"));
+  //   if (!storedUser) {
+  //     // If user is not logged in, redirect to login page
+  //     navigate("/login");
+  //   } else {
+  //     setUser(storedUser);
+  //   }
+  // }, [navigate]);
 
   // Validate UPI ID
   const validateUPI = () => {
@@ -58,6 +63,57 @@ export default function Checkout({ price }) {
       alert("UPI ID is valid!");
     } else {
       setError("Invalid UPI ID");
+    }
+  };
+  const makePayment = async () => {
+    try {
+      // Initialize Stripe
+      const stripe = await loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
+
+      if (!stripe) {
+        console.error("Stripe initialization failed");
+        return;
+      }
+
+      // Prepare the request payload
+      const body = {
+        products: cartss,
+      };
+
+      const headers = {
+        "Content-Type": "application/json",
+      };
+
+      // Call the backend to create a Stripe Checkout session
+      const response = await fetch(
+        "http://localhost:3000/api/checkout/create-checkout-session",
+        {
+          method: "POST",
+          headers: headers,
+          body: JSON.stringify(body),
+        }
+      );
+
+      if (!response.ok) {
+        console.error("Failed to create a Stripe Checkout session");
+        return;
+      }
+
+      const session = await response.json();
+
+      // Redirect to the Stripe Checkout page
+      const result = await stripe.redirectToCheckout({
+        sessionId: session.id,
+      });
+
+      if (result.error) {
+        console.error(
+          "Stripe Checkout redirection error:",
+          result.error.message
+        );
+      }
+    } catch (error) {
+      console.error("Payment process failed:", error.message);
     }
   };
 
@@ -197,7 +253,13 @@ export default function Checkout({ price }) {
                         <p>{selectedPayment}</p>
                       </div>
                     </div>
-                    <button className="bg-green-700 w-1/2 py-3 text-white rounded-xl">
+                    <button
+                      onClick={(e) => {
+                        e.preventDefault(); // Prevent default form submission behavior
+                        makePayment(); // Trigger payment function
+                      }}
+                      className="bg-green-700 w-1/2 py-3 text-white rounded-xl"
+                    >
                       {" "}
                       Pay
                     </button>

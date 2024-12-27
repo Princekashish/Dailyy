@@ -18,6 +18,8 @@ import Exotics_Fruits from "../components/Exotics_Fruits";
 import Appliances from "../components/Appliances";
 import Beauty from "../components/Beauty";
 import Gifts from "../components/Gifts";
+import Cancle from "../components/Cancle";
+import Sucess from "../components/Succes";
 
 const rout = createBrowserRouter([
   {
@@ -61,6 +63,8 @@ const rout = createBrowserRouter([
     ],
   },
   { path: "/create_account", Component: UserAccount },
+  { path: "/success", Component: Sucess },
+  { path: "/cancel", Component: Cancle },
 ]);
 
 export default function Router() {

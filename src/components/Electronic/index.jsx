@@ -1,6 +1,20 @@
-import React from "react";
+import React, { useCallback, useEffect, useState } from "react";
+import Pagination from "../../utils/Animated/Pagination";
+import { Minus, Plus, X } from "lucide-react";
+import { useDispatch, useSelector } from "react-redux";
+import { motion } from "framer-motion";
+import { productAdd, productRemove } from "../../Redux/Feature/Cart/CartSlice";
 
 export default function Electronic() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const service = [
+    {
+      img: "https://i.pinimg.com/736x/79/0f/da/790fda67de0f8d31aba1562bcd804004.jpg",
+    },
+    {
+      img: "https://i.pinimg.com/736x/64/eb/04/64eb0407c26eabbf62e03b6eeffdbfdf.jpg",
+    },
+  ];
   const trending = [
     {
       text: "Earbuds",
@@ -21,32 +35,30 @@ export default function Electronic() {
   ];
   const topdeals = [
     {
+      id: "SAMS-001",
       name: "Samsung Galaxy S23",
       price: 799.99,
-      discount: 10,
-      rating: 4.7,
       categories: ["Smartphone", "Electronics", "Mobile"],
-      image: "https://m.media-amazon.com/images/I/61VfL-aiToL._SL1500_.jpg",
+      img: "https://m.media-amazon.com/images/I/61VfL-aiToL._SL1500_.jpg",
     },
     {
+      id: "SONY-002",
       name: "Sony WH-1000XM5 Headphones",
       price: 348.99,
-      discount: 15,
-      rating: 4.8,
       categories: ["Headphones", "Audio", "Electronics"],
-      image:
+      img:
         "https://www.bhphotovideo.com/cdn-cgi/image/fit=scale-down,width=500,quality=95/https://www.bhphotovideo.com/images/images500x500/sony_wh1000xm5_s_wh_1000xm5_noise_canceling_wireless_over_ear_1652444420_1706394.jpg",
     },
     {
+      id: "APPLE-003",
       name: "Apple MacBook Air M2",
       price: 1099.0,
-      discount: 5,
-      rating: 4.9,
       categories: ["Laptop", "Computers", "Electronics"],
-      image:
-        "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/mba13-midnight-config-202402?wid=820&hei=498&fmt=jpeg&qlt=90&.v=1708371033110",
+      img:
+        "https://i.pinimg.com/736x/39/fe/74/39fe7479f2670d490066c4d0eb93422b.jpg",
     },
   ];
+
   const homekitchen = [
     {
       name: "Philips Steam Iron",
@@ -54,8 +66,7 @@ export default function Electronic() {
       discount: 15,
       rating: 4.5,
       categories: ["Iron", "Home & Kitchen", "Appliances"],
-      image:
-        "https://i.pinimg.com/736x/31/8f/0a/318f0a143e8aa0b3f6994d196691d0f0.jpg",
+      image: "./pngeggiron.png",
     },
     {
       name: "Heating Rods & Geyser",
@@ -63,8 +74,7 @@ export default function Electronic() {
       discount: 20,
       rating: 4.3,
       categories: ["Heating Rods & Geysers", "Home & Kitchen", "Appliances"],
-      image:
-        "https://i.pinimg.com/736x/01/50/e4/0150e4010a3011df03d577025766b936.jpg",
+      image: "./pngeggheater.png",
     },
     {
       name: "Duracell AA Batteries",
@@ -90,7 +100,8 @@ export default function Electronic() {
       discount: 15,
       rating: 4.6,
       categories: ["Electric Cookers", "Home & Kitchen", "Appliances"],
-      image: "https://i.pinimg.com/736x/d4/43/a4/d443a44264a13c74774097c8ec72fbdb.jpg",
+      image:
+        "https://i.pinimg.com/736x/d4/43/a4/d443a44264a13c74774097c8ec72fbdb.jpg",
     },
     {
       name: "Juicer & Mixer",
@@ -98,7 +109,8 @@ export default function Electronic() {
       discount: 20,
       rating: 4.4,
       categories: ["Juicers & Mixers", "Home & Kitchen", "Appliances"],
-      image: "https://i.pinimg.com/736x/cf/55/2a/cf552a3b9dd1f21c56d437bdb7c2f5ad.jpg",
+      image:
+        "https://i.pinimg.com/736x/cf/55/2a/cf552a3b9dd1f21c56d437bdb7c2f5ad.jpg",
     },
     {
       name: "Maker",
@@ -106,7 +118,8 @@ export default function Electronic() {
       discount: 10,
       rating: 4.6,
       categories: ["Coffee Maker", "Home & Kitchen", "Appliances"],
-      image: "https://i.pinimg.com/736x/bf/47/b0/bf47b08d4bddf92560ea07b5af6951e0.jpg",
+      image:
+        "https://i.pinimg.com/736x/bf/47/b0/bf47b08d4bddf92560ea07b5af6951e0.jpg",
     },
     {
       name: "Tool Kit & Accessories",
@@ -114,16 +127,69 @@ export default function Electronic() {
       discount: 18,
       rating: 4.7,
       categories: ["Tools & Accessories", "Home & Kitchen", "DIY"],
-      image: "https://i.pinimg.com/736x/11/01/4b/11014b433d5dbceaafaaf4518e2ad13a.jpg",
+      image:
+        "https://i.pinimg.com/736x/11/01/4b/11014b433d5dbceaafaaf4518e2ad13a.jpg",
     },
   ];
+  const nextSlide = useCallback(() => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % service.length);
+  }, []);
+
+  useEffect(() => {
+    const interval = setInterval(nextSlide, 3000); // Change slide every 5 seconds
+    return () => clearInterval(interval);
+  }, [nextSlide]);
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  const cart = useSelector((state) => state.cart.items);
+  const dispatch = useDispatch();
+  const getCartItemQuantity = (productId) => {
+    const cartItem = cart.find((item) => item.id === productId);
+    return cartItem ? cartItem.quantity : 0;
+  };
+  const handleAddToCart = (item) => {
+    dispatch(productAdd(item));
+  };
+  const handleRemoveFromCart = (item) => {
+    console.log("enter");
+    dispatch(productRemove(item.id));
+  };
+  const openModal = (product) => {
+    setSelectedProduct(product); // Set the clicked product
+    setIsModalOpen(true); // Open the modal
+  };
+  const closeModal = () => {
+    setIsModalOpen(false); // Close the modal
+    setSelectedProduct(null); // Reset the selected product
+  };
 
   return (
     <div className="font-Lexend p-2">
       <div className="flex flex-col justify-center items-center ">
-        <h1 className="text-xs">shop by</h1>
-        <p className="text-lg font-medium capitalize">Trending Catogeries</p>
-        <div className="flex whitespace-nowrap gap-4 w-full overflow-hidden overflow-x-scroll no-scrollbar mt-4">
+        <div className="relative aspect-video h-[22vh] w-full">
+          <Pagination
+            totalSlides={service.length}
+            currentSlide={currentIndex}
+            duration={3000}
+          />
+          <div className="flex ">
+            {service.map((src, index) => (
+              <div key={index} className=" ">
+                <div className="absolute top-0 w-full   h-[22vh] bg-black/20 rounded-2xl" />
+                <img
+                  src={src.img}
+                  alt={`slide ${index + 1}`}
+                  fill
+                  className={`object-cover transition-opacity absolute top-0 w-full rounded-2xl h-[22vh] duration-1000 ${
+                    index === currentIndex ? "opacity-100" : "opacity-0"
+                  }`}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="flex  whitespace-nowrap gap-4 w-full overflow-hidden overflow-x-scroll no-scrollbar mt-4">
           {trending.map((items, i) => (
             <div
               key={i}
@@ -146,24 +212,53 @@ export default function Electronic() {
         {/* top deals */}
         <div className="w-full mt-5">
           <h1 className="text-start font-semibold text-lg">Top deals</h1>
-          <div className="grid grid-cols-3  gap-5">
+          <div className="grid grid-cols-3  gap-5 place-content-center">
             {topdeals.map((items, i) => {
+              const itemQuantity = getCartItemQuantity(items.id);
               return (
                 <div
                   key={i}
-                  className="flex flex-col justify-center items-center gap-5 flex-wrap  "
+                  className="flex flex-col justify-center items-center gap-3  "
                 >
-                  <div className="">
-                    <img
-                      src={items.image}
-                      alt=""
-                      className="h-[100px] object-contain"
-                    />
+                  <div className="relative">
+                    <div className="bg-[#f9f9f9] rounded-full h-[80px] w-[80px] flex justify-center items-center overflow-hidden">
+                      <img
+                        src={items.img}
+                        alt=""
+                        className=" object-contain h-[60px]   "
+                      />
+                    </div>
+                    {itemQuantity === 0 ? (
+                      <div
+                        onClick={() => handleAddToCart(items)}
+                        className="absolute -bottom-1 right-0 border-green-700 border px-1 py-1 bg-white rounded-lg cursor-pointer opacity-60"
+                      >
+                        <Plus size={18} />
+                      </div>
+                    ) : (
+                      <div className="absolute opacity-60 cursor-pointer -bottom-2 right-0 border-green-600 border px-2 py-1 bg-white rounded-lg flex gap-2 ">
+                        <button
+                          onClick={() => handleRemoveFromCart(items)}
+                          className="text-lg font-medium"
+                        >
+                          <Minus size={15} />
+                        </button>
+                        <h1 className="text-sm font-medium">{itemQuantity}</h1>
+                        <button
+                          onClick={() => handleAddToCart(items)}
+                          className="text-lg font-medium"
+                        >
+                          <Plus size={15} />
+                        </button>
+                      </div>
+                    )}
                   </div>
-                  <div className="flex flex-col ">
-                    <h1 className="text-sm font-medium  ">{items.name}</h1>
-                    <p className="text-xs ">rating {items.rating}</p>
-                    <p className="text-xs ">{items.discount}%</p>
+                  <div className="flex flex-col  ">
+                    <h1 className="text-sm text-[#5d5d5d] ">
+                      {items.name.length > 10
+                        ? `${items.name.substring(0, 19)}...`
+                        : items.name}
+                    </h1>
                     <p className="text-xs ">
                       MRP. <span className="text-sm ">{items.price}</span>
                     </p>
@@ -185,17 +280,21 @@ export default function Electronic() {
               return (
                 <div
                   key={i}
-                  className="flex flex-col justify-center items-center gap-5 flex-wrap  "
+                  className="flex flex-col justify-center items-center gap-3  "
                 >
-                  <div className="">
+                  <div className="bg-[#f9f9f9] rounded-full h-[80px] w-[80px] flex justify-center items-center overflow-hidden">
                     <img
                       src={items.image}
                       alt=""
-                      className="h-[100px] object-contain "
+                      className=" object-contain h-[60px]   "
                     />
                   </div>
                   <div className="flex flex-col ">
-                    <h1 className="text-sm font-medium  ">{items.name}</h1>
+                    <h1 className="text-sm text-[#5d5d5d] ">
+                      {items.name.length > 10
+                        ? `${items.name.substring(0, 15)}...`
+                        : items.name}
+                    </h1>
                   </div>
                 </div>
               );
