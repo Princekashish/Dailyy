@@ -10,6 +10,7 @@ import { NavLink } from "react-router-dom";
 
 export default function Header() {
   const [categoryList, setCategoryList] = useState(false);
+  const [serviceList, setServiceList] = useState(false);
   const [placeholder, setPlaceholder] = useState(
     ` Search for "milk" delivery in Minutes`
   );
@@ -25,6 +26,9 @@ export default function Header() {
   const closeCategory = (e) => {
     if (categorieRef.current === e.target) {
       setCategoryList(false);
+    }
+    if (categorieRef.current === e.target) {
+      setServiceList(false);
     }
   };
 
@@ -99,6 +103,23 @@ export default function Header() {
     { text: "Electrician", link: "/" },
     { text: "Plumber", link: "/" },
   ];
+  const sericemenu = [
+    
+    { text: "Pluber", img: "https://www.kindpng.com/picc/m/298-2986970_prestige-plumbing-plumber-cartoon-hd-png-download.png", link: "/plumber" },
+    { text: "carpanter ", img: "https://www.pngkey.com/png/detail/113-1137967_building-services-carpenter-images-for-kids.png", link: "/party-essential" },
+    { text: "welider", link: "/" },
+    {
+      text: "contractor",
+      img: "https://i.pinimg.com/736x/c0/8f/6d/c08f6d5e88f6ad47499f8161bc56fcdb.jpg",
+      link: "/computer",
+    },
+    { text: "Electrician", link: "/" },
+    { text: "Painter", link: "/" },
+    { text: "cleaner", link: "/" },
+    { text: "Machanic", link: "/" },
+    { text: "Laundry", link: "/" },
+
+  ];
 
   return (
     <div className="pt-2">
@@ -146,7 +167,7 @@ export default function Header() {
       )}
       {!hasItemsInCart && (
         <button
-          onClick={handleCategory}
+          onClick={()=>setServiceList((pre)=>!pre)}
           className="bg-black/60 rounded-full fixed bottom-7 gap-1 left-5 z-20 px-3 py-3 flex justify-center items-center flex-col"
         >
           <FaTools className="text-white" size={20} />
@@ -199,7 +220,62 @@ export default function Header() {
                         className="object-contain h-[50px]"
                       />
                     </div>
-                    <h1 className=" text-xs text-center">{item.text}</h1>
+                    <h1 className=" text-xs text-center capitalize">{item.text}</h1>
+                  </NavLink>
+                );
+              })}
+            </motion.div>
+          </div>
+        </div>
+      )}
+      {serviceList && (
+        <div className="fixed top-0 left-0 right-0 bottom-0 bg-black bg-opacity-50 z-50 h-screen">
+          <div
+            ref={categorieRef}
+            onClick={closeCategory}
+            className="flex justify-center items-center h-screen"
+          >
+            <motion.div
+              initial={{
+                x: "-30%", // Start from right
+                y: "40%", // Start from bottom
+                opacity: 0, // Start with 0 opacity
+                scale: 0.5, // Optional: Start smaller for the smooth zoom-in effect
+              }}
+              animate={{
+                x: 0, // Move to the center horizontally
+                y: 0, // Move to the center vertically
+                opacity: 1, // Fade in as it moves
+                scale: 1, // Scale to full size
+              }}
+              exit={{
+                x: "-100%", // Exit to the right
+                y: "-100%", // Exit to the bottom
+                opacity: 0, // Fade out
+                scale: 0.6, // Optionally scale down when exiting
+              }}
+              transition={{
+                duration: 0.4, // Longer duration for smooth effect
+                ease: "easeOut", // Smooth easing for a nice transition
+              }}
+              className="bg-white p-5 w-[80%] h-[60vh] overflow-hidden overflow-y-scroll rounded-3xl no-scrollbar grid grid-cols-3  gap-3"
+            >
+              {sericemenu.map((item, i) => {
+                return (
+                  <NavLink
+                    onClick={() => setCategoryList(false)}
+                    to={item.link}
+                    key={i}
+                    className={`flex justify-center items-center flex-col`}
+                  >
+                    <div className="bg-[#f9f9f9]  h-[70px] w-[70px] rounded-full overflow-hidden flex justify-center items-center">
+                      <img
+                        src={item.img}
+                        alt=""
+                        className="object-contain h-[60px]"
+                      />
+                    </div>
+                    <h1 className=" text-xs text-center capitalize">{item.text}</h1>
                   </NavLink>
                 );
               })}

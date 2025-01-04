@@ -17,7 +17,7 @@ export default function Service() {
   ];
 
   const servicelist = [
-    { text: "Electrician", img: "/rb_150265.png" },
+    { text: "All", img: "/groupall.png" },
     { text: "Plumber", img: "/rb_136620.png" },
     { text: "Drying", img: "/rb_50594.png" },
     { text: "Electrician", img: "/rb_150265.png" },
@@ -25,8 +25,6 @@ export default function Service() {
     { text: "Drying", img: "/rb_50594.png" },
   ];
 
-  // State to track whether the scroll position is past a certain point
-  const [isScrolled, setIsScrolled] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const scrollContainerRef = useRef(null);
 
@@ -39,33 +37,6 @@ export default function Service() {
     return () => clearInterval(interval);
   }, [nextSlide]);
 
-  // Handle scroll event
-  const handleScroll = () => {
-    if (scrollContainerRef.current) {
-      const scrollWidth = scrollContainerRef.current.scrollWidth;
-      const clientWidth = scrollContainerRef.current.clientWidth;
-      const scrollPosition = scrollContainerRef.current.scrollLeft;
-
-      // If the scroll position is at the far right (i.e., scrolled beyond a threshold)
-      if (scrollPosition + clientWidth >= scrollWidth - 230) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-    }
-  };
-
-  useEffect(() => {
-    const scrollContainer = scrollContainerRef.current;
-    scrollContainer.addEventListener("scroll", handleScroll);
-
-    // Cleanup the event listener when the component unmounts
-    return () => {
-      if (scrollContainer) {
-        scrollContainer.removeEventListener("scroll", handleScroll);
-      }
-    };
-  }, []);
 
   return (
     <div className="p-3 font-Lexend flex flex-col gap-5">
@@ -93,22 +64,6 @@ export default function Service() {
             </div>
           ))}
 
-          {/* Conditionally render the motion div based on scroll position */}
-          {!isScrolled && (
-            <motion.div
-              initial={{ x: -10 }} // Start position at 0 (centered)
-              animate={{ x: 0 }} // End position at 0 (centered)
-              transition={{
-                type: "spring", // Smooth spring animation
-                stiffness: 100, // Controls the stiffness of the spring
-                damping: 25, // Controls the bounce damping
-                duration: 0.25, // Duration for one loop (1 second)
-              }}
-              className="absolute right-0 top-0 bottom-0 m-auto w-10 h-10 flex items-center justify-center"
-            >
-              <ChevronsRight className="text-gray-500 " />
-            </motion.div>
-          )}
         </div>
       </div>
 

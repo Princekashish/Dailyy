@@ -20,6 +20,10 @@ import Beauty from "../components/Beauty";
 import Gifts from "../components/Gifts";
 import Cancle from "../components/Cancle";
 import Sucess from "../components/Succes";
+import Plumber from "../components/Plumber";
+import WorkerCart from "../components/WorkerCart";
+import ServiceSearch from "../components/ServiceSearch";
+
 
 const rout = createBrowserRouter([
   {
@@ -65,6 +69,9 @@ const rout = createBrowserRouter([
   { path: "/create_account", Component: UserAccount },
   { path: "/success", Component: Sucess },
   { path: "/cancel", Component: Cancle },
+  { path: "/plumber", Component: Plumber },
+  {path:"/service/search", Component:ServiceSearch},
+  { path: "/service/:id", Component: WorkerCart },
 ]);
 
 export default function Router() {
