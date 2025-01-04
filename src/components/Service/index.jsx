@@ -1,7 +1,6 @@
 import { useState, useEffect, useCallback, useRef } from "react";
-import { motion } from "framer-motion";
-import { ChevronsRight } from "lucide-react";
 import Pagination from "../../utils/Animated/Pagination";
+import { Link } from "react-router-dom";
 
 export default function Service() {
   const service = [
@@ -17,7 +16,7 @@ export default function Service() {
   ];
 
   const servicelist = [
-    { text: "All", img: "/groupall.png" },
+    { text: "All", img: "/groupall.png" , link : "/service"},
     { text: "Plumber", img: "/rb_136620.png" },
     { text: "Drying", img: "/rb_50594.png" },
     { text: "Electrician", img: "/rb_150265.png" },
@@ -47,21 +46,21 @@ export default function Service() {
           className="flex overflow-hidden overflow-x-scroll gap-1 no-scrollbar relative whitespace-nowrap w-full"
         >
           {servicelist.map((items, i) => (
-            <div
+            <Link to={items.link}
               key={i}
               className=" rounded-full  flex flex-col  justify-center gap-2 items-center   relative p-1"
             >
-              <div className="bg-[#f4f5f7] w-[70px] h-[70px] p-2 flex justify-center items-center rounded-full">
+              <div className="bg-[#f4f5f7] w-[70px] h-[70px]  flex justify-center items-center rounded-full">
                 {" "}
                 <img
                   src={items.img}
                   alt=""
-                  className="rounded-full h-[70px] object-contain "
+                  className=" h-[50px] w-[50px] object-contain"
                 />
               </div>
 
               <h1 className="text-center text-xs z-10 ">{items.text}</h1>
-            </div>
+            </Link>
           ))}
 
         </div>

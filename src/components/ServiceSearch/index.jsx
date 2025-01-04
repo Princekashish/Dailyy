@@ -1,12 +1,22 @@
 import { motion } from "framer-motion";
 import { Search } from "lucide-react";
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { IoArrowBack } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import { GoArrowUpRight } from "react-icons/go";
 import { div } from "framer-motion/client";
 
 export default function ServiceSearch() {
+  const inputRef = useRef(null); // Create a ref for the input
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      inputRef.current.focus(); // Focus the input after a delay
+    }, 450); // Delay matches the animation duration
+
+    return () => clearTimeout(timer); // Cleanup the timer on unmount
+  }, []);
+
   const services = [
     "indoor cleaning",
     "plumbing drain repair",
@@ -43,12 +53,12 @@ export default function ServiceSearch() {
     <motion.div
       initial={{ x: "100%" }}
       animate={{ x: 0 }}
-      transition={{ duration: 0.25 }}
+      transition={{ duration: 0.35 }}
       className="bg-gray-100 h-screen "
     >
       <div className="p-3 relative flex justify-between ">
         <Link
-          to={"/"}
+          to={"/service"}
           className="flex justify-center items-center gap-2 text-sm  "
         >
           <IoArrowBack size={25} />
@@ -57,6 +67,7 @@ export default function ServiceSearch() {
         <div className=" w-[90%] flex relative gap-3">
           <input
             type="text"
+            ref={inputRef}
             placeholder='Search for "Indoor cleaning"'
             className="py-3 px-1o border-2 border-black/10 font-light  outline-none rounded-3xl w-full transition-all duration-500 placeholder-opacity-0 placeholder:font-light tracking-tight pl-14" // Added padding-left for icon
           />
@@ -87,11 +98,18 @@ export default function ServiceSearch() {
         <div className="flex whitespace-nowrap overflow-hidden overflow-x-scroll no-scrollbar gap-4">
           {sericemenu.map((popular, i) => {
             return (
-              <div key={i} className="flex flex-col gap-1 justify-center items-center">
-                <img src={popular.img} alt="" className="border border-black/10 rounded-full h-[70px] min-w-[70px] object-contain"/>
+              <div
+                key={i}
+                className="flex flex-col gap-1 justify-center items-center"
+              >
+                <img
+                  src={popular.img}
+                  alt=""
+                  className="border border-black/10 rounded-full h-[70px] min-w-[70px] object-contain"
+                />
 
                 <h1 className=" font-light text-sm capitalize flex justify-center items-center">
-                  {popular.text} 
+                  {popular.text}
                 </h1>
               </div>
             );
