@@ -21,9 +21,8 @@ import Gifts from "../components/Gifts";
 import Cancle from "../components/Cancle";
 import Sucess from "../components/Succes";
 import Plumber from "../components/Plumber";
-import WorkerCart from "../components/WorkerCart";
 import ServiceSearch from "../components/ServiceSearch";
-import ServicePage from "../components/ServicePage";
+import PlumberCart from "../components/PlumberCart";
 
 
 const rout = createBrowserRouter([
@@ -71,10 +70,9 @@ const rout = createBrowserRouter([
   { path: "/success", Component: Sucess },
   { path: "/cancel", Component: Cancle },
   { path: "/plumber", Component: Plumber },
-  {path:"/service" , Component:ServicePage},
   {path:"/service/search", Component:ServiceSearch},
 
-  { path: "/service/:id", Component: WorkerCart },
+  { path: "/plumber/:id", Component: PlumberCart },
 ]);
 
 export default function Router() {

@@ -31,7 +31,9 @@ export default function Header() {
       setServiceList(false);
     }
   };
-
+  const handleServicelist = () => {
+    setServiceList(!serviceList);
+  };
   const navitems = [
     {
       icon: <FaBoxOpen size={25} />,
@@ -88,7 +90,11 @@ export default function Header() {
     { text: "Clothes", img: "/pngegg (26).png", link: "/cloths" },
     { text: "Beauty", img: "/pngegg (2).png", link: "/beauty" },
     { text: "Skin care", img: "/skincare.png", link: "/" },
-    { text: "Party ", img: "https://i.pinimg.com/736x/15/8e/15/158e1589baea6660d22ecdfa0d90d11e.jpg", link: "/party-essential" },
+    {
+      text: "Party ",
+      img: "https://i.pinimg.com/736x/15/8e/15/158e1589baea6660d22ecdfa0d90d11e.jpg",
+      link: "/party-essential",
+    },
     { text: "Essential", link: "/" },
     {
       text: "Computer",
@@ -104,9 +110,16 @@ export default function Header() {
     { text: "Plumber", link: "/" },
   ];
   const sericemenu = [
-    
-    { text: "Pluber", img: "https://www.kindpng.com/picc/m/298-2986970_prestige-plumbing-plumber-cartoon-hd-png-download.png", link: "/plumber" },
-    { text: "carpanter ", img: "https://www.pngkey.com/png/detail/113-1137967_building-services-carpenter-images-for-kids.png", link: "/party-essential" },
+    {
+      text: "Pluber",
+      img: "https://www.kindpng.com/picc/m/298-2986970_prestige-plumbing-plumber-cartoon-hd-png-download.png",
+      link: "/plumber",
+    },
+    {
+      text: "carpanter ",
+      img: "https://www.pngkey.com/png/detail/113-1137967_building-services-carpenter-images-for-kids.png",
+      link: "/party-essential",
+    },
     { text: "welider", link: "/" },
     {
       text: "contractor",
@@ -118,7 +131,9 @@ export default function Header() {
     { text: "cleaner", link: "/" },
     { text: "Machanic", link: "/" },
     { text: "Laundry", link: "/" },
-
+    { text: "cleaner", link: "/" },
+    { text: "Machanic", link: "/" },
+    { text: "Laundry", link: "/" },
   ];
 
   return (
@@ -167,10 +182,13 @@ export default function Header() {
       )}
       {!hasItemsInCart && (
         <button
-          onClick={()=>setServiceList((pre)=>!pre)}
-          className="bg-black/60 rounded-full fixed bottom-7 gap-1 left-5 z-20 px-3 py-3 flex justify-center items-center flex-col"
+          onClick={handleServicelist}
+          className="bg-white/30 border  backdrop-blur-md rounded-full fixed bottom-7 gap-1 left-5 z-20 px-3 py-3 flex justify-center items-center flex-col"
         >
-          <FaTools className="text-white" size={20} />
+          <div className="flex justify-center items-center text-black gap-1 ">
+            <FaTools  size={20} />
+            <h1>service</h1>
+          </div>
         </button>
       )}
       {categoryList && (
@@ -220,7 +238,9 @@ export default function Header() {
                         className="object-contain h-[50px]"
                       />
                     </div>
-                    <h1 className=" text-xs text-center capitalize">{item.text}</h1>
+                    <h1 className=" text-xs text-center capitalize">
+                      {item.text}
+                    </h1>
                   </NavLink>
                 );
               })}
@@ -275,7 +295,9 @@ export default function Header() {
                         className="object-contain h-[60px]"
                       />
                     </div>
-                    <h1 className=" text-xs text-center capitalize">{item.text}</h1>
+                    <h1 className=" text-xs text-center capitalize">
+                      {item.text}
+                    </h1>
                   </NavLink>
                 );
               })}

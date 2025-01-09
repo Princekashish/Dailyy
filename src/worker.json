@@ -1,58 +1,76 @@
-[
+{
+  "plumber_services": [
     {
-      "id": 1,
-      "name": "Amit Kumar",
-      "rating": 4.5,
-      "jobsCompleted": 20,
-      "price": 500,
-      "slots": ["10:00 AM - 12:00 PM", "2:00 PM - 4:00 PM", "5:00 PM - 7:00 PM"],
-      "location": "Delhi",
+      "id": "plumber_001",
+      "title": "Pipe Repair",
+      "description": "Fixing damaged or broken pipes to restore proper water flow and prevent leaks.",
+      "category": "Plumbing",
+      "image": "https://i.pinimg.com/736x/56/d0/3a/56d03af024613edb5ee4ac69e6cb202f.jpg",
       "availability": "Available",
-      "image": "https://i.pinimg.com/736x/a2/98/a7/a298a7a052ff391205d94e65ee130b81.jpg"
+      "price": 100
     },
     {
-      "id": 2,
-      "name": "Priya Sharma",
-      "rating": 4.7,
-      "jobsCompleted": 50,
-      "price": 600,
-      "slots": ["9:00 AM - 11:00 AM", "3:00 PM - 5:00 PM", "6:00 PM - 8:00 PM"],
-      "location": "Mumbai",
+      "id": "plumber_002",
+      "title": "Drain Cleaning",
+      "description": "Cleaning clogged or slow drains to ensure proper water drainage in bathrooms, kitchens, and other areas.",
+      "category": "Plumbing",
+      "image": "https://i.pinimg.com/736x/8f/c9/c6/8fc9c68724bc8dcde035d345c4bd5a39.jpg",
+      "availability": "Available",
+      "price": 75
+    },
+    {
+      "id": "plumber_003",
+      "title": "Water Heater Installation",
+      "description": "Installing and setting up water heaters to provide reliable hot water for households and businesses.",
+      "category": "Plumbing",
+      "image": "https://i.pinimg.com/736x/9a/6e/29/9a6e2934d31b3f5a2e3b7e8e5570a817.jpg",
+      "availability": "Available",
+      "price": 200
+    },
+    {
+      "id": "plumber_004",
+      "title": "Leak Detection",
+      "description": "Identifying and repairing leaks in pipes, walls, and other plumbing systems to prevent water damage.",
+      "category": "Plumbing",
+      "image": "https://i.pinimg.com/736x/b1/8d/d9/b18dd974caa73be23d5b10ce4cba0810.jpg",
+      "availability": "Available",
+      "price": 120
+    },
+    {
+      "id": "plumber_005",
+      "title": "Sewer Line Repair",
+      "description": "Repairing or replacing damaged sewer lines to prevent blockages and maintain waste removal.",
+      "category": "Plumbing",
+      "image": "https://i.pinimg.com/736x/43/00/67/4300676e339dd3d445eeb76c0ba0206d.jpg",
       "availability": "Unavailable",
-      "image": "https://i.pinimg.com/736x/44/e6/84/44e6849065e88b1dafea2487a8189786.jpg"
+      "price": 250
     },
     {
-      "id": 3,
-      "name": "Rajesh Gupta",
-      "rating": 4.3,
-      "jobsCompleted": 40,
-      "price": 450,
-      "slots": ["7:00 AM - 9:00 AM", "12:00 PM - 2:00 PM", "4:00 PM - 6:00 PM"],
-      "location": "Bangalore",
+      "id": "plumber_006",
+      "title": "Toilet Installation",
+      "description": "Installing new toilets or replacing old ones, ensuring proper functioning and water efficiency.",
+      "category": "Plumbing",
+      "image": "https://i.pinimg.com/736x/b9/33/b8/b933b8f97d7fc8ac138c2a1f185aca2d.jpg",
       "availability": "Available",
-      "image": "https://i.pinimg.com/736x/80/ed/67/80ed67d4e5e75b27b6d5e17a6e878e7d.jpg"
+      "price": 150
     },
     {
-      "id": 4,
-      "name": "Anita Verma",
-      "rating": 4.9,
-      "jobsCompleted": 100,
-      "price": 700,
-      "slots": ["8:00 AM - 10:00 AM", "1:00 PM - 3:00 PM", "5:00 PM - 7:00 PM"],
-      "location": "Chennai",
+      "id": "plumber_007",
+      "title": "Faucet Repair and Replacement",
+      "description": "Fixing or replacing malfunctioning faucets to improve water flow and prevent leaks.",
+      "category": "Plumbing",
+      "image": "https://i.pinimg.com/736x/9a/25/34/9a25345e5efb4d61afc898b13e7982ca.jpg",
       "availability": "Available",
-      "image": "https://i.pinimg.com/736x/50/f5/15/50f515187ed6537411d84c8f5231b489.jpg"
+      "price": 60
     },
     {
-      "id": 5,
-      "name": "Vikram Singh",
-      "rating": 4.2,
-      "jobsCompleted": 35,
-      "price": 550,
-      "slots": ["9:00 AM - 11:00 AM", "12:00 PM - 2:00 PM", "4:00 PM - 6:00 PM"],
-      "location": "Kolkata",
-      "availability": "Unavailable",
-      "image": "https://i.pinimg.com/736x/32/4e/d2/324ed2a2cede2f08f1c067a51bfb9adc.jpg"
+      "id": "plumber_008",
+      "title": "Water Pressure Solutions",
+      "description": "Diagnosing and fixing issues related to low or high water pressure to improve water flow throughout the property.",
+      "category": "Plumbing",
+      "image": "https://i.pinimg.com/736x/8a/2c/11/8a2c11e64a8ea7bd1adab0703af48625.jpg",
+      "availability": "Available",
+      "price": 90
     }
   ]
-  
+}

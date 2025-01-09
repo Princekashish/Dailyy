@@ -58,7 +58,7 @@ export default function ServiceSearch() {
     >
       <div className="p-3 relative flex justify-between ">
         <Link
-          to={"/service"}
+          to={"/"}
           className="flex justify-center items-center gap-2 text-sm  "
         >
           <IoArrowBack size={25} />
