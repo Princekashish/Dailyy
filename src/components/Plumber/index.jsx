@@ -84,7 +84,7 @@ export default function Plumber() {
                     className="h-[85px] w-[85px] rounded-full object-cover"
                   />
 
-                  <div className="text-start  w-full flex flex-col gap-[5px]">
+                  <div className="text-start  w-full flex flex-col gap-[5px] ">
                     <h1 className="font-semibold">{plumber.title}</h1>
                     <p className="font-light text-sm flex justify-start items-center gap-1">
                       <span className="text-blue-500">
@@ -92,10 +92,10 @@ export default function Plumber() {
                       </span>
                       {plumber.jobsCompleted} Job completed near you
                     </p>
-                    <h1 className="text-black/50 text-sm">{plumber.description.length > 10 ? `${plumber.description.substring(0,30)}...`:plumber.description}</h1>
+                    <h1 className="text-black/50 text-sm">{plumber.description.length > 15 ? `${plumber.description.substring(0,31)}...`:plumber.description}</h1>
                   </div>
                 </div>
-                <div className="flex justify-around items-center capitalize border-t p-1 ">
+                <div className="flex justify-around items-center capitalize border-t pt-3">
                   <div className="flex gap-1">
                     <h3 className="font-light text-sm">
                      Disc
@@ -105,8 +105,8 @@ export default function Plumber() {
                   <Banknote size={20} />
                     <h3 className="font-light text-sm">₹{plumber.price} </h3>
                   </div>
-                  <div className="flex justify-center items-center ">
-                    <button className="px-3 py-1 border border-green-600 relative left-5 rounded-xl">Book</button>
+                  <div className="flex justify-center items-center  ">
+                    <button className="px-3 py-1 border border-green-600 relative left-5 rounded-lg">Book</button>
                   </div>
                 </div>
               </Link>

@@ -183,7 +183,7 @@ export default function Header() {
       {!hasItemsInCart && (
         <button
           onClick={handleServicelist}
-          className="bg-white/30 border  backdrop-blur-md rounded-full fixed bottom-7 gap-1 left-5 z-20 px-3 py-3 flex justify-center items-center flex-col"
+          className="bg-white/30 border   backdrop-blur-md rounded-full fixed bottom-7 gap-1 left-5 z-30 px-3 py-3 flex justify-center items-center flex-col"
         >
           <div className="flex justify-center items-center text-black gap-1 ">
             <FaTools  size={20} />
