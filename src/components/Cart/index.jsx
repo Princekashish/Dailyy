@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { ChevronRight, Minus, Plus, X } from "lucide-react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { RiTimerFlashLine } from "react-icons/ri";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -12,13 +12,15 @@ import Checkout from "../Checkout";
 
 export default function Cart({ bottom }) {
   const cart = useSelector((state) => state.cart.items); // Get cart items from Redux state
-
+  const [homeServicesVisible, setHomeServicesVisible] = useState(2);
   const [viewCart, setViewCart] = useState(false);
   const [checkout, setCheckout] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const dispatch = useDispatch();
 
-  const homeServices = cart.filter((item) => item.serviceType === "homeService");
+  const homeServices = cart.filter(
+    (item) => item.serviceType === "homeService"
+  );
   const products = cart.filter((item) => item.serviceType === "Fresh");
 
   // Check if cart has any items
@@ -48,15 +50,42 @@ export default function Cart({ bottom }) {
   const productModal = () => {
     setSelectedProduct(false);
   };
+
+  // calculating a price
+  const freshTotal = products.reduce(
+    (total, item) => total + item.price * item.quantity,
+    0
+  );
+  const homeServiceTotal = homeServices.reduce(
+    (total, item) => total + item.price * item.quantity,
+    0
+  );
+  const deliveryCharge = 0;
+  const handlingCharge = 20;
+  const total = freshTotal + homeServiceTotal + deliveryCharge + handlingCharge;
+
+  //scroll for service
+  const handleScroll = () => {
+    const scrollPosition = window.scrollY;
+    if (scrollPosition === 0) {
+      setHomeServicesVisible(homeServices.length);
+    } else {
+      setHomeServicesVisible(1);
+    }
+  };
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
   return (
-    <div
-      className={`fixed ${bottom} left-0 right-0 text-center z-20   p-4  flex items-center justify-center`}
-    >
+    <>
       <div
         onClick={() => setViewCart((pre) => !pre)}
-        className={`flex justify-center items-center ${
-          hasItemsInCart ? "bg-[#276c13] " : "hidden"
-        } px-1 py-1 gap-2 rounded-full text-white`}
+        className={`flex justify-center items-center mx-auto bottom-7  left-[30%] text-center z-20 w-[40%] p-4 fixed ${
+          hasItemsInCart ? "bg-[#276c13]" : "hidden"
+        } px-1 py-1 rounded-full text-white`}
       >
         {/* Show the first two items' images */}
         <div className="relative flex justify-center items-center ">
@@ -86,9 +115,7 @@ export default function Cart({ bottom }) {
               {/* Button to view cart page */}
               <h1 className=" mt-2 text-xs">View Cart</h1>
             </div>
-            <div className="flex justify-center items-center rounded-full bg-[#216011] p-3">
-              <ChevronRight size={18} />
-            </div>
+            <ChevronRight size={18} />
           </div>
         )}
       </div>
@@ -126,48 +153,64 @@ export default function Cart({ bottom }) {
                   </button>
                 </div>
                 <div className="flex flex-col justify-between gap-5">
-                  <div className=" h-[40vh] overflow-hidden overflow-y-scroll flex flex-col gap-3 no-scrollbar">
-                    {/* {cart.map((items) => (
-                      <div
-                        key={items.id}
-                        className=" flex justify-between items-center "
-                      >
-                        <div className="flex justify-start items-center gap-2">
-                          <div
-                            onClick={() => handleproduct(items)}
-                            className=" p-2 border rounded-3xl  border-gray-300 w-[60px] h-[60px] flex justify-center items-center"
-                          >
-                            <img
-                              src={items.img}
-                              alt=""
-                              className="h-[90px] object-contain"
-                            />
-                          </div>
-                          <div className="flex flex-col justify-start items-start gap-1">
-                            <h1 className="text-sm">{items.name}</h1>
-                            <p className="text-sm font-bold">₹{items.price}</p>
-                          </div>
-                        </div>
+                  <div className=" h-[40vh] overflow-hidden overflow-y-scroll flex flex-col gap-3 no-scrollbar  relative">
+                    {homeServices.length > 0 && (
+                      <div className="p-4 bg-blue-600 rounded-3xl sticky top-0 shadow-lg">
+                        <div className="flex flex-col gap-3">
+                          {homeServices
+                            .slice(0, homeServicesVisible)
+                            .map((items) => (
+                              <div
+                                key={items.id}
+                                className="flex justify-between items-center"
+                              >
+                                <div className="flex justify-start items-center gap-2">
+                                  <div
+                                    onClick={() => handleproduct(items)}
+                                    className="p-2 border rounded-3xl border-gray-300 w-[60px] h-[60px] flex justify-center items-center bg-white"
+                                  >
+                                    <img
+                                      src={items.img}
+                                      alt=""
+                                      className="object-cover bg-red-700"
+                                    />
+                                  </div>
+                                  <div className="flex flex-col justify-start items-start gap-1 text-white">
+                                    <h1 className="text-sm text-start">
+                                      {items.name.length > 15
+                                        ? `${items.name.substring(0, 16)}...`
+                                        : items.name}
+                                    </h1>
+                                    <p className="text-sm font-bold">
+                                      ₹{items.price}
+                                    </p>
+                                  </div>
+                                </div>
 
-                        <div className="flex  border border-green-600 rounded-md p-1 bg-green-600 text-white gap-2">
-                          <button
-                            onClick={() => handleRemoveFromCart(items.id)}
-                            className="text-sm font-medium "
-                          >
-                            <Minus size={15} />
-                          </button>
-                          <h1 className="text-xs font-medium">
-                            {items.quantity}
-                          </h1>
-                          <button
-                            onClick={() => handleAddToCart(items)}
-                            className="text-sm font-medium"
-                          >
-                            <Plus size={15} />
-                          </button>
+                                <div className="flex border border-green-600 rounded-md p-1 bg-green-600 text-white gap-2">
+                                  <button
+                                    onClick={() =>
+                                      handleRemoveFromCart(items.id)
+                                    }
+                                    className="text-sm font-medium"
+                                  >
+                                    <Minus size={15} />
+                                  </button>
+                                  <h1 className="text-xs font-medium">
+                                    {items.quantity}
+                                  </h1>
+                                  <button
+                                    onClick={() => handleAddToCart(items)}
+                                    className="text-sm font-medium"
+                                  >
+                                    <Plus size={15} />
+                                  </button>
+                                </div>
+                              </div>
+                            ))}
                         </div>
                       </div>
-                    ))} */}
+                    )}
                     {products.length > 0 && (
                       <div className="p-4 ">
                         <div className="flex flex-col gap-3">
@@ -217,73 +260,46 @@ export default function Cart({ bottom }) {
                         </div>
                       </div>
                     )}
-                    {homeServices.length > 0 && (
-                      <div className="p-4 bg-[#1c68ff] rounded-t-2xl">
-                        <div className="flex flex-col gap-3">
-                          {homeServices.map((items) => (
-                            <div
-                              key={items.id}
-                              className=" flex justify-between items-center "
-                            >
-                              <div className="flex justify-start items-center gap-2">
-                                <div
-                                  onClick={() => handleproduct(items)}
-                                  className=" p-2 border rounded-3xl  border-gray-300 w-[60px] h-[60px] flex justify-center items-center bg-white"
-                                >
-                                  <img
-                                    src={items.img}
-                                    alt=""
-                                    className="h-[90px] object-contain"
-                                  />
-                                </div>
-                                <div className="flex flex-col justify-start items-start gap-1 text-white">
-                                  <h1 className="text-sm  text-start">{items.name.length > 15 ? `${items.name.substring(0,16)}...` : items.name}</h1>
-                                  <p className="text-sm font-bold">
-                                    ₹{items.price}
-                                  </p>
-                                </div>
-                              </div>
-
-                              <div className="flex  border border-green-600 rounded-md p-1 bg-green-600 text-white gap-2">
-                                <button
-                                  onClick={() => handleRemoveFromCart(items.id)}
-                                  className="text-sm font-medium "
-                                >
-                                  <Minus size={15} />
-                                </button>
-                                <h1 className="text-xs font-medium">
-                                  {items.quantity}
-                                </h1>
-                                <button
-                                  onClick={() => handleAddToCart(items)}
-                                  className="text-sm font-medium"
-                                >
-                                  <Plus size={15} />
-                                </button>
-                              </div>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-
-
                   </div>
-                  <div className=" flex flex-col justify-start items-start mt-1 ">
-                    <h1 className=" font-semibold text-lg">Order Details</h1>
-                    <div className="bg-[#f8f8f8] rounded-xl h-[15vh] w-full  mt-2">
-                      <div className="flex flex-col gap-1  rounded-lg p-3">
-                        <div className="flex justify-between items-center font-semibold">
-                          <h1 className="text-start ">Items Total</h1>
-                          <p>₹{price}</p>
+                  <div className="flex flex-col justify-start items-start mt-1">
+                    <h1 className="font-semibold text-lg">Order Details</h1>
+                    <div className="bg-[#f8f8f8] rounded-xl h-[15vh] w-full mt-1">
+                      <div className="flex flex-col  rounded-lg p-2 ">
+                        {/* Total Price for Products (Fresh items) */}
+                        <div className="flex justify-between items-center">
+                          <h1 className="text-sm">Grocery </h1>
+                          <p>₹{freshTotal}</p>{" "}
+                          {/* Total price of Fresh items */}
                         </div>
-                        <div className="flex justify-between items-center ">
-                          <h1 className="text-start ">Delivery Charge</h1>
-                          <p className="text-green-600">Free</p>
+
+                        {/* Show Home Service Charges if Home Services are added */}
+                        {homeServices.length > 0 && (
+                          <div className="flex justify-between items-center">
+                            <h1 className="text-sm">Service Charge</h1>
+                            <p>
+                              ₹
+                              {homeServices.reduce(
+                                (total, item) =>
+                                  total + item.price * item.quantity,
+                                0
+                              )}
+                            </p>{" "}
+                            {/* Total cost of Home Services */}
+                          </div>
+                        )}
+
+                        {/* Delivery Charge */}
+                        <div className="flex justify-between items-center">
+                          <h1 className="text-sm">Delivery Charge</h1>
+                          <p className="text-green-600">
+                            {deliveryCharge > 0 ? `₹${deliveryCharge}` : "Free"}
+                          </p>
                         </div>
-                        <div className="flex justify-between items-center ">
-                          <h1 className="text-start ">Packing Charge</h1>
-                          <p className="text-green-600">Free</p>
+
+                        {/* Handling Charge */}
+                        <div className="flex justify-between items-center">
+                          <h1 className="text-sm">Handling Charge</h1>
+                          <p>{handlingCharge}</p> {/* Fixed Handling Charge */}
                         </div>
                       </div>
                     </div>
@@ -294,7 +310,7 @@ export default function Cart({ bottom }) {
                       <h1 className="text-green-600 text-sm font-semibold">
                         Total
                       </h1>
-                      <p className="font-semibold text-lg ">₹{price + 20}</p>
+                      <p className="font-semibold text-lg ">₹{total}</p>
                     </div>
                     <div
                       onClick={handleConfirmOrder}
@@ -369,6 +385,6 @@ export default function Cart({ bottom }) {
       )}
 
       <div>{checkout && <Checkout price={price} />}</div>
-    </div>
+    </>
   );
 }

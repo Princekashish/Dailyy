@@ -172,25 +172,19 @@ export default function Header() {
           })}
         </div>
       </div>
-      {!hasItemsInCart && (
-        <button
-          onClick={handleCategory}
-          className="bg-black/60 rounded-full fixed bottom-7 gap-1 right-5 z-20 px-3 py-3 flex justify-center items-center flex-col"
-        >
-          <NotepadText className="text-white" />
-        </button>
-      )}
-      {!hasItemsInCart && (
-        <button
-          onClick={handleServicelist}
-          className="bg-white/30 border   backdrop-blur-md rounded-full fixed bottom-7 gap-1 left-5 z-30 px-3 py-3 flex justify-center items-center flex-col"
-        >
-          <div className="flex justify-center items-center text-black gap-1 ">
-            <FaTools  size={20} />
-            <h1>service</h1>
-          </div>
-        </button>
-      )}
+      <button
+        onClick={handleCategory}
+        className="bg-black/20 backdrop-blur-md  rounded-full fixed bottom-7 gap-1 right-5 z-[20] px-3 py-3 flex justify-center items-center flex-col"
+      >
+        <NotepadText className="" size={25} />
+      </button>
+
+      <button
+        onClick={handleServicelist}
+        className="bg-black/20 backdrop-blur-md   rounded-full fixed bottom-7 gap-1 left-5 z-[20] px-3 py-3 flex justify-center items-center flex-col"
+      >
+        <FaTools size={25} />
+      </button>
       {categoryList && (
         <div className="fixed top-0 left-0 right-0 bottom-0 bg-black bg-opacity-50 z-50 h-screen">
           <div
