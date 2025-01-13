@@ -16,11 +16,9 @@ import { motion } from "framer-motion";
 import { MdVerifiedUser } from "react-icons/md";
 import ScrollTop from "../../utils/ScreenTop";
 
+
 export default function Plumber() {
-  const [placeholder, setPlaceholder] = useState(
-    ` Search for "milk" delivery in Minutes`
-  );
-  const [filterview, SetFilterview] = useState(false);
+ const [filterview, SetFilterview] = useState(false);
   const filterRef = useRef();
   const navigate = useNavigate();
 
@@ -30,6 +28,7 @@ export default function Plumber() {
     }
   };
 
+  //array object
   const filteroption = [
     { name: "Most Popular", icon: <Flame /> },
     { name: "Rating", icon: <Star /> },
@@ -39,7 +38,7 @@ export default function Plumber() {
 
   return (
     <div className="flex flex-col gap-5 ">
-    <ScrollTop/>
+      <ScrollTop />
       <div className="flex justify-between items-center p-2 bg-green-700  w-full h-[8vh] ">
         <div className="flex justify-start items-center p-2 gap-2 z-10 bg-white/40  rounded-full">
           <Link
@@ -50,7 +49,9 @@ export default function Plumber() {
           </Link>
         </div>
         <div>
-          <h1 className="text-lg font-medium text-white/90 uppercase">Plumber</h1>
+          <h1 className="text-lg font-medium text-white/90 uppercase">
+            Plumber
+          </h1>
         </div>
         <div
           onClick={() => navigate("/service/search")}
@@ -79,34 +80,41 @@ export default function Plumber() {
               >
                 <div className="flex justify-between items-center gap-3   ">
                   <img
-                    src={plumber.image}
+                    src={plumber.img}
                     alt=""
                     className="h-[85px] w-[85px] rounded-full object-cover"
                   />
 
                   <div className="text-start  w-full flex flex-col gap-[5px] ">
-                    <h1 className="font-semibold">{plumber.title}</h1>
+                    <h1 className="font-semibold">{plumber.name}</h1>
                     <p className="font-light text-sm flex justify-start items-center gap-1">
                       <span className="text-blue-500">
                         <MdVerifiedUser size={20} />
                       </span>
                       {plumber.jobsCompleted} Job completed near you
                     </p>
-                    <h1 className="text-black/50 text-sm">{plumber.description.length > 15 ? `${plumber.description.substring(0,31)}...`:plumber.description}</h1>
+                    <h1 className="text-black/50 text-sm">
+                      {plumber.description.length > 15
+                        ? `${plumber.description.substring(0, 31)}...`
+                        : plumber.description}
+                    </h1>
                   </div>
                 </div>
                 <div className="flex justify-around items-center capitalize border-t pt-3">
                   <div className="flex gap-1">
-                    <h3 className="font-light text-sm">
-                     Disc
-                    </h3>
+                    <h3 className="font-light text-sm">Disc</h3>
                   </div>
                   <div className="flex gap-1">
-                  <Banknote size={20} />
+                    <Banknote size={20} />
                     <h3 className="font-light text-sm">₹{plumber.price} </h3>
                   </div>
                   <div className="flex justify-center items-center  ">
-                    <button className="px-3 py-1 border border-green-600 relative left-5 rounded-lg">Book</button>
+                    <button
+                     
+                      className="px-3 py-1 border border-green-600 relative left-5 rounded-lg"
+                    >
+                      Book
+                    </button>
                   </div>
                 </div>
               </Link>
@@ -135,14 +143,19 @@ export default function Plumber() {
                 <div className="flex flex-col gap-3 justify-center ">
                   {filteroption.map((option, i) => {
                     return (
-                      <div key={i} className="flex justify-start items-center gap-1">
+                      <div
+                        key={i}
+                        className="flex justify-start items-center gap-1"
+                      >
                         {option.icon}
                         <h1 className="text-base font-light">{option.name}</h1>
                       </div>
                     );
                   })}
                 </div>
-                <button className="bg-black text-white py-3 rounded-full">Apply</button>
+                <button className="bg-black text-white py-3 rounded-full">
+                  Apply
+                </button>
               </div>
             </motion.div>
           </div>

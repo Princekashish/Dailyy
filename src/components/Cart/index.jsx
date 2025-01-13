@@ -18,6 +18,9 @@ export default function Cart({ bottom }) {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const dispatch = useDispatch();
 
+  const homeServices = cart.filter((item) => item.serviceType === "homeService");
+  const products = cart.filter((item) => item.serviceType === "Fresh");
+
   // Check if cart has any items
   const hasItemsInCart = cart.length > 0;
   const price = useSelector(selectCartTotal);
@@ -47,13 +50,13 @@ export default function Cart({ bottom }) {
   };
   return (
     <div
-      className={`fixed ${bottom} left-0 right-0 text-center z-20   p-4  flex items-center justify-center `}
+      className={`fixed ${bottom} left-0 right-0 text-center z-20   p-4  flex items-center justify-center`}
     >
       <div
         onClick={() => setViewCart((pre) => !pre)}
         className={`flex justify-center items-center ${
           hasItemsInCart ? "bg-[#276c13] " : "hidden"
-        } px-2 py-2 gap-2 rounded-full text-white`}
+        } px-1 py-1 gap-2 rounded-full text-white`}
       >
         {/* Show the first two items' images */}
         <div className="relative flex justify-center items-center ">
@@ -62,7 +65,7 @@ export default function Cart({ bottom }) {
               key={item.id}
               src={item.img}
               alt={item.product}
-              className={`w-10 h-10 object-cover rounded-full bg-white ${
+              className={`w-8 h-8 object-cover rounded-full bg-white ${
                 index === 0
                   ? "z-10  border-[2px] border-[#29541e]"
                   : "-ml-5 z-20 border-[2px] border-[#29541e]"
@@ -81,10 +84,10 @@ export default function Cart({ bottom }) {
                   : `${cart.length} Item`}
               </h1>
               {/* Button to view cart page */}
-              <h1 className=" mt-2 text-sm">View Cart</h1>
+              <h1 className=" mt-2 text-xs">View Cart</h1>
             </div>
             <div className="flex justify-center items-center rounded-full bg-[#216011] p-3">
-              <ChevronRight size={20} />
+              <ChevronRight size={18} />
             </div>
           </div>
         )}
@@ -124,7 +127,7 @@ export default function Cart({ bottom }) {
                 </div>
                 <div className="flex flex-col justify-between gap-5">
                   <div className=" h-[40vh] overflow-hidden overflow-y-scroll flex flex-col gap-3 no-scrollbar">
-                    {cart.map((items) => (
+                    {/* {cart.map((items) => (
                       <div
                         key={items.id}
                         className=" flex justify-between items-center "
@@ -132,12 +135,12 @@ export default function Cart({ bottom }) {
                         <div className="flex justify-start items-center gap-2">
                           <div
                             onClick={() => handleproduct(items)}
-                            className=" p-2 border rounded-3xl  border-gray-300 w-[80px] h-[80px] flex justify-center items-center"
+                            className=" p-2 border rounded-3xl  border-gray-300 w-[60px] h-[60px] flex justify-center items-center"
                           >
                             <img
                               src={items.img}
                               alt=""
-                              className="h-[80px] object-contain"
+                              className="h-[90px] object-contain"
                             />
                           </div>
                           <div className="flex flex-col justify-start items-start gap-1">
@@ -149,22 +152,122 @@ export default function Cart({ bottom }) {
                         <div className="flex  border border-green-600 rounded-md p-1 bg-green-600 text-white gap-2">
                           <button
                             onClick={() => handleRemoveFromCart(items.id)}
-                            className="text-lg font-medium "
+                            className="text-sm font-medium "
                           >
                             <Minus size={15} />
                           </button>
-                          <h1 className="text-sm font-medium">
+                          <h1 className="text-xs font-medium">
                             {items.quantity}
                           </h1>
                           <button
                             onClick={() => handleAddToCart(items)}
-                            className="text-lg font-medium"
+                            className="text-sm font-medium"
                           >
                             <Plus size={15} />
                           </button>
                         </div>
                       </div>
-                    ))}
+                    ))} */}
+                    {products.length > 0 && (
+                      <div className="p-4 ">
+                        <div className="flex flex-col gap-3">
+                          {products.map((items) => (
+                            <div
+                              key={items.id}
+                              className=" flex justify-between items-center "
+                            >
+                              <div className="flex justify-start items-center gap-2">
+                                <div
+                                  onClick={() => handleproduct(items)}
+                                  className=" p-2 border rounded-3xl  border-gray-300 w-[60px] h-[60px] flex justify-center items-center"
+                                >
+                                  <img
+                                    src={items.img}
+                                    alt=""
+                                    className="h-[90px] object-contain"
+                                  />
+                                </div>
+                                <div className="flex flex-col justify-start items-start gap-1">
+                                  <h1 className="text-sm">{items.name}</h1>
+                                  <p className="text-sm font-bold">
+                                    ₹{items.price}
+                                  </p>
+                                </div>
+                              </div>
+
+                              <div className="flex  border border-green-600 rounded-md p-1 bg-green-600 text-white gap-2">
+                                <button
+                                  onClick={() => handleRemoveFromCart(items.id)}
+                                  className="text-sm font-medium "
+                                >
+                                  <Minus size={15} />
+                                </button>
+                                <h1 className="text-xs font-medium">
+                                  {items.quantity}
+                                </h1>
+                                <button
+                                  onClick={() => handleAddToCart(items)}
+                                  className="text-sm font-medium"
+                                >
+                                  <Plus size={15} />
+                                </button>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                    {homeServices.length > 0 && (
+                      <div className="p-4 bg-[#1c68ff] rounded-t-2xl">
+                        <div className="flex flex-col gap-3">
+                          {homeServices.map((items) => (
+                            <div
+                              key={items.id}
+                              className=" flex justify-between items-center "
+                            >
+                              <div className="flex justify-start items-center gap-2">
+                                <div
+                                  onClick={() => handleproduct(items)}
+                                  className=" p-2 border rounded-3xl  border-gray-300 w-[60px] h-[60px] flex justify-center items-center bg-white"
+                                >
+                                  <img
+                                    src={items.img}
+                                    alt=""
+                                    className="h-[90px] object-contain"
+                                  />
+                                </div>
+                                <div className="flex flex-col justify-start items-start gap-1 text-white">
+                                  <h1 className="text-sm  text-start">{items.name.length > 15 ? `${items.name.substring(0,16)}...` : items.name}</h1>
+                                  <p className="text-sm font-bold">
+                                    ₹{items.price}
+                                  </p>
+                                </div>
+                              </div>
+
+                              <div className="flex  border border-green-600 rounded-md p-1 bg-green-600 text-white gap-2">
+                                <button
+                                  onClick={() => handleRemoveFromCart(items.id)}
+                                  className="text-sm font-medium "
+                                >
+                                  <Minus size={15} />
+                                </button>
+                                <h1 className="text-xs font-medium">
+                                  {items.quantity}
+                                </h1>
+                                <button
+                                  onClick={() => handleAddToCart(items)}
+                                  className="text-sm font-medium"
+                                >
+                                  <Plus size={15} />
+                                </button>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+
                   </div>
                   <div className=" flex flex-col justify-start items-start mt-1 ">
                     <h1 className=" font-semibold text-lg">Order Details</h1>

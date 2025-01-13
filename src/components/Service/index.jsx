@@ -16,7 +16,7 @@ export default function Service() {
   ];
 
   const servicelist = [
-    { text: "Plumber", img: "/rb_136620.png" },
+    { text: "Plumber", img: "/rb_136620.png" , link:"/plumber"},
     { text: "Drying", img: "/rb_50594.png" },
     { text: "Electrician", img: "/rb_150265.png" },
     { text: "Plumber", img: "/rb_136620.png" },

@@ -2,75 +2,83 @@
   "plumber_services": [
     {
       "id": "plumber_001",
-      "title": "Pipe Repair",
+      "name": "Pipe Repair",
       "description": "Fixing damaged or broken pipes to restore proper water flow and prevent leaks.",
       "category": "Plumbing",
-      "image": "https://i.pinimg.com/736x/56/d0/3a/56d03af024613edb5ee4ac69e6cb202f.jpg",
+      "img": "https://i.pinimg.com/736x/56/d0/3a/56d03af024613edb5ee4ac69e6cb202f.jpg",
       "availability": "Available",
-      "price": 100
+      "price": 100,
+      "serviceType": "homeService"
     },
     {
       "id": "plumber_002",
-      "title": "Drain Cleaning",
+      "name": "Drain Cleaning",
       "description": "Cleaning clogged or slow drains to ensure proper water drainage in bathrooms, kitchens, and other areas.",
       "category": "Plumbing",
-      "image": "https://i.pinimg.com/736x/8f/c9/c6/8fc9c68724bc8dcde035d345c4bd5a39.jpg",
+      "img": "https://i.pinimg.com/736x/8f/c9/c6/8fc9c68724bc8dcde035d345c4bd5a39.jpg",
       "availability": "Available",
-      "price": 75
+      "price": 75,
+      "serviceType": "homeService"
     },
     {
       "id": "plumber_003",
-      "title": "Water Heater Installation",
+      "name": "Water Heater Installation",
       "description": "Installing and setting up water heaters to provide reliable hot water for households and businesses.",
       "category": "Plumbing",
-      "image": "https://i.pinimg.com/736x/9a/6e/29/9a6e2934d31b3f5a2e3b7e8e5570a817.jpg",
+      "img": "https://i.pinimg.com/736x/9a/6e/29/9a6e2934d31b3f5a2e3b7e8e5570a817.jpg",
       "availability": "Available",
-      "price": 200
+      "price": 200,
+      "serviceType": "homeService"
     },
     {
       "id": "plumber_004",
-      "title": "Leak Detection",
+      "name": "Leak Detection",
       "description": "Identifying and repairing leaks in pipes, walls, and other plumbing systems to prevent water damage.",
       "category": "Plumbing",
-      "image": "https://i.pinimg.com/736x/b1/8d/d9/b18dd974caa73be23d5b10ce4cba0810.jpg",
+      "img": "https://i.pinimg.com/736x/b1/8d/d9/b18dd974caa73be23d5b10ce4cba0810.jpg",
       "availability": "Available",
-      "price": 120
+      "price": 120,
+      "serviceType": "homeService"
     },
     {
       "id": "plumber_005",
-      "title": "Sewer Line Repair",
+      "name": "Sewer Line Repair",
       "description": "Repairing or replacing damaged sewer lines to prevent blockages and maintain waste removal.",
       "category": "Plumbing",
-      "image": "https://i.pinimg.com/736x/43/00/67/4300676e339dd3d445eeb76c0ba0206d.jpg",
+      "img": "https://i.pinimg.com/736x/43/00/67/4300676e339dd3d445eeb76c0ba0206d.jpg",
       "availability": "Unavailable",
-      "price": 250
+      "price": 250,
+      "serviceType": "homeService"
     },
     {
       "id": "plumber_006",
-      "title": "Toilet Installation",
+      "name": "Toilet Installation",
       "description": "Installing new toilets or replacing old ones, ensuring proper functioning and water efficiency.",
       "category": "Plumbing",
-      "image": "https://i.pinimg.com/736x/b9/33/b8/b933b8f97d7fc8ac138c2a1f185aca2d.jpg",
+      "img": "https://i.pinimg.com/736x/b9/33/b8/b933b8f97d7fc8ac138c2a1f185aca2d.jpg",
       "availability": "Available",
-      "price": 150
+      "price": 150,
+      "serviceType": "homeService"
     },
     {
       "id": "plumber_007",
-      "title": "Faucet Repair and Replacement",
+      "name": "Faucet Repair and Replacement",
       "description": "Fixing or replacing malfunctioning faucets to improve water flow and prevent leaks.",
       "category": "Plumbing",
-      "image": "https://i.pinimg.com/736x/9a/25/34/9a25345e5efb4d61afc898b13e7982ca.jpg",
+      "img": "https://i.pinimg.com/736x/9a/25/34/9a25345e5efb4d61afc898b13e7982ca.jpg",
       "availability": "Available",
-      "price": 60
+      "price": 60,
+      "serviceType": "homeService"
     },
     {
       "id": "plumber_008",
-      "title": "Water Pressure Solutions",
+      "name": "Water Pressure Solutions",
       "description": "Diagnosing and fixing issues related to low or high water pressure to improve water flow throughout the property.",
       "category": "Plumbing",
-      "image": "https://i.pinimg.com/736x/8a/2c/11/8a2c11e64a8ea7bd1adab0703af48625.jpg",
+      "img": "https://i.pinimg.com/736x/8a/2c/11/8a2c11e64a8ea7bd1adab0703af48625.jpg",
       "availability": "Available",
-      "price": 90
+      "price": 90,
+      "serviceType": "homeService"
     }
   ]
 }

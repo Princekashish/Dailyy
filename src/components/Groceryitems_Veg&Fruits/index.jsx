@@ -12,9 +12,9 @@ export default function GroceryItems() {
       category: "Vegetables",
       price: "30",
       img: "/totomt.png",
-      description:
-        "Fresh and juicy tomatoes, perfect for salads, curries, and sauces.",
+      description: "Fresh and juicy tomatoes, perfect for salads, curries, and sauces.",
       discount: "10%", // Example discount
+      serviceType: "Fresh", // Added service type
     },
     {
       id: 24324,
@@ -22,9 +22,9 @@ export default function GroceryItems() {
       category: "Vegetables",
       price: "40",
       img: "/pngegg (3).png",
-      description:
-        "Starchy and versatile, used in curries, fries, and mashed potatoes.",
+      description: "Starchy and versatile, used in curries, fries, and mashed potatoes.",
       discount: "5%", // Example discount
+      serviceType: "Fresh", // Added service type
     },
     {
       id: 3423423,
@@ -32,9 +32,9 @@ export default function GroceryItems() {
       category: "Vegetables",
       price: "20",
       img: "/pngegg (4).png",
-      description:
-        "A must-have ingredient in every kitchen, adds flavor to dishes.",
+      description: "A must-have ingredient in every kitchen, adds flavor to dishes.",
       discount: "15%", // Example discount
+      serviceType: "Fresh", // Added service type
     },
     {
       id: 452345,
@@ -42,9 +42,9 @@ export default function GroceryItems() {
       category: "Vegetables",
       price: "50",
       img: "/pngegg (5).png",
-      description:
-        "Crunchy and sweet, great for salads, soups, and stir-fries.",
+      description: "Crunchy and sweet, great for salads, soups, and stir-fries.",
       discount: "8%", // Example discount
+      serviceType: "Fresh", // Added service type
     },
     {
       id: 51234,
@@ -54,6 +54,7 @@ export default function GroceryItems() {
       img: "/pngegg (6).png",
       description: "Refreshing and hydrating, ideal for salads and juices.",
       discount: "12%", // Example discount
+      serviceType: "Fresh", // Added service type
     },
     {
       id: 61234,
@@ -61,9 +62,9 @@ export default function GroceryItems() {
       category: "Vegetables",
       price: "60",
       img: "/pngegg (7).png",
-      description:
-        "A versatile vegetable, perfect for curries, soups, and as a low-carb alternative.",
+      description: "A versatile vegetable, perfect for curries, soups, and as a low-carb alternative.",
       discount: "10%", // Example discount
+      serviceType: "Fresh", // Added service type
     },
     {
       id: 71234,
@@ -71,9 +72,9 @@ export default function GroceryItems() {
       category: "Vegetables",
       price: "40",
       img: "/pngegg (8).png",
-      description:
-        "Packed with vitamins, ideal for salads, soups, and as a side dish.",
+      description: "Packed with vitamins, ideal for salads, soups, and as a side dish.",
       discount: "7%", // Example discount
+      serviceType: "Fresh", // Added service type
     },
     {
       id: 84321,
@@ -81,9 +82,9 @@ export default function GroceryItems() {
       category: "Vegetables",
       price: "45",
       img: "/pngegg (9).png",
-      description:
-        "Tender and flavorful, used in curries, grills, and as a main dish.",
+      description: "Tender and flavorful, used in curries, grills, and as a main dish.",
       discount: "5%", // Example discount
+      serviceType: "Fresh", // Added service type
     },
     {
       id: 91234,
@@ -91,9 +92,9 @@ export default function GroceryItems() {
       category: "Vegetables",
       price: "55",
       img: "/pngegg (10).png",
-      description:
-        "Crisp and mildly sweet, adds a vibrant color to your dishes.",
+      description: "Crisp and mildly sweet, adds a vibrant color to your dishes.",
       discount: "6%", // Example discount
+      serviceType: "Fresh", // Added service type
     },
     {
       id: 101234,
@@ -101,9 +102,9 @@ export default function GroceryItems() {
       category: "Vegetables",
       price: "60",
       img: "/pngegg (11).png",
-      description:
-        "Crunchy and nutritious, great in stir-fries, soups, and salads.",
+      description: "Crunchy and nutritious, great in stir-fries, soups, and salads.",
       discount: "9%", // Example discount
+      serviceType: "Fresh", // Added service type
     },
     {
       id: 1907,
@@ -111,9 +112,9 @@ export default function GroceryItems() {
       category: "Vegetables",
       price: "30",
       img: "/totomt.png",
-      description:
-        "Fresh and juicy tomatoes, perfect for salads, curries, and sauces.",
+      description: "Fresh and juicy tomatoes, perfect for salads, curries, and sauces.",
       discount: "10%", // Example discount
+      serviceType: "Fresh", // Added service type
     },
     {
       id: 24324,
@@ -121,9 +122,9 @@ export default function GroceryItems() {
       category: "Vegetables",
       price: "40",
       img: "/pngegg (3).png",
-      description:
-        "Starchy and versatile, used in curries, fries, and mashed potatoes.",
+      description: "Starchy and versatile, used in curries, fries, and mashed potatoes.",
       discount: "5%", // Example discount
+      serviceType: "Fresh", // Added service type
     },
     {
       id: 3423423,
@@ -131,9 +132,9 @@ export default function GroceryItems() {
       category: "Vegetables",
       price: "20",
       img: "/pngegg (4).png",
-      description:
-        "A must-have ingredient in every kitchen, adds flavor to dishes.",
+      description: "A must-have ingredient in every kitchen, adds flavor to dishes.",
       discount: "15%", // Example discount
+      serviceType: "Fresh", // Added service type
     },
     {
       id: 452345,
@@ -141,9 +142,9 @@ export default function GroceryItems() {
       category: "Vegetables",
       price: "50",
       img: "/pngegg (5).png",
-      description:
-        "Crunchy and sweet, great for salads, soups, and stir-fries.",
+      description: "Crunchy and sweet, great for salads, soups, and stir-fries.",
       discount: "8%", // Example discount
+      serviceType: "Fresh", // Added service type
     },
     {
       id: 51234,
@@ -153,6 +154,7 @@ export default function GroceryItems() {
       img: "/pngegg (6).png",
       description: "Refreshing and hydrating, ideal for salads and juices.",
       discount: "12%", // Example discount
+      serviceType: "Fresh", // Added service type
     },
     {
       id: 61234,
@@ -160,9 +162,9 @@ export default function GroceryItems() {
       category: "Vegetables",
       price: "60",
       img: "/pngegg (7).png",
-      description:
-        "A versatile vegetable, perfect for curries, soups, and as a low-carb alternative.",
+      description: "A versatile vegetable, perfect for curries, soups, and as a low-carb alternative.",
       discount: "10%", // Example discount
+      serviceType: "Fresh", // Added service type
     },
     {
       id: 71234,
@@ -170,9 +172,9 @@ export default function GroceryItems() {
       category: "Vegetables",
       price: "40",
       img: "/pngegg (8).png",
-      description:
-        "Packed with vitamins, ideal for salads, soups, and as a side dish.",
+      description: "Packed with vitamins, ideal for salads, soups, and as a side dish.",
       discount: "7%", // Example discount
+      serviceType: "Fresh", // Added service type
     },
     {
       id: 84321,
@@ -180,9 +182,9 @@ export default function GroceryItems() {
       category: "Vegetables",
       price: "45",
       img: "/pngegg (9).png",
-      description:
-        "Tender and flavorful, used in curries, grills, and as a main dish.",
+      description: "Tender and flavorful, used in curries, grills, and as a main dish.",
       discount: "5%", // Example discount
+      serviceType: "Fresh", // Added service type
     },
     {
       id: 91234,
@@ -190,9 +192,9 @@ export default function GroceryItems() {
       category: "Vegetables",
       price: "55",
       img: "/pngegg (10).png",
-      description:
-        "Crisp and mildly sweet, adds a vibrant color to your dishes.",
+      description: "Crisp and mildly sweet, adds a vibrant color to your dishes.",
       discount: "6%", // Example discount
+      serviceType: "Fresh", // Added service type
     },
     {
       id: 101234,
@@ -200,110 +202,12 @@ export default function GroceryItems() {
       category: "Vegetables",
       price: "60",
       img: "/pngegg (11).png",
-      description:
-        "Crunchy and nutritious, great in stir-fries, soups, and salads.",
+      description: "Crunchy and nutritious, great in stir-fries, soups, and salads.",
       discount: "9%", // Example discount
-    },
-    {
-      id: 1907,
-      name: "Tomato",
-      category: "Vegetables",
-      price: "30",
-      img: "/totomt.png",
-      description:
-        "Fresh and juicy tomatoes, perfect for salads, curries, and sauces.",
-      discount: "10%", // Example discount
-    },
-    {
-      id: 24324,
-      name: "Potato",
-      category: "Vegetables",
-      price: "40",
-      img: "/pngegg (3).png",
-      description:
-        "Starchy and versatile, used in curries, fries, and mashed potatoes.",
-      discount: "5%", // Example discount
-    },
-    {
-      id: 3423423,
-      name: "Onion",
-      category: "Vegetables",
-      price: "20",
-      img: "/pngegg (4).png",
-      description:
-        "A must-have ingredient in every kitchen, adds flavor to dishes.",
-      discount: "15%", // Example discount
-    },
-    {
-      id: 452345,
-      name: "Carrot",
-      category: "Vegetables",
-      price: "50",
-      img: "/pngegg (5).png",
-      description:
-        "Crunchy and sweet, great for salads, soups, and stir-fries.",
-      discount: "8%", // Example discount
-    },
-    {
-      id: 51234,
-      name: "Cucumber",
-      category: "Vegetables",
-      price: "25",
-      img: "/pngegg (6).png",
-      description: "Refreshing and hydrating, ideal for salads and juices.",
-      discount: "12%", // Example discount
-    },
-    {
-      id: 61234,
-      name: "Cauliflower",
-      category: "Vegetables",
-      price: "60",
-      img: "/pngegg (7).png",
-      description:
-        "A versatile vegetable, perfect for curries, soups, and as a low-carb alternative.",
-      discount: "10%", // Example discount
-    },
-    {
-      id: 71234,
-      name: "Spinach",
-      category: "Vegetables",
-      price: "40",
-      img: "/pngegg (8).png",
-      description:
-        "Packed with vitamins, ideal for salads, soups, and as a side dish.",
-      discount: "7%", // Example discount
-    },
-    {
-      id: 84321,
-      name: "Brinjal (Eggplant)",
-      category: "Vegetables",
-      price: "45",
-      img: "/pngegg (9).png",
-      description:
-        "Tender and flavorful, used in curries, grills, and as a main dish.",
-      discount: "5%", // Example discount
-    },
-    {
-      id: 91234,
-      name: "Green Bell Pepper",
-      category: "Vegetables",
-      price: "55",
-      img: "/pngegg (10).png",
-      description:
-        "Crisp and mildly sweet, adds a vibrant color to your dishes.",
-      discount: "6%", // Example discount
-    },
-    {
-      id: 101234,
-      name: "Beans (Green)",
-      category: "Vegetables",
-      price: "60",
-      img: "/pngegg (11).png",
-      description:
-        "Crunchy and nutritious, great in stir-fries, soups, and salads.",
-      discount: "9%", // Example discount
+      serviceType: "Fresh", // Added service type
     },
   ];
+  
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
