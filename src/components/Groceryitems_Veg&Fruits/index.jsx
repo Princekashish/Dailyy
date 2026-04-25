@@ -207,7 +207,7 @@ export default function GroceryItems() {
       serviceType: "Fresh", // Added service type
     },
   ];
-  
+
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
@@ -242,7 +242,7 @@ export default function GroceryItems() {
               <h1>Loading......</h1>
             </div>
           ) : (
-            <div className="grid grid-cols-3 gap-3 p-3">
+            <div className="grid grid-cols-3 gap-3 p-3 ">
               {vegetable.map((vegitable) => {
                 const itemQuantity = getCartItemQuantity(vegitable.id);
                 return (
@@ -306,7 +306,7 @@ export default function GroceryItems() {
               initial={{ y: 100, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.25, stiffness: 1 }}
-              className="bg-white rounded-t-3xl p-5 w-full absolute bottom-0 h-[50vh] flex flex-col justify-between " 
+              className="bg-white rounded-t-3xl p-5 w-full absolute bottom-0 h-[50vh] flex flex-col justify-between "
             >
               <div>
                 <button
@@ -347,11 +347,10 @@ export default function GroceryItems() {
 
               <button
                 onClick={() => handleAddToCart(selectedProduct)} // Add to cart in the modal
-                className={`flex justify-center items-center text-white border px-3 gap-2 py-3 rounded-xl mt-5 w-full  ${
-                  getCartItemQuantity(selectedProduct.id) > 0
-                    ? "bg-black opacity-50 cursor-not-allowed" // Change background to black if added
-                    : "bg-green-700"
-                }`}
+                className={`flex justify-center items-center text-white border px-3 gap-2 py-3 rounded-xl mt-5 w-full  ${getCartItemQuantity(selectedProduct.id) > 0
+                  ? "bg-black opacity-50 cursor-not-allowed" // Change background to black if added
+                  : "bg-green-700"
+                  }`}
                 disabled={getCartItemQuantity(selectedProduct.id) > 0} // Disable the button if the product is in the cart
               >
                 <h1 className="text-sm font-medium">

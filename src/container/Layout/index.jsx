@@ -8,14 +8,14 @@ import BackNavigationRedirect from "../../utils/BackNavigationRedirect/BackNavig
 export default function Layout() {
   return (
     <div>
-<BackNavigationRedirect />
-      <div className="bg-green-700 h-[30vh] flex  flex-col justify-between ">
+      <BackNavigationRedirect />
+      <div className="bg-green-700  flex  flex-col  gap-4 ">
         <Hero />
         <Header />
       </div>
-     <div className="mb-[7vh]">
-     <Outlet />
-     </div>
+      <div className="mb-[7vh]">
+        <Outlet />
+      </div>
       <div className="absolute bottom-10 ">
         <Cart bottom={"bottom-2"} />
       </div>

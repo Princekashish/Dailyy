@@ -1,5 +1,5 @@
 import { Minus, Plus, Search, Share, X } from "lucide-react";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { IoArrowBack } from "react-icons/io5";
 import { Link, NavLink, Outlet } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -44,21 +44,44 @@ export default function Vegetables_fruits() {
       image: "/pngegg (16).png",
     },
   ];
+
+  const [showBottomBar, setShowBottomBar] = useState(true);
+
+  useEffect(() => {
+    let lastScrollY = window.scrollY;
+    
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      if (currentScrollY > lastScrollY && currentScrollY > 20) {
+        setShowBottomBar(false);
+      } else if (currentScrollY < lastScrollY) {
+        setShowBottomBar(true);
+      }
+      lastScrollY = currentScrollY;
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <div className="flex flex-col justify-between items-center relative ">
       <ScrollTop />
-      <div className="  flex justify-between items-center p-3 z-10 fixed top-0 w-full bg-white">
-        <div className="flex justify-start items-center p-2 gap-2 z-10 bg-black/10 rounded-full">
-          <Link
-            to={"/grocery"}
-            className="flex justify-center items-center gap-2 text-sm  "
-          >
-            <IoArrowBack size={20} />
-          </Link>
+      <div className="flex justify-between items-center p-3 z-10 fixed top-0 w-full bg-white">
+        <div className=" flex gap-3 justify-center items-center">
+          <div className="z-10 bg-black/10 rounded-full flex justify-start items-center p-2 gap-2">
+            <Link
+              to={"/grocery"}
+              className="flex justify-center items-center gap-2 text-sm  "
+            >
+              <IoArrowBack size={20} />
+            </Link>
+          </div>
+          <div>
+            <h1 className="text-md">Vegetables & Fruits</h1>
+          </div>
         </div>
-        <div>
-          <h1 className="text-xl">Vegetables & Fruits...</h1>
-        </div>
+
 
         <div className="flex justify-center items-center rounded-full bg-black/10 h-[35px] w-[35px]  ">
           <Search size={20} />
@@ -72,7 +95,7 @@ export default function Vegetables_fruits() {
       <div>
         <Cart bottom={"bottom-24"} />
       </div>
-      <div className="bg-white h-[11vh] shadow-[0_-4px_6px_rgba(0,0,0,0.1)] rounded-t-3xl whitespace-nowrap bottom-0 fixed w-full overflow-x-scroll overflow-hidden scroll-smooth no-scrollbar">
+      <div className={`bg-white h-[11vh] shadow-[0_-4px_6px_rgba(0,0,0,0.1)] rounded-t-3xl whitespace-nowrap bottom-0 fixed w-full overflow-x-scroll overflow-hidden scroll-smooth no-scrollbar transition-transform duration-1000 ${showBottomBar ? "translate-y-0" : "translate-y-[150%]"}`}>
         <motion.div
           whileTap={{ cursor: "grabbing" }}
           transition={{ type: "spring", stiffness: 100, damping: 20 }}

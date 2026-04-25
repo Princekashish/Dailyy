@@ -58,7 +58,6 @@ export default function Electronic() {
         "https://i.pinimg.com/736x/39/fe/74/39fe7479f2670d490066c4d0eb93422b.jpg",
     },
   ];
-
   const homekitchen = [
     {
       name: "Philips Steam Iron",
@@ -134,7 +133,6 @@ export default function Electronic() {
   const nextSlide = useCallback(() => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % service.length);
   }, []);
-
   useEffect(() => {
     const interval = setInterval(nextSlide, 3000); // Change slide every 5 seconds
     return () => clearInterval(interval);

@@ -21,7 +21,7 @@ export default function Cart({ bottom }) {
   const homeServices = cart.filter(
     (item) => item.serviceType === "homeService"
   );
-  const products = cart.filter((item) => item.serviceType === "Fresh");
+  const products = cart.filter((item) => item.serviceType !== "homeService");
 
   // Check if cart has any items
   const hasItemsInCart = cart.length > 0;
@@ -51,18 +51,9 @@ export default function Cart({ bottom }) {
     setSelectedProduct(false);
   };
 
-  // calculating a price
-  const freshTotal = products.reduce(
-    (total, item) => total + item.price * item.quantity,
-    0
-  );
-  const homeServiceTotal = homeServices.reduce(
-    (total, item) => total + item.price * item.quantity,
-    0
-  );
   const deliveryCharge = 0;
   const handlingCharge = 20;
-  const total = freshTotal + homeServiceTotal + deliveryCharge + handlingCharge;
+  const total = price + deliveryCharge + handlingCharge;
 
   //scroll for service
   const handleScroll = () => {
@@ -84,7 +75,7 @@ export default function Cart({ bottom }) {
       <div
         onClick={() => setViewCart((pre) => !pre)}
         className={`flex justify-center items-center mx-auto bottom-7  left-[30%] text-center z-20 w-[40%] p-4 fixed ${
-          hasItemsInCart ? "bg-[#276c13]" : "hidden"
+          hasItemsInCart ? "bg-[#008236]" : "hidden"
         } px-1 py-1 rounded-full text-white`}
       >
         {/* Show the first two items' images */}
@@ -105,7 +96,7 @@ export default function Cart({ bottom }) {
 
         {/* If the cart has items, show item count and "View Cart" button */}
         {hasItemsInCart && (
-          <div className="flex  items-center justify-center gap-3">
+          <div className="flex  items-center justify-center gap-3 ">
             <div className="flex flex-col-reverse ">
               <h1 className="text-xs uppercase font-light ">
                 {cart.length > 1
@@ -213,7 +204,7 @@ export default function Cart({ bottom }) {
                     )}
                     {products.length > 0 && (
                       <div className="p-4 ">
-                        <div className="flex flex-col gap-3">
+                        <div className="flex flex-col gap-3 ">
                           {products.map((items) => (
                             <div
                               key={items.id}
@@ -261,33 +252,16 @@ export default function Cart({ bottom }) {
                       </div>
                     )}
                   </div>
+                  {/* price */}
                   <div className="flex flex-col justify-start items-start mt-1">
-                    <h1 className="font-semibold text-lg">Order Details</h1>
+                    <h1 className="font-semibold text-lg">Bill Summary</h1>
                     <div className="bg-[#f8f8f8] rounded-xl h-[15vh] w-full mt-1">
                       <div className="flex flex-col  rounded-lg p-2 ">
-                        {/* Total Price for Products (Fresh items) */}
+                        {/* Total Price for all items */}
                         <div className="flex justify-between items-center">
-                          <h1 className="text-sm">Grocery </h1>
-                          <p>₹{freshTotal}</p>{" "}
-                          {/* Total price of Fresh items */}
+                          <h1 className="text-sm">Items Total</h1>
+                          <p>₹{price}</p>
                         </div>
-
-                        {/* Show Home Service Charges if Home Services are added */}
-                        {homeServices.length > 0 && (
-                          <div className="flex justify-between items-center">
-                            <h1 className="text-sm">Service Charge</h1>
-                            <p>
-                              ₹
-                              {homeServices.reduce(
-                                (total, item) =>
-                                  total + item.price * item.quantity,
-                                0
-                              )}
-                            </p>{" "}
-                            {/* Total cost of Home Services */}
-                          </div>
-                        )}
-
                         {/* Delivery Charge */}
                         <div className="flex justify-between items-center">
                           <h1 className="text-sm">Delivery Charge</h1>

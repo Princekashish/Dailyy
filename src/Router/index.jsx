@@ -18,11 +18,12 @@ import Exotics_Fruits from "../components/Exotics_Fruits";
 import Appliances from "../components/Appliances";
 import Beauty from "../components/Beauty";
 import Gifts from "../components/Gifts";
-import Cancle from "../components/Cancle";
+import Cancle from "../components/Cancel";
 import Sucess from "../components/Succes";
 import Plumber from "../components/Plumber";
 import ServiceSearch from "../components/ServiceSearch";
 import PlumberCart from "../components/PlumberCart";
+import SearchProduct from "../components/SearchProduct";
 
 
 const rout = createBrowserRouter([
@@ -71,6 +72,7 @@ const rout = createBrowserRouter([
   { path: "/cancel", Component: Cancle },
   { path: "/plumber", Component: Plumber },
   {path:"/service/search", Component:ServiceSearch},
+  {path:"/search", Component:SearchProduct},
 
   { path: "/plumber/:id", Component: PlumberCart },
 ]);

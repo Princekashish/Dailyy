@@ -6,20 +6,18 @@ import { RiTimerFlashLine } from "react-icons/ri";
 export default function DefaultAddress({
   setDefaultAddress,
   handleLocationSelect,
+  selectedLocation,
 }) {
   const closeModal = () => {
-    setDefaultAddress(false); // Close the modal by setting the state to false
+    setDefaultAddress(false); 
   };
 
   const location = [
-    { location: "Delhi", img: "/pngegg (31).png" },
-    { location: "Mumbai", img: "/pngegg (32).png" },
-    { location: "Kolkata", img: "/pngegg (33).png" },
-    { location: "Bangalore", img: "/pngegg (34).png" },
-    { location: "Hyderabad", img: "/pngegg (35).png" },
-    { location: "Ahmedabad" },
-    { location: "Chandigarh" },
-    { location: "Lucknow" },
+    { location: "Bodhgaya", img: "https://images.unsplash.com/photo-1617469170169-55626c028519?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
+    { location: "Bhagalpur", img: "/pngegg (32).png" },
+    { location: "Pachhatti", img: "/pngegg (33).png" },
+    { location: "Rajapur", img: "/pngegg (34).png" },
+    { location: "Belhar", img: "/pngegg (35).png" }
   ];
 
   const handleLocationClick = (location) => {
@@ -36,7 +34,7 @@ export default function DefaultAddress({
             animate={{ y: 0, opacity: 1 }}
             exit={{ x: 100, opacity: 0 }}
             transition={{ duration: 0.35, stiffness: 1 }}
-            className="bg-white rounded-t-3xl p-5 w-full absolute bottom-0 h-[65vh]"
+            className="bg-white rounded-t-3xl p-5 w-full absolute bottom-0 h-[55vh]"
           >
             <div className="flex flex-col gap-5">
               <div className="flex justify-between items-center">
@@ -55,23 +53,31 @@ export default function DefaultAddress({
               </div>
               <div>
                 <div className="grid grid-cols-3 gap-2">
-                  {location.map((location, index) => {
+                  {location.map((loc, index) => {
+                    const isSelected = selectedLocation === loc.location;
                     return (
                       <div
                         key={index}
-                        className="relative h-[10vh] flex justify-center items-center flex-col "
-                        onClick={() => handleLocationClick(location.location)} // Call the function when location is clicked
+                        className="relative h-[10vh] flex justify-center items-center flex-col rounded-2xl cursor-pointer overflow-hidden"
+                        onClick={() => handleLocationClick(loc.location)} // Call the function when location is clicked
                       >
                         <div className="absolute top-0 w-full h-[10vh] bg-gradient-to-b from-black/10 to-black/90 rounded-2xl" />
-                        {location.img && (
+                        
+                        {isSelected && (
+                          <div className="absolute inset-0 bg-black/40 z-20 top-0 rounded-2xl">
+                            <span className="text-white bg-green-600 text-sm px-2 py-1 rounded-md">Selected</span>
+                          </div>
+                        )}
+
+                        {loc.img && (
                           <img
-                            src={location.img}
+                            src={loc.img}
                             alt=""
-                            className="h-[80px] object-contain"
+                            className="h-[80px] object-contain rounded-2xl"
                           />
                         )}
                         <p className="text-white absolute bottom-0 z-10 text-sm">
-                          {location.location}
+                          {loc.location}
                         </p>
                       </div>
                     );

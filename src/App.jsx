@@ -28,14 +28,16 @@ function App() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="font-Lexend"
+      className="font-Lexend  "
     >
       {/* Render the Router after the splash screen */}
 
-      <Router />
+      <div className="md:w-1/3 mx-auto">
+        <Router />
+      </div>
 
       {/* Conditionally render the Signup_Installation popup */}
-      {showPopup && <Signup_Installation setShowPopup={setShowPopup} />}
+      {/* {showPopup && <Signup_Installation setShowPopup={setShowPopup} />} */}
     </motion.div>
   );
 }

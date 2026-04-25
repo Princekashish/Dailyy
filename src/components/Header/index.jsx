@@ -6,9 +6,10 @@ import { GiWashingMachine } from "react-icons/gi";
 import { RiGiftFill } from "react-icons/ri";
 import { SiBuymeacoffee } from "react-icons/si";
 import { useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 export default function Header() {
+  const navigate = useNavigate();
   const [categoryList, setCategoryList] = useState(false);
   const [serviceList, setServiceList] = useState(false);
   const [placeholder, setPlaceholder] = useState(
@@ -137,15 +138,16 @@ export default function Header() {
   ];
 
   return (
-    <div className="pt-2">
+    <div className=" ">
       <div className="flex flex-col gap-1 sticky top-0 ">
-        <div className="p-3 relative">
-          {" "}
+        <div className="p-1 pt-0 relative">
           {/* Added relative positioning */}
           <input
             type="text"
             placeholder={placeholder}
-            className="py-3 px-2 outline-none rounded-xl w-full transition-all duration-500 placeholder-opacity-0 placeholder:font-light tracking-tight pl-10" // Added padding-left for icon
+            className="py-3 px-2 outline-none rounded-xl w-full transition-all duration-500 placeholder-opacity-0 placeholder:font-light tracking-tight pl-10 cursor-pointer" // Added padding-left for icon
+            readOnly
+            onClick={() => navigate('/search')}
           />
           {/* Positioned Search icon */}
           <Search
@@ -153,7 +155,7 @@ export default function Header() {
             size={20}
           />
         </div>
-        <div className="flex gap-8 justify-start items-center font-Lexend overflow-hidden overflow-x-scroll text-white no-scrollbar pl-5 pr-2 py-1">
+        <div className="flex gap-8 pt-3 justify-start items-center font-Lexend overflow-hidden overflow-x-scroll text-white no-scrollbar pl-5 pr-2 py-1">
           {navitems.map((item, i) => {
             return (
               <NavLink
@@ -163,7 +165,7 @@ export default function Header() {
                   isActive ? "border-b-[4px] rounded-sm" : "border-none"
                 }
               >
-                <div className="flex justify-center items-center flex-col gap-1">
+                <div className="flex justify-center items-center flex-col ">
                   {item.icon}
                   <p className="text-sm">{item.text}</p>
                 </div>
@@ -174,17 +176,17 @@ export default function Header() {
       </div>
       <button
         onClick={handleCategory}
-        className="bg-black/20 backdrop-blur-md  rounded-full fixed bottom-7 gap-1 right-5 z-[20] px-3 py-3 flex justify-center items-center flex-col"
+        className="bg-black/20 backdrop-blur-md  rounded-full fixed bottom-7 gap-1 right-5 z-[20] px-3 py-3 flex justify-center items-center flex-col border-green-100 border-2"
       >
-        <NotepadText className="" size={25} />
+        <NotepadText className="" color="white" size={25} />
       </button>
 
-      <button
+      {/* <button
         onClick={handleServicelist}
         className="bg-black/20 backdrop-blur-md   rounded-full fixed bottom-7 gap-1 left-5 z-[20] px-3 py-3 flex justify-center items-center flex-col"
       >
         <FaTools size={25} />
-      </button>
+      </button> */}
       {categoryList && (
         <div className="fixed top-0 left-0 right-0 bottom-0 bg-black bg-opacity-50 z-50 h-screen">
           <div

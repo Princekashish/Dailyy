@@ -4,12 +4,12 @@ import { ChevronUp, Minus, X } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import { RiTimerFlashLine } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { loadStripe } from "@stripe/stripe-js";
-import { productAdd } from "../../Redux/Feature/Cart/CartSlice";
+import { useSelector, useDispatch } from "react-redux";
+import { clearCart } from "../../Redux/Feature/Cart/CartSlice";
 
 export default function Checkout({ price }) {
   const cartss = useSelector((state) => state.cart.items);
+  const dispatch = useDispatch();
 
   const [viewcart, setViewCart] = useState(true);
   const [payment, setPayment] = useState(false);
@@ -21,6 +21,7 @@ export default function Checkout({ price }) {
   const [qrCodeVisible, setQrCodeVisible] = useState(false);
   const closeModal = () => {
     setViewCart(false); // Close the modal
+    setPayment(false); // Close the payment modal
   };
   const handlepayment = () => {
     setPayment(!payment);
@@ -65,53 +66,63 @@ export default function Checkout({ price }) {
       setError("Invalid UPI ID");
     }
   };
+  const loadRazorpayScript = () => {
+    return new Promise((resolve) => {
+      const script = document.createElement("script");
+      script.src = "https://checkout.razorpay.com/v1/checkout.js";
+      script.onload = () => {
+        resolve(true);
+      };
+      script.onerror = () => {
+        resolve(false);
+      };
+      document.body.appendChild(script);
+    });
+  };
+
   const makePayment = async () => {
     try {
-      // Initialize Stripe
-      const stripe = await loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
+      const res = await loadRazorpayScript();
 
-      if (!stripe) {
-        console.error("Stripe initialization failed");
+      if (!res) {
+        alert("Razorpay SDK failed to load. Are you online?");
         return;
       }
 
-      // Prepare the request payload
-      const body = {
-        products: cartss,
+      // Convert price to number and handle potential NaN
+      const amountInPaise = Math.round(Number(price) * 100);
+
+      const options = {
+        // You can put your test key here directly, or use an env variable
+        key: import.meta.env.VITE_RAZORPAY_TEST_KEY || "YOUR_TEST_KEY_HERE", 
+        amount: amountInPaise, 
+        currency: "INR",
+        name: "Dailyy",
+        description: "Test Transaction",
+        image: "/logo.png", // Make sure this path exists or replace with your actual logo
+        handler: function (response) {
+          const orderedItems = [...cartss];
+          dispatch(clearCart());
+          closeModal();
+          navigate("/success", { state: { orderedItems, paymentId: response.razorpay_payment_id } });
+        },
+        prefill: {
+          name: "Test User", // Ideally dynamically populated from user state
+          email: "test.user@example.com",
+          contact: "9999999999",
+        },
+        theme: {
+          color: "#15803d", // Tailwind green-700 to match your app theme
+        },
       };
 
-      const headers = {
-        "Content-Type": "application/json",
-      };
-
-      // Call the backend to create a Stripe Checkout session
-      const response = await fetch(
-        "http://localhost:3000/api/checkout/create-checkout-session",
-        {
-          method: "POST",
-          headers: headers,
-          body: JSON.stringify(body),
-        }
-      );
-
-      if (!response.ok) {
-        console.error("Failed to create a Stripe Checkout session");
-        return;
-      }
-
-      const session = await response.json();
-
-      // Redirect to the Stripe Checkout page
-      const result = await stripe.redirectToCheckout({
-        sessionId: session.id,
+      const paymentObject = new window.Razorpay(options);
+      
+      paymentObject.on('payment.failed', function (response){
+        alert("Payment Failed! Reason: " + response.error.description);
       });
 
-      if (result.error) {
-        console.error(
-          "Stripe Checkout redirection error:",
-          result.error.message
-        );
-      }
+      paymentObject.open();
     } catch (error) {
       console.error("Payment process failed:", error.message);
     }
@@ -127,7 +138,7 @@ export default function Checkout({ price }) {
               animate={{ y: 0, opacity: 1 }}
               exit={{ x: 100, opacity: 0 }}
               transition={{ duration: 0.25, stiffness: 1 }}
-              className="bg-white   rounded-t-3xl p-5 w-full absolute bottom-0 h-[85vh]  "
+              className="bg-white   rounded-t-3xl p-5 w-full absolute bottom-0 h-[77vh]  "
             >
               <div className="flex flex-col gap-5 ">
                 <div className="flex justify-between items-center">
@@ -237,13 +248,19 @@ export default function Checkout({ price }) {
                           <p className="text-sm">Delivey in Minutes</p>
                         </div>
                       </div>
+                      <button
+                        onClick={closeModal}
+                        className="p-1 bg-black/10   rounded-full "
+                      >
+                        <X />
+                      </button>
                     </div>
                   </div>
                   <div className="mt-10 flex justify-between items-center ">
                     <div className="flex flex-col justify-start items-start">
                       <div
                         className="flex justify-center items-center gap-2"
-                        onClick={togglePaymentOptions}
+                      // onClick={togglePaymentOptions}
                       >
                         <h1 className="uppercase text-sm ">Pay using</h1>
                         <ChevronUp size={15} />
