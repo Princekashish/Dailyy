@@ -358,7 +358,7 @@ export default function Cart({ bottom }) {
         </div>
       )}
 
-      <div>{checkout && <Checkout price={price} />}</div>
+      <div>{checkout && <Checkout price={total} />}</div>
     </>
   );
 }
