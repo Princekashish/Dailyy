@@ -4,37 +4,37 @@ import { Link } from "react-router-dom";
 export default function ProductCategories() {
   const items = [
     {
-      text: "Grocery",
-      img: "/pngeggvegble.png",
+      text: "Vegetables",
+      img: "/pngegg (22).png",
       link: "/grocery",
     },
     {
-      text: "Vegetables",
-      img: "/pngegg (27).png",
+      text: "Fruits",
+      img: "/Fruits.webp",
       link: "/personal-care",
     },
     {
       text: "Drinks",
-      img: "/pngegg (26).png",
+      img: "/drinks.webp",
       link: "/cloths",
     },
     {
-      text: "Fruits",
-      img: "/pngegg (2).png",
+      text: "Munchies",
+      img: "/Munchies.webp",
       link: "/beauty",
     },
-    { text: "Applicances", img: "/rb_4295.png", link: "/party-essential" },
-    { text: "Bulk", img: "/rb_26894.png", link: "/essential" },
-    {
-      text: "Muchies",
-      img: "/skincare.png",
-      link: "/",
-    },
+    { text: "Applicances", img: "/Appliances.webp", link: "/party-essential" },
     {
       text: "Gym Items",
-      img: "/grocetyitems.png",
+      img: "/Gym-Items.webp",
       link: "/",
     },
+    {
+      text: "Beauty",
+      img: "/Beauty.webp",
+      link: "/",
+    },
+    { text: "Bulk", img: "/Bulkorder.webp", link: "/essential" },
   ];
 
   return (
@@ -42,29 +42,27 @@ export default function ProductCategories() {
       <div>
         <div className="flex justify-between items-center">
           <h1 className="text-lg font-semibold ">Categories</h1>
-         
+
         </div>
-        <div className="grid grid-cols-4 gap-3 mt-2">
+        <div className="grid grid-cols-4 gap-3 mt-2 ">
           {items.map((item, i) => {
             const isLastItem = i === items.length - 1; // Check if the item is the last one
             return (
               <Link to={item.link} key={i}>
                 <div
-                  className={`rounded-xl flex flex-col gap-[.5px] items-center ${
-                    isLastItem ? "  rounded-t-2xl " : "" // Apply col-span-2 to the 7th item (index 6)
-                  }`}
+                  className={`rounded-xl flex flex-col gap-[.5px] items-center ${isLastItem ? "  rounded-t-2xl " : "" // Apply col-span-2 to the 7th item (index 6)
+                    }`}
                 >
-                  <div className="bg-[#f4f5f7]  h-[80px] w-[80px]  flex justify-center items-center rounded-full">
+                  <div className="bg-[#f8fafc]  h-[80px] w-[80px]  flex justify-center items-center rounded-full overflow-hidden">
                     <img
                       src={item.img}
                       alt={item.text}
-                      className="h-[60px] object-contain text-[10px]"
+                      className="h-[80px] w-[80px] object-contain"
                     />
                   </div>
                   <h1
-                    className={`text-center text-xs ${
-                      isLastItem ? "text-start text-xs p-1 " : ""
-                    }`}
+                    className={`text-center text-xs ${isLastItem ? "text-start text-xs p-1 " : ""
+                      }`}
                   >
                     {item.text}
                   </h1>

@@ -48,10 +48,13 @@ export default function Header() {
     },
     {
       icon: (
-        <img
-          src="/output-onlinepngtools (1).png"
-          alt="Grocery Icon"
-          className="h-[25px] "
+        <div
+          className="h-[25px] w-[25px] bg-current"
+          style={{
+            WebkitMask: 'url("/output-onlinepngtools (1).png") center/contain no-repeat',
+            mask: 'url("/output-onlinepngtools (1).png") center/contain no-repeat'
+          }}
+          title="Grocery Icon"
         />
       ),
       text: "Grocery",
@@ -64,10 +67,13 @@ export default function Header() {
     },
     {
       icon: (
-        <img
-          src="/output-onlinepngtools (2).png"
-          alt="Beauty Icon"
-          className="h-[25px] "
+        <div
+          className="h-[25px] w-[25px] bg-current"
+          style={{
+            WebkitMask: 'url("/output-onlinepngtools (2).png") center/contain no-repeat',
+            mask: 'url("/output-onlinepngtools (2).png") center/contain no-repeat'
+          }}
+          title="Beauty Icon"
         />
       ),
       text: "Beauty",
@@ -155,20 +161,22 @@ export default function Header() {
             size={20}
           />
         </div>
-        <div className="flex gap-8 pt-3 justify-start items-center font-Lexend overflow-hidden overflow-x-scroll text-white no-scrollbar pl-5 pr-2 py-1">
+        <div className="flex  gap-2 justify-start items-end font-Lexend overflow-hidden overflow-x-scroll flex-nowrap text-white no-scrollbar pl-5 pr-2">
           {navitems.map((item, i) => {
             return (
               <NavLink
                 key={i}
                 to={item.path}
                 className={({ isActive }) =>
-                  isActive ? "border-b-[4px] rounded-sm" : "border-none"
+                  `flex justify-center items-center flex-col px-5 pt-2 pb-2 duration-200 rounded-t-2xl min-w-max ${
+                    isActive
+                      ? "bg-white text-green-600 rounded-t-2xl"
+                      : "text-white"
+                  }`
                 }
               >
-                <div className="flex justify-center items-center flex-col ">
-                  {item.icon}
-                  <p className="text-sm">{item.text}</p>
-                </div>
+                {item.icon}
+                <p className="text-sm font-medium mt-1">{item.text}</p>
               </NavLink>
             );
           })}

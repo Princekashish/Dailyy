@@ -16,11 +16,10 @@ export default function Service() {
   ];
 
   const servicelist = [
-    { text: "Plumber", img: "/rb_136620.png" , link:"/plumber"},
-    { text: "Drying", img: "/rb_50594.png" },
-    { text: "Electrician", img: "/rb_150265.png" },
-    { text: "Plumber", img: "/rb_136620.png" },
-    { text: "Drying", img: "/rb_50594.png" },
+    { text: "Plumber", img: "/plumber.webp" , link:"/plumber"},
+    { text: "Drying", img: "/ry.webp" },
+    { text: "Electrician", img: "/Electrician.webp" },
+    { text: "Cleaning", img: "/swiper.webp" },
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -37,24 +36,24 @@ export default function Service() {
 
 
   return (
-    <div className="p-3 font-Lexend flex flex-col gap-5">
+    <div className="p-3 font-Lexend flex flex-col gap-3">
       <div className="flex flex-col gap-3">
         <h1 className="text-lg font-semibold ">Service</h1>
         <div
           ref={scrollContainerRef}
-          className="flex overflow-hidden overflow-x-scroll gap-1 no-scrollbar relative whitespace-nowrap w-full"
+          className="grid grid-cols-4 gap-3"
         >
           {servicelist.map((items, i) => (
             <Link to={items.link}
               key={i}
               className=" rounded-full  flex flex-col  justify-center gap-2 items-center   relative p-1"
             >
-              <div className="bg-[#f4f5f7] w-[70px] h-[70px]  flex justify-center items-center rounded-full">
+              <div className="bg-[#f8fafc] w-[80px] h-[80px]  flex justify-center items-center rounded-full">
                 {" "}
                 <img
                   src={items.img}
                   alt=""
-                  className=" h-[50px] w-[50px] object-contain"
+                  className=" h-[70px] w-[70px] object-contain"
                 />
               </div>
 

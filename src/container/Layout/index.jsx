@@ -9,7 +9,7 @@ export default function Layout() {
   return (
     <div>
       <BackNavigationRedirect />
-      <div className="bg-green-700  flex  flex-col  gap-4 ">
+      <div className="bg-[#00A63E]  flex  flex-col  gap-4  ">
         <Hero />
         <Header />
       </div>

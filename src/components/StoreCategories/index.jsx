@@ -5,32 +5,32 @@ export default function StoreCategories() {
   const Store = [
     {
       text: "Computer",
-      img: "https://madisonliquidators.com/images/blog/gmdskl5.jpg",
+      img: "/Computer.avif",
       link: "/computer",
     },
     {
       text: "Medical",
-      img: "https://images.unsplash.com/photo-1471864190281-a93a3070b6de?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      img: "/Medical.avif",
       link: "/Medical",
     },
     {
       text: "Electrical",
-      img: "https://images.unsplash.com/photo-1676630444903-163fe485c5d1?q=80&w=2852&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      img: "/Electrical.avif",
       link: "/electrical",
     },
     {
       text: "Appliances",
-      img: "https://images.unsplash.com/photo-1722050676498-4aecbdce0d38?q=80&w=2942&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      img: "/Appliances.avif",
       link: "/appliances",
     },
     {
       text: "Dry service",
-      img: "https://plus.unsplash.com/premium_photo-1677849925689-4abcf415c5f2?q=80&w=2787&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      img: "/Service.avif",
       link: "/dryService",
     },
     {
       text: "stationery",
-      img: "https://images.unsplash.com/photo-1567219934540-9f75f7b87552?q=80&w=2912&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      img: "/Stationery.avif",
       link: "/stationery",
     },
   ];
