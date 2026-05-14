@@ -94,7 +94,7 @@ export default function ServiceSearch() {
         </div>
       </div>
       <div className="p-3 flex flex-col gap-3 justify-center">
-        <h1 className="font-semibold text-base">Top service on dailyy</h1>
+        <h1 className="font-semibold text-base">Top service on dail;y</h1>
         <div className="flex whitespace-nowrap overflow-hidden overflow-x-scroll no-scrollbar gap-4">
           {sericemenu.map((popular, i) => {
             return (

@@ -1,215 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Minus, Plus, X } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import { motion } from "framer-motion";
 import { productAdd, productRemove } from "../../Redux/Feature/Cart/CartSlice";
+import axios from "axios";
+import { API_BASE_URL } from "../../utils/api";
 
 export default function GroceryItems() {
-  const vegetable = [
-    {
-      id: 1907,
-      name: "Tomato",
-      category: "Vegetables",
-      price: "30",
-      image: "/totomt.png",
-      description: "Fresh and juicy tomatoes, perfect for salads, curries, and sauces.",
-      discount: "10%", // Example discount
-      serviceType: "Fresh", // Added service type
-    },
-    {
-      id: 24324,
-      name: "Potato",
-      category: "Vegetables",
-      price: "40",
-      image: "/pngegg (3).png",
-      description: "Starchy and versatile, used in curries, fries, and mashed potatoes.",
-      discount: "5%", // Example discount
-      serviceType: "Fresh", // Added service type
-    },
-    {
-      id: 3423423,
-      name: "Onion",
-      category: "Vegetables",
-      price: "20",
-      image: "/pngegg (4).png",
-      description: "A must-have ingredient in every kitchen, adds flavor to dishes.",
-      discount: "15%", // Example discount
-      serviceType: "Fresh", // Added service type
-    },
-    {
-      id: 452345,
-      name: "Carrot",
-      category: "Vegetables",
-      price: "50",
-      image: "/pngegg (5).png",
-      description: "Crunchy and sweet, great for salads, soups, and stir-fries.",
-      discount: "8%", // Example discount
-      serviceType: "Fresh", // Added service type
-    },
-    {
-      id: 51234,
-      name: "Cucumber",
-      category: "Vegetables",
-      price: "25",
-      image: "/pngegg (6).png",
-      description: "Refreshing and hydrating, ideal for salads and juices.",
-      discount: "12%", // Example discount
-      serviceType: "Fresh", // Added service type
-    },
-    {
-      id: 61234,
-      name: "Cauliflower",
-      category: "Vegetables",
-      price: "60",
-      image: "/pngegg (7).png",
-      description: "A versatile vegetable, perfect for curries, soups, and as a low-carb alternative.",
-      discount: "10%", // Example discount
-      serviceType: "Fresh", // Added service type
-    },
-    {
-      id: 71234,
-      name: "Spinach",
-      category: "Vegetables",
-      price: "40",
-      image: "/pngegg (8).png",
-      description: "Packed with vitamins, ideal for salads, soups, and as a side dish.",
-      discount: "7%", // Example discount
-      serviceType: "Fresh", // Added service type
-    },
-    {
-      id: 84321,
-      name: "Brinjal (Eggplant)",
-      category: "Vegetables",
-      price: "45",
-      image: "/pngegg (9).png",
-      description: "Tender and flavorful, used in curries, grills, and as a main dish.",
-      discount: "5%", // Example discount
-      serviceType: "Fresh", // Added service type
-    },
-    {
-      id: 91234,
-      name: "Green Bell Pepper",
-      category: "Vegetables",
-      price: "55",
-      image: "/pngegg (10).png",
-      description: "Crisp and mildly sweet, adds a vibrant color to your dishes.",
-      discount: "6%", // Example discount
-      serviceType: "Fresh", // Added service type
-    },
-    {
-      id: 101234,
-      name: "Beans (Green)",
-      category: "Vegetables",
-      price: "60",
-      image: "/pngegg (11).png",
-      description: "Crunchy and nutritious, great in stir-fries, soups, and salads.",
-      discount: "9%", // Example discount
-      serviceType: "Fresh", // Added service type
-    },
-    {
-      id: 1907,
-      name: "Tomato",
-      category: "Vegetables",
-      price: "30",
-      image: "/totomt.png",
-      description: "Fresh and juicy tomatoes, perfect for salads, curries, and sauces.",
-      discount: "10%", // Example discount
-      serviceType: "Fresh", // Added service type
-    },
-    {
-      id: 24324,
-      name: "Potato",
-      category: "Vegetables",
-      price: "40",
-      image: "/pngegg (3).png",
-      description: "Starchy and versatile, used in curries, fries, and mashed potatoes.",
-      discount: "5%", // Example discount
-      serviceType: "Fresh", // Added service type
-    },
-    {
-      id: 3423423,
-      name: "Onion",
-      category: "Vegetables",
-      price: "20",
-      image: "/pngegg (4).png",
-      description: "A must-have ingredient in every kitchen, adds flavor to dishes.",
-      discount: "15%", // Example discount
-      serviceType: "Fresh", // Added service type
-    },
-    {
-      id: 452345,
-      name: "Carrot",
-      category: "Vegetables",
-      price: "50",
-      image: "/pngegg (5).png",
-      description: "Crunchy and sweet, great for salads, soups, and stir-fries.",
-      discount: "8%", // Example discount
-      serviceType: "Fresh", // Added service type
-    },
-    {
-      id: 51234,
-      name: "Cucumber",
-      category: "Vegetables",
-      price: "25",
-      image: "/pngegg (6).png",
-      description: "Refreshing and hydrating, ideal for salads and juices.",
-      discount: "12%", // Example discount
-      serviceType: "Fresh", // Added service type
-    },
-    {
-      id: 61234,
-      name: "Cauliflower",
-      category: "Vegetables",
-      price: "60",
-      image: "/pngegg (7).png",
-      description: "A versatile vegetable, perfect for curries, soups, and as a low-carb alternative.",
-      discount: "10%", // Example discount
-      serviceType: "Fresh", // Added service type
-    },
-    {
-      id: 71234,
-      name: "Spinach",
-      category: "Vegetables",
-      price: "40",
-      image: "/pngegg (8).png",
-      description: "Packed with vitamins, ideal for salads, soups, and as a side dish.",
-      discount: "7%", // Example discount
-      serviceType: "Fresh", // Added service type
-    },
-    {
-      id: 84321,
-      name: "Brinjal (Eggplant)",
-      category: "Vegetables",
-      price: "45",
-      image: "/pngegg (9).png",
-      description: "Tender and flavorful, used in curries, grills, and as a main dish.",
-      discount: "5%", // Example discount
-      serviceType: "Fresh", // Added service type
-    },
-    {
-      id: 91234,
-      name: "Green Bell Pepper",
-      category: "Vegetables",
-      price: "55",
-      image: "/pngegg (10).png",
-      description: "Crisp and mildly sweet, adds a vibrant color to your dishes.",
-      discount: "6%", // Example discount
-      serviceType: "Fresh", // Added service type
-    },
-    {
-      id: 101234,
-      name: "Beans (Green)",
-      category: "Vegetables",
-      price: "60",
-      image: "/pngegg (11).png",
-      description: "Crunchy and nutritious, great in stir-fries, soups, and salads.",
-      discount: "9%", // Example discount
-      serviceType: "Fresh", // Added service type
-    },
-  ];
+  const [vegetable, setVegetable] = useState([]);
 
-
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  useEffect(() => {
+    const fetchVegetables = async () => {
+      try {
+        const res = await axios.get(`${API_BASE_URL}/api/v1/product/vegetable`);
+        setVegetable(res.data);
+      } catch (error) {
+        console.error("Error fetching vegetables:", error);
+      }
+    };
+    fetchVegetables();
+  }, []);
+   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const cart = useSelector((state) => state.cart.items);
   const dispatch = useDispatch();
@@ -238,30 +49,30 @@ export default function GroceryItems() {
       <div className="mt-10  ">
         <div>
           {vegetable.length === 0 ? (
-            <div>
+            <div className="h-[50vh] flex justify-center items-center" >
               <h1>Loading......</h1>
             </div>
           ) : (
-            <div className="grid grid-cols-3 gap-3 p-3 ">
+            <div className="grid grid-cols-3 gap-3 p-3 mb-14">
               {vegetable.map((vegitable) => {
-                const itemQuantity = getCartItemQuantity(vegitable.id);
+                const itemQuantity = getCartItemQuantity(vegitable._id || vegitable.id);
                 return (
                   <div
-                    key={vegitable.id}
+                    key={vegitable._id || vegitable.id}
                     className="relative flex flex-col gap-1 justify-center items-center  "
                   >
                     <div className="relative ">
                       <div className="h-[100px] bg-[#f4f4f4]   rounded-full  w-[100px] flex justify-center items-center">
                         <img
-                          src={vegitable.image}
-                          onClick={() => openModal(vegitable)}
+                          src={vegitable.images?.[0] || vegitable.image}
+                          onClick={() => openModal({...vegitable, id: vegitable._id || vegitable.id})}
                           alt=""
                           className=" h-[60px] object-contain"
                         />
                       </div>
                       {itemQuantity === 0 ? (
                         <div
-                          onClick={() => handleAddToCart(vegitable)}
+                          onClick={() => handleAddToCart({...vegitable, id: vegitable._id || vegitable.id})}
                           className="absolute -bottom-1 right-0 border-green-700 border px-1 py-1 bg-white rounded-lg cursor-pointer opacity-60"
                         >
                           <Plus size={18} />
@@ -269,7 +80,7 @@ export default function GroceryItems() {
                       ) : (
                         <div className="absolute opacity-60 cursor-pointer -bottom-2 right-0 border-green-600 border px-2 py-1 bg-white rounded-lg flex gap-2 vegitables-center">
                           <button
-                            onClick={() => handleRemoveFromCart(vegitable)}
+                            onClick={() => handleRemoveFromCart({id: vegitable._id || vegitable.id})}
                             className="text-lg font-medium"
                           >
                             <Minus size={15} />
@@ -278,7 +89,7 @@ export default function GroceryItems() {
                             {itemQuantity}
                           </h1>
                           <button
-                            onClick={() => handleAddToCart(vegitable)}
+                            onClick={() => handleAddToCart({...vegitable, id: vegitable._id || vegitable.id})}
                             className="text-lg font-medium"
                           >
                             <Plus size={15} />
@@ -287,7 +98,7 @@ export default function GroceryItems() {
                       )}
                     </div>
                     <div className="flex justify-center items-center flex-col    p-1">
-                      <h1 className="text-[12px] ">{vegitable.name}</h1>
+                      <h1 className="text-[12px] ">{vegitable.title}</h1>
                       <p className="text-sm font-semibold text-start w-full">
                         ₹{vegitable.price}/Kg
                       </p>
@@ -316,11 +127,11 @@ export default function GroceryItems() {
                   <X size={20} />
                 </button>
                 <h2 className="text-xl font-semibold">
-                  {selectedProduct.product}
+                  {selectedProduct.product || selectedProduct.title || selectedProduct.name}
                 </h2>
                 <img
-                  src={selectedProduct.img}
-                  alt={selectedProduct.product}
+                  src={selectedProduct.images?.[0] || selectedProduct.img || selectedProduct.image}
+                  alt={selectedProduct.product || selectedProduct.title || selectedProduct.name}
                   className=" w-full h-40 object-contain rounded-xl"
                 />
                 <div className="flex justify-between items-center ">

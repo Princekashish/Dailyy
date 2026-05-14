@@ -6,7 +6,7 @@ export default function ProductCategories() {
     {
       text: "Vegetables",
       img: "/pngegg (22).png",
-      link: "/grocery",
+      link: "/vegetables-fruits",
     },
     {
       text: "Fruits",

@@ -131,7 +131,7 @@ export default function Sucess() {
                   {orderedItems.map((item, index) => (
                     <div key={index} className="flex gap-4 items-center py-3 border-b border-gray-50 last:border-0">
                       <div className="w-12 h-12 bg-gray-50 rounded-xl flex justify-center items-center p-2">
-                        <img src={item.img || item.image || "/placeholder.png"} alt={item.name} className="w-full h-full object-contain mix-blend-multiply" />
+                        <img src={item.images[0] || item.image || "/placeholder.png"} alt={item.name} className="w-full h-full object-contain mix-blend-multiply" />
                       </div>
                       <div className="flex-1">
                         <h4 className="font-normal text-gray-900 text-sm line-clamp-1">{item.name}</h4>

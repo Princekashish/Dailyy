@@ -39,7 +39,7 @@ export default function PaymentMethod() {
         key: import.meta.env.VITE_RAZORPAY_TEST_KEY || "YOUR_TEST_KEY_HERE",
         amount: amountInPaise,
         currency: "INR",
-        name: "Dailyy",
+        name: "Dailly",
         description: "Payment for your order",
         image: "/logo.png",
         handler: function (response) {
@@ -48,8 +48,8 @@ export default function PaymentMethod() {
           navigate("/success", { state: { orderedItems, paymentId: response.razorpay_payment_id, method: "UPI", totalPrice: price } });
         },
         prefill: {
-          name: "Dailyy Customer",
-          email: "customer@dailyy.com",
+          name: "Dailly Customer",
+          email: "customer@dailly.com",
           contact: "9999999999",
         },
         theme: {

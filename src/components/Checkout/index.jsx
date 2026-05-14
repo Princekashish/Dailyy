@@ -16,9 +16,26 @@ export default function Checkout({ price }) {
   const [selectedPayment, setSelectedPayment] = useState(null);
   const [paymentOptions, setPaymentOptions] = useState(false); // Added state for payment options
   const [user, setUser] = useState("");
+  const [addressData, setAddressData] = useState({
+    name: "",
+    number: user?.phoneNumber || "",
+    address: "",
+    landmark: "",
+    location: ""
+  });
   const [upiId, setUpiId] = useState("");
   const [error, setError] = useState("");
   const [qrCodeVisible, setQrCodeVisible] = useState(false);
+
+  const handleAddressChange = (e) => {
+    setAddressData({ ...addressData, [e.target.id]: e.target.value });
+  };
+
+  const handleAddressSubmit = (e) => {
+    e.preventDefault();
+    console.log("Submitted Address Data:", addressData);
+    handlepayment();
+  };
   const closeModal = () => {
     setViewCart(false); // Close the modal
     setPayment(false); // Close the payment modal
@@ -97,7 +114,7 @@ export default function Checkout({ price }) {
         key: import.meta.env.VITE_RAZORPAY_TEST_KEY || "YOUR_TEST_KEY_HERE", 
         amount: amountInPaise, 
         currency: "INR",
-        name: "Dailyy",
+        name: "Dailly",
         description: "Test Transaction",
         image: "/logo.png", // Make sure this path exists or replace with your actual logo
         handler: function (response) {
@@ -156,71 +173,80 @@ export default function Checkout({ price }) {
                     <X />
                   </button>
                 </div>
-                <form className="flex flex-col gap-4   overflow-hidden overflow-y-scroll h-[80vh] no-scrollbar">
-                  <div className="flex flex-col gap-2">
-                    <label htmlFor="name" className="text-start">
+                <form onSubmit={handleAddressSubmit} className="flex flex-col gap-4 overflow-hidden overflow-y-scroll h-[80vh] no-scrollbar pb-20">
+                  <div className="flex flex-col gap-1.5">
+                    <label htmlFor="name" className="text-start text-sm font-medium text-gray-700">
                       Full name
                     </label>
                     <input
                       type="text"
                       id="name"
                       placeholder="Your Name"
-                      className="py-2 px-3 border rounded-lg font-light text-gray-600"
-                      required
+                      value={addressData.name}
+                      onChange={handleAddressChange}
+                      className="py-2.5 px-3 border border-gray-200 bg-gray-50 rounded-xl font-light text-gray-800 outline-none focus:bg-white focus:border-green-600 focus:ring-1 focus:ring-green-600 transition-all"
                     />
                   </div>
-                  <div className="flex flex-col gap-2">
-                    <label htmlFor="number" className="text-start">
+                  <div className="flex flex-col gap-1.5">
+                    <label htmlFor="number" className="text-start text-sm font-medium text-gray-700">
                       Mobile number
                     </label>
                     <input
                       type="tel"
                       id="number"
                       placeholder="Your Phone Number"
-                      value={user?.phoneNumber || ""}
-                      className="py-2 px-3 border rounded-lg font-light"
+                      value={addressData.number}
+                      onChange={handleAddressChange}
+                      className="py-2.5 px-3 border border-gray-200 bg-gray-50 rounded-xl font-light text-gray-800 outline-none focus:bg-white focus:border-green-600 focus:ring-1 focus:ring-green-600 transition-all"
                       required
                     />
                   </div>
-                  <div className="flex flex-col gap-2">
-                    <label htmlFor="address" className="text-start">
-                      Flat,House no.., Building, Apartment
+                  <div className="flex flex-col gap-1.5">
+                    <label htmlFor="address" className="text-start text-sm font-medium text-gray-700">
+                      Flat, House no., Building, Apartment
                     </label>
                     <input
+                      type="text"
                       id="address"
-                      className="py-2 px-3 border rounded-lg"
-                      required
-                    ></input>
+                      placeholder="e.g., Flat 101, Green View Apt"
+                      value={addressData.address}
+                      onChange={handleAddressChange}
+                      className="py-2.5 px-3 border border-gray-200 bg-gray-50 rounded-xl font-light text-gray-800 outline-none focus:bg-white focus:border-green-600 focus:ring-1 focus:ring-green-600 transition-all"
+                      
+                    />
                   </div>
-                  <div className="flex flex-col gap-2">
-                    <label htmlFor="address" className="text-start">
+                  <div className="flex flex-col gap-1.5">
+                    <label htmlFor="landmark" className="text-start text-sm font-medium text-gray-700">
                       Landmark
                     </label>
                     <input
-                      id="address"
-                      className="py-2 px-3 border rounded-lg"
-                      placeholder="E.g. near apollo hospital"
-                      required
-                    ></input>
+                      type="text"
+                      id="landmark"
+                      placeholder="e.g., Near Apollo Hospital"
+                      value={addressData.landmark}
+                      onChange={handleAddressChange}
+                      className="py-2.5 px-3 border border-gray-200 bg-gray-50 rounded-xl font-light text-gray-800 outline-none focus:bg-white focus:border-green-600 focus:ring-1 focus:ring-green-600 transition-all"
+                      
+                    />
                   </div>
-                  <div className="flex flex-col gap-2">
-                    <label htmlFor="location" className="text-start">
+                  <div className="flex flex-col gap-1.5 mb-2">
+                    <label htmlFor="location" className="text-start text-sm font-medium text-gray-700">
                       Current Location (Google Maps Link)
                     </label>
                     <input
                       type="url"
                       id="location"
-                      className="py-2 px-3 border rounded-lg"
-                      placeholder="Google Maps Link"
-                      required
+                      placeholder="https://maps.google.com/..."
+                      value={addressData.location}
+                      onChange={handleAddressChange}
+                      className="py-2.5 px-3 border border-gray-200 bg-gray-50 rounded-xl font-light text-gray-800 outline-none focus:bg-white focus:border-green-600 focus:ring-1 focus:ring-green-600 transition-all"
                     />
                   </div>
                   <button
                     type="submit"
-                    onClick={handlepayment}
-                    className="bg-black rounded-xl text-white font-bold  py-3  mb-20"
+                    className="w-full bg-green-700 hover:bg-green-800 text-white font-semibold py-3.5 rounded-xl shadow-lg shadow-green-900/20 transition-all flex items-center justify-center uppercase tracking-wider text-sm mt-2"
                   >
-                    Submit
+                    Proceed to Payment
                   </button>
                 </form>
               </div>

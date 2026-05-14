@@ -81,8 +81,8 @@ export default function Cart({ bottom }) {
         <div className="relative flex justify-center items-center ">
           {firstTwoItems.map((item, index) => (
             <img
-              key={item.id}
-              src={item.image}
+              key={item.id || item._id}
+              src={item.images?.[0] || item.image || item.img || item[0]}
               alt={item.product}
               className={`w-8 h-8 object-cover rounded-full bg-white ${index === 0
                   ? "z-10  border-[2px] border-[#29541e]"
@@ -161,16 +161,16 @@ export default function Cart({ bottom }) {
                                   className="p-2 border rounded-xl border-gray-100 w-[60px] h-[60px] flex justify-center items-center bg-gray-50/50"
                                 >
                                   <img
-                                    src={items.image}
+                                    src={items.images?.[0] || items.image || items.img || items[0]}
                                     alt=""
                                     className="h-full w-full object-contain "
                                   />
                                 </div>
                                 <div className="flex flex-col justify-center items-start gap-0.5">
                                   <h1 className="text-sm font-medium text-gray-900">
-                                    {items.name.length > 18
-                                      ? `${items.name.substring(0, 18)}...`
-                                      : items.name}
+                                    {(items.title).length > 18
+                                      ? `${(items.title || items.name || "").substring(0, 18)}...`
+                                      : items.title || items.name}
                                   </h1>
                                   <p className="text-sm font-semibold text-gray-900">
                                     ₹{items.price}
@@ -217,16 +217,16 @@ export default function Cart({ bottom }) {
                                     className="p-2 border rounded-xl border-gray-100 w-[60px] h-[60px] flex justify-center items-center bg-gray-50/50"
                                   >
                                     <img
-                                      src={items.img}
+                                      src={items.images?.[0] || items.img || items.image || items[0]}
                                       alt=""
                                       className="object-contain mix-blend-multiply h-full w-full"
                                     />
                                   </div>
                                   <div className="flex flex-col justify-center items-start gap-0.5">
                                     <h1 className="text-sm text-gray-900 font-medium">
-                                      {items.name.length > 18
-                                        ? `${items.name.substring(0, 18)}...`
-                                        : items.name}
+                                      {(items.title || items.name || "").length > 18
+                                        ? `${(items.title || items.name || "").substring(0, 18)}...`
+                                        : items.title || items.name}
                                     </h1>
                                     <p className="text-sm font-semibold text-gray-900">
                                       ₹{items.price}

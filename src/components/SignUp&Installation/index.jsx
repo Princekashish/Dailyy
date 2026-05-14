@@ -82,7 +82,7 @@ export default function Signup_Installation({ setShowPopup }) {
       >
         <div className=" h-full relative ">
           <h1 className="text-white text-center">
-            Welcome to Dailyy - Minutes Delivey app
+            Welcome to Dailly - Minutes Delivey app
           </h1>
           <div className="flex absolute  bottom-0 justify-center gap-5 w-full rounded-lg">
             <div className="w-full flex justify-center items-center rounded-lg bg-white/80 absolute bottom-0 ">
