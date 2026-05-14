@@ -95,7 +95,7 @@ export default function Vegetables_fruits() {
       <div>
         <Cart bottom={"bottom-24"} />
       </div>
-      <div className={`bg-white h-[11vh] shadow-[0_-4px_6px_rgba(0,0,0,0.1)] rounded-t-3xl whitespace-nowrap bottom-0 fixed w-full overflow-x-scroll overflow-hidden scroll-smooth no-scrollbar transition-transform duration-1000 ${showBottomBar ? "translate-y-0" : "translate-y-[150%]"}`}>
+      {/* <div className={`bg-white h-[11vh] shadow-[0_-4px_6px_rgba(0,0,0,0.1)] rounded-t-3xl whitespace-nowrap bottom-0 fixed w-full overflow-x-scroll overflow-hidden scroll-smooth no-scrollbar transition-transform duration-1000 ${showBottomBar ? "translate-y-0" : "translate-y-[150%]"}`}>
         <motion.div
           whileTap={{ cursor: "grabbing" }}
           transition={{ type: "spring", stiffness: 100, damping: 20 }}
@@ -137,7 +137,7 @@ export default function Vegetables_fruits() {
             );
           })}
         </motion.div>
-      </div>
+      </div> */}
     </div>
   );
 }

@@ -10,32 +10,32 @@ export default function Computer() {
   const computer = [
     {
       items: "Keyboards",
-      img: "https://arcticfox.com/cdn/shop/products/gamingkeyboardphoto2.jpg?v=1668688814",
+      image: "https://arcticfox.com/cdn/shop/products/gamingkeyboardphoto2.jpg?v=1668688814",
       link: "/computer", // This should match the default route
     },
     {
       items: "Speakers",
-      img: "speaker.webp  ",
+      image: "speaker.webp  ",
       link: "/computer/speakers", // Correct relative path
     },
     {
       items: "Printers",
-      img: "https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1697020678/Croma%20Assets/Computers%20Peripherals/Printers%20and%20Scanners/Images/197501_0_wioza6.png?tr=w-640",
+      image: "https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1697020678/Croma%20Assets/Computers%20Peripherals/Printers%20and%20Scanners/Images/197501_0_wioza6.png?tr=w-640",
       link: "/computer/printers", // Correct relative path
     },
     {
       items: "Keyboards",
-      img: "/3b09c7cc-f6df-4390-aed6-5a8af18abd56.png",
+      image: "/3b09c7cc-f6df-4390-aed6-5a8af18abd56.png",
       link: "/computers", // This should match the default route
     },
     {
       items: "Speakers",
-      img: "https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1730273019/Croma%20Assets/Entertainment/Speakers%20and%20Media%20Players/Images/246234_0_tw1qt9.png?tr=w-640",
+      image: "https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1730273019/Croma%20Assets/Entertainment/Speakers%20and%20Media%20Players/Images/246234_0_tw1qt9.png?tr=w-640",
       link: "/computer/speakerss", // Correct relative path
     },
     {
       items: "Printers",
-      img: "https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1697020678/Croma%20Assets/Computers%20Peripherals/Printers%20and%20Scanners/Images/197501_0_wioza6.png?tr=w-640",
+      image: "https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1697020678/Croma%20Assets/Computers%20Peripherals/Printers%20and%20Scanners/Images/197501_0_wioza6.png?tr=w-640",
       link: "/computer/printerss", // Correct relative path
     },
   ];
@@ -74,7 +74,7 @@ export default function Computer() {
           </div>
         </div>
         <div className="absolute top-0 w-full">
-          <img
+          <image
             src="/Screenshot 2024-12-04 013025.png"
             className="h-[25vh] w-full object-cover "
           />
@@ -103,7 +103,7 @@ export default function Computer() {
               <div
                 className={`border-2 border-blue-300  flex flex-col relative gap-2 rounded-xl overflow-hidden h-[85px]  w-[85px]`}
                 style={{
-                  backgroundImage: `url(${item.img})`,
+                  backgroundImage: `url(${item.image})`,
                   backgroundPosition: "center",
                   backgroundSize: "cover",
                   backgroundRepeat: "no-repeat",
@@ -111,8 +111,8 @@ export default function Computer() {
               >
                 <div className="absolute top-0 bottom-0 w-full   bg-gradient-to-b from-black/10 to-black/90 border-2 border-white rounded-xl " />
                 {/* <div className="border-2 border-black flex justify-center items-center rounded-full">
-                  <img
-                    src={item.img}
+                  <image
+                    src={item.image}
                     alt={item.items}
                     className="rounded-3xl p-2 object-contain "
                   />

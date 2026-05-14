@@ -11,7 +11,7 @@ export default function GroceryItems() {
       name: "Tomato",
       category: "Vegetables",
       price: "30",
-      img: "/totomt.png",
+      image: "/totomt.png",
       description: "Fresh and juicy tomatoes, perfect for salads, curries, and sauces.",
       discount: "10%", // Example discount
       serviceType: "Fresh", // Added service type
@@ -21,7 +21,7 @@ export default function GroceryItems() {
       name: "Potato",
       category: "Vegetables",
       price: "40",
-      img: "/pngegg (3).png",
+      image: "/pngegg (3).png",
       description: "Starchy and versatile, used in curries, fries, and mashed potatoes.",
       discount: "5%", // Example discount
       serviceType: "Fresh", // Added service type
@@ -31,7 +31,7 @@ export default function GroceryItems() {
       name: "Onion",
       category: "Vegetables",
       price: "20",
-      img: "/pngegg (4).png",
+      image: "/pngegg (4).png",
       description: "A must-have ingredient in every kitchen, adds flavor to dishes.",
       discount: "15%", // Example discount
       serviceType: "Fresh", // Added service type
@@ -41,7 +41,7 @@ export default function GroceryItems() {
       name: "Carrot",
       category: "Vegetables",
       price: "50",
-      img: "/pngegg (5).png",
+      image: "/pngegg (5).png",
       description: "Crunchy and sweet, great for salads, soups, and stir-fries.",
       discount: "8%", // Example discount
       serviceType: "Fresh", // Added service type
@@ -51,7 +51,7 @@ export default function GroceryItems() {
       name: "Cucumber",
       category: "Vegetables",
       price: "25",
-      img: "/pngegg (6).png",
+      image: "/pngegg (6).png",
       description: "Refreshing and hydrating, ideal for salads and juices.",
       discount: "12%", // Example discount
       serviceType: "Fresh", // Added service type
@@ -61,7 +61,7 @@ export default function GroceryItems() {
       name: "Cauliflower",
       category: "Vegetables",
       price: "60",
-      img: "/pngegg (7).png",
+      image: "/pngegg (7).png",
       description: "A versatile vegetable, perfect for curries, soups, and as a low-carb alternative.",
       discount: "10%", // Example discount
       serviceType: "Fresh", // Added service type
@@ -71,7 +71,7 @@ export default function GroceryItems() {
       name: "Spinach",
       category: "Vegetables",
       price: "40",
-      img: "/pngegg (8).png",
+      image: "/pngegg (8).png",
       description: "Packed with vitamins, ideal for salads, soups, and as a side dish.",
       discount: "7%", // Example discount
       serviceType: "Fresh", // Added service type
@@ -81,7 +81,7 @@ export default function GroceryItems() {
       name: "Brinjal (Eggplant)",
       category: "Vegetables",
       price: "45",
-      img: "/pngegg (9).png",
+      image: "/pngegg (9).png",
       description: "Tender and flavorful, used in curries, grills, and as a main dish.",
       discount: "5%", // Example discount
       serviceType: "Fresh", // Added service type
@@ -91,7 +91,7 @@ export default function GroceryItems() {
       name: "Green Bell Pepper",
       category: "Vegetables",
       price: "55",
-      img: "/pngegg (10).png",
+      image: "/pngegg (10).png",
       description: "Crisp and mildly sweet, adds a vibrant color to your dishes.",
       discount: "6%", // Example discount
       serviceType: "Fresh", // Added service type
@@ -101,7 +101,7 @@ export default function GroceryItems() {
       name: "Beans (Green)",
       category: "Vegetables",
       price: "60",
-      img: "/pngegg (11).png",
+      image: "/pngegg (11).png",
       description: "Crunchy and nutritious, great in stir-fries, soups, and salads.",
       discount: "9%", // Example discount
       serviceType: "Fresh", // Added service type
@@ -111,7 +111,7 @@ export default function GroceryItems() {
       name: "Tomato",
       category: "Vegetables",
       price: "30",
-      img: "/totomt.png",
+      image: "/totomt.png",
       description: "Fresh and juicy tomatoes, perfect for salads, curries, and sauces.",
       discount: "10%", // Example discount
       serviceType: "Fresh", // Added service type
@@ -121,7 +121,7 @@ export default function GroceryItems() {
       name: "Potato",
       category: "Vegetables",
       price: "40",
-      img: "/pngegg (3).png",
+      image: "/pngegg (3).png",
       description: "Starchy and versatile, used in curries, fries, and mashed potatoes.",
       discount: "5%", // Example discount
       serviceType: "Fresh", // Added service type
@@ -131,7 +131,7 @@ export default function GroceryItems() {
       name: "Onion",
       category: "Vegetables",
       price: "20",
-      img: "/pngegg (4).png",
+      image: "/pngegg (4).png",
       description: "A must-have ingredient in every kitchen, adds flavor to dishes.",
       discount: "15%", // Example discount
       serviceType: "Fresh", // Added service type
@@ -141,7 +141,7 @@ export default function GroceryItems() {
       name: "Carrot",
       category: "Vegetables",
       price: "50",
-      img: "/pngegg (5).png",
+      image: "/pngegg (5).png",
       description: "Crunchy and sweet, great for salads, soups, and stir-fries.",
       discount: "8%", // Example discount
       serviceType: "Fresh", // Added service type
@@ -151,7 +151,7 @@ export default function GroceryItems() {
       name: "Cucumber",
       category: "Vegetables",
       price: "25",
-      img: "/pngegg (6).png",
+      image: "/pngegg (6).png",
       description: "Refreshing and hydrating, ideal for salads and juices.",
       discount: "12%", // Example discount
       serviceType: "Fresh", // Added service type
@@ -161,7 +161,7 @@ export default function GroceryItems() {
       name: "Cauliflower",
       category: "Vegetables",
       price: "60",
-      img: "/pngegg (7).png",
+      image: "/pngegg (7).png",
       description: "A versatile vegetable, perfect for curries, soups, and as a low-carb alternative.",
       discount: "10%", // Example discount
       serviceType: "Fresh", // Added service type
@@ -171,7 +171,7 @@ export default function GroceryItems() {
       name: "Spinach",
       category: "Vegetables",
       price: "40",
-      img: "/pngegg (8).png",
+      image: "/pngegg (8).png",
       description: "Packed with vitamins, ideal for salads, soups, and as a side dish.",
       discount: "7%", // Example discount
       serviceType: "Fresh", // Added service type
@@ -181,7 +181,7 @@ export default function GroceryItems() {
       name: "Brinjal (Eggplant)",
       category: "Vegetables",
       price: "45",
-      img: "/pngegg (9).png",
+      image: "/pngegg (9).png",
       description: "Tender and flavorful, used in curries, grills, and as a main dish.",
       discount: "5%", // Example discount
       serviceType: "Fresh", // Added service type
@@ -191,7 +191,7 @@ export default function GroceryItems() {
       name: "Green Bell Pepper",
       category: "Vegetables",
       price: "55",
-      img: "/pngegg (10).png",
+      image: "/pngegg (10).png",
       description: "Crisp and mildly sweet, adds a vibrant color to your dishes.",
       discount: "6%", // Example discount
       serviceType: "Fresh", // Added service type
@@ -201,7 +201,7 @@ export default function GroceryItems() {
       name: "Beans (Green)",
       category: "Vegetables",
       price: "60",
-      img: "/pngegg (11).png",
+      image: "/pngegg (11).png",
       description: "Crunchy and nutritious, great in stir-fries, soups, and salads.",
       discount: "9%", // Example discount
       serviceType: "Fresh", // Added service type
@@ -235,7 +235,7 @@ export default function GroceryItems() {
 
   return (
     <div className="p-3  font-Lexend ">
-      <div className="mt-10  mb-36">
+      <div className="mt-10  ">
         <div>
           {vegetable.length === 0 ? (
             <div>
@@ -253,7 +253,7 @@ export default function GroceryItems() {
                     <div className="relative ">
                       <div className="h-[100px] bg-[#f4f4f4]   rounded-full  w-[100px] flex justify-center items-center">
                         <img
-                          src={vegitable.img}
+                          src={vegitable.image}
                           onClick={() => openModal(vegitable)}
                           alt=""
                           className=" h-[60px] object-contain"

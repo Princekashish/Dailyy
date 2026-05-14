@@ -13,11 +13,11 @@ export default function DefaultAddress({
   };
 
   const location = [
-    { location: "Bodhgaya", img: "https://images.unsplash.com/photo-1617469170169-55626c028519?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
-    { location: "Bhagalpur", img: "/pngegg (32).png" },
-    { location: "Pachhatti", img: "/pngegg (33).png" },
-    { location: "Rajapur", img: "/pngegg (34).png" },
-    { location: "Belhar", img: "/pngegg (35).png" }
+    { location: "Bodhgaya", image: "https://images.unsplash.com/photo-1617469170169-55626c028519?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
+    { location: "Bhagalpur", image: "/pngegg (32).png" },
+    { location: "Pachhatti", image: "/pngegg (33).png" },
+    { location: "Rajapur", image: "/pngegg (34).png" },
+    { location: "Belhar", image: "/pngegg (35).png" }
   ];
 
   const handleLocationClick = (location) => {
@@ -69,9 +69,9 @@ export default function DefaultAddress({
                           </div>
                         )}
 
-                        {loc.img && (
+                        {loc.image && (
                           <img
-                            src={loc.img}
+                            src={loc.image}
                             alt=""
                             className="h-[80px] object-contain rounded-2xl"
                           />

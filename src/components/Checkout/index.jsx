@@ -262,8 +262,7 @@ export default function Checkout({ price }) {
                         className="flex justify-center items-center gap-2"
                       // onClick={togglePaymentOptions}
                       >
-                        <h1 className="uppercase text-sm ">Pay using</h1>
-                        <ChevronUp size={15} />
+                        <h1 className="uppercase text-sm ">Total amount</h1>
                       </div>
                       <div className="flex justify-center items-center gap-2">
                         <h1 className="text-lg font-semibold">₹ {price}</h1>
@@ -272,95 +271,19 @@ export default function Checkout({ price }) {
                     </div>
                     <button
                       onClick={(e) => {
-                        e.preventDefault(); // Prevent default form submission behavior
-                        makePayment(); // Trigger payment function
+                        e.preventDefault();
+                        closeModal();
+                        navigate("/payment-method", { state: { price } });
                       }}
                       className="bg-green-700 w-1/2 py-3 text-white rounded-xl"
                     >
                       {" "}
-                      Pay
+                      Proceed to Pay
                     </button>
                   </div>
                 </motion.div>
               </div>
-              {paymentOptions && (
-                <div className="">
-                  {/** Payment Options */}
-                  <div className="flex flex-col gap-2 absolute min-h-[13vh] bg-white top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 p-5 justify-between items-start rounded-2xl">
-                    <label className="flex gap-3 justify-between items-center">
-                      UPI
-                      <input
-                        type="radio"
-                        name="payment"
-                        value="UPI"
-                        onChange={(e) => handlePaymentOption(e.target.value)}
-                      />
-                    </label>
-                    {selectedPayment === "UPI" && (
-                      <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ duration: 0.45 }}
-                        className="h-[10vh]"
-                      >
-                        <input
-                          type="text"
-                          value={upiId}
-                          onChange={(e) => setUpiId(e.target.value)}
-                          className="py-2 px-3 w-full border border-gray-300 rounded-xl outline-none font-light"
-                          placeholder="UPI ID"
-                        />
-                        <button
-                          onClick={validateUPI}
-                          className=" text-sm text-start w-full text-blue-700 p-2 "
-                        >
-                          Validate UPI
-                        </button>
-
-                        {/** Error message if validation fails */}
-                        {error && (
-                          <p className="text-red-500 text-sm text-start mt-[-10px]">
-                            {error}
-                          </p>
-                        )}
-                      </motion.div>
-                    )}
-                    <label className="flex gap-3 justify-between items-center">
-                      COD (Cash on delivery)
-                      <input
-                        type="radio"
-                        name="payment"
-                        value="COD"
-                        onChange={(e) => handlePaymentOption(e.target.value)}
-                      />
-                    </label>
-                    <label className="flex gap-3 justify-between items-center">
-                      Scan QR code
-                      <input
-                        type="radio"
-                        name="payment"
-                        value="QR Code"
-                        onChange={(e) => handlePaymentOption(e.target.value)}
-                      />
-                    </label>
-
-                    {qrCodeVisible && (
-                      <div className="mt-5 flex justify-center items-center flex-col">
-                        <img
-                          src="/qrcode.jpg" // Replace with the actual path to the QR code image
-                          alt="QR Code"
-                          className="w-32 h-32"
-                        />
-                        <p className="text-center mt-2">
-                          Scan this QR code to make payment
-                        </p>
-                      </div>
-                    )}
-                  </div>
-
-                  {/** UPI Input Box */}
-                </div>
-              )}
+             
             </div>
           </div>
         )}

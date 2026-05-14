@@ -24,6 +24,8 @@ import Plumber from "../components/Plumber";
 import ServiceSearch from "../components/ServiceSearch";
 import PlumberCart from "../components/PlumberCart";
 import SearchProduct from "../components/SearchProduct";
+import ComingSoon from "../components/ComingSoon";
+import PaymentMethod from "../components/PaymentMethod";
 
 
 const rout = createBrowserRouter([
@@ -34,8 +36,6 @@ const rout = createBrowserRouter([
       { path: "/", Component: Home },
       { path: "/electronic", Component: Electronic },
       { path: "/grocery", Component: Grocery },
-      { path: "/coffee", Component: Coffee },
-      { path: "/beauty", Component: Beauty },
       { path: "/appliances", Component: Appliances },
       { path: "/gift", Component: Gifts },
     ],
@@ -75,6 +75,8 @@ const rout = createBrowserRouter([
   {path:"/search", Component:SearchProduct},
 
   { path: "/plumber/:id", Component: PlumberCart },
+  { path: "/payment-method", Component: PaymentMethod },
+  { path: "*", Component: ComingSoon },
 ]);
 
 export default function Router() {

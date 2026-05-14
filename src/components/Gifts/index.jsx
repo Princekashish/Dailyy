@@ -4,35 +4,35 @@ function Gifts() {
   const trending = [
     {
       text: "Earbuds",
-      img: "/pngegg (20).png",
+      image: "/pngegg (20).png",
     },
     {
       text: "Speakers",
-      img: "/pngegg (29).png",
+      image: "/pngegg (29).png",
     },
     {
       text: "Smartwatches",
-      img: "/pngegg (30).png",
+      image: "/pngegg (30).png",
     },
     {
       text: "Heating Rods",
-      img: "https://via.placeholder.com/150?text=Thermostats",
+      image: "https://via.placeholder.com/150?text=Thermostats",
     },
     {
       text: "Earbuds",
-      img: "/pngegg (20).png",
+      image: "/pngegg (20).png",
     },
     {
       text: "Speakers",
-      img: "/pngegg (29).png",
+      image: "/pngegg (29).png",
     },
     {
       text: "Smartwatches",
-      img: "/pngegg (30).png",
+      image: "/pngegg (30).png",
     },
     {
       text: "Heating Rods",
-      img: "https://via.placeholder.com/150?text=Thermostats",
+      image: "https://via.placeholder.com/150?text=Thermostats",
     },
   ];
   const topdeals = [
@@ -194,7 +194,7 @@ function Gifts() {
                 <div
                   className={`border-[2.8px] border-blue-400  flex flex-col relative gap-2 rounded-full overflow-hidden h-[80px]  w-[80px]`}
                   style={{
-                    backgroundImage: `url(${items.img})`,
+                    backgroundImage: `url(${items.image})`,
                     backgroundPosition: "center",
                     backgroundSize: "cover",
                     backgroundRepeat: "no-repeat",

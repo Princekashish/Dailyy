@@ -41,11 +41,7 @@ export default function Header() {
       text: "All",
       path: "/",
     },
-    {
-      icon: <FaHeadphones size={25} />,
-      text: "Electronics",
-      path: "/electronic",
-    },
+
     {
       icon: (
         <div
@@ -61,23 +57,9 @@ export default function Header() {
       path: "/grocery",
     },
     {
-      icon: <SiBuymeacoffee size={25} />,
-      text: "Coffee",
-      path: "/coffee",
-    },
-    {
-      icon: (
-        <div
-          className="h-[25px] w-[25px] bg-current"
-          style={{
-            WebkitMask: 'url("/output-onlinepngtools (2).png") center/contain no-repeat',
-            mask: 'url("/output-onlinepngtools (2).png") center/contain no-repeat'
-          }}
-          title="Beauty Icon"
-        />
-      ),
-      text: "Beauty",
-      path: "/beauty",
+      icon: <FaHeadphones size={25} />,
+      text: "Electronics",
+      path: "/electronic",
     },
     {
       icon: <GiWashingMachine size={25} />,
@@ -161,17 +143,16 @@ export default function Header() {
             size={20}
           />
         </div>
-        <div className="flex  gap-2 justify-start items-end font-Lexend overflow-hidden overflow-x-scroll flex-nowrap text-white no-scrollbar pl-5 pr-2">
+        <div className="flex  gap-2 justify-start items-end font-Lexend overflow-hidden overflow-x-scroll whi text-white no-scrollbar pl-5 pr-2">
           {navitems.map((item, i) => {
             return (
               <NavLink
                 key={i}
                 to={item.path}
                 className={({ isActive }) =>
-                  `flex justify-center items-center flex-col px-5 pt-2 pb-2 duration-200 rounded-t-2xl min-w-max ${
-                    isActive
-                      ? "bg-white text-green-600 rounded-t-2xl"
-                      : "text-white"
+                  `flex justify-center items-center flex-col px-5 pt-2 pb-2 duration-200 rounded-t-2xl min-w-max ${isActive
+                    ? "bg-white text-green-600 rounded-t-2xl"
+                    : "text-white"
                   }`
                 }
               >

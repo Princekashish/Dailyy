@@ -45,7 +45,7 @@ export default function Cart({ bottom }) {
   };
   const handleproduct = (item) => {
     setViewCart(false);
-    setSelectedProduct(item); // Set the selected product
+    setSelectedProduct(item);
   };
   const productModal = () => {
     setSelectedProduct(false);
@@ -74,22 +74,20 @@ export default function Cart({ bottom }) {
     <>
       <div
         onClick={() => setViewCart((pre) => !pre)}
-        className={`flex justify-center items-center mx-auto bottom-7  left-[30%] text-center z-20 w-[40%] p-4 fixed ${
-          hasItemsInCart ? "bg-[#008236]" : "hidden"
-        } px-1 py-1 rounded-full text-white`}
+        className={`flex justify-center items-center mx-auto bottom-7  left-[30%] text-center z-20 w-[40%] p-4 fixed ${hasItemsInCart ? "bg-[#008236]" : "hidden"
+          } px-1 py-1 rounded-full text-white`}
       >
         {/* Show the first two items' images */}
         <div className="relative flex justify-center items-center ">
           {firstTwoItems.map((item, index) => (
             <img
               key={item.id}
-              src={item.img}
+              src={item.image}
               alt={item.product}
-              className={`w-8 h-8 object-cover rounded-full bg-white ${
-                index === 0
+              className={`w-8 h-8 object-cover rounded-full bg-white ${index === 0
                   ? "z-10  border-[2px] border-[#29541e]"
                   : "-ml-5 z-20 border-[2px] border-[#29541e]"
-              }`}
+                }`}
             />
           ))}
         </div>
@@ -145,9 +143,67 @@ export default function Cart({ bottom }) {
                 </div>
                 <div className="flex flex-col justify-between gap-5">
                   <div className=" h-[40vh] overflow-hidden overflow-y-scroll flex flex-col gap-3 no-scrollbar  relative">
+
+                    {products.length > 0 && (
+                      <div className={`p-4 bg-white  rounded-3xl mb-4 ${homeServices.length > 0 ? 'border border-gray-100 shadow-sm' : ''} shadow-gray-200/50`}>
+                        <div className="flex flex-col gap-4">
+                          {homeServices.length > 0 && (
+                            <h2 className="text-xs font-bold text-gray-500 uppercase tracking-widest border-b border-gray-100 pb-2">Products & Groceries</h2>
+                          )}
+                          {products.map((items) => (
+                            <div
+                              key={items.id}
+                              className="flex justify-between items-center"
+                            >
+                              <div className="flex justify-start items-center gap-3">
+                                <div
+                                  onClick={() => handleproduct(items)}
+                                  className="p-2 border rounded-xl border-gray-100 w-[60px] h-[60px] flex justify-center items-center bg-gray-50/50"
+                                >
+                                  <img
+                                    src={items.image}
+                                    alt=""
+                                    className="h-full w-full object-contain "
+                                  />
+                                </div>
+                                <div className="flex flex-col justify-center items-start gap-0.5">
+                                  <h1 className="text-sm font-medium text-gray-900">
+                                    {items.name.length > 18
+                                      ? `${items.name.substring(0, 18)}...`
+                                      : items.name}
+                                  </h1>
+                                  <p className="text-sm font-semibold text-gray-900">
+                                    ₹{items.price}
+                                  </p>
+                                </div>
+                              </div>
+
+                              <div className="flex items-center justify-between bg-green-50 rounded-lg p-1 w-[70px]">
+                                <button
+                                  onClick={() => handleRemoveFromCart(items.id)}
+                                  className="w-6 h-6 flex items-center justify-center bg-white text-green-700 rounded shadow-sm hover:bg-green-100 transition-colors"
+                                >
+                                  <Minus size={14} strokeWidth={2.5} />
+                                </button>
+                                <h1 className="text-xs font-bold text-green-800 text-center flex-1">
+                                  {items.quantity}
+                                </h1>
+                                <button
+                                  onClick={() => handleAddToCart(items)}
+                                  className="w-6 h-6 flex items-center justify-center bg-white text-green-700 rounded shadow-sm hover:bg-green-100 transition-colors"
+                                >
+                                  <Plus size={14} strokeWidth={2.5} />
+                                </button>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
                     {homeServices.length > 0 && (
-                      <div className="p-4 bg-blue-600 rounded-3xl sticky top-0 shadow-lg">
-                        <div className="flex flex-col gap-3">
+                      <div className="p-4 bg-white border border-gray-100 rounded-3xl sticky top-0 shadow-sm shadow-gray-200/50 mb-4">
+                        <div className="flex flex-col gap-4">
+                          <h2 className="text-xs font-bold text-gray-500 uppercase tracking-widest border-b border-gray-100 pb-2">Home Services</h2>
                           {homeServices
                             .slice(0, homeServicesVisible)
                             .map((items) => (
@@ -155,99 +211,48 @@ export default function Cart({ bottom }) {
                                 key={items.id}
                                 className="flex justify-between items-center"
                               >
-                                <div className="flex justify-start items-center gap-2">
+                                <div className="flex justify-start items-center gap-3">
                                   <div
                                     onClick={() => handleproduct(items)}
-                                    className="p-2 border rounded-3xl border-gray-300 w-[60px] h-[60px] flex justify-center items-center bg-white"
+                                    className="p-2 border rounded-xl border-gray-100 w-[60px] h-[60px] flex justify-center items-center bg-gray-50/50"
                                   >
                                     <img
                                       src={items.img}
                                       alt=""
-                                      className="object-cover bg-red-700"
+                                      className="object-contain mix-blend-multiply h-full w-full"
                                     />
                                   </div>
-                                  <div className="flex flex-col justify-start items-start gap-1 text-white">
-                                    <h1 className="text-sm text-start">
-                                      {items.name.length > 15
-                                        ? `${items.name.substring(0, 16)}...`
+                                  <div className="flex flex-col justify-center items-start gap-0.5">
+                                    <h1 className="text-sm text-gray-900 font-medium">
+                                      {items.name.length > 18
+                                        ? `${items.name.substring(0, 18)}...`
                                         : items.name}
                                     </h1>
-                                    <p className="text-sm font-bold">
+                                    <p className="text-sm font-semibold text-gray-900">
                                       ₹{items.price}
                                     </p>
                                   </div>
                                 </div>
 
-                                <div className="flex border border-green-600 rounded-md p-1 bg-green-600 text-white gap-2">
+                                <div className="flex items-center justify-between bg-green-50 rounded-lg p-1 w-[70px]">
                                   <button
-                                    onClick={() =>
-                                      handleRemoveFromCart(items.id)
-                                    }
-                                    className="text-sm font-medium"
+                                    onClick={() => handleRemoveFromCart(items.id)}
+                                    className="w-6 h-6 flex items-center justify-center bg-white text-green-700 rounded shadow-sm hover:bg-green-100 transition-colors"
                                   >
-                                    <Minus size={15} />
+                                    <Minus size={14} strokeWidth={2.5} />
                                   </button>
-                                  <h1 className="text-xs font-medium">
+                                  <h1 className="text-xs font-bold text-green-800 text-center flex-1">
                                     {items.quantity}
                                   </h1>
                                   <button
                                     onClick={() => handleAddToCart(items)}
-                                    className="text-sm font-medium"
+                                    className="w-6 h-6 flex items-center justify-center bg-white text-green-700 rounded shadow-sm hover:bg-green-100 transition-colors"
                                   >
-                                    <Plus size={15} />
+                                    <Plus size={14} strokeWidth={2.5} />
                                   </button>
                                 </div>
                               </div>
                             ))}
-                        </div>
-                      </div>
-                    )}
-                    {products.length > 0 && (
-                      <div className="p-4 ">
-                        <div className="flex flex-col gap-3 ">
-                          {products.map((items) => (
-                            <div
-                              key={items.id}
-                              className=" flex justify-between items-center "
-                            >
-                              <div className="flex justify-start items-center gap-2">
-                                <div
-                                  onClick={() => handleproduct(items)}
-                                  className=" p-2 border rounded-3xl  border-gray-300 w-[60px] h-[60px] flex justify-center items-center"
-                                >
-                                  <img
-                                    src={items.img}
-                                    alt=""
-                                    className="h-[90px] object-contain"
-                                  />
-                                </div>
-                                <div className="flex flex-col justify-start items-start gap-1">
-                                  <h1 className="text-sm">{items.name}</h1>
-                                  <p className="text-sm font-bold">
-                                    ₹{items.price}
-                                  </p>
-                                </div>
-                              </div>
-
-                              <div className="flex  border border-green-600 rounded-md p-1 bg-green-600 text-white gap-2">
-                                <button
-                                  onClick={() => handleRemoveFromCart(items.id)}
-                                  className="text-sm font-medium "
-                                >
-                                  <Minus size={15} />
-                                </button>
-                                <h1 className="text-xs font-medium">
-                                  {items.quantity}
-                                </h1>
-                                <button
-                                  onClick={() => handleAddToCart(items)}
-                                  className="text-sm font-medium"
-                                >
-                                  <Plus size={15} />
-                                </button>
-                              </div>
-                            </div>
-                          ))}
                         </div>
                       </div>
                     )}
@@ -325,7 +330,7 @@ export default function Cart({ bottom }) {
                 </div>
                 <div className="flex flex-col justify-center items-center">
                   <img
-                    src={selectedProduct.img}
+                    src={selectedProduct.image}
                     alt=""
                     className=" w-full h-40 object-contain rounded-xl"
                   />
@@ -346,7 +351,7 @@ export default function Cart({ bottom }) {
                       </div>
                     </div>
                     <div className="mt-2 text-start">
-                      <h1 className="text-sm text-[#6a6969]">
+                      <h1 className="text-sm text-[#6a6969] ">
                         {selectedProduct.description}
                       </h1>
                     </div>
