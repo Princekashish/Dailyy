@@ -7,13 +7,13 @@ import axios from "axios";
 import { API_BASE_URL } from "../../utils/api";
 import Pageloader from "../../utils/Animated/Pageloader";
 
-export default function GroceryItems() {
+export default function Fruits() {
   const [vegetable, setVegetable] = useState([]);
 
   useEffect(() => {
     const fetchVegetables = async () => {
       try {
-        const res = await axios.get(`${API_BASE_URL}/api/v1/product/vegetable`);
+        const res = await axios.get(`${API_BASE_URL}/api/v1/product/fruits`);
         setVegetable(res.data);
       } catch (error) {
         console.error("Error fetching vegetables:", error);
@@ -37,12 +37,12 @@ export default function GroceryItems() {
     dispatch(productRemove(item.id));
   };
   const openModal = (product) => {
-    setSelectedProduct(product); // Set the clicked product
-    setIsModalOpen(true); // Open the modal
+    setSelectedProduct(product);
+    setIsModalOpen(true); 
   };
   const closeModal = () => {
-    setIsModalOpen(false); // Close the modal
-    setSelectedProduct(null); // Reset the selected product
+    setIsModalOpen(false);
+    setSelectedProduct(null); 
   };
 
   return (
@@ -99,7 +99,7 @@ export default function GroceryItems() {
                     <div className="flex justify-center items-center flex-col    p-1">
                       <h1 className="text-[12px] ">{vegitable.title}</h1>
                       <p className="text-sm font-semibold text-start w-full">
-                        ₹{vegitable.price}/Kg
+                        ₹{vegitable.price}
                       </p>
                     </div>
                   </div>

@@ -5,7 +5,7 @@ import { Link, NavLink, Outlet } from "react-router-dom";
 import { motion } from "framer-motion";
 import ScrollTop from "../../utils/ScreenTop";
 import Cart from "../Cart";
-export default function Vegetables_fruits() {
+export default function DrinkLayout() {
   const [showBottomBar, setShowBottomBar] = useState(true);
 
   useEffect(() => {
@@ -39,14 +39,14 @@ export default function Vegetables_fruits() {
             </Link>
           </div>
           <div>
-            <h1 className="text-md">Vegetables</h1>
+            <h1 className="text-md">Drinks</h1>
           </div>
         </div>
 
 
-        <Link  to={"/search"} className="flex justify-center items-center rounded-full bg-black/10 h-[35px] w-[35px]  ">
+        <Link  to={"/search"}  className="flex justify-center items-center rounded-full bg-black/10 h-[35px] w-[35px]  ">
           <Search size={20} />
-        </Link >
+        </Link>
       </div>
 
       {/* listing */}

@@ -72,7 +72,7 @@ export default function Service() {
         />
         <div className="flex ">
           {service.map((src, index) => (
-            <div className=" ">
+            <div key={index} className=" ">
               <div className="absolute top-0 w-full   h-[20vh] bg-black/20 rounded-2xl" />
               <img
                 src={src.img}

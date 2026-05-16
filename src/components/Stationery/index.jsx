@@ -34,7 +34,7 @@ export default function Stationery() {
     },
     {
       items: "Markers",
-      img: "/images/markers.png",  // Example image for markers
+      img: "https://images.unsplash.com/photo-1631206630000-2885ed0b00f0?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",  // Example image for markers
       link: "/stationery/markers", // Link to the markers section
     },
     {
@@ -44,7 +44,7 @@ export default function Stationery() {
     },
     {
       items: "Erasers",
-      img: "/images/erasers.png",  // Example image for erasers
+      img: "https://images.unsplash.com/photo-1667532447990-51c6704ef358?q=80&w=1480&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",  // Example image for erasers
       link: "/stationery/erasers", // Link to the erasers section
     },
   ];
@@ -115,7 +115,7 @@ export default function Stationery() {
               end={item.link === "/stationery"}
             >
               <div className="flex flex-col gap-2">
-                <div className="bg-white   flex justify-center items-center rounded-full">
+                <div className="bg-white overflow-hidden  flex justify-center items-center rounded-full">
                   <img
                     src={item.img}
                     alt={item.items}
@@ -129,9 +129,16 @@ export default function Stationery() {
         </div>
       </div>
       {/* Outlet for nested routes */}
-      <div className="pb-[8vh] ">
+      {/* <div className="pb-[8vh] ">
         <Outlet />
+      </div> */}
+
+      <div className="h-[50vh] flex justify-center items-center">
+        <h1 className="text-2xl">Coming Soon</h1>
       </div>
+
+     
+
       <div>
         <Cart bottom={"bottom-2"} />
       </div>

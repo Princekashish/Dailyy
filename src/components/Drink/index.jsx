@@ -7,13 +7,13 @@ import axios from "axios";
 import { API_BASE_URL } from "../../utils/api";
 import Pageloader from "../../utils/Animated/Pageloader";
 
-export default function GroceryItems() {
+export default function Drink() {
   const [vegetable, setVegetable] = useState([]);
 
   useEffect(() => {
     const fetchVegetables = async () => {
       try {
-        const res = await axios.get(`${API_BASE_URL}/api/v1/product/vegetable`);
+        const res = await axios.get(`${API_BASE_URL}/api/v1/product/drinks`);
         setVegetable(res.data);
       } catch (error) {
         console.error("Error fetching vegetables:", error);
@@ -37,12 +37,12 @@ export default function GroceryItems() {
     dispatch(productRemove(item.id));
   };
   const openModal = (product) => {
-    setSelectedProduct(product); // Set the clicked product
-    setIsModalOpen(true); // Open the modal
+    setSelectedProduct(product);
+    setIsModalOpen(true); 
   };
   const closeModal = () => {
-    setIsModalOpen(false); // Close the modal
-    setSelectedProduct(null); // Reset the selected product
+    setIsModalOpen(false);
+    setSelectedProduct(null); 
   };
 
   return (

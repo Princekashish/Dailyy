@@ -75,7 +75,7 @@ export default function Header() {
 
   const categorymenu = [
     { text: "Grocery", img: "/pngeggvegble.png", link: "/grocery" },
-    { text: "Personal care", img: "/pngegg (27).png", link: "/personal-care" },
+    { text: "Personal care", img: "/pngegg (27).png", link: "/drink" },
     { text: "Clothes", img: "/pngegg (26).png", link: "/cloths" },
     { text: "Beauty", img: "/pngegg (2).png", link: "/beauty" },
     { text: "Skin care", img: "/skincare.png", link: "/" },

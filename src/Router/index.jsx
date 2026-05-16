@@ -26,6 +26,10 @@ import PlumberCart from "../components/PlumberCart";
 import SearchProduct from "../components/SearchProduct";
 import ComingSoon from "../components/ComingSoon";
 import PaymentMethod from "../components/PaymentMethod";
+import Drink from "../components/Drink";
+import Fruits from "../components/Fruits";
+import FruitsLayout from "../components/FruitsLayout";
+import DrinkLayout from "../components/DrinkLayout";
 
 
 const rout = createBrowserRouter([
@@ -46,6 +50,23 @@ const rout = createBrowserRouter([
     Component: Vegetables_fruits,
     children: [
       { path: "", Component: GroceryItems },
+      { path: "bakery-biscuits", Component: Exotics_Fruits },
+    ],
+  },
+
+  {
+    path: "/fruits",
+    Component: FruitsLayout,
+    children: [
+      { path: "", Component: Fruits },
+    ],
+  },
+
+  {
+    path: "/drink",
+    Component: DrinkLayout,
+    children: [
+      { path: "", Component: Drink },
       { path: "bakery-biscuits", Component: Exotics_Fruits },
     ],
   },
@@ -71,8 +92,8 @@ const rout = createBrowserRouter([
   { path: "/success", Component: Sucess },
   { path: "/cancel", Component: Cancle },
   { path: "/plumber", Component: Plumber },
-  {path:"/service/search", Component:ServiceSearch},
-  {path:"/search", Component:SearchProduct},
+  { path: "/service/search", Component: ServiceSearch },
+  { path: "/search", Component: SearchProduct },
 
   { path: "/plumber/:id", Component: PlumberCart },
   { path: "/payment-method", Component: PaymentMethod },

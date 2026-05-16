@@ -11,19 +11,19 @@ export default function ProductCategories() {
     {
       text: "Fruits",
       img: "/Fruits.webp",
-      link: "/personal-care",
+      link: "/fruits",
     },
     {
-      text: "Drinks",
+      text: "Snacks",
       img: "/drinks.webp",
-      link: "/cloths",
+      link: "/drink",
     },
     {
       text: "Munchies",
       img: "/Munchies.webp",
-      link: "/beauty",
+      link: "/Munchies",
     },
-    { text: "Applicances", img: "/Appliances.webp", link: "/party-essential" },
+    { text: "Applicances", img: "/Appliances.webp", link: "/appliances" },
     {
       text: "Gym Items",
       img: "/Gym-Items.webp",
@@ -34,7 +34,7 @@ export default function ProductCategories() {
       img: "/Beauty.webp",
       link: "/",
     },
-    { text: "Bulk", img: "/Bulkorder.webp", link: "/essential" },
+    { text: "Bulk", img: "/Bulkorder.webp", link: "/" },
   ];
 
   return (

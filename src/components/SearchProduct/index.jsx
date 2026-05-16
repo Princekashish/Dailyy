@@ -31,19 +31,12 @@ export default function SearchProduct() {
     };
 
     // Use a small delay to debounce typing and avoid spamming API requests
-     fetchProducts();
+    fetchProducts();
   }, [searchTerm]);
 
   const handleAddToCart = (product) => {
     dispatch(
-      productAdd({
-        id: product._id,
-        name: product.title,
-        price: product.price,
-        image: product.images?.[0],
-        weight: product.description || "",
-        originalPrice: product.mrp,
-      })
+      productAdd(product)
     );
   };
 
@@ -60,7 +53,7 @@ export default function SearchProduct() {
       <div className="sticky top-0 bg-white p-4 shadow-sm ">
         <div className="flex items-center bg-gray-100 rounded-xl px-2 py-1">
           <button onClick={handleBack} className="p-2 text-gray-700 hover:text-black transition-colors">
-           <ChevronLeft size={24} strokeWidth={1.5} />
+            <ChevronLeft size={24} strokeWidth={1.5} />
           </button>
           <div className="flex-1 flex items-center">
             <input
@@ -80,7 +73,7 @@ export default function SearchProduct() {
         {!searchTerm.trim() ? (
           <div className="col-span-2 flex flex-col items-center justify-center py-20 text-gray-400">
             <Search size={48} className="mb-4 text-gray-300" strokeWidth={1.5} />
-            <p className="text-center">Search for your favorite products,<br/>or sponsored by this.</p>
+            <p className="text-center">Search for your favorite products,<br />or sponsored by this.</p>
           </div>
         ) : products.length > 0 ? (
           products.map((product) => {
@@ -102,12 +95,12 @@ export default function SearchProduct() {
                       <span className="font-bold text-[15px] text-gray-900 leading-none mb-1">₹{product.price}</span>
                       <span className="text-[10px] text-gray-400 line-through leading-none">₹{product.mrp}</span>
                     </div>
-                    
+
                     <div className="w-[76px]">
                       {quantity > 0 ? (
                         <div className="flex items-center justify-between bg-green-50 rounded-xl h-8 px-1">
-                          <button 
-                            onClick={() => dispatch(productRemove(product._id))} 
+                          <button
+                            onClick={() => dispatch(productRemove(product._id))}
                             className="w-6 h-6 flex items-center justify-center bg-white text-green-700 rounded-lg shadow-sm hover:bg-green-100 transition-colors font-medium text-lg pb-0.5"
                           >
                             -
@@ -115,8 +108,8 @@ export default function SearchProduct() {
                           <span className="flex-1 text-center font-bold text-green-800 text-xs">
                             {quantity}
                           </span>
-                          <button 
-                            onClick={() => handleAddToCart(product)} 
+                          <button
+                            onClick={() => handleAddToCart(product)}
                             className="w-6 h-6 flex items-center justify-center bg-white text-green-700 rounded-lg shadow-sm hover:bg-green-100 transition-colors font-medium text-lg pb-0.5"
                           >
                             +

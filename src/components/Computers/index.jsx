@@ -75,7 +75,7 @@ export default function Computer() {
         </div>
         <div className="absolute top-0 w-full">
           <image
-            src="/Screenshot 2024-12-04 013025.png"
+            src="https://images.unsplash.com/photo-1604151364473-02e3e26124a6?q=80&w=2129&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             className="h-[25vh] w-full object-cover "
           />
         </div>
@@ -127,9 +127,13 @@ export default function Computer() {
         </div>
       </div>
       {/* Outlet for nested routes */}
-      <div className="pb-[8vh] ">
+      {/* <div className="pb-[8vh] ">
         <Outlet />
-      </div>
+      </div> */}
+
+       <div className="h-[50vh] flex justify-center items-center">
+              <h1 className="text-2xl">Coming Soon</h1>
+            </div>
       <div>
         <Cart bottom={"bottom-2"} />
       </div>
