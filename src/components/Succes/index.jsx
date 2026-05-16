@@ -128,7 +128,7 @@ export default function Success() {
             {/* ── BANNER / AD CARD ── */}
             <div
               className="relative w-full overflow-hidden"
-              style={{ background: `linear-gradient(160deg, ${G.dark} 55%, ${G.dark})` }}
+              style={{ background: `linear-gradient(160deg, #17803d 55%, ${G.dark})` }}
             >
               {/* Back button */}
               <button
