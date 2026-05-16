@@ -22,7 +22,7 @@ export default function Signup_Installation({ setShowPopup }) {
     // Event listener for the beforeinstallprompt event
     const handleBeforeInstallPrompt = (e) => {
       e.preventDefault(); // Prevent the default browser prompt
-      console.log("beforeinstallprompt event fired"); // Debugging step
+      // console.log("beforeinstallprompt event fired"); // Debugging step
       setDeferredPrompt(e); // Store the prompt event for later use
     };
 

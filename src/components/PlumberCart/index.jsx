@@ -65,7 +65,7 @@ export default function PlumberCart() {
       dispatch(productAdd(item));
     }, 1000);
 
-    console.log("added");
+    // console.log("added");
   };
 
   return (

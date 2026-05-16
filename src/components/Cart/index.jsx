@@ -16,6 +16,9 @@ export default function Cart({ bottom }) {
   const [viewCart, setViewCart] = useState(false);
   const [checkout, setCheckout] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
+
+  console.log(selectedProduct);
+  
   const dispatch = useDispatch();
 
   const homeServices = cart.filter((item) => item.serviceType === "homeService");
@@ -253,7 +256,7 @@ export default function Cart({ bottom }) {
             <div style={{ borderTop: "1px solid #f3f4f6", paddingTop: 14, paddingBottom: 4 }}>
               <p style={{ fontSize: 15, fontWeight: 600, color: "#14532d", marginBottom: 10 }}>Bill Summary</p>
               <div style={{ backgroundColor: "#f8fafb", borderRadius: 14, padding: "10px 14px", marginBottom: 14 }}>
-                <BillRow label="Items Total" value={`₹${price}`} />
+                <BillRow label="Items Total" value={`₹${Number(price).toLocaleString("en-IN")}`} />
                 <BillRow label="Delivery Charge" value={deliveryCharge > 0 ? `₹${deliveryCharge}` : "Free"} green={deliveryCharge === 0} />
                 <BillRow label="Handling Charge" value={handlingCharge === 0 ? "Free" : `₹${handlingCharge}`} green={handlingCharge === 0} last />
               </div>
@@ -269,7 +272,7 @@ export default function Cart({ bottom }) {
               >
                 <div style={{ display: "flex", alignItems: "baseline", gap: 4 }}>
                   <span style={{ fontSize: 13, fontWeight: 500, color: "#15803d" }}>Total</span>
-                  <span style={{ fontSize: 20, fontWeight: 700, color: "#14532d" }}>₹{total}</span>
+                  <span style={{ fontSize: 20, fontWeight: 700, color: "#14532d" }}>₹{Number(total).toLocaleString("en-IN")}</span>
                 </div>
                 <button
                   onClick={handleConfirmOrder}
@@ -344,7 +347,7 @@ export default function Cart({ bottom }) {
             {/* Product details */}
             <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 12 }}>
               <img
-                src={selectedProduct.image}
+                src={selectedProduct.images?.[0]}
                 alt=""
                 style={{ width: "100%", height: 160, objectFit: "contain", borderRadius: 16 }}
               />
@@ -397,7 +400,7 @@ function CartItem({ items, onTap, onAdd, onRemove }) {
         }}
       >
         <img
-          src={items.images?.[0] || items.image || items.img || items[0]}
+          src={items.images?.[0] || items.image || items.img}
           alt=""
           style={{ width: "100%", height: "100%", objectFit: "contain" }}
         />

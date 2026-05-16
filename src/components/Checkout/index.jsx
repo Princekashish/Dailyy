@@ -294,7 +294,7 @@ export default function Checkout({ price }) {
                         <h1 className="uppercase text-sm ">Total amount</h1>
                       </div>
                       <div className="flex justify-center items-center gap-2">
-                        <h1 className="text-lg font-semibold">₹ {price}</h1>
+                        <h1 className="text-lg font-semibold">₹{Number(price).toLocaleString("en-IN")}</h1>
                         <p>{selectedPayment}</p>
                       </div>
                     </div>

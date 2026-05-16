@@ -191,7 +191,7 @@ export default function Electronic() {
     dispatch(productAdd(item));
   };
   const handleRemoveFromCart = (item) => {
-    console.log("enter");
+    // console.log("enter");
     dispatch(productRemove(item.id));
   };
   const openModal = (product) => {
@@ -397,7 +397,7 @@ export default function Electronic() {
                         <div className="flex justify-center items-center flex-col    p-1">
                           <h1 className="text-[12px] ">{vegitable.title}</h1>
                           <p className="text-xs  text-start w-full">
-                            MRP. <span className="text-sm font-semibold"> {vegitable.price}</span>
+                            <span className="text-sm font-semibold"> ₹{Number(vegitable.price).toLocaleString("en-IN")} </span>
     
                           </p>
                           <p className="text-xs ">

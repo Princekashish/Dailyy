@@ -33,7 +33,6 @@ export default function Drink() {
     dispatch(productAdd(item));
   };
   const handleRemoveFromCart = (item) => {
-    console.log("enter");
     dispatch(productRemove(item.id));
   };
   const openModal = (product) => {

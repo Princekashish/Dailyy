@@ -143,7 +143,6 @@ export default function Beauty() {
     dispatch(productAdd(item));
   };
   const handleRemoveFromCart = (item) => {
-    console.log("enter");
     dispatch(productRemove(item.id));
   };
   const openModal = (product) => {

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { IoArrowBack } from "react-icons/io5";
 import { ChevronLeft, Search } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
 import { productAdd, productRemove } from "../../Redux/Feature/Cart/CartSlice";
@@ -13,7 +12,6 @@ export default function SearchProduct() {
   const cartItems = useSelector((state) => state.cart.items);
   const [searchTerm, setSearchTerm] = useState("");
   const [products, setProducts] = useState([]);
-  console.log(products);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -36,7 +34,10 @@ export default function SearchProduct() {
 
   const handleAddToCart = (product) => {
     dispatch(
-      productAdd(product)
+      productAdd({
+        ...product,
+        id: product._id || product.id,
+      })
     );
   };
 
@@ -77,7 +78,9 @@ export default function SearchProduct() {
           </div>
         ) : products.length > 0 ? (
           products.map((product) => {
-            const cartItem = cartItems.find((item) => item.id === product._id);
+            const cartItem = cartItems.find(
+              (item) => item.id === (product._id || product.id)
+            );
             const quantity = cartItem ? cartItem.quantity : 0;
 
             return (
@@ -92,7 +95,7 @@ export default function SearchProduct() {
                   </div>
                   <div className="flex items-end justify-between mt-3">
                     <div className="flex flex-col">
-                      <span className="font-bold text-[15px] text-gray-900 leading-none mb-1">₹{product.price}</span>
+                      <span className="font-bold text-[15px] text-gray-900 leading-none mb-1">₹{Number(product.price).toLocaleString("en-IN")}</span>
                       <span className="text-[10px] text-gray-400 line-through leading-none">₹{product.mrp}</span>
                     </div>
 
@@ -100,7 +103,9 @@ export default function SearchProduct() {
                       {quantity > 0 ? (
                         <div className="flex items-center justify-between bg-green-50 rounded-xl h-8 px-1">
                           <button
-                            onClick={() => dispatch(productRemove(product._id))}
+                            onClick={() =>
+                              dispatch(productRemove(product))
+                            }
                             className="w-6 h-6 flex items-center justify-center bg-white text-green-700 rounded-lg shadow-sm hover:bg-green-100 transition-colors font-medium text-lg pb-0.5"
                           >
                             -

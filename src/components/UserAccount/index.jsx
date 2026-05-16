@@ -55,7 +55,7 @@ export default function UserAccount() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("User Info Submitted: ", userProfile);
+    // console.log("User Info Submitted: ", userProfile);
   };
 
   return (

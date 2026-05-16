@@ -23,7 +23,7 @@ export default function BackNavigationRedirect() {
   useEffect(() => {
     // If the user has pressed back 1 time, redirect them
     if (backCount === 1) {
-      console.log("Going back 0 time, redirecting to home");
+      // console.log("Going back 0 time, redirecting to home");
       navigate("/"); // Redirect to home page
       setBackCount(0); // Reset backCount to avoid continuous redirection
     }

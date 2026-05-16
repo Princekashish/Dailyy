@@ -34,11 +34,13 @@ function App() {
 
       <div className="md:w-1/3 mx-auto">
         <Router />
+       
       </div>
 
       {/* Conditionally render the Signup_Installation popup */}
       {/* {showPopup && <Signup_Installation setShowPopup={setShowPopup} />} */}
     </motion.div>
+    
   );
 }
 

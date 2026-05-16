@@ -33,7 +33,7 @@ export default function Fruits() {
     dispatch(productAdd(item));
   };
   const handleRemoveFromCart = (item) => {
-    console.log("enter");
+    // console.log("enter");
     dispatch(productRemove(item.id));
   };
   const openModal = (product) => {

@@ -32,7 +32,7 @@ export default function UserAccount() {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Here you can save or process the user's account info (e.g., to Firebase or database)
-    console.log("User Info Submitted: ", { name, email, gender, address, image });
+    // console.log("User Info Submitted: ", { name, email, gender, address, image });
   };
 
   return (

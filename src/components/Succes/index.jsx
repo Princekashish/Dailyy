@@ -6,15 +6,15 @@ import { motion, AnimatePresence } from "framer-motion";
 export default function Success() {
 
   const G = {
-  primary: "#15803d",
-  dark:    "#166534",
-  deeper:  "#14532d",
-  light:   "#f0fdf4",
-  light2:  "#dcfce7",
-  mid:     "#86efac",
-  bg:      "#f0fdf4",
-  text:    "#14532d",
-};
+    primary: "#15803d",
+    dark: "#166534",
+    deeper: "#14532d",
+    light: "#f0fdf4",
+    light2: "#dcfce7",
+    mid: "#86efac",
+    bg: "#f0fdf4",
+    text: "#14532d",
+  };
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -66,7 +66,7 @@ export default function Success() {
           >
             <motion.div
               initial={{ scale: 0, opacity: 0 }}
-             
+
               transition={{ duration: 1.3, times: [0, 0.6, 1] }}
               className="absolute w-56 h-56 rounded-full"
               style={{ backgroundColor: G.primary }}
@@ -159,8 +159,8 @@ export default function Success() {
                     background: "linear-gradient(135deg, #c8e6c9 0%, #a5d6a7 40%, #81c784 100%)",
                   }}
                 > */}
-                  {/* Road */}
-                  {/* <div
+                {/* Road */}
+                {/* <div
                     className="absolute"
                     style={{
                       top: "50%",
@@ -182,8 +182,8 @@ export default function Success() {
                       transform: "rotate(15deg) scaleX(1.4)",
                     }}
                   /> */}
-                  {/* Store pin */}
-                  {/* <motion.div
+                {/* Store pin */}
+                {/* <motion.div
                     animate={{ y: [0, -4, 0] }}
                     transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
                     className="absolute flex flex-col items-center"
@@ -197,8 +197,8 @@ export default function Success() {
                       style={{ backgroundColor: "#008236" }}
                     />
                   </motion.div> */}
-                  {/* Home pin */}
-                  {/* <div
+                {/* Home pin */}
+                {/* <div
                     className="absolute flex flex-col items-center"
                     style={{ right: "18%", bottom: "20%" }}
                   >
@@ -213,8 +213,8 @@ export default function Success() {
                       style={{ backgroundColor: "#555" }}
                     />
                   </div> */}
-                  {/* Animated rider */}
-                  {/* <motion.div
+                {/* Animated rider */}
+                {/* <motion.div
                     animate={{ x: [0, 90, 0] }}
                     transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
                     className="absolute"
@@ -227,8 +227,8 @@ export default function Success() {
                       <Bike size={16} color="#fff" strokeWidth={2} />
                     </div>
                   </motion.div> */}
-                  {/* Dashed path */}
-                  {/* <svg
+                {/* Dashed path */}
+                {/* <svg
                     className="absolute inset-0 w-full h-full"
                     viewBox="0 0 300 160"
                     preserveAspectRatio="none"
@@ -277,7 +277,7 @@ export default function Success() {
                     </p>
                     <p
                       className="text-5xl font-bold leading-none mt-1"
-                       style={{ color: G.primary }}
+                      style={{ color: G.primary }}
                     >
                       {deliveryMinutes}{" "}
                       <span className="text-2xl font-semibold">mins</span>
@@ -287,7 +287,7 @@ export default function Success() {
                     </p> */}
                   </div>
                   {/* Pulsing indicator */}
-                 <div className="bg-green-50 p-4 rounded-2xl relative">
+                  <div className="bg-green-50 p-4 rounded-2xl relative">
                     <motion.div
                       animate={{ x: [-2, 2, -2], y: [0, -1, 0] }}
                       transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
@@ -295,7 +295,7 @@ export default function Success() {
                       <Bike size={32} className="text-green-700" strokeWidth={1.5} />
                     </motion.div>
                     {/* Animated dashed line to simulate movement */}
-                    <motion.div 
+                    <motion.div
                       className="absolute bottom-2 left-1/2 -translate-x-1/2 w-8 h-0.5 border-b-[1.5px] border-dashed border-green-300"
                       animate={{ x: [-6, 0] }}
                       transition={{ duration: 0.4, repeat: Infinity, ease: "linear" }}
@@ -306,14 +306,14 @@ export default function Success() {
                 {/* Progress bar */}
                 <div
                   className="mt-4 w-full rounded-full overflow-hidden"
-                 style={{ height: 4, backgroundColor: G.light2 }}
+                  style={{ height: 4, backgroundColor: G.light2 }}
                 >
                   <motion.div
                     initial={{ width: "15%" }}
                     animate={{ width: "5%" }}
                     transition={{ duration: 2.5, ease: "easeOut" }}
                     className="h-full rounded-full"
-                   style={{ backgroundColor: G.primary }}
+                    style={{ backgroundColor: G.primary }}
                   />
                 </div>
               </div>
@@ -325,13 +325,13 @@ export default function Success() {
               <div className="px-5 py-4 flex items-center gap-3">
                 <div
                   className="w-11 h-11 rounded-full flex items-center justify-center text-white font-bold text-base shadow"
-                 style={{ background: `linear-gradient(135deg, ${G.primary}, ${G.mid})` }}
+                  style={{ background: `linear-gradient(135deg, ${G.primary}, ${G.mid})` }}
                 >
                   R
                 </div>
                 <div className="flex-1">
                   <p className="font-semibold text-sm" style={{ color: "#1a1a2e" }}>
-                    Rider Assigning soon
+                    Rider will be assigned soon
                   </p>
                   <p className="text-xs" style={{ color: "#888" }}>
                     Delivery Partner
@@ -414,7 +414,7 @@ export default function Success() {
                     >
                       <img
                         src={item.images?.[0] || item.image || "/placeholder.png"}
-                        alt={item.name}
+                        alt={item.title}
                         className="w-full h-full object-contain mix-blend-multiply"
                       />
                     </div>
@@ -423,7 +423,7 @@ export default function Success() {
                         className="text-sm font-medium line-clamp-1"
                         style={{ color: "#1a1a2e" }}
                       >
-                        {item.name}
+                        {item.title}
                       </p>
                       <p className="text-xs mt-0.5" style={{ color: "#aaa" }}>
                         Qty: {item.quantity}
@@ -438,12 +438,12 @@ export default function Success() {
 
               <div
                 className="mx-5 mb-5 mt-2 rounded-2xl px-4 py-3 flex justify-between items-center"
-                 style={{ backgroundColor: G.light }}
+                style={{ backgroundColor: G.light }}
               >
                 <span className="text-sm font-medium" style={{ color: G.primary }}>
                   Total Paid
                 </span>
-                <span className="text-xl font-bold"style={{ color: G.primary }}>
+                <span className="text-xl font-bold" style={{ color: G.primary }}>
                   ₹{finalPaidAmount}
                 </span>
               </div>

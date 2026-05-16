@@ -35,10 +35,10 @@ export default function Login() {
         {
           size: "invisible", // Use invisible reCAPTCHA
           callback: (response) => {
-            console.log("ReCAPTCHA solved:", response); // Optional callback
+            // console.log("ReCAPTCHA solved:", response); // Optional callback
           },
           "expired-callback": () => {
-            console.log("ReCAPTCHA expired"); // Optional callback for reCAPTCHA expiration
+            // console.log("ReCAPTCHA expired"); // Optional callback for reCAPTCHA expiration
           },
         }
       );
@@ -56,10 +56,10 @@ export default function Login() {
       setIsOtpSent(true);
       setLoading(false);
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       setError("Failed to send OTP. Please try again.");
       setLoading(false);
-      console.log(fullPhoneNumber);
+      // console.log(fullPhoneNumber);
     }
   };
 

@@ -231,7 +231,7 @@ export default function Appliances() {
     dispatch(productAdd(item));
   };
   const handleRemoveFromCart = (item) => {
-    console.log("enter");
+  
     dispatch(productRemove(item.id));
   };
   const openModal = (product) => {
@@ -455,9 +455,9 @@ export default function Appliances() {
                           )}
                         </div>
                         <div className="flex justify-center items-center flex-col    p-1">
-                          <h1 className="text-[12px] ">{vegitable.title}</h1>
+                          <h1 className="text-[12px] line-clamp-2 ">{vegitable.title}</h1>
                           <p className="text-sm font-semibold text-start w-full">
-                            MRP. <span className="text-sm "> {vegitable.price}</span>
+                            <span className="text-sm ">  ₹{Number(vegitable.price).toLocaleString("en-IN")}</span>
                            
                           </p>
                           <p className="text-xs ">

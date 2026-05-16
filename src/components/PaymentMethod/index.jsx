@@ -104,7 +104,7 @@ export default function PaymentMethod() {
         {/* Sleek Total Display */}
         <div className="flex flex-col items-center justify-center py-6">
           <p className="text-sm text-gray-400 font-light mb-1">Total to pay</p>
-          <h2 className="text-5xl font-semibold text-gray-900 tracking-tight">₹{price}</h2>
+          <h2 className="text-5xl font-semibold text-gray-900 tracking-tight">₹{Number(price).toLocaleString("en-IN")}</h2>
         </div>
 
         <div>
