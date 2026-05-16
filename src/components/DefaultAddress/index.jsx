@@ -84,7 +84,7 @@ export default function DefaultAddress({
                   })}
                 </div>
                 <h1 className="text-center mt-10 text-[3em] font-semibold opacity-5">
-                  Dailly
+                  Instants
                 </h1>
               </div>
             </div>

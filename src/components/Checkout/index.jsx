@@ -114,7 +114,7 @@ export default function Checkout({ price }) {
         key: import.meta.env.VITE_RAZORPAY_TEST_KEY || "YOUR_TEST_KEY_HERE", 
         amount: amountInPaise, 
         currency: "INR",
-        name: "Dailly",
+        name: "Instants",
         description: "Test Transaction",
         image: "/logo.png", // Make sure this path exists or replace with your actual logo
         handler: function (response) {

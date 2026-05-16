@@ -9,9 +9,9 @@ export default defineConfig({
       registerType: "autoUpdate",
       includeAssets: ["favicon.ico", "masked-icon.png", "apple-touch-icon.png"],
       manifest: {
-        name: "Dailly in Minutes",
-        short_name: "Dailly",
-        description: "Dailly Grocery store",
+        name: "Instants in Minutes",
+        short_name: "Instants",
+        description: "Instants Grocery store",
         theme_color: "#17803D",
         background_color: "#17803D",
         start_url: "/",

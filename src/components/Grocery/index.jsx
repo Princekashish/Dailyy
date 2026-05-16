@@ -224,7 +224,7 @@ export default function Grocery() {
   useEffect(() => {
     const fetchVegetables = async () => {
       try {
-        const res = await axios.get(`${API_BASE_URL}/api/v1/product/vegetable`);
+        const res = await axios.get(`${API_BASE_URL}/api/v1/product/grocery`);
         setVegetable(res.data);
       } catch (error) {
         console.error("Error fetching vegetables:", error);
@@ -364,8 +364,11 @@ export default function Grocery() {
                     <div className="flex justify-center items-center flex-col    p-1">
                       <h1 className="text-[12px] ">{vegitable.title}</h1>
                       <p className="text-sm font-semibold text-start w-full">
-                        ₹{vegitable.price}/Kg
+                        ₹{vegitable.price}
                       </p>
+
+
+
                     </div>
                   </div>
                 );
