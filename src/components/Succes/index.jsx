@@ -282,9 +282,9 @@ export default function Success() {
                       {deliveryMinutes}{" "}
                       <span className="text-2xl font-semibold">mins</span>
                     </p>
-                    <p className="text-base font-semibold mt-2" style={{ color: "#1a1a2e" }}>
+                    {/* <p className="text-base font-semibold mt-2" style={{ color: "#1a1a2e" }}>
                       Your order is on the way
-                    </p>
+                    </p> */}
                   </div>
                   {/* Pulsing indicator */}
                  <div className="bg-green-50 p-4 rounded-2xl relative">
