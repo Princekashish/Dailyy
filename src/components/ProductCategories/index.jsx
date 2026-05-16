@@ -14,8 +14,8 @@ export default function ProductCategories() {
       link: "/fruits",
     },
     {
-      text: "Snacks",
-      img: "/drinks.webp",
+      text: "Drinks",
+      img: "/Drinks-copy.webp",
       link: "/drink",
     },
     {

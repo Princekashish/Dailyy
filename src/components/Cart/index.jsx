@@ -11,33 +11,23 @@ import {
 import Checkout from "../Checkout";
 
 export default function Cart({ bottom }) {
-  const cart = useSelector((state) => state.cart.items); // Get cart items from Redux state
+  const cart = useSelector((state) => state.cart.items);
   const [homeServicesVisible, setHomeServicesVisible] = useState(2);
   const [viewCart, setViewCart] = useState(false);
   const [checkout, setCheckout] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const dispatch = useDispatch();
 
-  const homeServices = cart.filter(
-    (item) => item.serviceType === "homeService"
-  );
+  const homeServices = cart.filter((item) => item.serviceType === "homeService");
   const products = cart.filter((item) => item.serviceType !== "homeService");
 
-  // Check if cart has any items
   const hasItemsInCart = cart.length > 0;
   const price = useSelector(selectCartTotal);
 
-  // Only show the first two items
   const firstTwoItems = cart.slice(0, 2);
-  const closeModal = () => {
-    setViewCart(false); // Close the modal
-  };
-  const handleRemoveFromCart = (item) => {
-    dispatch(productRemove(item));
-  };
-  const handleAddToCart = (item) => {
-    dispatch(productAdd(item));
-  };
+  const closeModal = () => setViewCart(false);
+  const handleRemoveFromCart = (item) => dispatch(productRemove(item));
+  const handleAddToCart = (item) => dispatch(productAdd(item));
   const handleConfirmOrder = () => {
     console.log("true");
     setCheckout(!checkout);
@@ -47,15 +37,12 @@ export default function Cart({ bottom }) {
     setViewCart(false);
     setSelectedProduct(item);
   };
-  const productModal = () => {
-    setSelectedProduct(false);
-  };
+  const productModal = () => setSelectedProduct(false);
 
   const deliveryCharge = 0;
-  const handlingCharge = 20;
+  const handlingCharge = 0;
   const total = price + deliveryCharge + handlingCharge;
 
-  //scroll for service
   const handleScroll = () => {
     const scrollPosition = window.scrollY;
     if (scrollPosition === 0) {
@@ -64,306 +51,440 @@ export default function Cart({ bottom }) {
       setHomeServicesVisible(1);
     }
   };
+
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
   return (
     <>
+      {/* ── Floating Cart Pill ── */}
       <div
         onClick={() => setViewCart((pre) => !pre)}
-        className={`flex justify-center items-center mx-auto bottom-7  left-[30%] text-center z-20 w-[40%] p-4 fixed ${hasItemsInCart ? "bg-[#008236]" : "hidden"
-          } px-1 py-1 rounded-full text-white`}
+        className={`fixed z-20 ${hasItemsInCart ? "flex" : "hidden"}`}
+        style={{
+          bottom: "28px",
+          left: "50%",
+          transform: "translateX(-50%)",
+          width: "calc(50%",
+          maxWidth: 360,
+          backgroundColor: "#15803d",
+          borderRadius: 999,
+          padding: "10px 16px",
+          alignItems: "center",
+          justifyContent: "space-between",
+          boxShadow: "0 8px 24px rgba(21,128,61,0.35)",
+          WebkitTapHighlightColor: "transparent",
+        }}
       >
-        {/* Show the first two items' images */}
-        <div className="relative flex justify-center items-center ">
+        {/* Item thumbnails */}
+        <div style={{ display: "flex", alignItems: "center" }}>
           {firstTwoItems.map((item, index) => (
             <img
               key={item.id || item._id}
               src={item.images?.[0] || item.image || item.img || item[0]}
               alt={item.product}
-              className={`w-8 h-8 object-cover rounded-full bg-white ${index === 0
-                  ? "z-10  border-[2px] border-[#29541e]"
-                  : "-ml-5 z-20 border-[2px] border-[#29541e]"
-                }`}
+              style={{
+                width: 34,
+                height: 34,
+                borderRadius: 999,
+                objectFit: "cover",
+                backgroundColor: "#fff",
+                border: "2px solid #166534",
+                marginLeft: index === 0 ? 0 : -10,
+                zIndex: index === 0 ? 1 : 2,
+                position: "relative",
+                flexShrink: 0,
+              }}
             />
           ))}
         </div>
 
-        {/* If the cart has items, show item count and "View Cart" button */}
+        {/* Label */}
         {hasItemsInCart && (
-          <div className="flex  items-center justify-center gap-3 ">
-            <div className="flex flex-col-reverse ">
-              <h1 className="text-xs uppercase font-light ">
-                {cart.length > 1
-                  ? `${cart.length} Items`
-                  : `${cart.length} Item`}
-              </h1>
-              {/* Button to view cart page */}
-              <h1 className=" mt-2 text-xs">View Cart</h1>
+          <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+            <div style={{ textAlign: "center" }}>
+              <p style={{ color: "rgba(255,255,255,0.75)", fontSize: 10, textTransform: "uppercase", letterSpacing: 0.5, lineHeight: 1 }}>
+                {cart.length > 1 ? `${cart.length} Items` : `${cart.length} Item`}
+              </p>
+              <p style={{ color: "#fff", fontSize: 13, fontWeight: 600, marginTop: 2, lineHeight: 1 }}>
+                View Cart
+              </p>
             </div>
-            <ChevronRight size={18} />
+            <ChevronRight size={18} color="#fff" strokeWidth={2.5} />
           </div>
         )}
       </div>
 
-      {/* viewCart */}
+      {/* ── Cart Bottom Sheet ── */}
       {viewCart && (
-        <div className="fixed top-0 left-0 right-0 bottom-0 bg-black bg-opacity-50 h-screen  z-20 ">
-          <div className="flex justify-center items-center ">
-            <motion.div
-              initial={{ y: 100, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{
-                duration: 0.25,
-                stiffness: 1,
-              }}
-              className="bg-white   rounded-t-3xl p-5 w-full absolute bottom-0 h-[85vh]  "
-            >
-              <div className="flex flex-col gap-5 ">
-                <div className="flex justify-between items-center">
-                  <div className="flex justify-start items-center gap-2">
-                    <RiTimerFlashLine size={30} />
-                    <div className="text-start flex flex-col justify-start items-start">
-                      <h1 className="text-lg font-semibold ">
-                        {" "}
-                        Delivey in Minutes
-                      </h1>
-                      <p className="text-sm">Shipment of {cart.length} items</p>
-                    </div>
-                  </div>
-                  <button
-                    onClick={closeModal}
-                    className="p-1 bg-black/10   rounded-full "
-                  >
-                    <X />
-                  </button>
-                </div>
-                <div className="flex flex-col justify-between gap-5">
-                  <div className=" h-[40vh] overflow-hidden overflow-y-scroll flex flex-col gap-3 no-scrollbar  relative">
-
-                    {products.length > 0 && (
-                      <div className={`p-4 bg-white  rounded-3xl mb-4 ${homeServices.length > 0 ? 'border border-gray-100 shadow-sm' : ''} shadow-gray-200/50`}>
-                        <div className="flex flex-col gap-4">
-                          {homeServices.length > 0 && (
-                            <h2 className="text-xs font-bold text-gray-500 uppercase tracking-widest border-b border-gray-100 pb-2">Products & Groceries</h2>
-                          )}
-                          {products.map((items) => (
-                            <div
-                              key={items.id}
-                              className="flex justify-between items-center"
-                            >
-                              <div className="flex justify-start items-center gap-3">
-                                <div
-                                  onClick={() => handleproduct(items)}
-                                  className="p-2 border rounded-xl border-gray-100 w-[60px] h-[60px] flex justify-center items-center bg-gray-50/50"
-                                >
-                                  <img
-                                    src={items.images?.[0] || items.image || items.img || items[0]}
-                                    alt=""
-                                    className="h-full w-full object-contain "
-                                  />
-                                </div>
-                                <div className="flex flex-col justify-center items-start gap-0.5">
-                                  <h1 className="text-sm font-medium text-gray-900">
-                                    {(items.title).length > 18
-                                      ? `${(items.title || items.name || "").substring(0, 18)}...`
-                                      : items.title || items.name}
-                                  </h1>
-                                  <p className="text-sm font-semibold text-gray-900">
-                                    ₹{items.price}
-                                  </p>
-                                </div>
-                              </div>
-
-                              <div className="flex items-center justify-between bg-green-50 rounded-lg p-1 w-[70px]">
-                                <button
-                                  onClick={() => handleRemoveFromCart(items.id)}
-                                  className="w-6 h-6 flex items-center justify-center bg-white text-green-700 rounded shadow-sm hover:bg-green-100 transition-colors"
-                                >
-                                  <Minus size={14} strokeWidth={2.5} />
-                                </button>
-                                <h1 className="text-xs font-bold text-green-800 text-center flex-1">
-                                  {items.quantity}
-                                </h1>
-                                <button
-                                  onClick={() => handleAddToCart(items)}
-                                  className="w-6 h-6 flex items-center justify-center bg-white text-green-700 rounded shadow-sm hover:bg-green-100 transition-colors"
-                                >
-                                  <Plus size={14} strokeWidth={2.5} />
-                                </button>
-                              </div>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    )}
-                    {homeServices.length > 0 && (
-                      <div className="p-4 bg-white border border-gray-100 rounded-3xl sticky top-0 shadow-sm shadow-gray-200/50 mb-4">
-                        <div className="flex flex-col gap-4">
-                          <h2 className="text-xs font-bold text-gray-500 uppercase tracking-widest border-b border-gray-100 pb-2">Home Services</h2>
-                          {homeServices
-                            .slice(0, homeServicesVisible)
-                            .map((items) => (
-                              <div
-                                key={items.id}
-                                className="flex justify-between items-center"
-                              >
-                                <div className="flex justify-start items-center gap-3">
-                                  <div
-                                    onClick={() => handleproduct(items)}
-                                    className="p-2 border rounded-xl border-gray-100 w-[60px] h-[60px] flex justify-center items-center bg-gray-50/50"
-                                  >
-                                    <img
-                                      src={items.images?.[0] || items.img || items.image || items[0]}
-                                      alt=""
-                                      className="object-contain mix-blend-multiply h-full w-full"
-                                    />
-                                  </div>
-                                  <div className="flex flex-col justify-center items-start gap-0.5">
-                                    <h1 className="text-sm text-gray-900 font-medium">
-                                      {(items.title || items.name || "").length > 18
-                                        ? `${(items.title || items.name || "").substring(0, 18)}...`
-                                        : items.title || items.name}
-                                    </h1>
-                                    <p className="text-sm font-semibold text-gray-900">
-                                      ₹{items.price}
-                                    </p>
-                                  </div>
-                                </div>
-
-                                <div className="flex items-center justify-between bg-green-50 rounded-lg p-1 w-[70px]">
-                                  <button
-                                    onClick={() => handleRemoveFromCart(items.id)}
-                                    className="w-6 h-6 flex items-center justify-center bg-white text-green-700 rounded shadow-sm hover:bg-green-100 transition-colors"
-                                  >
-                                    <Minus size={14} strokeWidth={2.5} />
-                                  </button>
-                                  <h1 className="text-xs font-bold text-green-800 text-center flex-1">
-                                    {items.quantity}
-                                  </h1>
-                                  <button
-                                    onClick={() => handleAddToCart(items)}
-                                    className="w-6 h-6 flex items-center justify-center bg-white text-green-700 rounded shadow-sm hover:bg-green-100 transition-colors"
-                                  >
-                                    <Plus size={14} strokeWidth={2.5} />
-                                  </button>
-                                </div>
-                              </div>
-                            ))}
-                        </div>
-                      </div>
-                    )}
-                  </div>
-                  {/* price */}
-                  <div className="flex flex-col justify-start items-start mt-1">
-                    <h1 className="font-semibold text-lg">Bill Summary</h1>
-                    <div className="bg-[#f8f8f8] rounded-xl h-[15vh] w-full mt-1">
-                      <div className="flex flex-col  rounded-lg p-2 ">
-                        {/* Total Price for all items */}
-                        <div className="flex justify-between items-center">
-                          <h1 className="text-sm">Items Total</h1>
-                          <p>₹{price}</p>
-                        </div>
-                        {/* Delivery Charge */}
-                        <div className="flex justify-between items-center">
-                          <h1 className="text-sm">Delivery Charge</h1>
-                          <p className="text-green-600">
-                            {deliveryCharge > 0 ? `₹${deliveryCharge}` : "Free"}
-                          </p>
-                        </div>
-
-                        {/* Handling Charge */}
-                        <div className="flex justify-between items-center">
-                          <h1 className="text-sm">Handling Charge</h1>
-                          <p>{handlingCharge}</p> {/* Fixed Handling Charge */}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className=" flex justify-between items-center">
-                    <div className="flex gap-2 justify-center items-center">
-                      <h1 className="text-green-600 text-sm font-semibold">
-                        Total
-                      </h1>
-                      <p className="font-semibold text-lg ">₹{total}</p>
-                    </div>
-                    <div
-                      onClick={handleConfirmOrder}
-                      className="bg-green-600  px-2 py-3  rounded-xl  "
-                    >
-                      <button className="text-white uppercase text-sm tracking-tight font-bold ">
-                        Confirm order
-                      </button>
-                    </div>
-                  </div>
+        <div
+          style={{
+            position: "fixed",
+            inset: 0,
+            backgroundColor: "rgba(0,0,0,0.5)",
+            zIndex: 30,
+            display: "flex",
+            alignItems: "flex-end",
+          }}
+        >
+          <motion.div
+            initial={{ y: 100, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.25 }}
+            style={{
+              width: "100%",
+              backgroundColor: "#fff",
+              borderRadius: "24px 24px 0 0",
+              padding: "20px 20px 0 20px",
+              /* iOS safe-area bottom inset */
+              paddingBottom: "env(safe-area-inset-bottom, 20px)",
+              maxHeight: "88vh",
+              display: "flex",
+              flexDirection: "column",
+              overflow: "hidden",
+            }}
+          >
+            {/* Header */}
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16 }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                <RiTimerFlashLine size={28} color="#15803d" />
+                <div>
+                  <p style={{ fontSize: 15, fontWeight: 600, color: "#14532d", lineHeight: 1.2 }}>
+                    Delivery in Minutes
+                  </p>
+                  <p style={{ fontSize: 12, color: "#888", marginTop: 2 }}>
+                    Shipment of {cart.length} item{cart.length > 1 ? "s" : ""}
+                  </p>
                 </div>
               </div>
-            </motion.div>
-          </div>
+              <button
+                onClick={closeModal}
+                style={{
+                  width: 32,
+                  height: 32,
+                  borderRadius: 999,
+                  backgroundColor: "rgba(0,0,0,0.08)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  border: "none",
+                  flexShrink: 0,
+                  WebkitTapHighlightColor: "transparent",
+                }}
+              >
+                <X size={18} strokeWidth={2} />
+              </button>
+            </div>
+
+            {/* Scrollable item list */}
+            <div
+              style={{
+                flex: 1,
+                overflowY: "auto",
+                WebkitOverflowScrolling: "touch",
+                marginBottom: 12,
+              }}
+              className="no-scrollbar"
+            >
+              {/* Products */}
+              {products.length > 0 && (
+                <div
+                  style={{
+                    backgroundColor: "#fff",
+                    borderRadius: 20,
+                    padding: 16,
+                    marginBottom: 12,
+                    border: homeServices.length > 0 ? "1px solid #f0fdf4" : "none",
+                    boxShadow: "0 2px 12px rgba(0,0,0,0.04)",
+                  }}
+                >
+                  {homeServices.length > 0 && (
+                    <p style={{ fontSize: 10, fontWeight: 700, color: "#aaa", textTransform: "uppercase", letterSpacing: 1, borderBottom: "1px solid #f3f4f6", paddingBottom: 8, marginBottom: 12 }}>
+                      Products &amp; Groceries
+                    </p>
+                  )}
+                  <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+                    {products.map((items) => (
+                      <CartItem
+                        key={items.id}
+                        items={items}
+                        onTap={() => handleproduct(items)}
+                        onAdd={() => handleAddToCart(items)}
+                        onRemove={() => handleRemoveFromCart(items.id)}
+                      />
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              {/* Home Services */}
+              {homeServices.length > 0 && (
+                <div
+                  style={{
+                    backgroundColor: "#fff",
+                    borderRadius: 20,
+                    padding: 16,
+                    marginBottom: 12,
+                    border: "1px solid #f0fdf4",
+                    boxShadow: "0 2px 12px rgba(0,0,0,0.04)",
+                  }}
+                >
+                  <p style={{ fontSize: 10, fontWeight: 700, color: "#aaa", textTransform: "uppercase", letterSpacing: 1, borderBottom: "1px solid #f3f4f6", paddingBottom: 8, marginBottom: 12 }}>
+                    Home Services
+                  </p>
+                  <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+                    {homeServices.slice(0, homeServicesVisible).map((items) => (
+                      <CartItem
+                        key={items.id}
+                        items={items}
+                        onTap={() => handleproduct(items)}
+                        onAdd={() => handleAddToCart(items)}
+                        onRemove={() => handleRemoveFromCart(items.id)}
+                      />
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Bill Summary — pinned at bottom */}
+            <div style={{ borderTop: "1px solid #f3f4f6", paddingTop: 14, paddingBottom: 4 }}>
+              <p style={{ fontSize: 15, fontWeight: 600, color: "#14532d", marginBottom: 10 }}>Bill Summary</p>
+              <div style={{ backgroundColor: "#f8fafb", borderRadius: 14, padding: "10px 14px", marginBottom: 14 }}>
+                <BillRow label="Items Total" value={`₹${price}`} />
+                <BillRow label="Delivery Charge" value={deliveryCharge > 0 ? `₹${deliveryCharge}` : "Free"} green={deliveryCharge === 0} />
+                <BillRow label="Handling Charge" value={handlingCharge === 0 ? "Free" : `₹${handlingCharge}`} green={handlingCharge === 0} last />
+              </div>
+
+              {/* Total + CTA row */}
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  paddingBottom: "max(16px, env(safe-area-inset-bottom, 16px))",
+                }}
+              >
+                <div style={{ display: "flex", alignItems: "baseline", gap: 4 }}>
+                  <span style={{ fontSize: 13, fontWeight: 500, color: "#15803d" }}>Total</span>
+                  <span style={{ fontSize: 20, fontWeight: 700, color: "#14532d" }}>₹{total}</span>
+                </div>
+                <button
+                  onClick={handleConfirmOrder}
+                  style={{
+                    backgroundColor: "#15803d",
+                    color: "#fff",
+                    fontSize: 13,
+                    fontWeight: 700,
+                    letterSpacing: 0.5,
+                    textTransform: "uppercase",
+                    padding: "13px 22px",
+                    borderRadius: 14,
+                    border: "none",
+                    boxShadow: "0 4px 14px rgba(21,128,61,0.3)",
+                    WebkitTapHighlightColor: "transparent",
+                    cursor: "pointer",
+                  }}
+                >
+                  Confirm Order
+                </button>
+              </div>
+            </div>
+          </motion.div>
         </div>
       )}
 
+      {/* ── Product Detail Sheet ── */}
       {selectedProduct && (
-        <div className="fixed top-0 left-0 right-0 bottom-0 bg-black bg-opacity-50 h-screen  z-20 ">
-          <div className="flex justify-center items-center ">
-            <motion.div
-              initial={{ y: 100, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{
-                duration: 0.25,
-                stiffness: 1,
-              }}
-              className="bg-white   rounded-t-3xl p-5 w-full absolute bottom-0 h-[50vh]  "
-            >
-              <div className="flex flex-col gap-5 ">
-                <div className="flex justify-between items-center relative">
-                  <button
-                    onClick={productModal}
-                    className="p-1 bg-black/10   rounded-full absolute right-0 top-1 "
-                  >
-                    <X />
-                  </button>
+        <div
+          style={{
+            position: "fixed",
+            inset: 0,
+            backgroundColor: "rgba(0,0,0,0.5)",
+            zIndex: 30,
+            display: "flex",
+            alignItems: "flex-end",
+          }}
+        >
+          <motion.div
+            initial={{ y: 100, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.25 }}
+            style={{
+              width: "100%",
+              backgroundColor: "#fff",
+              borderRadius: "24px 24px 0 0",
+              padding: 20,
+              paddingBottom: "max(24px, env(safe-area-inset-bottom, 24px))",
+              minHeight: "42vh",
+            }}
+          >
+            {/* Close */}
+            <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: 8 }}>
+              <button
+                onClick={productModal}
+                style={{
+                  width: 32,
+                  height: 32,
+                  borderRadius: 999,
+                  backgroundColor: "rgba(0,0,0,0.08)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  border: "none",
+                  WebkitTapHighlightColor: "transparent",
+                }}
+              >
+                <X size={18} strokeWidth={2} />
+              </button>
+            </div>
+
+            {/* Product details */}
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 12 }}>
+              <img
+                src={selectedProduct.image}
+                alt=""
+                style={{ width: "100%", height: 160, objectFit: "contain", borderRadius: 16 }}
+              />
+              <div style={{ width: "100%" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4 }}>
+                  <span style={{ fontSize: 18, fontWeight: 700, color: "#14532d" }}>
+                    ₹{selectedProduct.price}
+                  </span>
+                  <span style={{ fontSize: 12, textDecoration: "line-through", color: "#aaa" }}>
+                    ₹{selectedProduct.originalPrice}
+                  </span>
+                  <span style={{ fontSize: 12, color: "#60a5fa", fontWeight: 500 }}>
+                    {selectedProduct.discount} OFF
+                  </span>
                 </div>
-                <div className="flex flex-col justify-center items-center">
-                  <img
-                    src={selectedProduct.image}
-                    alt=""
-                    className=" w-full h-40 object-contain rounded-xl"
-                  />
-                  <div className="flex justify-between flex-col ">
-                    <div className="flex justify-between items-center ">
-                      <div className="flex justify-start items-center gap-2">
-                        <p className="text-lg mt-2 font-semibold">
-                          ₹{selectedProduct.price}
-                        </p>
-                        <div className="flex justify-end items-end gap-1">
-                          <p className="text-xs line-through text-[#605e5e] pt-2">
-                            ₹{selectedProduct.originalPrice}
-                          </p>
-                          <p className="text-xs text-blue-400 ">
-                            {selectedProduct.discount} OFF
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="mt-2 text-start">
-                      <h1 className="text-sm text-[#6a6969] ">
-                        {selectedProduct.description}
-                      </h1>
-                    </div>
-                  </div>
-                </div>
+                <p style={{ fontSize: 13, color: "#777", lineHeight: 1.5 }}>
+                  {selectedProduct.description}
+                </p>
               </div>
-            </motion.div>
-          </div>
+            </div>
+          </motion.div>
         </div>
       )}
 
       <div>{checkout && <Checkout price={total} />}</div>
     </>
+  );
+}
+
+/* ── Shared sub-components ── */
+
+function CartItem({ items, onTap, onAdd, onRemove }) {
+  return (
+    <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10 }}>
+      {/* Thumbnail */}
+      <button
+        onClick={onTap}
+        style={{
+          width: 58,
+          height: 58,
+          borderRadius: 14,
+          border: "1px solid #f0fdf4",
+          backgroundColor: "#fafafa",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          padding: 6,
+          flexShrink: 0,
+          WebkitTapHighlightColor: "transparent",
+        }}
+      >
+        <img
+          src={items.images?.[0] || items.image || items.img || items[0]}
+          alt=""
+          style={{ width: "100%", height: "100%", objectFit: "contain" }}
+        />
+      </button>
+
+      {/* Name + price */}
+      <div style={{ flex: 1, minWidth: 0 }}>
+        <p style={{ fontSize: 13, fontWeight: 500, color: "#14532d", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+          {(items.title || items.name || "").length > 18
+            ? `${(items.title || items.name || "").substring(0, 18)}…`
+            : items.title || items.name}
+        </p>
+        <p style={{ fontSize: 13, fontWeight: 700, color: "#14532d", marginTop: 3 }}>
+          ₹{items.price}
+        </p>
+      </div>
+
+      {/* Stepper */}
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          backgroundColor: "#f0fdf4",
+          borderRadius: 10,
+          padding: "3px 4px",
+          gap: 2,
+          flexShrink: 0,
+        }}
+      >
+        <button
+          onClick={onRemove}
+          style={{
+            width: 28,
+            height: 28,
+            borderRadius: 8,
+            backgroundColor: "#fff",
+            border: "none",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            boxShadow: "0 1px 4px rgba(0,0,0,0.08)",
+            WebkitTapHighlightColor: "transparent",
+            cursor: "pointer",
+          }}
+        >
+          <Minus size={14} strokeWidth={2.5} color="#15803d" />
+        </button>
+        <span style={{ fontSize: 13, fontWeight: 700, color: "#166534", minWidth: 20, textAlign: "center" }}>
+          {items.quantity}
+        </span>
+        <button
+          onClick={onAdd}
+          style={{
+            width: 28,
+            height: 28,
+            borderRadius: 8,
+            backgroundColor: "#fff",
+            border: "none",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            boxShadow: "0 1px 4px rgba(0,0,0,0.08)",
+            WebkitTapHighlightColor: "transparent",
+            cursor: "pointer",
+          }}
+        >
+          <Plus size={14} strokeWidth={2.5} color="#15803d" />
+        </button>
+      </div>
+    </div>
+  );
+}
+
+function BillRow({ label, value, green = false, last = false }) {
+  return (
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        paddingBottom: last ? 0 : 6,
+        marginBottom: last ? 0 : 6,
+        borderBottom: last ? "none" : "1px solid #f3f4f6",
+      }}
+    >
+      <span style={{ fontSize: 13, color: "#555" }}>{label}</span>
+      <span style={{ fontSize: 13, fontWeight: 600, color: green ? "#15803d" : "#222" }}>{value}</span>
+    </div>
   );
 }

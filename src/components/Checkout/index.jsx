@@ -111,8 +111,8 @@ export default function Checkout({ price }) {
 
       const options = {
         // You can put your test key here directly, or use an env variable
-        key: import.meta.env.VITE_RAZORPAY_TEST_KEY || "YOUR_TEST_KEY_HERE", 
-        amount: amountInPaise, 
+        key: import.meta.env.VITE_RAZORPAY_TEST_KEY || "YOUR_TEST_KEY_HERE",
+        amount: amountInPaise,
         currency: "INR",
         name: "Instants",
         description: "Test Transaction",
@@ -134,8 +134,8 @@ export default function Checkout({ price }) {
       };
 
       const paymentObject = new window.Razorpay(options);
-      
-      paymentObject.on('payment.failed', function (response){
+
+      paymentObject.on('payment.failed', function (response) {
         alert("Payment Failed! Reason: " + response.error.description);
       });
 
@@ -155,7 +155,7 @@ export default function Checkout({ price }) {
               animate={{ y: 0, opacity: 1 }}
               exit={{ x: 100, opacity: 0 }}
               transition={{ duration: 0.25, stiffness: 1 }}
-              className="bg-white   rounded-t-3xl p-5 w-full absolute bottom-0 h-[77vh]  "
+              className="bg-white   rounded-t-3xl p-5 w-full absolute bottom-0  "
             >
               <div className="flex flex-col gap-5 ">
                 <div className="flex justify-between items-center">
@@ -173,7 +173,7 @@ export default function Checkout({ price }) {
                     <X />
                   </button>
                 </div>
-                <form onSubmit={handleAddressSubmit} className="flex flex-col gap-4 overflow-hidden overflow-y-scroll h-[80vh] no-scrollbar pb-20">
+                <form onSubmit={handleAddressSubmit} className="flex flex-col gap-1">
                   <div className="flex flex-col gap-1.5">
                     <label htmlFor="name" className="text-start text-sm font-medium text-gray-700">
                       Full name
@@ -212,7 +212,7 @@ export default function Checkout({ price }) {
                       value={addressData.address}
                       onChange={handleAddressChange}
                       className="py-2.5 px-3 border border-gray-200 bg-gray-50 rounded-xl font-light text-gray-800 outline-none focus:bg-white focus:border-green-600 focus:ring-1 focus:ring-green-600 transition-all"
-                      
+
                     />
                   </div>
                   <div className="flex flex-col gap-1.5">
@@ -226,7 +226,7 @@ export default function Checkout({ price }) {
                       value={addressData.landmark}
                       onChange={handleAddressChange}
                       className="py-2.5 px-3 border border-gray-200 bg-gray-50 rounded-xl font-light text-gray-800 outline-none focus:bg-white focus:border-green-600 focus:ring-1 focus:ring-green-600 transition-all"
-                      
+
                     />
                   </div>
                   <div className="flex flex-col gap-1.5 mb-2">
@@ -244,6 +244,9 @@ export default function Checkout({ price }) {
                   </div>
                   <button
                     type="submit"
+                    style={{
+                      paddingBottom: "max(16px, env(safe-area-inset-bottom, 16px))",
+                    }}
                     className="w-full bg-green-700 hover:bg-green-800 text-white font-semibold py-3.5 rounded-xl shadow-lg shadow-green-900/20 transition-all flex items-center justify-center uppercase tracking-wider text-sm mt-2"
                   >
                     Proceed to Payment
@@ -309,7 +312,7 @@ export default function Checkout({ price }) {
                   </div>
                 </motion.div>
               </div>
-             
+
             </div>
           </div>
         )}
