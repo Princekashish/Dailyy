@@ -52,7 +52,7 @@ export default function Hero() {
             </div>
           </div>
           <div className="flex flex-col gap-1 pr-3">
-            <h1 className="text-2xl font-bold leading-none">Instants</h1>
+            <h1 className="text-2xl font-bold leading-none italic">Instants</h1>
           </div>
         </div>
       </div>
