@@ -13,11 +13,7 @@ export default function DefaultAddress({
   };
 
   const location = [
-    { location: "Bodhgaya", image: "https://images.unsplash.com/photo-1617469170169-55626c028519?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
-    { location: "Bhagalpur", image: "/pngegg (32).png" },
-    { location: "Pachhatti", image: "/pngegg (33).png" },
-    { location: "Rajapur", image: "/pngegg (34).png" },
-    { location: "Belhar", image: "/pngegg (35).png" }
+    { location: "Bodhgaya", image: "https://www.pngitem.com/pimgs/m/194-1946632_mahabodhi-temple-hd-png-download.png" },
   ];
 
   const handleLocationClick = (location) => {
@@ -34,7 +30,7 @@ export default function DefaultAddress({
             animate={{ y: 0, opacity: 1 }}
             exit={{ x: 100, opacity: 0 }}
             transition={{ duration: 0.35, stiffness: 1 }}
-            className="bg-white rounded-t-3xl p-5 w-full absolute bottom-0 h-[55vh]"
+            className="bg-white rounded-t-3xl p-5 w-full absolute bottom-0 h-[40vh]"
           >
             <div className="flex flex-col gap-5">
               <div className="flex justify-between items-center">
@@ -65,7 +61,7 @@ export default function DefaultAddress({
                         
                         {isSelected && (
                           <div className="absolute inset-0 bg-black/40 z-20 top-0 rounded-2xl">
-                            <span className="text-white bg-green-600 text-sm px-2 py-1 rounded-md">Selected</span>
+                            <span className="text-white bg-green-600 text-sm px-1 py-1 rounded-md">Selected</span>
                           </div>
                         )}
 
@@ -76,7 +72,7 @@ export default function DefaultAddress({
                             className="h-[80px] object-contain rounded-2xl"
                           />
                         )}
-                        <p className="text-white absolute bottom-0 z-10 text-sm">
+                        <p className="text-white absolute bottom-0 z-20 text-sm">
                           {loc.location}
                         </p>
                       </div>

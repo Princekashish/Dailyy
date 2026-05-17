@@ -1,315 +1,178 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { Minus, Plus, X } from "lucide-react";
+import { useDispatch, useSelector } from "react-redux";
+import { motion } from "framer-motion";
+import { productAdd, productRemove } from "../../Redux/Feature/Cart/CartSlice";
+import axios from "axios";
+import { API_BASE_URL } from "../../utils/api";
+import Pageloader from "../../utils/Animated/Pageloader";
 
-function Gifts() {
-  const trending = [
-    {
-      text: "Earbuds",
-      image: "/pngegg (20).png",
-    },
-    {
-      text: "Speakers",
-      image: "/pngegg (29).png",
-    },
-    {
-      text: "Smartwatches",
-      image: "/pngegg (30).png",
-    },
-    {
-      text: "Heating Rods",
-      image: "https://via.placeholder.com/150?text=Thermostats",
-    },
-    {
-      text: "Earbuds",
-      image: "/pngegg (20).png",
-    },
-    {
-      text: "Speakers",
-      image: "/pngegg (29).png",
-    },
-    {
-      text: "Smartwatches",
-      image: "/pngegg (30).png",
-    },
-    {
-      text: "Heating Rods",
-      image: "https://via.placeholder.com/150?text=Thermostats",
-    },
-  ];
-  const topdeals = [
-    {
-      name: "IGP - Red single Rose Bouquet",
-      price: 799.99,
-      discount: 10,
-      rating: 4.7,
-      categories: ["Smartphone", "Electronics", "Mobile"],
-      image:
-        "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=720/app/assets/products/sliding_images/jpeg/e5327ef3-a8e3-47ce-ae97-6da3f24dd0b8.jpg",
-    },
-    {
-      name: "Amul chocominis chocolate",
-      price: 348.99,
-      discount: 15,
-      rating: 4.8,
-      categories: ["Headphones", "Audio", "Electronics"],
-      image:
-        "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=720/app/images/products/sliding_image/23752a.jpg?ts=1722840893",
-    },
-    {
-      name: "FnP1 Enchanted blue orchid bouquet",
-      price: 1099.0,
-      discount: 5,
-      rating: 4.9,
-      categories: ["Laptop", "Computers", "Electronics"],
-      image:
-        "https://cdn.grofers.com/cdn-cgi/image/f=auto,fit=scale-down,q=70,metadata=none,w=720/app/assets/products/sliding_images/jpeg/73ab846a-b875-4b1a-a228-a3e94dc494f7.jpg?ts=1713528968",
-    },
-  ];
-  const homesGift = [
-    {
-      name: "Modern Abstract Wall Art",
-      price: 49.99,
-      discount: 20,
-      rating: 4.6,
-      categories: ["Wall Art", "Home Decor", "Gifts"],
-      image:
-        "https://i.pinimg.com/736x/3b/21/8c/3b218cbff29937714f23cdaa1937e445.jpg",
-    },
-    {
-      name: "Faux Fur Throw Blanket",
-      price: 29.99,
-      discount: 15,
-      rating: 4.7,
-      categories: ["Blankets", "Home Decor", "Gifts"],
-      image:
-        "https://i.pinimg.com/736x/ee/84/e2/ee84e24532ffb0ccf7232f3c7c05b713.jpg",
-    },
-    {
-      name: "Ceramic Decorative Vases",
-      price: 39.99,
-      discount: 10,
-      rating: 4.8,
-      categories: ["Vases", "Home Decor", "Gifts"],
-      image:
-        "https://i.pinimg.com/736x/44/25/4e/44254edc4d8a14591f6cdd108a2e1515.jpg",
-    },
-    {
-      name: "Scented Candles Gift Set",
-      price: 24.99,
-      discount: 25,
-      rating: 4.5,
-      categories: ["Candles", "Home Decor", "Gifts"],
-      image:
-        "https://i.pinimg.com/736x/b8/61/8f/b8618f8f12ad7609e76cce46796a3648.jpg",
-    },
-    {
-      name: "Indoor Plant Pot with Stand",
-      price: 34.99,
-      discount: 18,
-      rating: 4.6,
-      categories: ["Planters", "Home Decor", "Gifts"],
-      image:
-        "https://i.pinimg.com/736x/eb/36/8b/eb368bf298fc1be4edd49489a6452dc8.jpg",
-    },
-    {
-      name: "Personalized Welcome Mat",
-      price: 19.99,
-      discount: 30,
-      rating: 4.7,
-      categories: ["Doormats", "Home Decor", "Gifts"],
-      image:
-        "https://i.pinimg.com/736x/77/9c/b0/779cb0c0aa2df2255c4b0f2cbebf3fb5.jpg",
-    },
-  ];
+export default function Gifts() {
+  const [vegetable, setVegetable] = useState([]);
 
-  const homekitchen = [
-    {
-      name: "Iron",
-      image:
-        "https://i.pinimg.com/736x/41/de/0d/41de0d623fcbeadf7eab9fef643e2e66.jpg",
-    },
-    {
-      name: "Heating Rods & Geysers",
-      image:
-        "https://i.pinimg.com/736x/e2/ce/70/e2ce7034ccbcdb2396e3625d783ffaba.jpg",
-    },
-    {
-      name: "Batteries",
-      image:
-        "https://i.pinimg.com/736x/61/c1/83/61c183b62ca8d12742828969e95c34db.jpg",
-    },
-    {
-      name: "LED & Lamps",
-      image:
-        "https://i.pinimg.com/736x/68/bc/9d/68bc9d8c9734d9e1bbec6e5bd64ebf21.jpg",
-    },
-    {
-      name: "Electric Cookers",
-      image:
-        "https://i.pinimg.com/736x/f3/21/b8/f321b80a621fb59e0fca215735dff030.jpg",
-    },
-    {
-      name: "Juicers & Mixers",
-      image:
-        "https://i.pinimg.com/736x/cf/55/2a/cf552a3b9dd1f21c56d437bdb7c2f5ad.jpg",
-    },
-    {
-      name: "Coffee Maker",
-      image:
-        "https://i.pinimg.com/736x/cc/43/1a/cc431a026cb0a6e0119942fa5a85bc50.jpg",
-    },
-    {
-      name: "Tools & Accessories",
-      image:
-        "https://i.pinimg.com/736x/46/9b/00/469b00698c81a756d317e82229e679b4.jpg",
-    },
-    {
-      name: "Tools & Accessories",
-      image:
-        "https://i.pinimg.com/736x/46/9b/00/469b00698c81a756d317e82229e679b4.jpg",
-    },
-  ];
+  useEffect(() => {
+    const fetchVegetables = async () => {
+      try {
+        const res = await axios.get(`${API_BASE_URL}/api/v1/product/gift`);
+        setVegetable(res.data);
+      } catch (error) {
+        console.error("Error fetching vegetables:", error);
+      }
+    };
+    fetchVegetables();
+  }, []);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  const cart = useSelector((state) => state.cart.items);
+  const dispatch = useDispatch();
+  const getCartItemQuantity = (productId) => {
+    const cartItem = cart.find((item) => item.id === productId);
+    return cartItem ? cartItem.quantity : 0;
+  };
+  const handleAddToCart = (item) => {
+    dispatch(productAdd(item));
+  };
+  const handleRemoveFromCart = (item) => {
+    console.log("enter");
+    dispatch(productRemove(item.id));
+  };
+  const openModal = (product) => {
+    setSelectedProduct(product); // Set the clicked product
+    setIsModalOpen(true); // Open the modal
+  };
+  const closeModal = () => {
+    setIsModalOpen(false); // Close the modal
+    setSelectedProduct(null); // Reset the selected product
+  };
 
   return (
-    <div className="font-Lexend mb-20">
-      <div className="flex flex-col justify-center items-center ">
-        <div className="bg-[url('./credit-card-shopping-bags.png')] bg-cover bg-center bg-no-repeat h-[23vh] w-full bg-[#f2f2f2] flex justify-start">
-          <div className=" w-full flex justify-center items-center relative">
-            <div className="absolute top-5 flex flex-col justify-center items-center">
-              <h1 className="text-sm ">Introduction</h1>
-              <h1 className="text-lg font-semibold">E-Gift Card</h1>
+    <div className="p-3  font-Lexend ">
+      <div className="mt-10  ">
+        <div>
+          {vegetable.length === 0 ? (
+           <Pageloader/>
+          ) : (
+            <div className="grid grid-cols-3 gap-3 p-3 mb-14">
+              {vegetable.map((vegitable) => {
+                const itemQuantity = getCartItemQuantity(vegitable._id || vegitable.id);
+                return (
+                  <div
+                    key={vegitable._id || vegitable.id}
+                    className="relative flex flex-col gap-1 justify-center items-center  "
+                  >
+                    <div className="relative ">
+                      <div className="h-[100px] bg-[#f4f4f4]   rounded-full  w-[100px] flex justify-center items-center">
+                        <img
+                          src={vegitable.images?.[0] || vegitable.image}
+                          onClick={() => openModal({ ...vegitable, id: vegitable._id || vegitable.id })}
+                          alt=""
+                          className=" h-[60px] object-contain"
+                        />
+                      </div>
+                      {itemQuantity === 0 ? (
+                        <div
+                          onClick={() => handleAddToCart({ ...vegitable, id: vegitable._id || vegitable.id })}
+                          className="absolute -bottom-1 right-0 border-green-700 border px-1 py-1 bg-white rounded-lg cursor-pointer opacity-60"
+                        >
+                          <Plus size={18} />
+                        </div>
+                      ) : (
+                        <div className="absolute opacity-60 cursor-pointer -bottom-2 right-0 border-green-600 border px-2 py-1 bg-white rounded-lg flex gap-2 vegitables-center">
+                          <button
+                            onClick={() => handleRemoveFromCart({ id: vegitable._id || vegitable.id })}
+                            className="text-lg font-medium"
+                          >
+                            <Minus size={15} />
+                          </button>
+                          <h1 className="text-sm font-medium">
+                            {itemQuantity}
+                          </h1>
+                          <button
+                            onClick={() => handleAddToCart({ ...vegitable, id: vegitable._id || vegitable.id })}
+                            className="text-lg font-medium"
+                          >
+                            <Plus size={15} />
+                          </button>
+                        </div>
+                      )}
+                    </div>
+                    <div className="flex justify-center items-center flex-col    p-1">
+                      <h1 className="text-[12px] ">{vegitable.title}</h1>
+                      <p className="text-sm font-semibold text-start w-full">
+                        ₹{vegitable.price}/Kg
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
-          </div>
-        </div>
-
-        <div className="w-full mt-5 p-2">
-          <h1 className="text-start font-semibold text-lg">
-            Featured this week
-          </h1>
-          <div className="flex whitespace-nowrap gap-4 w-full overflow-hidden overflow-x-scroll no-scrollbar mt-2">
-          {trending.map((items, i) => (
-              <div
-                key={i}
-                className="flex justify-center items-center flex-col gap-1 "
-              >
-                <div
-                  className={`border-[2.8px] border-blue-400  flex flex-col relative gap-2 rounded-full overflow-hidden h-[80px]  w-[80px]`}
-                  style={{
-                    backgroundImage: `url(${items.image})`,
-                    backgroundPosition: "center",
-                    backgroundSize: "cover",
-                    backgroundRepeat: "no-repeat",
-                  }}
-                >
-                  <div className="absolute top-0 bottom-0 w-full   bg-gradient-to-b from-black/10 to-black/50 border-2 border-white rounded-full " />
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Gift for new homes */}
-        <div className="w-full mt-5 p-2">
-          <h1 className="text-start font-semibold text-lg">Half price store</h1>
-          <div className="grid grid-cols-3  gap-5">
-            {topdeals.map((items, i) => {
-              return (
-                <div
-                  key={i}
-                  className="flex flex-col justify-start items-center gap-5 flex-wrap  "
-                >
-                  <div className="">
-                    <img
-                      src={items.image}
-                      alt=""
-                      className="h-[100px] object-contain rounded-xl"
-                    />
-                  </div>
-                  <div className="flex flex-col ">
-                    <h1 className="text-sm font-medium  ">{items.name}</h1>
-                    <p className="text-xs ">rating {items.rating}</p>
-                    <p className="text-xs ">{items.discount}% OFF</p>
-                    <p className="text-xs ">
-                      MRP. <span className="text-sm ">{items.price}</span>
-                    </p>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-          <div className="bg-gray-100 flex flex-row gap-4 mt-4 py-1 shadow-sm rounded-lg">
-            <h1 className="text-center w-full">see more</h1>
-          </div>
-        </div>
-        <div className="w-full mt-5 p-2">
-          <h1 className="text-start font-semibold text-lg">
-            Gift for new homes
-          </h1>
-          <div className="grid grid-cols-3  gap-5">
-            {homesGift.map((items, i) => {
-              return (
-                <div
-                  key={i}
-                  className="flex flex-col justify-start items-center gap-5 flex-wrap  "
-                >
-                  <div className="">
-                    <img
-                      src={items.image}
-                      alt=""
-                      className="h-[100px] object-contain rounded-xl"
-                    />
-                  </div>
-                  <div className="flex flex-col ">
-                    <h1 className="text-sm font-medium  ">{items.name}</h1>
-                    <p className="text-xs ">rating {items.rating}</p>
-                    <p className="text-xs ">{items.discount}% OFF</p>
-                    <p className="text-xs ">
-                      MRP. <span className="text-sm ">{items.price}</span>
-                    </p>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-          <div className="bg-gray-100 flex flex-row gap-4 mt-4 py-1 shadow-sm rounded-lg">
-            <h1 className="text-center w-full">see more</h1>
-          </div>
-        </div>
-
-        {/* Explore a wide range of gifts */}
-        <div className="w-full mt-5 p-2">
-          <h1 className="text-start font-semibold text-lg">
-            Explore a wide range of gifts
-          </h1>
-          <div className="grid grid-cols-3  gap-2">
-            {homekitchen.map((items, i) => (
-              <div
-                className={`  flex flex-col relative rounded-xl overflow-hidden h-[100px]  w-full object-contain justify-center items-center`}
-                style={{
-                  backgroundImage: `url(${items.image})`,
-                  backgroundPosition: "center",
-                  backgroundSize: "cover",
-                  backgroundRepeat: "no-repeat",
-                }}
-              >
-                <div className="absolute top-0 bottom-0 w-full   bg-gradient-to-b from-black/10 to-black/80 border-2 border-white rounded-xl " />
-                {/* <div className="border-2 border-black flex justify-center items-center rounded-full">
-                  <img
-                    src={item.img}
-                    alt={item.items}
-                    className="rounded-3xl p-2 object-contain "
-                  />
-                </div> */}
-
-                <h1 className="text-sm text-center text-[#f2f2f2]  z-20 font-medium  absolute w-full bottom-2">
-                  {items.name}
-                </h1>
-              </div>
-            ))}
-          </div>
+          )}
         </div>
       </div>
+      {isModalOpen && selectedProduct && (
+        <div className="fixed top-0 left-0 right-0 bottom-0 bg-black bg-opacity-50 z-[60] ">
+          <div className="flex justify-center items-center ">
+            <motion.div
+              initial={{ y: 100, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.25, stiffness: 1 }}
+              className="bg-white rounded-t-3xl p-5 w-full absolute bottom-0 h-[50vh] flex flex-col justify-between "
+            >
+              <div>
+                <button
+                  onClick={closeModal}
+                  className="mt-5 p-2 bg-[#f2f2f2]  rounded-full absolute right-5 top-0 "
+                >
+                  <X size={20} />
+                </button>
+                <h2 className="text-xl font-semibold">
+                  {selectedProduct.product || selectedProduct.title || selectedProduct.name}
+                </h2>
+                <img
+                  src={selectedProduct.images?.[0] || selectedProduct.img || selectedProduct.image}
+                  alt={selectedProduct.product || selectedProduct.title || selectedProduct.name}
+                  className=" w-full h-40 object-contain rounded-xl"
+                />
+                <div className="flex justify-between items-center ">
+                  <div className="flex justify-start items-center gap-2">
+                    <p className="text-lg mt-2 font-semibold">
+                      ₹{selectedProduct.price}
+                    </p>
+                    <div className="flex justify-end items-end gap-1">
+                      <p className="text-xs line-through text-[#605e5e] pt-2">
+                        ₹{selectedProduct.originalPrice}
+                      </p>
+                      <p className="text-xs text-blue-400">
+                        {selectedProduct.discount} OFF
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="mt-2">
+                  <h1 className="text-sm text-[#6a6969]">
+                    {selectedProduct.description}
+                  </h1>
+                </div>
+              </div>
+
+              <button
+                onClick={() => handleAddToCart(selectedProduct)} // Add to cart in the modal
+                className={`flex justify-center items-center text-white border px-3 gap-2 py-3 rounded-xl mt-5 w-full  ${getCartItemQuantity(selectedProduct.id) > 0
+                  ? "bg-black opacity-50 cursor-not-allowed" // Change background to black if added
+                  : "bg-green-700"
+                  }`}
+                disabled={getCartItemQuantity(selectedProduct.id) > 0} // Disable the button if the product is in the cart
+              >
+                <h1 className="text-sm font-medium">
+                  {getCartItemQuantity(selectedProduct.id) > 0
+                    ? "Already Added"
+                    : "Add to Cart"}
+                </h1>
+              </button>
+            </motion.div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
-
-export default Gifts;
