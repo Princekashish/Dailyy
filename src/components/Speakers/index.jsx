@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Minus, Plus, X } from "lucide-react";
 import React, { useState } from "react";
+import ProductModal from "../ProductModel";
 
 export default function Speakers() {
   const speakers = [
@@ -154,62 +155,13 @@ export default function Speakers() {
         ))}
       </div>
 
-      {/* Modal */}
-      {isModalOpen && selectedProduct && (
-        <div className="fixed top-0 left-0 right-0 bottom-0 bg-black bg-opacity-50  z-50  ">
-          <div className="flex justify-center items-center ">
-            <button
-              onClick={closeModal}
-              className="mt-5 p-2 bg-[#484848]  text-white rounded-full relative top-[120px]"
-            >
-              <X />
-            </button>
-            <motion.div
-              initial={{ y: 100, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{
-                duration: 0.25,
-                stiffness: 1,
-              }}
-              className="bg-white   rounded-t-3xl p-5 w-full absolute bottom-0 h-[65vh] "
-            >
-              <h2 className="text-xl font-semibold">
-                {selectedProduct.product}
-              </h2>
-              <img
-                src={selectedProduct.img}
-                alt={selectedProduct.product}
-                className="mt-3 w-full h-48 object-contain rounded-xl"
-              />
-              <p className="mt-3 text-sm">Brand: {selectedProduct.brand}</p>
-              <div className=" flex justify-between items-center ">
-                <div className="flex  justify-start items-center gap-2">
-                  <p className="text-lg mt-2 font-semibold">
-                    {selectedProduct.originalPrice}
-                  </p>
-                  <div className="flex justify-end items-end gap-1">
-                    <p className="text-xs line-through text-[#605e5e] pt-2">
-                      {selectedProduct.price}
-                    </p>
-                    <p className="text-xs text-blue-400">
-                      {selectedProduct.discount} OFF
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex justify-center items-center bg-zinc-100 border px-3 gap-2 py-2 rounded-lg">
-                  <button className="text-sm font-medium ">Add to cart</button>
-                </div>
-              </div>
-              <div className="mt-4">
-                <h1 className="text-sm text-[#6a6969]">
-                  {selectedProduct.description}
-                </h1>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-      )}
+      {
+        <ProductModal isOpen={isModalOpen}
+          product={selectedProduct}
+          onClose={() => setIsModalOpen(false)}
+          onAddToCart={(product) => dispatch(productAdd(product))}
+          getQuantity={(id) => cart.find(i => i.id === id)?.quantity ?? 0} />
+      }
     </div>
   );
 }

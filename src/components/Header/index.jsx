@@ -163,12 +163,12 @@ export default function Header() {
           })}
         </div>
       </div>
-      <button
+      {/* <button
         onClick={handleCategory}
         className="bg-black/20 backdrop-blur-md  rounded-full fixed bottom-7 gap-1 right-5 z-[20] px-3 py-3 flex justify-center items-center flex-col border-green-100 border-2"
       >
         <NotepadText className="" color="white" size={25} />
-      </button>
+      </button> */}
 
       {/* <button
         onClick={handleServicelist}

@@ -50,9 +50,9 @@ export default function Signup_Installation({ setShowPopup }) {
 
   // Handle install button click
   const handleDownloadClick = () => {
-    console.log("Install button clicked"); // Debugging
+    // console.log("Install button clicked"); // Debugging
     if (deferredPrompt) {
-      console.log("Prompt available, showing the prompt..."); // Debugging
+      // console.log("Prompt available, showing the prompt..."); // Debugging
       deferredPrompt.prompt(); // Show the install prompt
       deferredPrompt.userChoice.then((choiceResult) => {
         if (choiceResult.outcome === "accepted") {

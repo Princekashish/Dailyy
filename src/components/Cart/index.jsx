@@ -17,8 +17,8 @@ export default function Cart({ bottom }) {
   const [checkout, setCheckout] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
 
-  console.log(selectedProduct);
-  
+  // console.log(selectedProduct);
+
   const dispatch = useDispatch();
 
   const homeServices = cart.filter((item) => item.serviceType === "homeService");
@@ -32,7 +32,7 @@ export default function Cart({ bottom }) {
   const handleRemoveFromCart = (item) => dispatch(productRemove(item));
   const handleAddToCart = (item) => dispatch(productAdd(item));
   const handleConfirmOrder = () => {
-    console.log("true");
+    // console.log("true");
     setCheckout(!checkout);
     setViewCart(false);
   };
@@ -302,71 +302,87 @@ export default function Cart({ bottom }) {
       {/* ── Product Detail Sheet ── */}
       {selectedProduct && (
         <div
-          style={{
-            position: "fixed",
-            inset: 0,
-            backgroundColor: "rgba(0,0,0,0.5)",
-            zIndex: 30,
-            display: "flex",
-            alignItems: "flex-end",
-          }}
+          className="fixed inset-0 z-30 flex items-end bg-black/50"
+          onClick={productModal}
         >
           <motion.div
-            initial={{ y: 100, opacity: 0 }}
+            initial={{ y: "100%", opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.25 }}
-            style={{
-              width: "100%",
-              backgroundColor: "#fff",
-              borderRadius: "24px 24px 0 0",
-              padding: 20,
-              paddingBottom: "max(24px, env(safe-area-inset-bottom, 24px))",
-              minHeight: "42vh",
-            }}
+            exit={{ y: "100%", opacity: 0 }}
+            transition={{ duration: 0.28, ease: "easeOut" }}
+            onClick={(e) => e.stopPropagation()}
+            className="relative flex max-h-[75vh] w-full flex-col overflow-hidden rounded-t-[24px] bg-white pb-[calc(16px+env(safe-area-inset-bottom,0px))]"
           >
-            {/* Close */}
-            <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: 8 }}>
-              <button
-                onClick={productModal}
-                style={{
-                  width: 32,
-                  height: 32,
-                  borderRadius: 999,
-                  backgroundColor: "rgba(0,0,0,0.08)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  border: "none",
-                  WebkitTapHighlightColor: "transparent",
-                }}
-              >
-                <X size={18} strokeWidth={2} />
-              </button>
-            </div>
+            {/* ── Drag handle ── */}
+            <div className="mx-auto mt-3 mb-1 h-1 w-9 shrink-0 rounded-full bg-gray-200" />
 
-            {/* Product details */}
-            <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 12 }}>
-              <img
-                src={selectedProduct.images?.[0]}
-                alt=""
-                style={{ width: "100%", height: 160, objectFit: "contain", borderRadius: 16 }}
-              />
-              <div style={{ width: "100%" }}>
-                <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 4 }}>
-                  <span style={{ fontSize: 18, fontWeight: 700, color: "#14532d" }}>
+            {/* ── Close button ── */}
+            <button
+              onClick={productModal}
+              className="absolute top-4 right-4 z-10 flex h-8 w-8 shrink-0 cursor-pointer items-center justify-center rounded-full border-0 bg-black/10 [WebkitTapHighlightColor:transparent]"
+            >
+              <X size={18} strokeWidth={2} />
+            </button>
+
+            {/* ── Scrollable body ── */}
+            <div
+              className="no-scrollbar flex-1 overflow-y-auto px-5 pt-2 [WebkitOverflowScrolling:touch]"
+            >
+              {/* Product name */}
+              {(selectedProduct.title ||
+                selectedProduct.name ||
+                selectedProduct.product) && (
+                  <h2 className="mb-3 pr-11 text-[15px] font-bold leading-[1.4] text-green-900">
+                    {selectedProduct.title ||
+                      selectedProduct.name ||
+                      selectedProduct.product}
+                  </h2>
+                )}
+
+              {/* Image */}
+              <div className="mb-3.5 flex h-[clamp(120px,38vw,200px)] w-full items-center justify-center overflow-hidden rounded-2xl ">
+                <img
+                  src={
+                    selectedProduct.images?.[0] ||
+                    selectedProduct.img ||
+                    selectedProduct.image
+                  }
+                  alt={selectedProduct.title || selectedProduct.name || ""}
+                  className="h-full w-full object-contain p-2"
+                />
+              </div>
+
+              {/* Price row */}
+              <div className="mb-2.5 flex flex-wrap items-center gap-2">
+                {selectedProduct.price && (
+                  <span className="text-[18px] font-bold text-green-900">
                     ₹{selectedProduct.price}
                   </span>
-                  <span style={{ fontSize: 12, textDecoration: "line-through", color: "#aaa" }}>
-                    ₹{selectedProduct.originalPrice}
-                  </span>
-                  <span style={{ fontSize: 12, color: "#60a5fa", fontWeight: 500 }}>
-                    {selectedProduct.discount} OFF
-                  </span>
-                </div>
-                <p style={{ fontSize: 13, color: "#777", lineHeight: 1.5 }}>
-                  {selectedProduct.description}
-                </p>
+                )}
+
+                {selectedProduct.originalPrice &&
+                  Number(selectedProduct.originalPrice) > 0 && (
+                    <span className="text-[12px] text-gray-400 line-through">
+                      ₹{selectedProduct.originalPrice}
+                    </span>
+                  )}
+
+                {selectedProduct.discount &&
+                  String(selectedProduct.discount).trim() !== "" &&
+                  String(selectedProduct.discount).trim() !== "0" && (
+                    <span className="rounded-md bg-green-50 px-2 py-[3px] text-[11px] font-semibold text-green-700">
+                      {selectedProduct.discount} OFF
+                    </span>
+                  )}
               </div>
+
+              {/* Description */}
+              {selectedProduct.description &&
+                String(selectedProduct.description).trim() !== "" && (
+                  <p className="mb-2 text-[13px] leading-[1.6] text-gray-500">
+                    {selectedProduct.description}
+                  </p>
+                )}
             </div>
           </motion.div>
         </div>
