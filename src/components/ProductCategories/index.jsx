@@ -27,14 +27,14 @@ export default function ProductCategories() {
     {
       text: "Gym",
       img: "/powder.webp",
-      link: "/",
+      link: "/gym",
     },
     {
       text: "Personal Care",
       img: "/personal-care.webp",
-      link: "/",
+      link: "/personal-care",
     },
-    { text: "Bulk", img: "/Bulkorder.webp", link: "/" },
+    { text: "Bulk", img: "/Bulkorder.webp", link: "/bulk" },
   ];
 
   return (

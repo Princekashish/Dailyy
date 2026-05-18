@@ -7,13 +7,13 @@ import axios from "axios";
 import { API_BASE_URL } from "../../utils/api";
 import Pageloader from "../../utils/Animated/Pageloader";
 
-export default function Drink() {
+export default function Snacks() {
   const [vegetable, setVegetable] = useState([]);
 
   useEffect(() => {
     const fetchVegetables = async () => {
       try {
-        const res = await axios.get(`${API_BASE_URL}/api/v1/product/drinks`);
+        const res = await axios.get(`${API_BASE_URL}/api/v1/product/snacks`);
         setVegetable(res.data);
       } catch (error) {
         console.error("Error fetching vegetables:", error);

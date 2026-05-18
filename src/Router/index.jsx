@@ -30,6 +30,14 @@ import Drink from "../components/Drink";
 import Fruits from "../components/Fruits";
 import FruitsLayout from "../components/FruitsLayout";
 import DrinkLayout from "../components/DrinkLayout";
+import SnacksLayout from "../components/SnacksLayout";
+import Snacks from "../components/Snacks";
+import GymLayout from "../components/GymLayout";
+import Gym from "../components/Gym";
+import PersonalCareLayout from "../components/PersonalCareLayout";
+import BulkLayout from "../components/BulkLayout";
+import Bulk from "../components/Bulk";
+import PersonalCare from "../components/PersonalCare";
 
 
 const rout = createBrowserRouter([
@@ -67,7 +75,34 @@ const rout = createBrowserRouter([
     Component: DrinkLayout,
     children: [
       { path: "", Component: Drink },
-      { path: "bakery-biscuits", Component: Exotics_Fruits },
+    ],
+  },
+  {
+    path: "/snacks",
+    Component: SnacksLayout,
+    children: [
+      { path: "", Component: Snacks },
+    ],
+  },
+  {
+    path: "/gym",
+    Component: GymLayout,
+    children: [
+      { path: "", Component: Gym },
+    ],
+  },
+  {
+    path: "/personal-care",
+    Component: PersonalCareLayout,
+    children: [
+      { path: "", Component: PersonalCare },
+    ],
+  },
+  {
+    path: "/bulk",
+    Component: BulkLayout,
+    children: [
+      { path: "", Component: Bulk },
     ],
   },
   {

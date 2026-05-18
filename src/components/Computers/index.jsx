@@ -4,6 +4,7 @@ import { Link, NavLink, Outlet } from "react-router-dom";
 import ScrollTop from "../../utils/ScreenTop";
 import { Search, Share } from "lucide-react";
 import Cart from "../Cart";
+import ComingSoon from "../ComingSoon";
 
 export default function Computer() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -57,29 +58,6 @@ export default function Computer() {
   return (
     <div className="font-Lexend relative ">
       <ScrollTop />
-      <div className=" pt-2 w-full z-10 h-[25vh] flex flex-col justify-between  relative">
-        <div className="relative ">
-          <div className="flex fixed top-4  left-2 justify-start items-center p-2 gap-2 z-20 bg-white rounded-full">
-            <Link
-              to={"/"}
-              className="flex justify-center items-center gap-2 text-sm  "
-            >
-              <IoArrowBack size={20} />
-            </Link>
-          </div>
-          <div className=" flex justify-center items-center gap-4 fixed right-3   z-10 ">
-            <div className="flex justify-center items-center rounded-full bg-white h-[35px] w-[35px]  ">
-              <Search size={20} />
-            </div>
-          </div>
-        </div>
-        <div className="absolute top-0 w-full">
-          <image
-            src="https://images.unsplash.com/photo-1604151364473-02e3e26124a6?q=80&w=2129&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            className="h-[25vh] w-full object-cover "
-          />
-        </div>
-      </div>
       {/* Computer product list */}
       {/* <div
         className={` flex flex-col justify-center items-center gap-5   z-20   ${
@@ -131,9 +109,7 @@ export default function Computer() {
         <Outlet />
       </div> */}
 
-       <div className="h-[50vh] flex justify-center items-center">
-              <h1 className="text-2xl tracking-tight font-semibold">Coming Soon</h1>
-            </div>
+     <ComingSoon/>
       <div>
         <Cart bottom={"bottom-2"} />
       </div>

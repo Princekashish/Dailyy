@@ -13,7 +13,7 @@ export default function DefaultAddress({
   };
 
   const location = [
-    { location: "Bodhgaya", image: "https://www.pngitem.com/pimgs/m/194-1946632_mahabodhi-temple-hd-png-download.png" },
+    { location: "Bodhgaya", image: "/bodhgahya.jpeg" },
   ];
 
   const handleLocationClick = (location) => {

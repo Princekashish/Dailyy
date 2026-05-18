@@ -97,7 +97,7 @@ export default function Fruits() {
                       )}
                     </div>
                     <div className="flex justify-center items-center flex-col    p-1">
-                      <h1 className="text-[12px] ">{vegitable.title}</h1>
+                      <h1 className="text-[12px] line-clamp-2">{vegitable.title}</h1>
                       <p className="text-sm font-semibold text-start w-full">
                         ₹{vegitable.price}
                       </p>

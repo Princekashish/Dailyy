@@ -5,6 +5,7 @@ import { IoArrowBack } from "react-icons/io5";
 import { Link, NavLink, Outlet } from "react-router-dom";
 import Cart from "../Cart";
 import { div } from "framer-motion/client";
+import ComingSoon from "../ComingSoon";
 
 export default function Stationery() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -62,26 +63,12 @@ export default function Stationery() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-  
+
   return (
     <div className="font-Lexend relative ">
       <ScrollTop />
 
-       <div className="relative ">
-          <div className="flex fixed top-4  left-2 justify-start items-center p-2 gap-2 z-20 bg-white rounded-full">
-            <Link
-              to={"/"}
-              className="flex justify-center items-center gap-2 text-sm  "
-            >
-              <IoArrowBack size={20} />
-            </Link>
-          </div>
-          <div className=" flex justify-center items-center gap-4 absolute right-3   z-10 ">
-            <div className="flex justify-center items-center rounded-full bg-white h-[35px] w-[35px]  ">
-              <Search size={20} />
-            </div>
-          </div>
-        </div>
+      
       {/* <div className=" pt-2 w-full z-10 h-[40vh] flex flex-col justify-between  relative bg-gradient-to-b from-[#A8EFC5] to-[#C8F5DA]">
        
         <div className="absolute top-5 flex flex-col justify-center items-center w-full h-full gap-5">
@@ -135,11 +122,7 @@ export default function Stationery() {
         <Outlet />
       </div> */}
 
-      <div className="h-[50vh] flex justify-center items-center">
-        <h1 className="text-2xl">Coming Soon</h1>
-      </div>
-
-     
+     <ComingSoon/>
 
       <div>
         <Cart bottom={"bottom-2"} />
