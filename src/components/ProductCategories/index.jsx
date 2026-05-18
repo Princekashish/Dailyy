@@ -10,12 +10,12 @@ export default function ProductCategories() {
     },
     {
       text: "Fruits",
-      img: "/fruits.webp",
+      img: "/fruits-cppy.webp",
       link: "/fruits",
     },
     {
       text: "Drinks",
-      img: "/Drinks.webp",
+      img: "/drinks-cppy.webp",
       link: "/drink",
     },
     {
