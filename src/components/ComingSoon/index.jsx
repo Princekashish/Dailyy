@@ -24,7 +24,7 @@ const ComingSoon = () => {
         className="flex flex-col items-center text-center gap-3"
       >
         {/* Headline */}
-        <h1 className="text-2xl md:text-4xl leading-none tracking-tight font-bold text-[#c0c0c0]">
+        <h1 className="text-3xl md:text-4xl leading-none tracking-tight font-bold text-[#c0c0c0]">
           We are coming{" "}
           <motion.span
             animate={{ opacity: [0.25, 0.55, 0.25] }}
