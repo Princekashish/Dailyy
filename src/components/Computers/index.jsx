@@ -81,7 +81,7 @@ export default function Computer() {
         </div>
       </div>
       {/* Computer product list */}
-      <div
+      {/* <div
         className={` flex flex-col justify-center items-center gap-5   z-20   ${
           isScrolled
             ? "bg-gradient-to-b from-[#F3F3E0] to-white"
@@ -110,13 +110,13 @@ export default function Computer() {
                 }}
               >
                 <div className="absolute top-0 bottom-0 w-full   bg-gradient-to-b from-black/10 to-black/90 border-2 border-white rounded-xl " />
-                {/* <div className="border-2 border-black flex justify-center items-center rounded-full">
+                <div className="border-2 border-black flex justify-center items-center rounded-full">
                   <image
                     src={item.image}
                     alt={item.items}
                     className="rounded-3xl p-2 object-contain "
                   />
-                </div> */}
+                </div>
 
                 <h1 className="text-sm text-center text-[#f2f2f2]  z-20 font-medium  absolute w-full bottom-2">
                   {item.items}
@@ -125,14 +125,14 @@ export default function Computer() {
             </NavLink>
           ))}
         </div>
-      </div>
+      </div> */}
       {/* Outlet for nested routes */}
       {/* <div className="pb-[8vh] ">
         <Outlet />
       </div> */}
 
        <div className="h-[50vh] flex justify-center items-center">
-              <h1 className="text-2xl">Coming Soon</h1>
+              <h1 className="text-2xl tracking-tight font-semibold">Coming Soon</h1>
             </div>
       <div>
         <Cart bottom={"bottom-2"} />

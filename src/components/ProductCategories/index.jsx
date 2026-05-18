@@ -19,9 +19,9 @@ export default function ProductCategories() {
       link: "/drink",
     },
     {
-      text: "Munchies",
-      img: "/Munchies.webp",
-      link: "/Munchies",
+      text: "Snacks",
+      img: "/snacks.webp",
+      link: "/snacks",
     },
     { text: "Applicances", img: "/applicances.webp", link: "/appliances" },
     {

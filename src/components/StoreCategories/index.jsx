@@ -13,21 +13,21 @@ export default function StoreCategories() {
       img: "/Medical.avif",
       link: "/Medical",
     },
-    {
-      text: "Electrical",
-      img: "/Electrical.avif",
-      link: "/electrical",
-    },
-    {
-      text: "Appliances",
-      img: "/Appliances.avif",
-      link: "/appliances",
-    },
-    {
-      text: "Dry service",
-      img: "/Service.avif",
-      link: "/dryService",
-    },
+    // {
+    //   text: "Electrical",
+    //   img: "/Electrical.avif",
+    //   link: "/electrical",
+    // },
+    // {
+    //   text: "Appliances",
+    //   img: "/Appliances.avif",
+    //   link: "/appliances",
+    // },
+    // {
+    //   text: "Dry service",
+    //   img: "/Service.avif",
+    //   link: "/dryService",
+    // },
     {
       text: "stationery",
       img: "/Stationery.avif",

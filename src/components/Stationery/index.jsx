@@ -66,8 +66,8 @@ export default function Stationery() {
   return (
     <div className="font-Lexend relative ">
       <ScrollTop />
-      <div className=" pt-2 w-full z-10 h-[40vh] flex flex-col justify-between  relative bg-gradient-to-b from-[#A8EFC5] to-[#C8F5DA]">
-        <div className="relative ">
+
+       <div className="relative ">
           <div className="flex fixed top-4  left-2 justify-start items-center p-2 gap-2 z-20 bg-white rounded-full">
             <Link
               to={"/"}
@@ -82,6 +82,8 @@ export default function Stationery() {
             </div>
           </div>
         </div>
+      {/* <div className=" pt-2 w-full z-10 h-[40vh] flex flex-col justify-between  relative bg-gradient-to-b from-[#A8EFC5] to-[#C8F5DA]">
+       
         <div className="absolute top-5 flex flex-col justify-center items-center w-full h-full gap-5">
           <div className="flex justify-center items-center gap-5">
             <img src={Bookimg[0].img} alt="Book Image" className="h-[120px]" />
@@ -93,9 +95,9 @@ export default function Stationery() {
             <img src={Bookimg[4].img} alt="Book Image" className="h-[120px]" />
           </div>
         </div>
-      </div>
+      </div> */}
       {/* Computer product list */}
-      <div
+      {/* <div
         className={` flex flex-col justify-center items-center gap-5   z-20   ${
           isScrolled
             ? "bg-gradient-to-b from-[#F3F3E0] to-white"
@@ -127,7 +129,7 @@ export default function Stationery() {
             </NavLink>
           ))}
         </div>
-      </div>
+      </div> */}
       {/* Outlet for nested routes */}
       {/* <div className="pb-[8vh] ">
         <Outlet />
