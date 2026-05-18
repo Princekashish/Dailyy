@@ -5,17 +5,17 @@ export default function ProductCategories() {
   const items = [
     {
       text: "Vegetables",
-      img: "/pngegg (22).png",
+      img: "/vege.webp",
       link: "/vegetables-fruits",
     },
     {
       text: "Fruits",
-      img: "/Fruits.webp",
+      img: "/fruits.webp",
       link: "/fruits",
     },
     {
       text: "Drinks",
-      img: "/Drinks-copy.webp",
+      img: "/Drinks.webp",
       link: "/drink",
     },
     {
@@ -23,15 +23,15 @@ export default function ProductCategories() {
       img: "/Munchies.webp",
       link: "/Munchies",
     },
-    { text: "Applicances", img: "/Appliances.webp", link: "/appliances" },
+    { text: "Applicances", img: "/applicances.webp", link: "/appliances" },
     {
-      text: "Gym Items",
-      img: "/Gym-Items.webp",
+      text: "Gym",
+      img: "/powder.webp",
       link: "/",
     },
     {
-      text: "Beauty",
-      img: "/Beauty.webp",
+      text: "Personal Care",
+      img: "/personal-care.webp",
       link: "/",
     },
     { text: "Bulk", img: "/Bulkorder.webp", link: "/" },

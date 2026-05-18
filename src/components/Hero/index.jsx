@@ -11,16 +11,15 @@ export default function Hero() {
   const [defaultAddress, setDefaultAddress] = useState(false); // To show/hide the modal
   const [userAddress, setUserAddress] = useState({
     city: "Bodhgaya",
-    address: "gulzarbagh near post-office",
-    pincode: "824231",
+    address: "current location",
   });
 
   // Function to handle address selection
   const handleLocationSelect = (location) => {
     setUserAddress({
       city: location,
-      address: `${location} address (example)`, // Update this based on the selected location
-      pincode: "110001", // You can set pincode dynamically or leave it static
+      address: `${location}`, 
+      pincode: "110001",
     });
   };
 
@@ -41,14 +40,14 @@ export default function Hero() {
               {/* <House color="white" size={20} /> */}
               <MdDeliveryDining color="white" size={28} />
               <div className="flex justify-center items-center gap-1">
-                <h1 className="text-xl font-semibold">19 minutes</h1>
+                <h1 className="text-xl font-semibold">Delivery</h1>
                 <h1>
                   <ChevronDown />
                 </h1>
               </div>
             </div>
             <div className="text-sm font-light">
-              <p>{userAddress.address}....</p>
+              <p>{userAddress.city}</p>
             </div>
           </div>
           <div className="flex flex-col gap-1 pr-3">
