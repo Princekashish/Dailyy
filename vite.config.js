@@ -31,8 +31,7 @@ export default defineConfig({
         ],
       },
       devOptions: {
-        enabled: true, // Enable PWA in development for testing
-        type: "module", // Use ES modules for service worker
+        enabled: false, // Disable PWA service worker in dev to avoid crypto errors
       },
     }),
   ],
