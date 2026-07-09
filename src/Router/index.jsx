@@ -2,7 +2,7 @@ import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "../Page/Home";
 import Layout from "../container/Layout";
-import Login from "../components/Login";
+// import Login from "../components/Login";
 import Electronic from "../components/Electronic";
 import Grocery from "../components/Grocery";
 import Computer from "../components/Computers";
@@ -50,7 +50,7 @@ const rout = createBrowserRouter([
       { path: "/gift", Component: Gifts },
     ],
   },
-  { path: "/login", Component: Login },
+  // { path: "/login", Component: Login },
   {
     path: "/vegetables-fruits",
     Component: Vegetables_fruits,

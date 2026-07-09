@@ -5,7 +5,7 @@ import StoreCategories from "../../components/StoreCategories";
 import Header from "../../components/Header";
 import Service from "../../components/Service";
 import NewProduct from "../../components/NewProduct";
-import OTPVerification from "../../components/Login";
+// import OTPVerification from "../../components/Login";
 import Cart from "../../components/Cart";
 
 export default function Home() {
