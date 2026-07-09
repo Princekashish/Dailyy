@@ -1,20 +1,29 @@
-import React from "react";
-import Hero from "../../components/Hero";
+import React, { useState } from "react";
 import ProductCategories from "../../components/ProductCategories";
 import StoreCategories from "../../components/StoreCategories";
-import Header from "../../components/Header";
 import Service from "../../components/Service";
 import NewProduct from "../../components/NewProduct";
-// import OTPVerification from "../../components/Login";
-import Cart from "../../components/Cart";
+import OTPLoginModal from "../../components/OTPLoginModal";
+import { useSelector } from "react-redux";
 
 export default function Home() {
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+  // dismissed = user manually closed the modal this session
+  const [dismissed, setDismissed] = useState(false);
+
+  // Show modal if: not logged in AND not manually dismissed
+  const showLogin = !isLoggedIn && !dismissed;
+
   return (
     <div className="">
       <ProductCategories />
       <Service />
       <StoreCategories />
       <NewProduct />
+
+      {showLogin && (
+        <OTPLoginModal onClose={() => setDismissed(true)} />
+      )}
     </div>
   );
 }
