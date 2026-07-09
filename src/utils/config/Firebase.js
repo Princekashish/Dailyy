@@ -3,24 +3,15 @@ import { initializeApp } from "firebase/app";
 import { getAuth, initializeAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
-// Your web app's Firebase configuration
-// const firebaseConfig = {
-//   apiKey: "AIzaSyDSS389lGy6KQOxs4HJYzdZzcCB77jOi1I",
-//   authDomain: "daily-a00e9.firebaseapp.com",
-//   projectId: "daily-a00e9",
-//   storageBucket: "daily-a00e9.firebasestorage.app",
-//   messagingSenderId: "470861410644",
-//   appId: "1:470861410644:web:9aaa4022a0834034fc98c1",
-// };
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAvOmxgTuwzPWj4JFc4DkC_6ast5zehZjc",
-  authDomain: "dailly-9322f.firebaseapp.com",
-  projectId: "dailly-9322f",
-  storageBucket: "dailly-9322f.firebasestorage.app",
-  messagingSenderId: "308190621147",
-  appId: "1:308190621147:web:cc968dbed31c84f3408bfe",
-  measurementId: "G-8D2WB0RR2M"
+  apiKey: `${import.meta.env.VITE_FIREBASE_API_KEY}`,
+  authDomain: `${import.meta.env.VITE_FIREBASE_AUTH_DOMAIN}`,
+  projectId: `${import.meta.env.VITE_FIREBASE_PROJECT_ID}`,
+  storageBucket: `${import.meta.env.VITE_FIREBASE_STORAGE_BUCKET}`,
+  messagingSenderId: `${import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID}`,
+  appId: `${import.meta.env.VITE_FIREBASE_APP_ID}`,
+  measurementId: `${import.meta.env.VITE_FIREBASE_MEASUREMENT_ID}`
 };
 
 
